@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db">
+	<insert id="insertUser" parameterType="db.UserDataBean">
+		insert into User_general
+		values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_addr}, #{user_addr2},#{user_email, jdbcType=VARCHAR},#{user_corp})
+	</insert>	
+</mapper>
