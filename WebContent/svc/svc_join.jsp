@@ -62,7 +62,7 @@
 			<div class="form-group row">
 				<label for="inputNickname" class="col-sm-2 col-form-label">이름</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="user_name" id="user_name" placeholder="user_name" required>
+					<input type="text" class="form-control" name="user_name" id="user_name" placeholder="이름" required>
 					<h6 style="color: red;" id="NameCheckMessage"></h6>
 				</div>
 			</div>
@@ -104,21 +104,24 @@
 								<input type="text" class="form-control" name="user_add2" id="cus_address2" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
 							</div>
 					</div>
-					<div class="form-group">
-				<div class="row">
-					<label for="email" class="control-label col-sm-2">${str_email}
-					</label>
-					<div class="col-sm-8">
-						<input type="email" name="user_email1" class="form-control" id="email1"
-							placeholder="Enter email" required>
-					</div>
-					<div class="col-sm-2">
-						<button type="button" class="btn btn-md btn-secondary" 
-						onclick="EmailCheck(inputform.email1.value)">${btn_confirm_smtp}</button>
-						<input type="hidden" name="confirm" value="0">
-					</div>
-					</div>
-				</div>
+					<div class="form-group row">						
+						<label for="inputNickname" class="col-sm-2 col-form-label">이메일</label>&nbsp;
+								&nbsp;<input type="text" style="width:110px;" class="form-control" name="cus_email1" id="cus_email1" maxlength="20" placeholder="이메일" required>
+								@
+								<input type="text" style="width:130px;" class="form-control" name="cus_email3" id="cus_email3" maxlength="20" placeholder="이메일" required>
+								<select class="form-control" style="width:115px;" name="cus_email2" id="cus_email2">
+									<option value="0"> 직접 입력 </option>
+									<option value="naver.com">naver.com</option>
+									<option value="daum.net">daum.net</option>
+									<option value="nate.com">nate.com</option>
+									<option value="gmail.com">gmail.com</option>
+								</select>
+							<div class="col-sm-2">
+ 								<button type="button" class="btn btn-md btn-secondary" onclick="emailAuthentic()">이메일인증</button>
+								<input type="hidden" name="confirm" value="0">
+							</div>
+							
+						</div>
 						
 						<div class="form-group row">
 								<label for="inputNickname" class="col-sm-2 col-form-label">전화번호</label>&nbsp;

@@ -72,9 +72,33 @@ function EmailClose(){
 	self.close();
 }
 
-function EmailCheck(email1){
+function emailAuthentic(){
+	var email = joinform.cus_email1.value+"@" + joinform.cus_email3.value;
+	var url="cus_email_verification.do?email="+email;
+	window.open(url, "b", "width=600,height=300,scrollbars=yes,resizeable=no,left=150,top=150") 
+}
+
+
+$(function() {
+    $( "#testDatepicker").datepicker({
+    });
+});
+//이메일 입력방식 선택
+$('#cus_email2').change(function(){
+   $("#cus_email2 option:selected").each(function () {
+		
+		if($(this).val()== '0'){ //직접입력일 경우
+			 $("#cus_email3").val('');                        //값 초기화
+			 $("#cus_email3").attr("disabled",false); //활성화
+		}else{ //직접입력이 아닐경우
+			 $("#cus_email3").val($(this).text());      //선택값 입력
+			 $("#cus_email3").attr("disabled",true); //비활성화
+		}
+   });
+});
+function EmailCheck(user_email1){
     // 인증을 위해 새창으로 이동
-	var url="emailCheck.go?email1="+email1
+	var url="emailCheck.go?user_email1="+user_email1
 	open(url,"emailwindow", "statusbar=no, scrollbar=no, menubar=no,width=500, height=200" );
 }
 
