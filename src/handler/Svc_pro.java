@@ -48,13 +48,21 @@ public class Svc_pro{
 		userDto.setUser_id(request.getParameter("user_id"));
 		userDto.setUser_pw(request.getParameter("user_pw"));
 		userDto.setUser_name(request.getParameter("user_name"));
-		userDto.setUser_phone(request.getParameter("user_phone"));
 		userDto.setUser_addr(request.getParameter("user_addr"));
 		userDto.setUser_addr2(request.getParameter("user_addr2"));
 		userDto.setUser_email(request.getParameter("user_email"));
 		int corp = Integer.parseInt(request.getParameter("User_corp"));
 		userDto.setUser_corp(corp);
-				
+		
+		String cus_tel = null;
+		String cus_tel1 = request.getParameter( "cus_tel1" );
+		String cus_tel2 = request.getParameter( "cus_tel2" );
+		String cus_tel3 = request.getParameter( "cus_tel3" );
+		if( ! cus_tel1.equals( "" ) && ! cus_tel2.equals( "" ) && ! cus_tel3.equals( "" ) ) {
+			cus_tel = cus_tel1 + "-" + cus_tel2 + "-" + cus_tel3;
+		}
+		
+		userDto.setUser_phone(cus_tel);
 
 		int result = userDao.insertUser(userDto);
 

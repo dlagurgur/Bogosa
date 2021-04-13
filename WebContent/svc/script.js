@@ -60,6 +60,10 @@ function IdCheck() {
 	}
 }
 
+function toMain() {
+	window.location.href='join.go';
+}
+
 //이메일
 function gridClose(){
 	self.close();
@@ -105,14 +109,11 @@ function inputcheck() {
 		if (idck == 0) {
 			alert('아이디 중복체크를 해주세요');
 			return false;
-		} else if (genck == 0) {
-			alert('닉네임 중복체크를 해주세요');
-			return false;
 		} else if (inputform.confirm.value == 0){
 			alert('이메일 인증을해주세요');
 			return false;
-		} else if (inputform.gridCheck1.checked == false ){
-			alert('약관을 확인해주세요');
+		} else if (passwdck == 0){
+			alert('비밀번호를 같도록 입력하세요');
 			return false;
 		} else {
 			alert("회원가입을 축하합니다");
