@@ -29,7 +29,7 @@
 			<h2>${page_input}</h2>
 			<br>
 		</div>
-		<form class="form-horizontal" method="post" action="regPro.go"
+		<form class="form-horizontal" method="post" action="svc_join_pro.go"
 			name="inputform" onsubmit="return inputcheck()">
 			<div class="form-group row">
 				<label for="inputID" class="col-sm-2 col-form-label">${str_id}</label>
