@@ -9,23 +9,19 @@
 
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
-		<!--
-		erroralert( loginiderror );
-		//-->
+		erroralert('입력하신 아이디가 없습니다. 아이디를 다시 확인해 주세요.');
 	</script>
 </c:if>
 <c:if test="${result eq -1}">
 	<script type="text/javascript">
 		
-		erroralert( loginpasswderror );
+	erroralert('입력하신 패스워드가 틀렸습니다. 패스워드를 다시 확인해 주세요.');
 		
 	</script>
 </c:if>
 <c:if test="${result eq 1}">
 	${sessionScope.user_id = id}
-	<c:if test="${userType eq 1}">
-		${sessionScope.user_level = user_level}
-		<c:redirect url="join.go"/>
-	</c:if>
-	<c:redirect url="join.go"/>
+	<c:redirect url="main.go"/>
+	
+	
 </c:if>

@@ -168,14 +168,14 @@ public class Svc_pro{
 		}
 		return buffer.toString();
 	}
-/*	
+	
 	//// 아이디 찾기
 	@RequestMapping("/EmailIdd")
 	public ModelAndView EmailIdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
 		String host = "smtp.gmail.com"; // smtp 서버
 		String subject = "EmailCheck"; // 보내는 제목 설정
 		String fromName = "Admin"; // 보내는 이름 설정
-		String from = "dlagurgur@gmail.com"; // 보내는 사람(구글계정)
+		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
 		String email = request.getParameter("email2");
 		int result = userDao.EmailCheck(email);
 		if(result == 1) {
@@ -197,7 +197,7 @@ public class Svc_pro{
 
 			Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("dlagurgur@gmail.com", "tkdgur0713!@");
+					return new PasswordAuthentication("dlagurgur123@gmail.com", "asd75311");
 				}
 			});
 
@@ -226,12 +226,12 @@ public class Svc_pro{
 		String host = "smtp.gmail.com"; // smtp 서버
 		String subject = "EmailCheck"; // 보내는 제목 설정
 		String fromName = "Admin"; // 보내는 이름 설정
-		String from = "dlagurgur@gmail.com"; // 보내는 사람(구글계정)
+		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
 		String email = request.getParameter("email2");
 		int result = userDao.EmailCheck(email);
 		if(result == 1) {
 		UserDataBean userDto = userDao.getUserEmailPasswd(email);
-		String user_passwd = userDto.getPasswd();
+		String user_passwd = userDto.getUser_pw();
 		String content = "당신의 비밀번호는 [" + user_passwd + "]입니다"; // 이메일 내용 설정
 	
 		request.setAttribute("email", email);
@@ -248,7 +248,7 @@ public class Svc_pro{
 
 			Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("dlagurgur@gmail.com", "tkdgur0713!@");
+					return new PasswordAuthentication("dlagurgur123@gmail.com", "asd75311");
 				}
 			});
 
@@ -271,7 +271,7 @@ public class Svc_pro{
 		return new ModelAndView("svc/EmailPasswdd");
 	}
 	
-*/	
+
 
 	
 	//로그인 기능

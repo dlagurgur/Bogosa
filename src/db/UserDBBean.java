@@ -21,35 +21,25 @@ public class UserDBBean {
 		return session.selectOne("db.checkId", user_id);
 	}
 	
-	public List<UserDataBean> getUsers(Map<String, Integer> map) {
-		return session.selectList("db.getUsers",map);
-	}
-	public int getCount() {
-		return session.selectOne("db.getUCount");
-	}
+	
+
 	public int insertUser( UserDataBean UserDto ) {
 		return session.insert("db.insertUser", UserDto);
 	}
 	
-	public int insertUser_tag(Map<String, String> map) {
-		return session.update("db.insertUser_tag", map);		
-	}
-
 	
-	public UserDataBean getUserEmailId(String email) { 
-		return session.selectOne("db.getUserEmailId", email); 
+	public UserDataBean getUserEmailId(String user_email) { 
+		return session.selectOne("db.getUserEmailId", user_email); 
 	} 
 	
-	public UserDataBean getUserEmailPasswd(String email) { 
-		return session.selectOne("db.getUserEmailPasswd", email); 
+	public UserDataBean getUserEmailPasswd(String user_email) { 
+		return session.selectOne("db.getUserEmailPasswd", user_email); 
 	} 
 	
 	public int EmailCheck( String user_email ) {
 		return session.selectOne( "db.EmailCheck", user_email);
 	}
-	public int nameCheck( String user_name ) {
-		return session.selectOne( "db.nameCheck", user_name);
-	}
+
 	public int idCheck( String user_id ) {
 		return session.selectOne( "db.idCheck", user_id);
 	}
@@ -76,29 +66,6 @@ public class UserDBBean {
 		return session.selectOne("db.selectCustomer", user_id);
 	}
 	
-	public UserDataBean getUser( String user_id ) {
-		return session.selectOne( "db.getUser", user_id );
-	}
 
-	
-	public List<UserDataBean> getCurrentMember(String td_trip_id) {
-		List<UserDataBean> memberList=session.selectList("db.getCurrentMember", td_trip_id);
-		for(UserDataBean user:memberList) {
-			user.setUser_name((String)session.selectOne("db.getUserName", user.getUser_id()));
-		}
-		return memberList;
-	}
-	
-	public int addTripMember(Map<String, String> addMemberMap) {
-		return session.update("db.addTripMember", addMemberMap);
-	}
-	
-	public int delTripMember(Map<String, String> delMemberMap) {
-		return session.update("db.delTripMember", delMemberMap);
-	}
-	
-	public int isMember(Map<String, String> delMemberMap) {
-		return session.selectOne("db.isMember2", delMemberMap);
-	}
 
 }

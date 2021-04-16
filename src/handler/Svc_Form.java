@@ -29,4 +29,19 @@ public class Svc_Form{
 	public ModelAndView LoginProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		return new ModelAndView( "svc/login" );
 	}
+	
+	@RequestMapping( "/main" )
+	public ModelAndView MainProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		return new ModelAndView( "svc/main" );
+	}
+	
+	@RequestMapping("/EmailId")
+	public ModelAndView svcEmailIdProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		return new ModelAndView("svc/EmailId");
+	}
+	
+	@RequestMapping("/EmailPasswd")
+	public ModelAndView svcEmailPasswd(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		return new ModelAndView("svc/EmailPasswd");
+	}
 }
