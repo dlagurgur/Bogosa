@@ -56,7 +56,7 @@ public class UserDBBean {
 		if( check( user_id ) > 0 ) {
 			// 아이디가 있다
 			UserDataBean UserDto = getUser( user_id );
-			if( passwd.equals( UserDto.getPasswd() ) ) {
+			if( passwd.equals( UserDto.getUser_pw() ) ) {
 				result = 1;
 			} else {
 				result = -1;
