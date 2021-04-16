@@ -275,30 +275,19 @@ public class Svc_pro{
 
 	
 	//로그인 기능
-	
 	@RequestMapping("/loginPro")
 	public ModelAndView Loginprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		int userType = 0;
-		String id = request.getParameter("user_id");
-		String passwd = request.getParameter("user_pw");
-		UserDataBean userDto = userDao.getUser(id);
+		String user_id=request.getParameter("user_id");
+		String user_pw=request.getParameter("user_pw");
 
-		int result = userDao.check(id, passwd);
+		
+		int result=userDao.check(user_id, user_pw);
+		
+
 		request.setAttribute("result", result);
-		request.setAttribute("id", id);
-
-		if (result == 1) {
-			int user_level = userDao.getUserLevel(id);
-			if (user_level == ADMIN) {
-				userType = 1;
-				request.setAttribute("user_level", user_level);
-			}
-			request.setAttribute("userType", userType);
-		}
-		if (result != -1) {
-			request.setAttribute("userDto", userDto);
-		}
-
+		request.setAttribute("user_id", user_id);
+		
 		return new ModelAndView("svc/loginPro");
 	}
+	
 }

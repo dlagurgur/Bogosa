@@ -25,7 +25,7 @@
 	${sessionScope.user_id = id}
 	<c:if test="${userType eq 1}">
 		${sessionScope.user_level = user_level}
-		<c:redirect url="svc_join.go"/>
+		<c:redirect url="join.go"/>
 	</c:if>
-	<c:redirect url="svc_join.go"/>
+	<c:redirect url="join.go"/>
 </c:if>

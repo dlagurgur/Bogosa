@@ -12,10 +12,15 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import bean.SqlMapClient;
-
+ 
 public class UserDBBean {
 	private SqlSession session=SqlMapClient.getSession();
-
+	
+	
+	public int check(String user_id) {
+		return session.selectOne("db.checkId", user_id);
+	}
+	
 	public List<UserDataBean> getUsers(Map<String, Integer> map) {
 		return session.selectList("db.getUsers",map);
 	}
@@ -29,10 +34,7 @@ public class UserDBBean {
 	public int insertUser_tag(Map<String, String> map) {
 		return session.update("db.insertUser_tag", map);		
 	}
-	
-	public int check( String user_id ) {
-		return session.selectOne( "db.checkId", user_id);
-	}
+
 	
 	public UserDataBean getUserEmailId(String email) { 
 		return session.selectOne("db.getUserEmailId", email); 
@@ -51,12 +53,13 @@ public class UserDBBean {
 	public int idCheck( String user_id ) {
 		return session.selectOne( "db.idCheck", user_id);
 	}
-	public int check( String user_id, String passwd ) {
+	public int check(String user_id, String user_pw) {
 		int result = 0;		
 		if( check( user_id ) > 0 ) {
 			// 아이디가 있다
-			UserDataBean UserDto = getUser( user_id );
-			if( passwd.equals( UserDto.getUser_pw() ) ) {
+			//LogonDataBean memberDto = getMember( id );
+			UserDataBean UserDto = selectCustomer( user_id );
+			if( user_pw.equals( UserDto.getUser_pw() ) ) {
 				result = 1;
 			} else {
 				result = -1;
@@ -67,27 +70,16 @@ public class UserDBBean {
 		}
 		return result;
 	}
-	public int deleteUser( String user_id ) {
-		return session.delete("db.deleteUser", user_id);
+	
+	
+	public UserDataBean selectCustomer(String user_id) {
+		return session.selectOne("db.selectCustomer", user_id);
 	}
+	
 	public UserDataBean getUser( String user_id ) {
 		return session.selectOne( "db.getUser", user_id );
 	}
-	public int modifyUser( UserDataBean UserDto ) {
-		return session.update( "db.modifyUser", UserDto );
-	}
-	public int getUserLevel(String user_id) {
-		return session.selectOne("db.getUserLevel",user_id);
-	}public String getUserId(String user_name) { 
-		return session.selectOne("db.getUserId", user_name); 
-	} 
-	public String getUserName(String user_id) { 
-		return session.selectOne("db.getUserName", user_id); 
-	} 
-	
-	public int deleteMember( String user_id ) {
-		return session.delete("Member.deleteUser", user_id);
-	}
+
 	
 	public List<UserDataBean> getCurrentMember(String td_trip_id) {
 		List<UserDataBean> memberList=session.selectList("db.getCurrentMember", td_trip_id);

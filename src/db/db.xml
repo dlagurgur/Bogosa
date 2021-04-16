@@ -17,4 +17,12 @@
 		count(*) from user_general where user_email=#{user_email}
 	</select>
 	
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(*) from user_general where user_id=#{user_id}
+	</select>
+	
+	
+	<select id="selectCustomer" resultType="db.UserDataBean" parameterType="String">
+		select * from user_general where user_id=#{user_id}
+	</select>
 </mapper>

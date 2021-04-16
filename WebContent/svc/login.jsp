@@ -19,7 +19,7 @@
   <body class="login">
   	<form class="form-signin" method="post" action="loginPro.go" name="loginform" onsubmit="return logincheck()" >
   		<a href="tripList.go">
-  			<img class="pt-0 mt-0 mb-4" src="${project}img/logo.jpg" alt="logo" width="400" height="250">
+  			<img class="pt-0 mt-0 mb-4" src="${project}img/login.jpg" alt="logo" width="400" height="250">
   		</a>
      	<input type="text" id="inputId" name="user_id" class="form-control" 
      		placeholder="${str_id}" required autofocus>
@@ -28,7 +28,7 @@
  	 		placeholder="${str_passwd}" required>
   		
   		<button class="btn btn-lg btn-secondary btn-block" type="submit">${btn_login}</button>
-  		<a href="registration.go"><u>${page_input}</u></a>
+  		<a href="join.go"><u>${page_input}</u></a>
   		<a onclick="window.open('EmailId.go','아이디 찾기','width=400,height=400,location=no,status=no,scrollbars=no');"><u>${EmailId}</u></a>
   		<a onclick="window.open('EmailPasswd.go','비밀번호 찾기','width=400,height=400,location=no,status=no,scrollbars=no');"><u>${EmailPasswd}</u></a>
   		<p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>	
