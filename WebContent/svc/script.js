@@ -74,8 +74,8 @@ function EmailClose(){
 }
 
 function emailAuthentic(){
-	var email = joinform.cus_email1.value+"@" + joinform.cus_email3.value;
-	var url="emailCheck.go?email="+email;
+	var user_email = joinform.cus_email1.value+"@" + joinform.cus_email3.value;
+	var url="emailCheck.go?email="+user_email;
 	window.open(url, "b", "width=600,height=300,scrollbars=yes,resizeable=no,left=150,top=150") 
 }
 
@@ -96,13 +96,7 @@ $('#cus_email2').change(function(){
 			 $("#cus_email3").attr("disabled",true); //비활성화
 		}
    });
-});
-function EmailCheck(user_email1){
-    // 인증을 위해 새창으로 이동
-	var url="emailCheck.go?user_email1="+user_email1
-	open(url,"emailwindow", "statusbar=no, scrollbar=no, menubar=no,width=500, height=200" );
-}
-
+}); 
 
 function EmailIdCheck(email2){
 	var url="EmailIdd.go?email2="+email2

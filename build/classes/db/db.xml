@@ -4,7 +4,17 @@
   	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="db">
 	<insert id="insertUser" parameterType="db.UserDataBean">
-		insert into User_general
-		values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_addr}, #{user_addr2},#{user_email, jdbcType=VARCHAR},#{user_corp})
+		insert into user_general values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_addr}, #{user_addr2},#{user_email},#{user_corp})
 	</insert>	
+	
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		select
+		count(*) from user_general where user_id=#{user_id}
+	</select>
+	
+	<select id="EmailCheck" parameterType="String" resultType="int">
+		select
+		count(*) from user_general where user_email=#{user_email}
+	</select>
+	
 </mapper>

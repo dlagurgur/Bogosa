@@ -31,7 +31,7 @@
 		<!-- Container -->
 	
 			<!-- Join Form --> 
-			<form class="form-horizontal" name="joinform" method="post" role="form" action="cus_join_pro.do" onsubmit="return inputcheck()">
+			<form class="form-horizontal" name="joinform" method="post" role="form" action="svc_join_pro.go" onsubmit="return inputcheck()">
 			<div class="form-group row">
 				<label for="inputID" class="col-sm-2 col-form-label">아이디</label>
 				<div class="col-sm-8">
@@ -91,7 +91,7 @@
 					<div class="form-group row">
 								<label for="inputNickname" class="col-sm-2 col-form-label">주소</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" name="user_add" id="user_add" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
+								<input type="text" class="form-control" name="user_addr" id="user_add" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
 							</div>
 							<div class="col-sm-2">
 							<button class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()">주소찾기</button>
@@ -101,7 +101,7 @@
 					<div class="form-group row">
 								<label for="inputNickname" class="col-sm-2 col-form-label">상세주소</label>							
 							<div class="col-sm-8">
-								<input type="text" class="form-control" name="user_add2" id="cus_address2" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
+								<input type="text" class="form-control" name="user_addr2" id="cus_address2" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
 							</div>
 					</div>
 					<div class="form-group row">						
@@ -134,14 +134,12 @@
 								<input type="text" style="width:130px;" class="form-control" name="cus_tel3" id="cus_tel3" maxlength="4" placeholder="번호" required>						
 						</div>
 					
-				<div class="col-lg-12 text-center mt-1 mb-1">
-					<button type="submit" class="btn btn-md btn-secondary">
-					회원 가입
-					</button>
-					<button type="button" class="btn btn-md btn-secondary" onclick="toMain()">
-					가입 취소
-					</button>
+				<div class="form-group row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<button type="submit" class="btn btn-lg btn-secondary btn-block">${btn_join}</button>
 				</div>
+			</div>
 				<br><br><br><br><br><br><br>
 		</form>
 		</div>

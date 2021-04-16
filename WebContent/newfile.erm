@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <diagram>
+	<dbsetting>
+		<dbsystem>MySQL</dbsystem>
+		<server>127.0.0.1</server>
+		<port>3306</port>
+		<database>Encore</database>
+		<user>root</user>
+		<password>encore</password>
+		<use_default_driver>true</use_default_driver>
+		<url>jdbc:mysql://127.0.0.1:3306/Encore</url>
+		<driver_class_name>com.mysql.jdbc.Driver</driver_class_name>
+	</dbsetting>
 	<page_setting>
 		<direction_horizontal>true</direction_horizontal>
 		<scale>100</scale>
@@ -41,11 +52,11 @@
 		<suspend_validator>false</suspend_validator>
 		<export_setting>
 			<export_ddl_setting>
-				<output_path></output_path>
-				<encoding></encoding>
-				<line_feed></line_feed>
+				<output_path>WebContent\newfile.sql</output_path>
+				<encoding>UTF-8</encoding>
+				<line_feed>CR+LF</line_feed>
 				<is_open_after_saved>true</is_open_after_saved>
-				<environment_id>null</environment_id>
+				<environment_id>0</environment_id>
 				<category_id>null</category_id>
 				<ddl_target>
 					<create_comment>true</create_comment>
@@ -135,7 +146,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2021-04-16 18:35:36</creation_date>
-			<updated_date>2021-04-16 18:39:04</updated_date>
+			<updated_date>2021-04-16 20:14:10</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -306,12 +317,12 @@
 	<contents>
 		<table>
 			<id>0</id>
-			<height>75</height>
-			<width>120</width>
+			<height>212</height>
+			<width>220</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>36</x>
-			<y>24</y>
+			<x>396</x>
+			<y>60</y>
 			<color>
 				<r>128</r>
 				<g>128</g>

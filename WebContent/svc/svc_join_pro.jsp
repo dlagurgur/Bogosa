@@ -17,5 +17,5 @@
 </c:if>
 <c:if test="${result eq 1}">
 	${sessionScope.user_id=userDto.user_id}
-	<c:redirect url="tripList.go"/>
+	<c:redirect url="svc_join.go"/>
 </c:if>	

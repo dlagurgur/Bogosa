@@ -24,7 +24,7 @@
      	<input type="text" id="inputId" name="user_id" class="form-control" 
      		placeholder="${str_id}" required autofocus>
  	 	
- 	 	<input type="password" id="inputPassword" name="passwd" class="form-control" 
+ 	 	<input type="password" id="inputPassword" name="user_pw" class="form-control" 
  	 		placeholder="${str_passwd}" required>
   		
   		<button class="btn btn-lg btn-secondary btn-block" type="submit">${btn_login}</button>

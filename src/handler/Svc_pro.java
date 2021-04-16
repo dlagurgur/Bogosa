@@ -30,7 +30,7 @@ import db.UserDataBean;
 
 @Controller
 public class Svc_pro{
-	
+	private static final int ADMIN = 9;
 	@Resource
 	private UserDBBean userDao;
 
@@ -51,6 +51,7 @@ public class Svc_pro{
 		userDto.setUser_addr(request.getParameter("user_addr"));
 		userDto.setUser_addr2(request.getParameter("user_addr2"));
 		int corp = Integer.parseInt(request.getParameter("user_corp"));
+		
 		userDto.setUser_corp(corp);
 		
 		String cus_tel = null;
@@ -114,12 +115,15 @@ public class Svc_pro{
 		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
 		String authNum = Svc_pro.authNum(); // 인증번호 위한 난수 발생부분
 		String content = "Number [" + authNum + "]"; // 이메일 내용 설정
+		
+		String user_email=request.getParameter("email");
 
-		String email = request.getParameter("user_email");
-		int result = userDao.EmailCheck(email);
+		System.out.println(authNum);
+		int result = userDao.EmailCheck(user_email);
+		
 
 		request.setAttribute("authNum", authNum);
-		request.setAttribute("email", email);
+		request.setAttribute("user_email", user_email);
 		request.setAttribute("result", result);
 
 		try {
@@ -134,12 +138,12 @@ public class Svc_pro{
 
 			Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("dlagurgur@gmail.com", "tkdgur0713!@");
+					return new PasswordAuthentication("dlagurgur123@gmail.com", "asd75311");
 				}
 			});
 
 			Message msg = new MimeMessage(mailSession);
-			InternetAddress[] address = { new InternetAddress(email) };
+			InternetAddress[] address = { new InternetAddress(user_email) };
 			msg.setFrom(new InternetAddress(from, MimeUtility.encodeText(fromName, "utf-8", "B")));
 			msg.setRecipients(Message.RecipientType.TO, address);
 			msg.setSubject(subject);
@@ -269,4 +273,32 @@ public class Svc_pro{
 	
 */	
 
+	
+	//로그인 기능
+	
+	@RequestMapping("/loginPro")
+	public ModelAndView Loginprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		int userType = 0;
+		String id = request.getParameter("user_id");
+		String passwd = request.getParameter("user_pw");
+		UserDataBean userDto = userDao.getUser(id);
+
+		int result = userDao.check(id, passwd);
+		request.setAttribute("result", result);
+		request.setAttribute("id", id);
+
+		if (result == 1) {
+			int user_level = userDao.getUserLevel(id);
+			if (user_level == ADMIN) {
+				userType = 1;
+				request.setAttribute("user_level", user_level);
+			}
+			request.setAttribute("userType", userType);
+		}
+		if (result != -1) {
+			request.setAttribute("userDto", userDto);
+		}
+
+		return new ModelAndView("svc/loginPro");
+	}
 }
