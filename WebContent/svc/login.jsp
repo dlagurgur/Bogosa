@@ -31,7 +31,7 @@
   		<a href="join.go"><u>${page_input}</u></a>
   		<a onclick="window.open('EmailId.go','아이디 찾기','width=400,height=400,location=no,status=no,scrollbars=no');"><u>${EmailId}</u></a>
   		<a onclick="window.open('EmailPasswd.go','비밀번호 찾기','width=400,height=400,location=no,status=no,scrollbars=no');"><u>${EmailPasswd}</u></a>
-  		<p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>	
+  		<p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>	
   
   	</form>
   </body>
