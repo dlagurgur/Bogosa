@@ -2,6 +2,7 @@ package handler;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -27,7 +28,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import db.UserDBBean;
 import db.UserDataBean;
-
 @Controller
 public class Svc_pro{
 	private static final int ADMIN = 9;
@@ -101,10 +101,16 @@ public class Svc_pro{
 		Map<Object, Object> map = new HashMap<Object, Object>();
 
 		countId = userDao.idCheck(user_id);
+	
 		map.put("countId", countId);
-
+	
 		return map;
 	}
+	
+	
+	//회원 정보보기
+	
+	
 	
 	//// Email 인증
 	@RequestMapping("/emailCheck")

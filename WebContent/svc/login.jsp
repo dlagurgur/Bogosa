@@ -37,7 +37,7 @@
   </body>
 </c:if>
  <c:if test="${sessionScope.user_id ne null}">
-	<c:redirect url="main.go"/>		
+	<c:redirect url="myPage.go"/>		
 </c:if>
 </html>
    

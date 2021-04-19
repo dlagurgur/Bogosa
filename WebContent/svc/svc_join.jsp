@@ -37,7 +37,8 @@
 				<div class="col-sm-8">
 					<input type="text" name="user_id" maxlength="20" class="form-control"
 						id="id_val" placeholder="ID" maxlength="20" required autofocus onkeyup="IdCheck()">
-						<h6 style="color: red;" id="IdCheckMessagegg"></h6>
+						<h6  id="IdCheckMessagegg"></h6>
+
 				</div>
 
 			</div>

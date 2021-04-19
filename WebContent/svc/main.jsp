@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Insert title here</title>
 </head>
 <body>

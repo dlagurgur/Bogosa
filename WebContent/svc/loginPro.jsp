@@ -19,9 +19,9 @@
 		
 	</script>
 </c:if>
-<c:if test="${result eq 1}">
-	${sessionScope.user_id = id}
-	<c:redirect url="main.go"/>
+<c:if test="${result eq 1}">	
+	session.setAttribute("user_id", user_id);
+	<c:redirect url="myPage.go"/>
 	
 	
 </c:if>

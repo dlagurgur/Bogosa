@@ -48,14 +48,16 @@ function IdCheck() {
 			success : function(data) {
 				if (data.countId > 0) {
 					$('#IdCheckMessagegg').html(
-							"아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+					"아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+			$('#IdCheckMessagegg').css("color","red")
 				} else {
 					$('#IdCheckMessagegg').html("사용가능한 아이디입니다.");
-					idck = 1; //아이디 중복체크시 1이됨
+					$('#IdCheckMessagegg').css("color","blue")
+					idck = 1;
 				}
 			},
 			error : function(error) {
-				alert("error : " + error);
+				alert("실패");
 			}
 		});
 	}
