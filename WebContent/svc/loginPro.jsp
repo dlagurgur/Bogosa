@@ -8,7 +8,7 @@
 <h2> ${page_login} </h2>
 
 <c:if test="${result eq 0}">
-	<script type="text/javascript">
+<script type="text/javascript">
 		erroralert('입력하신 아이디가 없습니다. 아이디를 다시 확인해 주세요.');
 	</script>
 </c:if>

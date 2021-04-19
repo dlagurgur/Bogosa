@@ -279,13 +279,12 @@ public class Svc_pro{
 	public ModelAndView Loginprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String user_id=request.getParameter("user_id");
 		String user_pw=request.getParameter("user_pw");
-
+		
 		
 		int result=userDao.check(user_id, user_pw);
 		
 
 		request.setAttribute("result", result);
-		request.setAttribute("user_id", user_id);
 		
 		return new ModelAndView("svc/loginPro");
 	}

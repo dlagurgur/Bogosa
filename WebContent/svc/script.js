@@ -61,6 +61,7 @@ function IdCheck() {
 	}
 }
 
+
 function toMain() {
 	window.location.href='join.go';
 }
