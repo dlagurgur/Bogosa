@@ -296,4 +296,16 @@ public class Svc_pro{
 		return new ModelAndView("svc/loginPro");
 	}
 	
+	
+	//로그아웃
+	
+	@RequestMapping("/logout")
+	public ModelAndView LogoutProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+		request.getSession().removeAttribute("user_id");
+		// send user to main page
+		// but we don't have a main page yet, so send him to board list, temporary
+		return new ModelAndView("svc/login");
+	}
+	
 }

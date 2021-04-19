@@ -122,7 +122,7 @@
 					<input type="text" class="form-control" name="keyword" placeholder="${search_guide}"> &nbsp;
 					<button type="submit" style="border: none; background: transparent;"><img alt="" src="${project}img/login.jpg" width="30" height="30" ></button> &nbsp;|&nbsp;
 						<a href="myPage.go" class="nav-item">${page_mypage2}</a> &nbsp;&nbsp;&nbsp;
-						<a class="nav-item" href="adminLogout.go">${btn_logout}</a>
+						<a class="nav-item" href="logout.go">${btn_logout}</a>
 					</form>
 				</c:if>
 				<c:if test="${user_level eq 9}">
