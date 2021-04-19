@@ -289,8 +289,9 @@ public class Svc_pro{
 		
 		int result=userDao.check(user_id, user_pw);
 		
-
+	
 		request.setAttribute("result", result);
+		request.setAttribute("user_id", user_id);
 		
 		return new ModelAndView("svc/loginPro");
 	}

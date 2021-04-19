@@ -20,8 +20,7 @@
 	</script>
 </c:if>
 <c:if test="${result eq 1}">	
-	session.setAttribute("user_id", user_id);
+		${sessionScope.user_id = user_id}
 	<c:redirect url="myPage.go"/>
-	
 	
 </c:if>

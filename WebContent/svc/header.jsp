@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="setting.jsp"%>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,128 +10,150 @@
 		content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<link rel="icon" href="${project}img/logo_c.png">
 	
+	<title>Encore</title>
+	
+	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" type="text/css"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<!-- Custom styles for this template -->
 	<style>
 		body {
-			
+			min-height: 75rem;
 			padding-top: 4.5rem;
 		}		
 		a.nav-item {
-			color: white;
+			color: white !important;
+		}			
+		select { 
+		width: 100px;
+   	 	height: 30px;
+    	padding-left: 10px;
+    	font-size: 18px;
+    	color: #353535;
+    	border: 1px solid #006fff;
+    	border-radius: 3px;
 		}
-	#mainNavbar {
-	font-size: 1.75rem !important;
-	font-weight: bold !important;
-}
-
-#loginCartNavbar {
-	font-size: 1.25rem !important;
-	font-weight: light !important;
-}
-
-#navbarToggleIcon {
-	width: 3rem;
-	height: 3rem;
-}
-
-.myInfo {
-	width: 13rem;
-}
-
-.dropdown-item:hover {
-	background-color: #ffc107 !important;
-}
-
-.cart {
-	width: 20rem !important;
-/* /* 	left: -110px !important; */ */
-}
-
-.ordered_menus {
-	width: 20rem !important;
-}
-
-.mainWhiteLogo {
-	width: 70% !important;
-}			
 	</style>
-</head>	
-	</body>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-	<!-- Lotteria Logo, Used as Home Button -->
-	<a class="navbar-brand" href="cus_user_main.do">
-		<img src="" class="d-inline-block align-top" alt="Encore">
-	</a>
-	
-	<!-- Toggler/Collapsible Button -->
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-			aria-controls="navbarCollapse"
-			aria-expanded="false" aria-label="Toggle navigation">
+</head>
 
-	</button>
-	
-	<!-- Main Links -->
-	<div class="collapse navbar-collapse" id="navbarCollapse">
-		<ul class="navbar-nav" id="mainNavbar">
-			<li class="nav-item">
-				<a class="nav-link ml-2 mr-2 pl-2 text-white" href="">기업 방송</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="">개인 방송</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="링크">리뷰</a>
-			</li>
-			<!--  
-			<li class="nav-item">
-				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_chart.do">CHART</a>
-			</li>
-			-->
-			
-		</ul>
-	</div>	
-
-	<div class="group d-flex ml-5 mr-5">				
-		<div class="dropdown mt-1 mr-2">
-			<a class="nav-link text-white font-weight-light" href="#" id="loginCartNavbar" data-toggle="dropdown">LOGIN/JOIN</a>
-			<script type="text/javascript">
-				window.onload=function() {
-					if(!sessionStorage.getItem('user_id')) {
-						loginCartNavbar.innerHTML='LOGIN/JOIN';
-					} else {
-						loginCartNavbar.innerHTML='MY INFO ▼';								
-					}								
-				}
-			</script>
-			<div class="dropdown-menu myInfo text-center">
-				<div class="showCusId"></div>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item customerInfo" href="user_customer_info.do">내 정보 보기</a>
-				<a class="dropdown-item modifyInfo" href="user_modify_info_form.do">내 정보 수정</a>
-				<a class="dropdown-item myReviewList" href="user_my_review_list.do">내가 쓴 리뷰</a>
-				<a class="dropdown-item orderHistory" href="user_order_history.do">내 주문 이력</a>
-				<div class="dropdown-divider"></div>
-				<div class="justify-content-center">
-					<div class="message mt-1 pl-3 pr-3">새 메세지가 없습니다.</div>
-				</div>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item logout" href="user_logout.do">로그아웃</a>
-				<div class="messageSection"></div>
-			</div>
-		</div>
-		
-		<div class="dropdown ml-4 pr-5">
-		
-			<button type="button" data-toggle="dropdown" style="border: none; background: transparent;"><img src="/Muhan/cus/cus_images/iconmonstr-shopping-cart-2-72.png">
-				<span class="badge badge-pill badge-danger numberOfItems"></span>
+<c:if test="${sessionScope.user_id eq null}">
+	<body>
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<a class="navbar-brand" href="tripList.go"> <img
+				src="${project}img/login.jpg" width="30" height="30"
+				class="d-inline-block align-top"> Encore
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarCollapse" aria-controls="navbarCollapse"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="dropdown-menu dropdown-menu-right cart text-center">
-				
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link"
+						href="main.go">${page_main_eng} <span class="sr-only"></span></a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="tripList.go">개인</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="album.go">기업</a>
+					</li>
+				</ul>
+				<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
+					<select name="search_type">
+						<option value="schedule">${search_trip_schedule}</option>
+						<option value="trip_writer">${trip_writer}</option>
+					</select> &nbsp;
+					<input type="text" class="form-control" name="keyword" placeholder="${search_guide}"> &nbsp;
+					<button type="submit" style="border: none; background: transparent;"><img alt="" src="${project}img/search-m2-24.png"></button> &nbsp;&nbsp;
+					<a href="login.go" class="nav-item">${page_login}</a> &nbsp;|&nbsp;
+					<a href="join.go" class="nav-item">${page_input}</a>
+				</form>
 			</div>
-		</div>
-	</div>
-	</nav>
+		</nav>
+
+		<!-- Bootstrap core JavaScript (**Essential for Toggler action)
+	================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+			crossorigin="anonymous"></script>
 	</body>
+</c:if>
+<c:if test="${sessionScope.user_id ne null}">
+	<body>
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<a class="navbar-brand" href="main.go"> <img
+				src="${project}img/login.jpg" width="30" height="30"
+				class="d-inline-block align-top"> Encore
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarCollapse" aria-controls="navbarCollapse"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link"
+						href="main.go">${page_main_eng} <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="tripList.go">개인</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="album.go">기업</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="myTrip.go">리뷰</a>
+					</li>
+				</ul>
+				<c:if test="${user_level ne 9}">
+					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
+						<select name="search_type">
+						<option value="schedule">${search_trip_schedule}</option>
+						<option value="trip_writer">${trip_writer}</option>
+					</select> &nbsp;
+					<input type="text" class="form-control" name="keyword" placeholder="${search_guide}"> &nbsp;
+					<button type="submit" style="border: none; background: transparent;"><img alt="" src="${project}img/login.jpg" width="30" height="30" ></button> &nbsp;|&nbsp;
+						<a href="myPage.go" class="nav-item">${page_mypage2}</a> &nbsp;&nbsp;&nbsp;
+						<a class="nav-item" href="adminLogout.go">${btn_logout}</a>
+					</form>
+				</c:if>
+				<c:if test="${user_level eq 9}">
+					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
+						<select name="search_type">
+							<option value="schedule">${search_trip_schedule}</option>
+							<option value="trip_writer">${trip_writer}</option>
+						</select> &nbsp;
+						<input type="text" class="form-control" name="keyword" placeholder="${search_guide}"> &nbsp;
+						<button type="submit" style="border: none; background: transparent;"><img alt="" src="${project}img/search-m2-24.png"></button> &nbsp;|&nbsp;
+						<a class="nav-item" href="adminTrip.go">${btn_adm}</a> &nbsp;<a
+							class="nav-item" href="adminLogout.go">${btn_logout}</a>
+					</form>
+				</c:if>
+			</div>
+		</nav>
+
+		<!-- Bootstrap core JavaScript (**Essential for Toggler action)
+	================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+			crossorigin="anonymous"></script>
+	</body>
+</c:if>
 </html>
