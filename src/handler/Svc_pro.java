@@ -106,12 +106,7 @@ public class Svc_pro{
 		map.put("countId", countId);
 	
 		return map;
-	}
-	
-	
-	//회원 정보보기
-	
-	
+	}	
 	
 	//// Email 인증
 	@RequestMapping("/emailCheck")
@@ -126,8 +121,8 @@ public class Svc_pro{
 		String user_email=request.getParameter("email");
 
 		System.out.println(authNum);
-		int result = userDao.EmailCheck(user_email);
 		
+		int result = userDao.EmailCheck(user_email);
 
 		request.setAttribute("authNum", authNum);
 		request.setAttribute("user_email", user_email);
@@ -304,8 +299,8 @@ public class Svc_pro{
 	public ModelAndView LogoutProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
 		request.getSession().removeAttribute("user_id");
-		// send user to main page
-		// but we don't have a main page yet, so send him to board list, temporary
+		
+		
 		return new ModelAndView("svc/login");
 	}
 	
@@ -355,6 +350,7 @@ public class Svc_pro{
 		String user_id = (String) request.getSession().getAttribute("user_id");
 		String user_pw = request.getParameter("user_pw");
 		
+		
 		UserDataBean userDto=userDao.selectCustomer(user_id);
 		
 		int result;
@@ -366,7 +362,8 @@ public class Svc_pro{
 		}else {
 			result = 0;
 		}
-
+		
+		request.getSession().removeAttribute("user_id");
 		request.setAttribute("result", result);
 		return new ModelAndView("svc/user_deletePro");
 		

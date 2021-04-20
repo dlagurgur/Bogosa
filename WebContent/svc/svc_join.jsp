@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="setting.jsp"%>
+<%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -119,7 +120,7 @@
 								</select>
 							<div class="col-sm-2">
  								<button type="button" class="btn btn-md btn-secondary" onclick="emailAuthentic()">이메일인증</button>
-								<input type="hidden" name="confirm" value="0">
+								<input type="hidden" id="ccccc" name="confirm" value="0">
 							</div>
 							
 						</div>
@@ -134,12 +135,13 @@
 								-
 								<input type="text" style="width:130px;" class="form-control" name="cus_tel3" id="cus_tel3" maxlength="4" placeholder="번호" required>						
 						</div>
-					
+			
+			
 				<div class="form-group row">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-8">
-					<button type="submit" class="btn btn-lg btn-secondary btn-block">${btn_join}</button>
-					 <button class="btn btn-md btn-secondary" onClick='location="login.go"' >취소<i class="fa fa-times spaceLeft"></i></button>
+					<button type="submit" class="btn btn-lg btn-secondary btn-block">${btn_join}</button>				
+					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='login.go'">취소</button>
 				</div>
 			</div>
 				<br><br><br><br><br><br><br>

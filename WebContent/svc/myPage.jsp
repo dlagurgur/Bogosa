@@ -47,6 +47,16 @@
 				<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="${userDto.user_name}" readonly></div>
 		</div>
 		
+		<div class="form-group row">
+		       <label for="nickname" class="col-sm-3 col-form-label">권한</label>
+		       <c:if test="${userDto.user_corp eq 2}">
+					<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="개인" readonly></div>
+					</c:if>
+					<c:if test="${userDto.user_corp eq 1}">
+						<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="기업" readonly></div>
+					</c:if>
+				
+		</div>
 	 	 	
 	 	<div class="form-group row">
 		       <label for="nickname" class="col-sm-3 col-form-label">주소</label>

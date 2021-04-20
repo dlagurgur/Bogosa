@@ -52,38 +52,38 @@ public class Svc_Form{
 	}
 	
 	
-//	@RequestMapping("/update")
-//	public ModelAndView svcupdateprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-//		//정보 얻어오기
-//		
-//		String user_id=(String)request.getSession().getAttribute("user_id");
-//		
-//		
-//		UserDataBean  userDto = userDao.selectCustomer(user_id);
-//		request.setAttribute("userDto", userDto);		
-//		
-//		
-//		return new ModelAndView("svc/user_update");
-//	}
-//	
-//	@RequestMapping("/delete")
-//	public ModelAndView svcdeleteprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-//		
-//		return new ModelAndView("svc/user_delete");
-//	}
-//	
-//	
-//	@RequestMapping("/myPage")
-//	public ModelAndView svcMyPageProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-//		//I don't know why but it fails to get userDto, so here I try to get it.
-//		String user_id=(String)request.getSession().getAttribute("user_id");
-//	
-//		if(user_id!=null) {
-//			UserDataBean userDto=userDao.getUser(user_id);
-//			request.setAttribute("userDto", userDto);					
-//		}
-//		return new ModelAndView("svc/myPage");
-//	}
+	@RequestMapping("/update")
+	public ModelAndView svcupdateprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		//정보 얻어오기
+		
+		String user_id=(String)request.getSession().getAttribute("user_id");
+		
+		
+		UserDataBean  userDto = userDao.selectCustomer(user_id);
+		request.setAttribute("userDto", userDto);		
+		
+		
+		return new ModelAndView("svc/user_update");
+	}
+	
+	@RequestMapping("/delete")
+	public ModelAndView svcdeleteprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		return new ModelAndView("svc/user_delete");
+	}
+	
+	
+	@RequestMapping("/myPage")
+	public ModelAndView svcMyPageProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		//I don't know why but it fails to get userDto, so here I try to get it.
+		String user_id=(String)request.getSession().getAttribute("user_id");
+	
+		if(user_id!=null) {
+			UserDataBean userDto=userDao.getUser(user_id);
+			request.setAttribute("userDto", userDto);					
+		}
+		return new ModelAndView("svc/myPage");
+	}
 
 	
 }

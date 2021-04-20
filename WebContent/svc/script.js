@@ -24,6 +24,7 @@ var sizeerror="이미지 용량은 5M이하만 가능합니다.";
 
 
 //AJAX 또는 DOM
+var passwdch = 0;
 function passwordCheckFunction() {
 	var userPassword1 = $('#userPassword1').val();
 	var userPassword2 = $('#userPassword2').val();
@@ -32,6 +33,7 @@ function passwordCheckFunction() {
 		$('#passwordCheckMessage').html("비밀번호가 일치하지 않습니다");
 	} else {
 		$('#passwordCheckMessage').html(" ");
+		passwdch = 1;
 	}
 }
 
@@ -113,29 +115,17 @@ function EmailIdPasswd(email2){
 }
 
 
-function confirmeMail(authNum){
-	var Email = $('#EmailVlaue').val(); //이메일 인증 창에서 내가 입력한 인증번호 값가져옴
-    // 입력한 값이 없거나, 인증코드가 일지하지 않을 경우
-	if(!Email || Email!= authNum){
-		alert(emailconfirmerror);
-		self.close();
-    // 인증코드가 일치하는 경우
-	}else if(Email==authNum){
-		alert("인증완료");
-		opener.document.inputform.confirm.value = 1;
-		self.close();
-	}
-}
+
 
 function inputcheck() {
 	if (confirm("회원가입을 하시겠습니까?")) {
 		if (idck == 0) {
 			alert('아이디 중복체크를 해주세요');
 			return false;
-		} else if (inputform.confirm.value == 0){
+		} else if (joinform.confirm.value == 0){
 			alert('이메일 인증을해주세요');
 			return false;
-		} else if (passwdck == 0){
+		} else if (passwdch == 0){
 			alert('비밀번호를 같도록 입력하세요');
 			return false;
 		} else {
