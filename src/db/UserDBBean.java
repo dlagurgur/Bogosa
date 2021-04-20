@@ -7,6 +7,7 @@
 package db;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,7 +22,9 @@ public class UserDBBean {
 		return session.selectOne("db.checkId", user_id);
 	}
 	
-	
+	public UserDataBean getUser( String user_id ) {
+		return session.selectOne( "db.getUser", user_id );
+	}
 
 	public int insertUser( UserDataBean UserDto ) {
 		return session.insert("db.insertUser", UserDto);
@@ -66,6 +69,16 @@ public class UserDBBean {
 		return session.selectOne("db.selectCustomer", user_id);
 	}
 	
+	
+	
+	public int user_update(UserDataBean UserDto) {
+		return session.update("db.user_update", UserDto);
+	}
+	
+	
+	public int deleteCustomer(String user_id) {
+		return session.delete("db.deleteCustomer", user_id);
+	}
 
 
 }

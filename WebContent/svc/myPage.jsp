@@ -20,7 +20,6 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 <script src="${project}script.js"></script>
 </head>
-<html>
 <head>
 <style>
 	#a{
@@ -68,10 +67,20 @@
 		       <label for="nickname" class="col-sm-3 col-form-label">전화번호</label>
 				<div class="col-sm-8"><input class="form-control" type="text" style="border:0 padding-top:2; text-align:center;" value="${userDto.user_phone}" readonly></div>
 		</div>
-	 	
-			<!-- Fixed Footer: 붙이는 위치가 Scrollable Footer와는 다릅니다! Fixed Footer는 중단 Container 안에 넣어주셔야 합니다. --> 
+		<div class="form-group row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='user_update.go'">${btn_modify}</button>					
+					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='user_delete.go'">${btn_user_delete}</button>
+				</div>
+			</div>
 			
+	
+	 	
 				</form>
+		
+	 
+	
 				
 			</div>
 	</article>

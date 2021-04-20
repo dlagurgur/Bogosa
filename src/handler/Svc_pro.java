@@ -1,6 +1,8 @@
 package handler;
 
 import java.io.UnsupportedEncodingException;
+
+
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -30,7 +32,6 @@ import db.UserDBBean;
 import db.UserDataBean;
 @Controller
 public class Svc_pro{
-	private static final int ADMIN = 9;
 	@Resource
 	private UserDBBean userDao;
 
@@ -307,5 +308,69 @@ public class Svc_pro{
 		// but we don't have a main page yet, so send him to board list, temporary
 		return new ModelAndView("svc/login");
 	}
+	
+	//유저 수정
+	@RequestMapping("/user_updatePro")
+	public ModelAndView user_updateProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException{
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		UserDataBean userDto=userDao.selectCustomer(user_id);
+		
+		userDto.setUser_pw(request.getParameter("user_pw"));
+		userDto.setUser_addr(request.getParameter("user_addr"));
+		userDto.setUser_addr2(request.getParameter("user_addr2"));
+		
+		// 전화번호
+		String tel = null;
+		String tel1 = request.getParameter( "tel1" );
+		String tel2 = request.getParameter( "tel2" );
+		String tel3 = request.getParameter( "tel3" );
+		if( ! tel1.equals( "" ) && ! tel2.equals( "" ) && ! tel3.equals( "" ) ) {
+			tel = tel1 + "-" + tel2 + "-" + tel3;
+		}
+		
+		userDto.setUser_phone( tel );
+		
+		int result=userDao.user_update(userDto);
+		request.setAttribute("result", result);
+		
+		return new ModelAndView("svc/user_updatePro");
+		
+	}
+	
+	
+	//유저 삭제
+	@RequestMapping("/user_deletePro")
+	public ModelAndView user_deleteProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException{
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		String user_pw = request.getParameter("user_pw");
+		
+		UserDataBean userDto=userDao.selectCustomer(user_id);
+		
+		int result;
+		
+		
+		if(user_pw.equals(userDto.getUser_pw()) ) {
+			userDao.deleteCustomer(user_id);
+			result = 1;
+		}else {
+			result = 0;
+		}
+
+		request.setAttribute("result", result);
+		return new ModelAndView("svc/user_deletePro");
+		
+	}
+	
 	
 }

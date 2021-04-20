@@ -32,4 +32,23 @@
 	<select id="getUserEmailPasswd" parameterType="String" resultType="db.UserDataBean">
 		select user_pw from user_general where user_email=#{user_email} 
 	</select>
+	
+	<update id="user_update" parameterType="db.UserDataBean">
+		update user_general set
+		user_pw=#{user_pw},
+		user_phone=#{user_phone},
+		user_addr=#{user_addr},
+		user_addr2=#{user_addr2}
+		where user_id=#{user_id}
+	</update>
+	
+	<delete id="deleteCustomer" parameterType="String">
+		delete from user_general where user_id=#{user_id}
+	</delete>
+	
+	
+	<select id="getUser" parameterType="String"
+		resultType="db.UserDataBean">
+		select * from user_general where user_id=#{user_id}
+	</select>
 </mapper>

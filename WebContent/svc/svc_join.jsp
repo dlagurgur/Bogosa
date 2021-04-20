@@ -139,6 +139,7 @@
 				<div class="col-sm-2"></div>
 				<div class="col-sm-8">
 					<button type="submit" class="btn btn-lg btn-secondary btn-block">${btn_join}</button>
+					 <button class="btn btn-md btn-secondary" onClick='location="login.go"' >취소<i class="fa fa-times spaceLeft"></i></button>
 				</div>
 			</div>
 				<br><br><br><br><br><br><br>
