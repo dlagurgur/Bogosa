@@ -13,7 +13,7 @@
 		<div class="container max-auto"  id="a" style="width:1000px;">
 			
 			
-			<form method="post" name="modify_info_form" action="user_deletePro.go">
+			<form method="post" name="modify_info_form" action="deletePro.go">
 			 <div class="row">
 			 	<h3 class="text-muted">회원탈퇴</h3>&nbsp;&nbsp;
 				<input class="form-control col-5" type="password" name="user_pw" placeholder="비밀번호를 입력하세요">&nbsp;&nbsp;

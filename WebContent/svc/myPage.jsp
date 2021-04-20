@@ -70,8 +70,8 @@
 		<div class="form-group row">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-8">
-					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='user_update.go'">${btn_modify}</button>					
-					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='user_delete.go'">${btn_user_delete}</button>
+					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='update.go'">${btn_modify}</button>					
+					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='delete.go'">${btn_user_delete}</button>
 				</div>
 			</div>
 			

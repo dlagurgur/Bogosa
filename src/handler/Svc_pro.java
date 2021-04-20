@@ -310,8 +310,8 @@ public class Svc_pro{
 	}
 	
 	//유저 수정
-	@RequestMapping("/user_updatePro")
-	public ModelAndView user_updateProcess(HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping("/updatePro")
+	public ModelAndView UserModifyprocess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
 		
 		try {
@@ -349,8 +349,8 @@ public class Svc_pro{
 	
 	
 	//유저 삭제
-	@RequestMapping("/user_deletePro")
-	public ModelAndView user_deleteProcess(HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping("/deletePro")
+	public ModelAndView DeleteProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
 		String user_id = (String) request.getSession().getAttribute("user_id");
 		String user_pw = request.getParameter("user_pw");

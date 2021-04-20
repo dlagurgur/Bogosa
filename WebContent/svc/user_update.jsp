@@ -31,7 +31,7 @@
         <div class="mx-auto" style="width: 700px" id="a">
       
 
-     <form class="form-horizontal" name="joinform" method="post" action="user_updatePro.go" onsubmit="return modifyCheck()">
+     <form class="form-horizontal" name="joinform" method="post" action="updatePro.go" onsubmit="return modifyCheck()">
      			
         		<h2 class="text-left text-dark" >내 정보수정</h2>
         		<br><br>  		
