@@ -8,6 +8,7 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import db.Order_history_DBBean;
+import db.Product_DBBean;
 import db.UserDBBean;
 
 
@@ -24,6 +25,10 @@ public class CreateBean {
 		return new Order_history_DBBean();
 	}
 	
+	@Bean
+	public Product_DBBean Product_Dao() {
+		return new Product_DBBean();
+	}
 	@Bean
 	public ViewResolver viewResolver() {
 		UrlBasedViewResolver viewResolver=new UrlBasedViewResolver();
