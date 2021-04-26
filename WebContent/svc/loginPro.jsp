@@ -9,14 +9,14 @@
 
 <c:if test="${result eq 0}">
 <script type="text/javascript">
-		history.back("오류입니다");
 		alert("입력하신 아이디가 틀렸습니다. 아이디를 다시 확인해주세요");
+		window.location.href='login.go';
 	</script>
 </c:if>
 <c:if test="${result eq -1}">
 	<script type="text/javascript">
-		history.back("오류입니다");
 		alert("입력하신 패스워드가 틀렸습니다. 패스워드를 다시 확인해주세요");
+		window.location.href='login.go';
 	</script>
 </c:if>
 <c:if test="${result eq 1}">	
