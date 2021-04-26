@@ -51,4 +51,18 @@
 		resultType="db.UserDataBean">
 		select * from user_general where user_id=#{user_id}
 	</select>
+	
+	
+	
+	
+	<insert id="insertProduct" parameterType="db.Product_DataBean">
+		insert into product values(
+		(select max(menu_id)+1 from mh_menu),
+		#{product_name},
+		#{product_price},
+		#{product_image},
+		#{product_category},
+		#{product_detail}
+		)
+	</insert>
 </mapper>

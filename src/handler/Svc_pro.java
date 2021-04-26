@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -28,8 +29,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import db.Product_DBBean;
+import db.Product_DataBean;
 import db.UserDBBean;
 import db.UserDataBean;
+
+
+import java.io.UnsupportedEncodingException;
+
+import java.util.Enumeration;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 @Controller
 public class Svc_pro{
 	@Resource
@@ -369,5 +388,55 @@ public class Svc_pro{
 		
 	}
 	
+	///////////// 주문 관련 영역 //////////////////////////////////////
 	
+	//상품 등록 
+//	@RequestMapping("/svc_join_pro")
+//	public ModelAndView BoardInputProcess(HttpServletRequest request, HttpServletResponse response)
+//			throws HandlerException {
+//		
+//		
+//		try {
+//			request.setCharacterEncoding("utf-8");
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//		Product_DataBean product_dto = new Product_DataBean();
+//		
+//		String imagePath = request.getRealPath("menu_images");	//경로
+//		//System.out.println(imagePath);
+//		//String imagePath= "C:\\ExpertJava\\Muhan\\Muhan\\WebContent\\menu_images";
+//		int size = 1 * 1024 * 1024;
+//		String filename = "";
+//		
+//		try {
+//			MultipartRequest multi = new MultipartRequest(request, imagePath, size, "utf-8",
+//					new DefaultFileRenamePolicy());
+//
+//			product_dto.setProduct_name(multi.getParameter("Product__name"));
+//			
+//			product_dto.setProduct_price(Integer.parseInt(multi.getParameter("Product__price")));
+//			product_dto.setProduct_category(Integer.parseInt(multi.getParameter("Product__category")));
+//			product_dto.setProduct_detail(multi.getParameter("Product__detail"));
+//			
+//			
+//			Enumeration files = multi.getFileNames();
+//
+//			String file = (String) files.nextElement();
+//			filename = multi.getFilesystemName(file);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		product_dto.setProduct_image("" + filename);
+//		//////////////////////////////////////////////////
+//		
+//		
+//		int result = Product_DBBean.insertProduct(product_dto);
+//		request.setAttribute("result", result);
+//		
+//		return new ModelAndView("admin/admin_menu/admin_menu_insert_pro");
+//	}
 }
