@@ -19,6 +19,7 @@ import db.UserDataBean;
 
 @Controller
 public class Svc_Form{
+	
 	@Resource
 	private UserDBBean userDao;
 	
