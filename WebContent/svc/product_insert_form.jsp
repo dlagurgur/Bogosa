@@ -9,7 +9,7 @@
 
 <!--enctype="multipart/form-data"-->
 <div class="container">
-	<form name="inputform" method="post" action="product_insert_pro.do" enctype="multipart/form-data" 
+	<form name="inputform" method="post" action="product_insert_pro.go" enctype="multipart/form-data" 
 	onsubmit="return submitMenu();">
 		<h3>상품에 대한 정보를 입력하세요</h3>
 		<div class="form-group row">
@@ -42,9 +42,13 @@
 			</div>
 			<div class="col-xs-2">
 				<select name="product_category"	id="product_category">
-				  <option value="1">기업</option>
-				  <option value="2">개인</option>
-				
+				  <option value="1">가전디지털</option>
+				  <option value="2">식품</option>
+				  <option value="3">주방용품</option>
+				  <option value="4">생활용품</option>
+				  <option value="5">의류</option>
+				  <option value="6">취미</option>
+				  <option value="7">스포츠/레저</option>
 				</select>
 			</div>
 		</div>
@@ -56,6 +60,10 @@
 				<textarea class="form-control" name="product_detail" id="product_detail" rows="10" cols="30">
 				</textarea>
 			</div>
+			
+			
+			
+			
 		</div>
 		<div class="form-group row">
 			<input class="btn btn-primary" type="submit" value="등록">

@@ -85,6 +85,19 @@ public class Svc_Form{
 		}
 		return new ModelAndView("svc/myPage");
 	}
+	
+	
+	
+	
+	
+	//////////////상품 영역 //////////////////
+	
+	@RequestMapping("/product_insert")
+	public ModelAndView product_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		return new ModelAndView("svc/product_insert_form");
+	}
+	
 
 	
 }

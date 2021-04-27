@@ -53,6 +53,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class Svc_pro{
 	@Resource
 	private UserDBBean userDao;
+	
+	@Resource
+	private Product_DBBean Product_Dao;
 
 //////////////////////////////////회원 영역///////////////////////////////////////////////	
 	//회원가입
@@ -391,52 +394,35 @@ public class Svc_pro{
 	///////////// 주문 관련 영역 //////////////////////////////////////
 	
 	//상품 등록 
-//	@RequestMapping("/svc_join_pro")
-//	public ModelAndView BoardInputProcess(HttpServletRequest request, HttpServletResponse response)
-//			throws HandlerException {
-//		
-//		
-//		try {
-//			request.setCharacterEncoding("utf-8");
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//		}
-//		Product_DataBean product_dto = new Product_DataBean();
-//		
-//		String imagePath = request.getRealPath("menu_images");	//경로
-//		//System.out.println(imagePath);
-//		//String imagePath= "C:\\ExpertJava\\Muhan\\Muhan\\WebContent\\menu_images";
-//		int size = 1 * 1024 * 1024;
-//		String filename = "";
-//		
-//		try {
-//			MultipartRequest multi = new MultipartRequest(request, imagePath, size, "utf-8",
-//					new DefaultFileRenamePolicy());
-//
-//			product_dto.setProduct_name(multi.getParameter("Product__name"));
-//			
-//			product_dto.setProduct_price(Integer.parseInt(multi.getParameter("Product__price")));
-//			product_dto.setProduct_category(Integer.parseInt(multi.getParameter("Product__category")));
-//			product_dto.setProduct_detail(multi.getParameter("Product__detail"));
-//			
-//			
-//			Enumeration files = multi.getFileNames();
-//
-//			String file = (String) files.nextElement();
-//			filename = multi.getFilesystemName(file);
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		
-//		product_dto.setProduct_image("" + filename);
-//		//////////////////////////////////////////////////
-//		
-//		
-//		int result = Product_DBBean.insertProduct(product_dto);
-//		request.setAttribute("result", result);
-//		
-//		return new ModelAndView("admin/admin_menu/admin_menu_insert_pro");
-//	}
+	@RequestMapping("/product_insert_pro")
+	public ModelAndView BoardInputProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+		
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		Product_DataBean product_dto = new Product_DataBean();
+		product_dto.setProduct_name(request.getParameter("product_name"));
+		product_dto.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
+		product_dto.setProduct_category(Integer.parseInt(request.getParameter("product_category")));
+		product_dto.setProduct_detail(request.getParameter("product_detail"));
+		String imagePath = request.getRealPath("product_images");	//경로		
+		product_dto.setProduct_image(imagePath);
+		
+		String user_id = (String)request.getSession().getAttribute("user_id");
+		System.out.println(user_id);
+		product_dto.setUser_id(request.getParameter(user_id));		
+		
+		
+		//////////////////////////////////////////////////
+
+		
+		int result = Product_Dao.insertProduct(product_dto);
+		request.setAttribute("result", result);
+		
+		return new ModelAndView("svc/product_insert_pro");
+	}
 }
