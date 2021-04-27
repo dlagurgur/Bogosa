@@ -1,10 +1,9 @@
 package handler;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 
-import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,19 +32,6 @@ import db.Product_DBBean;
 import db.Product_DataBean;
 import db.UserDBBean;
 import db.UserDataBean;
-
-
-import java.io.UnsupportedEncodingException;
-
-import java.util.Enumeration;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -394,35 +380,141 @@ public class Svc_pro{
 	///////////// 주문 관련 영역 //////////////////////////////////////
 	
 	//상품 등록 
+//	@RequestMapping("/product_insert_pro")
+//	public ModelAndView BoardInputProcess(HttpServletRequest request, HttpServletResponse response)
+//			throws HandlerException, IOException {
+//		
+//		
+//		try {
+//			request.setCharacterEncoding("utf-8");
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//		Product_DataBean product_dto = new Product_DataBean();
+//		product_dto.setProduct_name(request.getParameter("product_name"));
+//		product_dto.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
+//		product_dto.setProduct_category(Integer.parseInt(request.getParameter("product_category")));
+//		product_dto.setProduct_detail(request.getParameter("product_detail"));
+//	
+//		@SuppressWarnings("deprecation")
+//		String imagePath = request.getRealPath("product_images");	//경로	
+//		System.out.println(imagePath);
+//		
+//		
+//		
+//	
+//
+//		String path = request.getRealPath("product_images"); // 이클립스 서버쪽에 프로젝트의 해당폴더
+//
+//        System.out.println(path); // path를 출력해서 확인(fileFolder 없으면 생성해주자!!!) 	
+//
+//
+//
+//	int size = 1024 * 1024 * 10; // 파일사이즈 최대 크기 10M
+//
+//	String file = ""; // 중복때문에 뒤에 1,2,3,4 붙은 파일명
+//
+//	String originFile = ""; // 내가 업로드한 실제 파일명
+//
+//	
+//
+//	try {
+//
+//		// 업로드 파일 정보를 업로드 장소에 크기 및 파일 업로드 수행할 수 있게 함
+//
+//		MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+//
+//		
+//
+//		Enumeration files = multi.getFileNames();
+//
+//		String str = (String)files.nextElement();
+//
+//		
+//
+//                // 이 file과 originFile로 S3를 사용하든 DB를 사용하든 하면된다 !!!
+//
+//		file = multi.getFilesystemName(str);
+//
+//		originFile = multi.getOriginalFileName(str);
+//
+//	} catch (Exception e){
+//
+//		e.printStackTrace();
+//
+//	}
+//		
+//		product_dto.setProduct_image(originFile+file);
+//		
+//		
+//
+//		product_dto.setUser_id(request.getParameter("session"));		
+//		
+//		product_dto.setProduct_image(request.getParameter("product_image"));
+//		
+//		//////////////////////////////////////////////////
+//
+//		
+//		int result = Product_Dao.insertProduct(product_dto);
+//		request.setAttribute("result", result);
+//		
+//		return new ModelAndView("svc/product_insert_pro");
+//	}
+//	
+//	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/product_insert_pro")
-	public ModelAndView BoardInputProcess(HttpServletRequest request, HttpServletResponse response)
-			throws HandlerException {
-		
+	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
 		try {
-			request.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding( "utf-8" );
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		
 		Product_DataBean product_dto = new Product_DataBean();
+
 		product_dto.setProduct_name(request.getParameter("product_name"));
 		product_dto.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
 		product_dto.setProduct_category(Integer.parseInt(request.getParameter("product_category")));
 		product_dto.setProduct_detail(request.getParameter("product_detail"));
-		String imagePath = request.getRealPath("product_images");	//경로		
-		product_dto.setProduct_image(imagePath);
-		
-		String user_id = (String)request.getSession().getAttribute("user_id");
-		System.out.println(user_id);
-		product_dto.setUser_id(request.getParameter(user_id));		
-		
-		
-		//////////////////////////////////////////////////
+		product_dto.setUser_id(request.getParameter("session"));
+		// 사진 업로드 //////////////////////////////////////////////////
+		String imagePath = request.getRealPath("product_images");	//경로
 
+		int size = 1 * 1024 * 1024;
+		String filename = "";
+		try {
+			MultipartRequest multi = new MultipartRequest(request, imagePath, size, "utf-8",
+					new DefaultFileRenamePolicy());
+
+			
+			Enumeration files = multi.getFileNames();
+
+			String file = (String) files.nextElement();
+			filename = multi.getFilesystemName(file);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+		System.out.println(filename);
+		product_dto.setProduct_image("" + filename);
+		//////////////////////////////////////////////////
+		
 		
 		int result = Product_Dao.insertProduct(product_dto);
 		request.setAttribute("result", result);
 		
 		return new ModelAndView("svc/product_insert_pro");
 	}
+
 }

@@ -9,8 +9,7 @@
 
 <!--enctype="multipart/form-data"-->
 <div class="container">
-	<form name="inputform" method="post" action="product_insert_pro.go" enctype="multipart/form-data" 
-	onsubmit="return submitMenu();">
+	<form name="inputform" method="post" action="product_insert_pro.go" enctype="multipart/form-data" onsubmit="return submitMenu();">
 		<h3>상품에 대한 정보를 입력하세요</h3>
 		<div class="form-group row">
 			<div class="col-xs-2">
@@ -61,7 +60,7 @@
 				</textarea>
 			</div>
 			
-			
+			<input type="hidden" name="session" value="${user_id}" /> 
 			
 			
 		</div>

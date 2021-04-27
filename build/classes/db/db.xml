@@ -55,7 +55,9 @@
 	
 	
 	
+
 	<insert id="insertProduct" parameterType="db.Product_DataBean">
-		insert into product values( product_id, #{product_name}, #{product_price},#{product_image},#{product_category},#{product_detail}, #{user_id} )
+		insert into product(product_id, product_name, product_price, product_image, product_category, product_detail, user_id)
+		values( product_id, #{product_name}, #{product_price},#{product_image},#{product_category},#{product_detail}, #{user_id} )
 	</insert>
 </mapper>

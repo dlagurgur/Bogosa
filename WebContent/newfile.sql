@@ -5,7 +5,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS Order_history;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS User_general;
-Q
+
 
 
 
@@ -33,8 +33,7 @@ CREATE TABLE product
 	product_detail varchar(5000) NOT NULL,
 	user_id varchar(20) NOT NULL,
 	PRIMARY KEY (product_id),
-	UNIQUE (product_id),
-	UNIQUE (user_id)
+	UNIQUE (product_id)
 );
 
 
