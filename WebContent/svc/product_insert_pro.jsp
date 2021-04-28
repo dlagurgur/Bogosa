@@ -12,5 +12,5 @@
 	<meta http-equiv="refresh" content="0; url=login.go">
 </c:if>
 <c:if test="${result eq 1}">
-	<c:redirect url="login.go"/>	
+	<c:redirect url="product_detail.go?product_id=${tb_no}"/>	
 </c:if>

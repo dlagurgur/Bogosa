@@ -41,7 +41,7 @@
 <c:if test="${sessionScope.user_id eq null}">
 	<body>
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			<a class="navbar-brand" href="tripList.go"> <img
+			<a class="navbar-brand" href="product_main.go?menu_category=0"> <img
 				src="${project}img/login.jpg" width="30" height="30"
 				class="d-inline-block align-top"> Encore
 			</a>
@@ -52,13 +52,30 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link"
-						href="main.go">${page_main_eng} <span class="sr-only"></span></a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="tripList.go">개인</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="album.go">기업</a>
-					</li>
+					<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=0">전체 상품</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=1">가전디지털</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=2">식품</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=3">주방용품</a>
+		</li>
+				<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=4">생활용품</a>
+		</li>
+				<li class="nav-item">
+			<a class="nav-link " href="product_main.go?menu_category=5">의류</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=6">취미</a>
+		</li>
+			<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=7">스포츠/레저</a>
+		</li>
 				</ul>
 				<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
 					<select name="search_type">
@@ -92,7 +109,7 @@
 <c:if test="${sessionScope.user_id ne null}">
 	<body>
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			<a class="navbar-brand" href="main.go"> <img
+			<a class="navbar-brand" href="product_main.go?menu_category=0"> <img
 				src="${project}img/login.jpg" width="30" height="30"
 				class="d-inline-block align-top"> Encore
 			</a>
@@ -103,15 +120,30 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link"
-						href="main.go">${page_main_eng} <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="tripList.go">개인</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="album.go">기업</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="myTrip.go">리뷰</a>
-					</li>
+					<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=0">전체 상품</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=1">가전디지털</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=2">식품</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=3">주방용품</a>
+		</li>
+				<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=4">생활용품</a>
+		</li>
+				<li class="nav-item">
+			<a class="nav-link " href="product_main.go?menu_category=5">의류</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=6">취미</a>
+		</li>
+			<li class="nav-item">
+			<a class="nav-link" href="product_main.go?menu_category=7">스포츠/레저</a>
+		</li>
 				</ul>
 				<c:if test="${user_level ne 9}">
 					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >

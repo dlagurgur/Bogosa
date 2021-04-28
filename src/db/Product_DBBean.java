@@ -21,7 +21,11 @@ public class Product_DBBean{
 		return session.selectOne("db.detialProduct", product_id);
 	}
 	
-
+	public Product_DataBean getProductid( ) {
+		return session.selectOne("db.getUser");
+	}
+	
+	
 	public List<Product_DataBean> selectMenusByCategory(int product_category) {
 		return session.selectList("db.selectMenusByCategory", product_category);
 	}

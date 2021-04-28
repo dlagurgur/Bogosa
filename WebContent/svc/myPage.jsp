@@ -82,6 +82,7 @@
 				<div class="col-sm-8">
 					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='update.go'">${btn_modify}</button>					
 					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='delete.go'">${btn_user_delete}</button>
+					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='product_insert.go'">방송 시작하기</button>
 				</div>
 			</div>
 			

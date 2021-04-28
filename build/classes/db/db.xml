@@ -55,6 +55,10 @@
 	
 	
 	
+	<select id="produt_id" parameterType="int" resultType="db.Product_DataBean">
+		select * from product order by product_id desc limit 1
+	</select>
+	
 
 	<insert id="insertProduct" parameterType="db.Product_DataBean">
 		insert into product(product_id, product_name, product_price, product_image, product_category, product_detail, user_id)

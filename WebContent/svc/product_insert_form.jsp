@@ -64,7 +64,7 @@
 			</div>
 			
 			<input type="hidden" name="session" value="${user_id}" /> 
-			
+			<input type="hidden" name="product_id" value="${product_id}" /> 
 			
 		</div>
 		<div class="form-group row">

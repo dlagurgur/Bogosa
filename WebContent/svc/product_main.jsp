@@ -8,12 +8,7 @@
 
 
 <style>
-.jumbotron{
-    -webkit-background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-    -o-background-size: 100% 100%;
-    background-size: 100% 100%;
-}
+
 /* jumbotron image */
 
 
@@ -23,12 +18,8 @@
 		
 		
 		<!-- Descriptor Jumbotron -->
-		<div class="jumbotron mt-1">
-			<h1 class="display-5 text-center font-weight-bold pt-4"></h1>
-			
-		</div>
 		
-		<%@include file="product_subNav.jsp"%>
+		
 		
 		<!-- Container -->
 		<div class="container">
