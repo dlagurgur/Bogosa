@@ -1,8 +1,11 @@
 package db;
 
 
-import org.apache.ibatis.session.SqlSession;
+import java.util.List;
 
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
 
 import bean.SqlMapClient;
 
@@ -14,6 +17,17 @@ public class Product_DBBean{
 		return session.insert("db.insertProduct", product_dto);
 	}
 
+	public Product_DataBean detialProduct(int product_id) {
+		return session.selectOne("db.detialProduct", product_id);
+	}
+	
 
+	public List<Product_DataBean> selectMenusByCategory(int product_category) {
+		return session.selectList("db.selectMenusByCategory", product_category);
+	}
+		
+	public List<Product_DataBean> selectMenus() {
+		return session.selectList("db.selectMenus");
+	}
 	
 }

@@ -60,4 +60,20 @@
 		insert into product(product_id, product_name, product_price, product_image, product_category, product_detail, user_id)
 		values( product_id, #{product_name}, #{product_price},#{product_image},#{product_category},#{product_detail}, #{user_id} )
 	</insert>
+	
+	<select id="detialProduct" resultType="db.Product_DataBean" parameterType="int">
+		select * from product where product_id=#{product_id}
+	</select>
+	
+	
+	
+	<select id="selectMenusByCategory" parameterType="java.util.Map" resultType="db.Product_DataBean">
+		select * from product where product_category=#{product_category} order by product_id desc
+	</select>
+	
+	
+	
+	<select id="selectMenus" resultType="db.Product_DataBean">
+		select * from product order by product_id desc
+	</select>
 </mapper>

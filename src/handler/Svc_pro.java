@@ -381,97 +381,6 @@ public class Svc_pro{
 	
 	///////////// 주문 관련 영역 //////////////////////////////////////
 	
-//	//상품 등록 
-//	@RequestMapping("/product_insert_pro")
-//	public ModelAndView BoardInputProcess(HttpServletRequest request, HttpServletResponse response)
-//			throws HandlerException, IOException {
-//		
-//		
-//		try {
-//			request.setCharacterEncoding("utf-8");
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//		}
-//		Product_DataBean product_dto = new Product_DataBean();
-//		product_dto.setProduct_name(request.getParameter("product_name"));
-//		product_dto.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
-//		product_dto.setProduct_category(Integer.parseInt(request.getParameter("product_category")));
-//		product_dto.setProduct_detail(request.getParameter("product_detail"));
-//	
-//		@SuppressWarnings("deprecation")
-//		String imagePath = request.getRealPath("product_images");	//경로	
-//		System.out.println(imagePath);
-//		
-//		
-//		
-//	
-//
-//		String path = request.getRealPath("product_images"); // 이클립스 서버쪽에 프로젝트의 해당폴더
-//
-//        System.out.println(path); // path를 출력해서 확인(fileFolder 없으면 생성해주자!!!) 	
-//
-//
-//
-//	int size = 1024 * 1024 * 10; // 파일사이즈 최대 크기 10M
-//
-//	String file = ""; // 중복때문에 뒤에 1,2,3,4 붙은 파일명
-//
-//	String originFile = ""; // 내가 업로드한 실제 파일명
-//
-//	
-//
-//	try {
-//
-//		// 업로드 파일 정보를 업로드 장소에 크기 및 파일 업로드 수행할 수 있게 함
-//
-//		MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
-//
-//		
-//
-//		Enumeration files = multi.getFileNames();
-//
-//		String str = (String)files.nextElement();
-//
-//		
-//
-//                // 이 file과 originFile로 S3를 사용하든 DB를 사용하든 하면된다 !!!
-//
-//		file = multi.getFilesystemName(str);
-//
-//		originFile = multi.getOriginalFileName(str);
-//
-//	} catch (Exception e){
-//
-//		e.printStackTrace();
-//
-//	}
-//		System.out.println(file);
-//		System.out.println(originFile);
-//		product_dto.setProduct_image(originFile+file);
-//		
-//		
-//
-//		product_dto.setUser_id(request.getParameter("session"));		
-//		
-//		product_dto.setProduct_image(request.getParameter("product_image"));
-//		
-//		//////////////////////////////////////////////////
-//
-//		
-//		int result = Product_Dao.insertProduct(product_dto);
-//		request.setAttribute("result", result);
-//		
-//		return new ModelAndView("svc/product_insert_pro");
-//	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	@RequestMapping("/product_insert_pro")
 	public ModelAndView productInsertprocess(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -482,55 +391,36 @@ public class Svc_pro{
 	}
 	
 	Product_DataBean product_dto = new Product_DataBean();
-
-//	menu_dto.setMenu_name(request.getParameter("menu_name"));
-//	menu_dto.setMenu_price(Integer.parseInt(request.getParameter("menu_price")));
-//	menu_dto.setMenu_image(request.getParameter("menu_image"));
-//	menu_dto.setMenu_category(Integer.parseInt(request.getParameter("menu_category")));
-//	menu_dto.setMenu_detail(request.getParameter("menu_detail"));
-	
-//	int result = menu_dao.insertMenu(menu_dto);
-//	request.setAttribute("result", result);
-	
-	// 사진 업로드 //////////////////////////////////////////////////
-	//System.out.println(imagePath);
-	//String imagePath= "C:\\ExpertJava\\Muhan\\Muhan\\WebContent\\menu_images";
-	String savePath = request.getServletContext().getRealPath("product_images");
 	 
 	// 파일 크기 15MB로 제한
 	int sizeLimit = 1024*1024*15;
 	
-
+	String imagePath = request.getRealPath("menu_images");
+	String filename = "";
 		
-	MultipartRequest multi = new MultipartRequest( request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+	MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
 		
 		
 		String product_name = multi.getParameter("product_name");
-		String product_image = multi.getFilesystemName("product_image");
 		int product_category = Integer.parseInt(multi.getParameter("product_category"));
 		int product_price = Integer.parseInt(multi.getParameter("product_price"));
 		String product_detail = multi.getParameter("product_detail");
 		String user_id = multi.getParameter("session");
-		String m_fileFullPath = savePath + "/" + product_image;
-		
-		
-		
+	
+		Enumeration files = multi.getFileNames();
+
+		String file = (String) files.nextElement();
+		filename = multi.getFilesystemName(file);
+	
 		
 		product_dto.setProduct_name(product_name);
 		product_dto.setProduct_price(product_price);
 		product_dto.setProduct_category(product_category);
 		product_dto.setProduct_detail(product_detail);
 		product_dto.setUser_id(user_id);
-		product_dto.setProduct_image(m_fileFullPath);
+		product_dto.setProduct_image(filename);
 		
-
-
-
-	
-	
-
-	//////////////////////////////////////////////////
-	
+		
 	
 		int result = Product_Dao.insertProduct(product_dto);
 		request.setAttribute("result", result);

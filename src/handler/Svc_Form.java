@@ -2,9 +2,15 @@ package handler;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.annotation.Resource;
 
@@ -13,15 +19,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import db.Product_DBBean;
+import db.Product_DataBean;
 import db.UserDBBean;
 import db.UserDataBean;
-
 
 @Controller
 public class Svc_Form{
 	
 	@Resource
 	private UserDBBean userDao;
+
+	
+	@Resource
+	private Product_DBBean Product_Dao;
 	
 	// 회원 가입
 	@RequestMapping("/join")
@@ -97,6 +108,52 @@ public class Svc_Form{
 		
 		return new ModelAndView("svc/product_insert_form");
 	}
+	
+	
+	
+	@RequestMapping("/product_detail")
+	public ModelAndView product_detailprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		int product_id=Integer.parseInt(request.getParameter("product_id"));
+		Product_DataBean Produt_dto = Product_Dao.detialProduct(product_id);
+		request.setAttribute("Produt_dto", Produt_dto);
+		
+		return new ModelAndView("svc/product_detail");
+	}
+	
+	
+	
+	@RequestMapping("/product_main")
+	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		int product_category=Integer.parseInt(request.getParameter("menu_category"));
+		System.out.println(product_category);
+		if(product_category > 0) {
+
+			
+			
+			List<Product_DataBean> menus1=Product_Dao.selectMenusByCategory(product_category);
+			
+		
+			
+			List<Product_DataBean> menus=Stream.of(menus1).flatMap(x->x.stream()).collect(Collectors.toList());
+			request.setAttribute("menus", menus);
+			
+		} else {
+
+			
+			
+				// 메뉴카테고리 0: 전체메뉴 (웹으로 처리하는 사항)
+				
+				List<Product_DataBean> menus=Product_Dao.selectMenus();
+				request.setAttribute("menus", menus);
+				
+			
+		}
+		return new ModelAndView("svc/product_main");
+	}
+	
+	
 	
 
 	
