@@ -48,5 +48,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jai_core.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jai_codec.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-websocket-4.2.1.RELEASE.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
