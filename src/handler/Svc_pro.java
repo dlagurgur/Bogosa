@@ -474,7 +474,7 @@ public class Svc_pro{
 	
 	
 	@RequestMapping("/product_insert_pro")
-	public ModelAndView productInsertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+	public ModelAndView productInsertprocess(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	try {
 		request.setCharacterEncoding( "utf-8" );
 	} catch (UnsupportedEncodingException e) {
@@ -482,11 +482,7 @@ public class Svc_pro{
 	}
 	
 	Product_DataBean product_dto = new Product_DataBean();
-	product_dto.setProduct_name(request.getParameter("product_name"));
-	product_dto.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
-	product_dto.setProduct_category(Integer.parseInt(request.getParameter("product_category")));
-	product_dto.setProduct_detail(request.getParameter("product_detail"));
-	product_dto.setUser_id(request.getParameter("session"));
+
 //	menu_dto.setMenu_name(request.getParameter("menu_name"));
 //	menu_dto.setMenu_price(Integer.parseInt(request.getParameter("menu_price")));
 //	menu_dto.setMenu_image(request.getParameter("menu_image"));
@@ -497,36 +493,48 @@ public class Svc_pro{
 //	request.setAttribute("result", result);
 	
 	// 사진 업로드 //////////////////////////////////////////////////
-	@SuppressWarnings("deprecation")
-	String imagePath = request.getRealPath("product_images");	//경로
 	//System.out.println(imagePath);
 	//String imagePath= "C:\\ExpertJava\\Muhan\\Muhan\\WebContent\\menu_images";
-	int size = 1 * 1024 * 1024;
-	String filename = "";
-	try {
-		MultipartRequest multi = new MultipartRequest(request, imagePath, size, "utf-8",
-				new DefaultFileRenamePolicy());
+	String savePath = request.getServletContext().getRealPath("product_images");
+	 
+	// 파일 크기 15MB로 제한
+	int sizeLimit = 1024*1024*15;
+	
+
+		
+	MultipartRequest multi = new MultipartRequest( request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
 		
 		
-		@SuppressWarnings("rawtypes")
-		Enumeration files = multi.getFileNames();
+		String product_name = multi.getParameter("product_name");
+		String product_image = multi.getFilesystemName("product_image");
+		int product_category = Integer.parseInt(multi.getParameter("product_category"));
+		int product_price = Integer.parseInt(multi.getParameter("product_price"));
+		String product_detail = multi.getParameter("product_detail");
+		String user_id = multi.getParameter("session");
+		String m_fileFullPath = savePath + "/" + product_image;
+		
+		
+		
+		
+		product_dto.setProduct_name(product_name);
+		product_dto.setProduct_price(product_price);
+		product_dto.setProduct_category(product_category);
+		product_dto.setProduct_detail(product_detail);
+		product_dto.setUser_id(user_id);
+		product_dto.setProduct_image(m_fileFullPath);
+		
 
-		String file = (String) files.nextElement();
-		filename = multi.getFilesystemName(file);
-
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
 
 
-	System.out.println(filename);
-	product_dto.setProduct_image("" + filename);
+	
+	
+
 	//////////////////////////////////////////////////
 	
 	
-	int result = Product_Dao.insertProduct(product_dto);
-	request.setAttribute("result", result);
-	return new ModelAndView("svc/product_insert_pro");
+		int result = Product_Dao.insertProduct(product_dto);
+		request.setAttribute("result", result);
+		return new ModelAndView("svc/product_insert_pro");
 	}
 
 }

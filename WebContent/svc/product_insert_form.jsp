@@ -12,7 +12,7 @@
 
 <!--enctype="multipart/form-data"-->
 <div class="container">
-	<form name="inputform" method="post" action="product_insert_pro.go" enctype="multipart/form-data" onsubmit="return submitMenu();">
+	<form name="inputform" action="product_insert_pro.go" method="post" enctype="multipart/form-data" >
 		<h3>상품에 대한 정보를 입력하세요</h3>
 		<div class="form-group row">
 			<div class="col-xs-2">

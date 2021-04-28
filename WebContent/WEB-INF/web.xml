@@ -16,17 +16,12 @@
   <servlet-mapping>
     <servlet-name>Encore</servlet-name>
     <url-pattern>*.go</url-pattern>
+  
+  
   </servlet-mapping>
   
-   <filter>
-  <filter-name>multipart</filter-name>
-  <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
- </filter>
+  
 
-<filter-mapping>
-  <filter-name>multipart</filter-name>
-  <url-pattern>*.do</url-pattern>
- </filter-mapping>
 
 
 </web-app>
