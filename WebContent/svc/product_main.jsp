@@ -9,15 +9,11 @@
 
 <style>
 
-/* jumbotron image */
 
 
 </style>
 	</head>
 	<body>
-		
-		
-		<!-- Descriptor Jumbotron -->
 		
 		
 		

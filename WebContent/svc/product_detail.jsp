@@ -64,7 +64,7 @@
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_id}">
 				
 					<div class="mt-3 text-center">
-						<button type="button" class="btn btn-warning" onclick="moveItemsToCart(${Produt_dto.product_id})"><b>장바구니에 담기</b></button>
+						
 						<button type="button" class="btn btn-warning" onclick="orderNow(${Produt_dto.product_id})"><b>바로 주문하기</b></button>
 						<button type="button" class="mt-1 btn btn-warning" onclick="returnToList()"><b>목록으로 돌아가기</b></button>
 					</div>
