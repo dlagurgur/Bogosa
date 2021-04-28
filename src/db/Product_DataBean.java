@@ -24,6 +24,7 @@ public class Product_DataBean {
 		this.product_name = product_name;
 	}
 	
+	
 	public int getProduct_price() {
 		return product_price;
 	}

@@ -23,7 +23,3 @@
 		${sessionScope.user_id = user_id}
 	<c:redirect url="myPage.go"/>
 </c:if>
-
-<video src='https://1735a613b59b.us-east-1.playback.live-video.net/api/video/v1/us-east-1.318309370602.channel.8r00mK4nocgM.m3u8'>
-    웹브라우저가 video태그를 지원하지 않을 때 표시할 문구
-</video>

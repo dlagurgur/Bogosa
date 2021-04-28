@@ -37,14 +37,7 @@
   	
   	<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
 <video id="video-player" playsinline width= 720 height= 480></video>
-<script>
-  if (IVSPlayer.isPlayerSupported) {
-    const player = IVSPlayer.create();
-    player.attachHTMLVideoElement(document.getElementById('video-player'));
-    player.load('https://1735a613b59b.us-east-1.playback.live-video.net/api/video/v1/us-east-1.318309370602.channel.8r00mK4nocgM.m3u8');
-    player.play();
-  }
-</script>
+
   </body>
 </c:if>
  <c:if test="${sessionScope.user_id ne null}">

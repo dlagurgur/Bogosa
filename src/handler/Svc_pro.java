@@ -1,6 +1,7 @@
 package handler;
 
 import java.io.IOException;
+
 import java.io.UnsupportedEncodingException;
 
 
@@ -53,6 +54,7 @@ public class Svc_pro{
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		
 		UserDataBean userDto = new UserDataBean();
 		userDto.setUser_id(request.getParameter("user_id"));
 		userDto.setUser_pw(request.getParameter("user_pw"));
@@ -379,7 +381,7 @@ public class Svc_pro{
 	
 	///////////// 주문 관련 영역 //////////////////////////////////////
 	
-	//상품 등록 
+//	//상품 등록 
 //	@RequestMapping("/product_insert_pro")
 //	public ModelAndView BoardInputProcess(HttpServletRequest request, HttpServletResponse response)
 //			throws HandlerException, IOException {
@@ -443,7 +445,8 @@ public class Svc_pro{
 //		e.printStackTrace();
 //
 //	}
-//		
+//		System.out.println(file);
+//		System.out.println(originFile);
 //		product_dto.setProduct_image(originFile+file);
 //		
 //		
@@ -460,8 +463,8 @@ public class Svc_pro{
 //		
 //		return new ModelAndView("svc/product_insert_pro");
 //	}
-//	
-//	
+	
+	
 	
 	
 	
@@ -471,50 +474,59 @@ public class Svc_pro{
 	
 	
 	@RequestMapping("/product_insert_pro")
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		
-		try {
-			request.setCharacterEncoding( "utf-8" );
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		
-		Product_DataBean product_dto = new Product_DataBean();
-
-		product_dto.setProduct_name(request.getParameter("product_name"));
-		product_dto.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
-		product_dto.setProduct_category(Integer.parseInt(request.getParameter("product_category")));
-		product_dto.setProduct_detail(request.getParameter("product_detail"));
-		product_dto.setUser_id(request.getParameter("session"));
-		// 사진 업로드 //////////////////////////////////////////////////
-		String imagePath = request.getRealPath("product_images");	//경로
-
-		int size = 1 * 1024 * 1024;
-		String filename = "";
-		try {
-			MultipartRequest multi = new MultipartRequest(request, imagePath, size, "utf-8",
-					new DefaultFileRenamePolicy());
-
-			
-			Enumeration files = multi.getFileNames();
-
-			String file = (String) files.nextElement();
-			filename = multi.getFilesystemName(file);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-
-		System.out.println(filename);
-		product_dto.setProduct_image("" + filename);
-		//////////////////////////////////////////////////
+	public ModelAndView productInsertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+	try {
+		request.setCharacterEncoding( "utf-8" );
+	} catch (UnsupportedEncodingException e) {
+		e.printStackTrace();
+	}
+	
+	Product_DataBean product_dto = new Product_DataBean();
+	product_dto.setProduct_name(request.getParameter("product_name"));
+	product_dto.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
+	product_dto.setProduct_category(Integer.parseInt(request.getParameter("product_category")));
+	product_dto.setProduct_detail(request.getParameter("product_detail"));
+	product_dto.setUser_id(request.getParameter("session"));
+//	menu_dto.setMenu_name(request.getParameter("menu_name"));
+//	menu_dto.setMenu_price(Integer.parseInt(request.getParameter("menu_price")));
+//	menu_dto.setMenu_image(request.getParameter("menu_image"));
+//	menu_dto.setMenu_category(Integer.parseInt(request.getParameter("menu_category")));
+//	menu_dto.setMenu_detail(request.getParameter("menu_detail"));
+	
+//	int result = menu_dao.insertMenu(menu_dto);
+//	request.setAttribute("result", result);
+	
+	// 사진 업로드 //////////////////////////////////////////////////
+	@SuppressWarnings("deprecation")
+	String imagePath = request.getRealPath("product_images");	//경로
+	//System.out.println(imagePath);
+	//String imagePath= "C:\\ExpertJava\\Muhan\\Muhan\\WebContent\\menu_images";
+	int size = 1 * 1024 * 1024;
+	String filename = "";
+	try {
+		MultipartRequest multi = new MultipartRequest(request, imagePath, size, "utf-8",
+				new DefaultFileRenamePolicy());
 		
 		
-		int result = Product_Dao.insertProduct(product_dto);
-		request.setAttribute("result", result);
-		
-		return new ModelAndView("svc/product_insert_pro");
+		@SuppressWarnings("rawtypes")
+		Enumeration files = multi.getFileNames();
+
+		String file = (String) files.nextElement();
+		filename = multi.getFilesystemName(file);
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
+
+	System.out.println(filename);
+	product_dto.setProduct_image("" + filename);
+	//////////////////////////////////////////////////
+	
+	
+	int result = Product_Dao.insertProduct(product_dto);
+	request.setAttribute("result", result);
+	return new ModelAndView("svc/product_insert_pro");
 	}
 
 }
