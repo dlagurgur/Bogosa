@@ -145,7 +145,7 @@
 			<a class="nav-link" href="product_main.go?menu_category=7">스포츠/레저</a>
 		</li>
 				</ul>
-				<c:if test="${user_level ne 9}">
+				
 					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
 						<select name="search_type">
 						<option value="schedule">${search_trip_schedule}</option>
@@ -156,20 +156,8 @@
 						<a href="myPage.go" class="nav-item">${page_mypage2}</a> &nbsp;&nbsp;&nbsp;
 						<a class="nav-item" href="logout.go">${btn_logout}</a>
 					</form>
-				</c:if>
-				<c:if test="${user_level eq 9}">
-					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
-						<select name="search_type">
-							<option value="schedule">${search_trip_schedule}</option>
-							<option value="trip_writer">${trip_writer}</option>
-						</select> &nbsp;
-						<input type="text" class="form-control" name="keyword" placeholder="${search_guide}"> &nbsp;
-						<button type="submit" style="border: none; background: transparent;"><img alt="" src="${project}img/search-m2-24.png"></button> &nbsp;|&nbsp;
-						<a class="nav-item" href="adminTrip.go">${btn_adm}</a> &nbsp;<a
-							class="nav-item" href="adminLogout.go">${btn_logout}</a>
-					</form>
-				</c:if>
-			</div>
+				
+			
 		</nav>
 
 		<!-- Bootstrap core JavaScript (**Essential for Toggler action)

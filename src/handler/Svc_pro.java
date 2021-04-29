@@ -420,12 +420,12 @@ public class Svc_pro{
 		product_dto.setUser_id(user_id);
 		product_dto.setProduct_image(filename);
 			
+		Product_Dao.insertProduct(product_dto);
+		int tb_no = product_dto.getProduct_id();// tb_no
+		request.setAttribute("tb_no", tb_no);	
 			
 		int result = Product_Dao.insertProduct(product_dto);
-	
-		
-		
-		request.setAttribute("tb_no", product_dto.getProduct_id());
+
 		request.setAttribute("result", result);
 		return new ModelAndView("svc/product_insert_pro");
 	}
