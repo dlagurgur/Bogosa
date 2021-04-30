@@ -2,6 +2,7 @@ package handler;
 
 import java.io.IOException;
 
+
 import java.io.UnsupportedEncodingException;
 
 
@@ -351,6 +352,7 @@ public class Svc_pro{
 		
 		
 		if(user_pw.equals(userDto.getUser_pw()) ) {
+			userDao.deletProduct(user_id);
 			userDao.deleteCustomer(user_id);
 			result = 1;
 		}else {
@@ -379,6 +381,7 @@ public class Svc_pro{
 	// 파일 크기 15MB로 제한
 	int sizeLimit = 1024*1024*15;
 	
+	@SuppressWarnings("deprecation")
 	String imagePath = request.getRealPath("menu_images");
 	String filename = "";
 		
@@ -391,6 +394,7 @@ public class Svc_pro{
 		String product_detail = multi.getParameter("product_detail");
 		String user_id = multi.getParameter("session");
 	
+		@SuppressWarnings("rawtypes")
 		Enumeration files = multi.getFileNames();
 
 		String file = (String) files.nextElement();

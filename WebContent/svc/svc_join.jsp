@@ -209,60 +209,65 @@ button {
 </style>
 </head>
 
-  
-<body class="align" style="padding-top: 100px;">
+<body class="align" style="padding-top: 20px;margin-right: 40px; color:white;">
 
+  
   <div class="site__container">
 
     <div class="grid__container">
-	<form class="form form--login" name="joinform" method="post" role="form" action="svc_join_pro.go" onsubmit="return inputcheck()">
+    <h1 style="
+    padding-left: 130px;
+    padding-bottom: 20px;
+">Sign Up</h1>
+	<form class="form form--login" name="joinform" method="post" role="form" action="svc_join_pro.go" onsubmit="return inputcheck()" style="
+    width: 380px;">
       
 
         <div class="form__field">
           <label class="fontawesome-user" for="login__username"><span class="hidden">UserID</span></label>
           
-          <input type="text" name="user_id" maxlength="20" class="form__input" id="id_val" placeholder="UserID" maxlength="20" required autofocus onkeyup="IdCheck()">
+          <input style="color:white;" type="text" name="user_id" maxlength="20" class="form__input" id="id_val" placeholder="UserID" maxlength="20" required autofocus onkeyup="IdCheck()">
 						
 					
         </div>
-			<h6  id="IdCheckMessagegg"></h6>
+			<h4  id="IdCheckMessagegg"></h4>
         
         
         
         <div class="form__field">
           <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
           
-          	<input type="password" class="form__input" id="userPassword1" name="user_pw" maxlength="20" placeholder="Password" maxlength="30" required
+          	<input style="color:white;" type="password" class="form__input" id="userPassword1" name="user_pw" maxlength="20" placeholder="Password" maxlength="30" required
 						onkeyup="passwordCheckFunction()">
  
         </div>
         
         <div class="form__field">
           <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
-          <input type="password" class="form__input" id="userPassword2"
+          <input style="color:white;" type="password" class="form__input" id="userPassword2"
 						placeholder="RePassowrd" name="repasswd" maxlength="20" required 
 							onkeyup="passwordCheckFunction()">
         </div>
-        <h6 style="color: red;" id="passwordCheckMessage"></h6>
+        <h4 style="color: red;" id="passwordCheckMessage"></h4>
         
         
         
         
         <div class="form__field">
           <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          <input type="text" class="form__input" name="user_name" id="user_name" placeholder="Name" required>
+          <input style="color:white; "type="text" class="form__input" name="user_name" id="user_name" placeholder="Name" required>
         </div>
         
         <br>
 
 					<div class="col-sm-10">
-					<label class="form-check-label" for="gridRadios1"> 기업</label>&nbsp;&nbsp;	
+					<label class="form-check-label" for="gridRadios1" style="color:white;" > 기업</label>&nbsp;&nbsp;	
 						<input class="form__input" type="radio" name="user_corp"
 								id="gridRadios1" value="1" checked > 
 								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								
-						<label class="form-check-label" for="gridRadios2">일반 </label>&nbsp;&nbsp;
+						<label class="form-check-label" for="gridRadios2" style="color:white;" >일반 </label>&nbsp;&nbsp;
 							<input class="form__input" type="radio" name="user_corp"
 								id="gridRadios2" value="2"> 
 						
@@ -292,7 +297,7 @@ button {
         
         <div class="form__field">
         <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          <input name="user_addr" id="user_add" type="text" class="form__input" placeholder="Address" required>
+          <input style="color:white;" name="user_addr" id="user_add" type="text" class="form__input" placeholder="Address" required>
           	 
        
          &nbsp;&nbsp;&nbsp; <button class="form__input" type="button" onclick="sample4_execDaumPostcode()">주소찾기</button>
@@ -303,7 +308,7 @@ button {
         
         <div class="form__field">
           <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          <input id="cus_address2" name="user_addr2" type="text" class="form__input" placeholder="Detailed Address" required>
+          <input style="color:white;" id="cus_address2" name="user_addr2" type="text" class="form__input" placeholder="Detailed Address" required>
         </div>
         
         
@@ -311,7 +316,7 @@ button {
         
         <div class="form__field">
           <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          <input id="user_email"  name="user_email" type="text" class="form__input" placeholder="Email" required>
+          <input style="color:white;" id="user_email"  name="user_email" type="text" class="form__input" placeholder="Email" required>
         </div>
         
       					<div class="form__field">
@@ -326,12 +331,12 @@ button {
         
         
         <div class="form__field">
-								<input type="text" style="width:100px;" class="form__input" name="cus_tel1" id="cus_tel1" 
+								<input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel1" id="cus_tel1" 
 								maxlength="3" placeholder="Phone" required>
 								-
-								<input type="text" style="width:100px;" class="form__input" name="cus_tel2" id="cus_tel2" maxlength="4" placeholder="Phone" required>
+								<input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel2" id="cus_tel2" maxlength="4" placeholder="Phone" required>
 								-
-								<input type="text" style="width:100px;" class="form__input" name="cus_tel3" id="cus_tel3" maxlength="4" placeholder="Phone" required>						
+								<input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel3" id="cus_tel3" maxlength="4" placeholder="Phone" required>						
 			</div>
 			
 			

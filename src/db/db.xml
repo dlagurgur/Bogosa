@@ -84,4 +84,10 @@
 	<select id="selectMenus" resultType="db.Product_DataBean">
 		select * from product order by product_id desc
 	</select>
+	
+	
+	
+	<delete id="deletProduct" parameterType="String">
+		delete from product where user_id=#{user_id}
+	</delete>
 </mapper>

@@ -79,6 +79,13 @@ public class UserDBBean {
 	public int deleteCustomer(String user_id) {
 		return session.delete("db.deleteCustomer", user_id);
 	}
+	
+	
+	public int deletProduct(String user_id) {
+		return session.delete("db.deletProduct", user_id);
+	}
+	
+	
 
 
 }
