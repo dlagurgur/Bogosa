@@ -62,7 +62,7 @@ public class Svc_pro{
 		userDto.setUser_addr(request.getParameter("user_addr"));
 		userDto.setUser_addr2(request.getParameter("user_addr2"));
 		int corp = Integer.parseInt(request.getParameter("user_corp"));
-		
+		userDto.setUser_email(request.getParameter("user_email"));
 		userDto.setUser_corp(corp);
 		
 		String cus_tel = null;
@@ -74,22 +74,6 @@ public class Svc_pro{
 		}
 		
 		userDto.setUser_phone(cus_tel);
-		
-		String cus_email = null;
-		String cus_email1 = request.getParameter( "cus_email1" );
-		String cus_email2 = request.getParameter( "cus_email2" );
-		String cus_email3 = request.getParameter( "cus_email3" );
-		if( ! cus_email1.equals( "" ) ) {
-			if( cus_email2.equals( "0" ) ) {
-				// 직접입력
-				cus_email = cus_email1 + "@" + cus_email3; 
-			} else {
-				// 선택입력
-				cus_email = cus_email1 + "@" + cus_email2; 
-			}
-		}
-		
-		userDto.setUser_email(cus_email);
 		
 		int result = userDao.insertUser(userDto);
 

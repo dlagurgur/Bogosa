@@ -79,11 +79,7 @@ function EmailClose(){
 	self.close();
 }
 
-function emailAuthentic(){
-	var user_email = joinform.cus_email1.value+"@" + joinform.cus_email3.value;
-	var url="emailCheck.go?email="+user_email;
-	window.open(url, "b", "width=600,height=300,scrollbars=yes,resizeable=no,left=150,top=150") 
-}
+
 
 
 $(function() {
