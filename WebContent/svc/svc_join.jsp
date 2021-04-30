@@ -209,18 +209,18 @@ button {
 </style>
 </head>
 
-<body class="align" style="padding-top: 20px;margin-right: 40px; color:white;">
+<body class="align" style="padding-top: 20px;margin-right: 80px; color:white;">
 
   
   <div class="site__container">
 
     <div class="grid__container">
     <h1 style="
-    padding-left: 130px;
+    padding-left: 160px;
     padding-bottom: 20px;
 ">Sign Up</h1>
 	<form class="form form--login" name="joinform" method="post" role="form" action="svc_join_pro.go" onsubmit="return inputcheck()" style="
-    width: 380px;">
+    width: 440px;">
       
 
         <div class="form__field">
