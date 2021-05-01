@@ -261,13 +261,12 @@ button {
         <br>
 
 					<div class="col-sm-10">
-					<label class="form-check-label" for="gridRadios1" style="color:white;" > 기업</label>&nbsp;&nbsp;	
+					<label class="form-check-label" for="gridRadios1" style="color:white;padding-right: 78px; padding-left:78px;"> 기업</label>&nbsp;&nbsp;	
 						<input class="form__input" type="radio" name="user_corp"
 								id="gridRadios1" value="1" checked > 
 								
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								
-						<label class="form-check-label" for="gridRadios2" style="color:white;" >일반 </label>&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;
+						<label class="form-check-label" for="gridRadios2" style="color:white;padding-right: 78px; padding-left:78px;">일반 </label>&nbsp;&nbsp;
 							<input class="form__input" type="radio" name="user_corp"
 								id="gridRadios2" value="2"> 
 						

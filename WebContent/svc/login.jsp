@@ -178,8 +178,14 @@ input {
 
       </form>
 
-      <p class="text--center">Not a member? <a href="join.go">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
-       <p class="text--center"><a onclick="window.open('EmailId.go','아이디 찾기','width=400,height=400,location=no,status=no,scrollbars=no');">Find ID</a> <span class="fontawesome-arrow-right"></span>
+      <p class="text--center" style="
+    padding-left: 60px;
+    padding-right: 0px;
+">Not a member? <a href="join.go">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
+       <p class="text--center" style="
+    padding-left: 60px;
+    padding-right: 0px;
+"><a onclick="window.open('EmailId.go','아이디 찾기','width=800,height=350,location=no,status=no,scrollbars=no');">Find ID</a> <span class="fontawesome-arrow-right"></span>
 		&nbsp;&nbsp;  <a onclick="window.open('EmailPasswd.go','비밀번호 찾기','width=400,height=400,location=no,status=no,scrollbars=no');">Find Password</a> <span class="fontawesome-arrow-right"></span></p>
 
     </div>
