@@ -2,6 +2,7 @@ package handler;
 
 import java.io.IOException;
 
+
 import java.io.UnsupportedEncodingException;
 
 
@@ -62,7 +63,7 @@ public class Svc_pro{
 		userDto.setUser_addr(request.getParameter("user_addr"));
 		userDto.setUser_addr2(request.getParameter("user_addr2"));
 		int corp = Integer.parseInt(request.getParameter("user_corp"));
-		
+		userDto.setUser_email(request.getParameter("user_email"));
 		userDto.setUser_corp(corp);
 		
 		String cus_tel = null;
@@ -74,22 +75,6 @@ public class Svc_pro{
 		}
 		
 		userDto.setUser_phone(cus_tel);
-		
-		String cus_email = null;
-		String cus_email1 = request.getParameter( "cus_email1" );
-		String cus_email2 = request.getParameter( "cus_email2" );
-		String cus_email3 = request.getParameter( "cus_email3" );
-		if( ! cus_email1.equals( "" ) ) {
-			if( cus_email2.equals( "0" ) ) {
-				// 직접입력
-				cus_email = cus_email1 + "@" + cus_email3; 
-			} else {
-				// 선택입력
-				cus_email = cus_email1 + "@" + cus_email2; 
-			}
-		}
-		
-		userDto.setUser_email(cus_email);
 		
 		int result = userDao.insertUser(userDto);
 
@@ -367,6 +352,7 @@ public class Svc_pro{
 		
 		
 		if(user_pw.equals(userDto.getUser_pw()) ) {
+			userDao.deletProduct(user_id);
 			userDao.deleteCustomer(user_id);
 			result = 1;
 		}else {
@@ -395,6 +381,7 @@ public class Svc_pro{
 	// 파일 크기 15MB로 제한
 	int sizeLimit = 1024*1024*15;
 	
+	@SuppressWarnings("deprecation")
 	String imagePath = request.getRealPath("menu_images");
 	String filename = "";
 		
@@ -407,6 +394,7 @@ public class Svc_pro{
 		String product_detail = multi.getParameter("product_detail");
 		String user_id = multi.getParameter("session");
 	
+		@SuppressWarnings("rawtypes")
 		Enumeration files = multi.getFileNames();
 
 		String file = (String) files.nextElement();
@@ -420,12 +408,13 @@ public class Svc_pro{
 		product_dto.setUser_id(user_id);
 		product_dto.setProduct_image(filename);
 			
-		Product_Dao.insertProduct(product_dto);
-		int tb_no = product_dto.getProduct_id();// tb_no
-		request.setAttribute("tb_no", tb_no);	
+		
+	
 			
 		int result = Product_Dao.insertProduct(product_dto);
-
+		int tb_no = product_dto.getProduct_id();// tb_no
+		request.setAttribute("tb_no", tb_no);	
+		
 		request.setAttribute("result", result);
 		return new ModelAndView("svc/product_insert_pro");
 	}

@@ -3,7 +3,6 @@
   	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="db">
-	<!--  ///////////회원 영역 ///////////////////////////////// -->
 	<insert id="insertUser" parameterType="db.UserDataBean">
 		insert into user_general values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_addr}, #{user_addr2},#{user_email},#{user_corp})
 	</insert>	
@@ -51,13 +50,11 @@
 	<select id="getUser" parameterType="String"
 		resultType="db.UserDataBean">
 		select * from user_general where user_id=#{user_id}
-	</select>	
-	<!--  ///////////회원 영역 ///////////////////////////////// -->
+	</select>
 	
 	
-
 	
-	<!--  ///////////상품 영역 ///////////////////////////////// -->	
+	
 	<select id="produt_id" parameterType="int" resultType="db.Product_DataBean">
 		select * from product order by product_id desc limit 1
 	</select>
@@ -86,20 +83,11 @@
 	
 	<select id="selectMenus" resultType="db.Product_DataBean">
 		select * from product order by product_id desc
-	</select>	
-	<!--  ///////////상품 영역 ///////////////////////////////// -->
+	</select>
 	
 	
 	
-	
-	
-	<!--  ///////////주문 영역 ///////////////////////////////// -->
-	<insert id="insertOrder" parameterType="db.order_history.Order_history_DataBean">
-		insert into order_history
-		values(order_num, #{order_qnt}, #{order_date}, #{product_id}, #{user_id})
-	</insert>
-	
-	
-	
-	<!--  ///////////주문 영역 ///////////////////////////////// -->
+	<delete id="deletProduct" parameterType="String">
+		delete from product where user_id=#{user_id}
+	</delete>
 </mapper>
