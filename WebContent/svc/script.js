@@ -164,75 +164,23 @@ function commentList(tb_no){
 	}
 
 
-//댓글 등록
-function CmtInsert(insertData){
-	var tb_no=$("input[name=tb_no").val();
-	if(commentInsertForm.c_content.value){
-	$.ajax({
-        url : 'commentInsert.go',
-        type : 'post',
-        data : insertData,
-        success : function(data){
-        	if(data == 1) {
-        		/*오류메세지 작성*/
-           }else{
-        	   commentList(tb_no);
-        	   $('[name=c_content]').val('');
-           }
-        },
-    	error : function(error) {
-        alert("error : " + error);
-    }
-    });
-	}else{
-		alert("댓글을 입력해주세요");
+function orderNow(menu_id) {
+	var menu_id=menuform.menu_id.value;
+	var menu_name=menuform.menu_name.value;
+	var menu_price=menuform.menu_price.value;
+	var menu_image=menuform.menu_image.value;
+	var order_qnt=menuform.qty.value;
+	var order=[{'menu_id':menu_id, 'menu_name':menu_name, 'menu_price':menu_price, 'order_qnt':order_qnt, 'menu_image':menu_image},];
+	
+	sessionStorage.setItem('order', JSON.stringify(order));
+	
+	if(!sessionStorage.getItem('cus_id')) {			
+		alert('로그인 먼저 해 주세요.');
+		window.location.href='cus_login_form.do?identifier=1';
+	} else {
+		window.location.href='cus_pay.do';
 	}
-	}
-//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
-function commentUpdate(c_id, c_content){
-    var commentModify ='';
-    
-    commentModify += '<div class="input-group">';
-    commentModify += '<input type="text" class="form-control" name="c_content_'+c_id+'" value="'+c_content+'"/>';
-    commentModify += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+c_id+');">수정</button> </span>';
-    commentModify += '</div>';
-    
-    $('.commentContent'+c_id).html(commentModify);
-    
 }
- 
-//댓글 수정
-function commentUpdateProc(c_id){
-    var updateContent = $('input[name=c_content_'+c_id+']').val();
-    var tb_no=$("input[name=tb_no").val();
-    $.ajax({
-        url : 'commentUpdate.go',
-        type : 'post',
-        data : {'c_content' : updateContent, 'c_id' : c_id},
-        success : function(data){
-            commentList(tb_no); //댓글 수정후 목록 출력 
-        }
-    });
-}
- 
-//댓글 삭제 
-function commentDelete(c_id){
-	var tb_no=$("input[name=tb_no]").val();
-    $.ajax({
-        url : 'commentDelete.go',
-        type : 'post',
-        data : {
-        	c_id : c_id
-        },
-        success : function(data){
-            commentList(tb_no); //댓글 삭제후 목록 출력 
-        },
-        error : function(error) {
-            alert("error : " + error);
-        }
-    });
-}
-
 
 
 

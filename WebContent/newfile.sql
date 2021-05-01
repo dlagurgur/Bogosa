@@ -14,12 +14,11 @@ DROP TABLE IF EXISTS User_general;
 CREATE TABLE Order_history
 (
 	order_num int NOT NULL AUTO_INCREMENT,
+	order_qnt int(100) NOT NULL,
 	order_date  timestamp,
 	product_id int NOT NULL,
 	user_id varchar(20) NOT NULL,
-	PRIMARY KEY (order_num),
-	UNIQUE (product_id),
-	UNIQUE (user_id)
+	PRIMARY KEY (order_num)
 );
 
 

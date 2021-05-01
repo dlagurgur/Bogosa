@@ -34,9 +34,7 @@
   		<p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>	
   
   	</form>
-  	
-  	<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
-<video id="video-player" playsinline width= 720 height= 480></video>
+
 
   </body>
 </c:if>

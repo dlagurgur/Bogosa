@@ -15,6 +15,24 @@
 			<div class="menuItem col-lg-6 mt-5">
 				<img class="menuImg border-0 w-100" src="menu_images/${Produt_dto.product_image}" alt="Menu Img">
 			</div>
+
+
+
+<!--  아마존 ivs  --> 	
+  	<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
+<video id="video-player" playsinline width= 720 height= 480></video>
+<script>
+  if (IVSPlayer.isPlayerSupported) {
+    const player = IVSPlayer.create();
+    player.attachHTMLVideoElement(document.getElementById('video-player'));
+    player.load('https://1735a613b59b.us-east-1.playback.live-video.net/api/video/v1/us-east-1.318309370602.channel.8r00mK4nocgM.m3u8');
+    player.play();
+  }
+</script>
+
+
+
+
 			<div class="menuContent col-lg-4 mt-5">
 				<form name="menuform">
 					<div class="text-center">
@@ -61,12 +79,12 @@
 					<input type="hidden" name="menu_name" value="${Produt_dto.product_name}">
 					<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">
-					<input type="hidden" name="menu_price" value="${Produt_dto.product_id}">
+					
 				
 					<div class="mt-3 text-center">
 						
 						<button type="button" class="btn btn-warning" onclick="orderNow(${Produt_dto.product_id})"><b>바로 주문하기</b></button>
-						<button type="button" class="mt-1 btn btn-warning" onclick="returnToList()"><b>목록으로 돌아가기</b></button>
+						<button type="button" class="mt-1 btn-warning" onclick="returnToList()"><b>목록으로 돌아가기</b></button>
 					</div>
 				</form>
 			</div>		

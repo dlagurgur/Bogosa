@@ -3,25 +3,18 @@ package db;
 import java.sql.Time;
 
 public class Order_history_DataBean {
-	private int order_no;
+	private int order_num;
 	private int order_qnt;
 	private Time order_date;
-	private int menu_id;
-	private String cus_id;
-	private String store_id;
-	private int order_status;
+	private int product_id;
+	private String user_id;
 	
-	public int getOrder_status() {
-		return order_status;
+	
+	public int getOrder_num() {
+		return order_num;
 	}
-	public void setOrder_status(int order_status) {
-		this.order_status = order_status;
-	}
-	public int getOrder_no() {
-		return order_no;
-	}
-	public void setOrder_no(int order_no) {
-		this.order_no = order_no;
+	public void setOrder_num(int order_num) {
+		this.order_num = order_num;
 	}
 	public int getOrder_qnt() {
 		return order_qnt;
@@ -35,24 +28,17 @@ public class Order_history_DataBean {
 	public void setOrder_date(Time order_date) {
 		this.order_date = order_date;
 	}
-	public int getMenu_id() {
-		return menu_id;
+	public int getProduct_id() {
+		return product_id;
 	}
-	public void setMenu_id(int menu_id) {
-		this.menu_id = menu_id;
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
-	public String getCus_id() {
-		return cus_id;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setCus_id(String cus_id) {
-		this.cus_id = cus_id;
-	}
-	public String getStore_id() {
-		return store_id;
-	}
-	public void setStore_id(String store_id) {
-		this.store_id = store_id;
-	}
-	
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}	
 	
 }
