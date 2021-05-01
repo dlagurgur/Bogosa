@@ -209,7 +209,7 @@ button {
 </style>
 </head>
 
-<body class="align" style="padding-top: 20px;margin-right: 80px; color:white;">
+<body class="align" style="padding-top: 20px;margin-right: 160px; color:white;">
 
   
   <div class="site__container">
