@@ -153,7 +153,7 @@ input {
 
 
 <c:if test="${sessionScope.user_id eq null}">	  
-<body class="align" style="padding-top: 100px;margin-right: 40px;">
+<body class="align" style="padding-top: 100px;margin-right: 100px;">
 
   <div class="site__container">
 
@@ -178,8 +178,8 @@ input {
 
       </form>
 
-      <p class="text--center">Not a member? <a href="join.go">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
-       <p class="text--center"><a onclick="window.open('EmailId.go','아이디 찾기','width=400,height=400,location=no,status=no,scrollbars=no');">Find ID</a> <span class="fontawesome-arrow-right"></span>
+      <p class="text--center" style="margin-left: 50px;">Not a member? <a href="join.go">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
+       <p class="text--center" style="margin-left: 50px;"><a onclick="window.open('EmailId.go','아이디 찾기','width=400,height=400,location=no,status=no,scrollbars=no');">Find ID</a> <span class="fontawesome-arrow-right"></span>
 		&nbsp;&nbsp;  <a onclick="window.open('EmailPasswd.go','비밀번호 찾기','width=400,height=400,location=no,status=no,scrollbars=no');">Find Password</a> <span class="fontawesome-arrow-right"></span></p>
 
     </div>
