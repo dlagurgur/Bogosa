@@ -216,8 +216,8 @@ button {
 
     <div class="grid__container">
     <h3 style="
-    padding-left: 160px;
     padding-bottom: 20px;
+    width: 470px;
 ">${userDto.user_id}님의 정보</h3>
 	<form class="form form--login" name="joinform" method="post" role="form" style="width: 470px;">
       

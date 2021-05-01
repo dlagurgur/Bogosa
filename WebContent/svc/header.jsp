@@ -19,12 +19,14 @@
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<!-- Custom styles for this template -->
 	<style>
+	
+	
 		body {
 			min-height: 75rem;
 			padding-top: 4.5rem;
 		}		
 		a.nav-item {
-			color: white !important;
+			color: white;
 		}			
 		select { 
 		width: 100px;
@@ -53,28 +55,30 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=0">전체 상품</a>
+			<a class="nav-item" href="product_main.go?menu_category=0">전체 상품</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		<li class="nav-item">
+			<a class="nav-item" href="product_main.go?menu_category=1">가전디지털</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-item" href="product_main.go?menu_category=2">식품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=1">가전디지털</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=2">식품</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=3">주방용품</a>
+			<a class="nav-item" href="product_main.go?menu_category=3">주방용품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 				<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=4">생활용품</a>
+			<a class="nav-item" href="product_main.go?menu_category=4">생활용품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 				<li class="nav-item">
-			<a class="nav-link " href="product_main.go?menu_category=5">의류</a>
+			<a class="nav-item " href="product_main.go?menu_category=5">의류</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=6">취미</a>
+			<a class="nav-item" href="product_main.go?menu_category=6">취미</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 			<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=7">스포츠/레저</a>
+			<a class="nav-item" href="product_main.go?menu_category=7">스포츠/레저</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 				</ul>
 				<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
@@ -118,33 +122,34 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav mr-auto">
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=0">전체 상품</a>
+			<a class="nav-item" href="product_main.go?menu_category=0">전체 상품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=1">가전디지털</a>
+			<a class="nav-item" href="product_main.go?menu_category=1">가전디지털</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=2">식품</a>
+			<a class="nav-item" href="product_main.go?menu_category=2">식품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=3">주방용품</a>
+			<a class="nav-item" href="product_main.go?menu_category=3">주방용품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 				<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=4">생활용품</a>
+			<a class="nav-item" href="product_main.go?menu_category=4">생활용품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 				<li class="nav-item">
-			<a class="nav-link " href="product_main.go?menu_category=5">의류</a>
+			<a class="nav-item " href="product_main.go?menu_category=5">의류</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=6">취미</a>
+			<a class="nav-item" href="product_main.go?menu_category=6">취미</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 			<li class="nav-item">
-			<a class="nav-link" href="product_main.go?menu_category=7">스포츠/레저</a>
+			<a class="nav-item" href="product_main.go?menu_category=7">스포츠/레저</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 				</ul>
+		
 				
 					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
 						<select name="search_type">
@@ -157,7 +162,7 @@
 						<a class="nav-item" href="logout.go">${btn_logout}</a>
 					</form>
 				
-			
+			</div>
 		</nav>
 
 		<!-- Bootstrap core JavaScript (**Essential for Toggler action)
