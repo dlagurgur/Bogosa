@@ -4,11 +4,12 @@
   <artifactId>Encore</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+ 
  <dependencies>
   <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>
-            <version>${org.springframework-version}</version>
+            <version>5.0.7.RELEASE</version>
  </dependency>
 </dependencies>
   
