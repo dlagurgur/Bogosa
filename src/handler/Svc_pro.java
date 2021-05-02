@@ -435,32 +435,32 @@ public class Svc_pro{
 	
 	
 	
-	@RequestMapping("/echo")
-	public ModelAndView productInsertprocess1(HttpServletRequest request, HttpServletResponse response) throws IOException{
-	    //세션 리스트
-	    private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
-
-	    private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
-
-	    //클라이언트가 연결 되었을 때 실행
-	    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-	        sessionList.add(session);
-	        logger.info("{} 연결됨", session.getId()); 
-	    }
-
-	    //클라이언트가 웹소켓 서버로 메시지를 전송했을 때 실행
-	    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-	        logger.info("{}로 부터 {} 받음", session.getId(), message.getPayload());
-	        //모든 유저에게 메세지 출력
-	        for(WebSocketSession sess : sessionList){
-	            sess.sendMessage(new TextMessage(message.getPayload()));
-	        }
-
-	    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-	        sessionList.remove(session);
-	        logger.info("{} 연결 끊김.", session.getId());
-	    }
-	}
-	    return new ModelAndView("svc/product_insert_pro");
+//	@RequestMapping("/echo")
+//	public ModelAndView productInsertprocess1(HttpServletRequest request, HttpServletResponse response) throws IOException{
+//	    //세션 리스트
+//	    private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
+//
+//	    private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
+//
+//	    //클라이언트가 연결 되었을 때 실행
+//	    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+//	        sessionList.add(session);
+//	        logger.info("{} 연결됨", session.getId()); 
+//	    }
+//
+//	    //클라이언트가 웹소켓 서버로 메시지를 전송했을 때 실행
+//	    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+//	        logger.info("{}로 부터 {} 받음", session.getId(), message.getPayload());
+//	        //모든 유저에게 메세지 출력
+//	        for(WebSocketSession sess : sessionList){
+//	            sess.sendMessage(new TextMessage(message.getPayload()));
+//	        }
+//
+//	    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+//	        sessionList.remove(session);
+//	        logger.info("{} 연결 끊김.", session.getId());
+//	    }
+//	}
+//	    return new ModelAndView("svc/product_insert_pro");
 
 }
