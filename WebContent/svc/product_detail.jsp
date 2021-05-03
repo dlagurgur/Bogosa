@@ -19,7 +19,7 @@
 
 
 <!--  아마존 ivs  --> 	
-  	<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
+<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
 <video id="video-player" playsinline width= 720 height= 480></video>
 <script>
   if (IVSPlayer.isPlayerSupported) {
@@ -28,7 +28,17 @@
     player.load('https://1735a613b59b.us-east-1.playback.live-video.net/api/video/v1/us-east-1.318309370602.channel.8r00mK4nocgM.m3u8');
     player.play();
   }
+  
+  
+ 
 </script>
+
+<fieldset>
+        <textarea id="messageWindow" rows="10" cols="50" readonly="true"></textarea>
+        <br/>
+        <input id="inputMessage" type="text"/>
+        <input type="submit" value="send" onclick="send()" />
+</fieldset>
 
 
 
@@ -93,4 +103,39 @@
 			</div>
 		</div>
 	</body>
+	
+ <script type="text/javascript">
+        var textarea = document.getElementById("messageWindow");
+        var webSocket = new WebSocket('ws://localhost:8787/Encore/broadcasting');
+        var inputMessage = document.getElementById('inputMessage');
+    webSocket.onerror = function(event) {
+      onError(event)
+    };
+
+    webSocket.onopen = function(event) {
+      onOpen(event)
+    };
+
+    webSocket.onmessage = function(event) {
+      onMessage(event)
+    };
+
+    function onMessage(event) {
+        textarea.value += "상대 : " + event.data + "\n";
+    }
+
+    function onOpen(event) {
+        textarea.value += "연결 성공\n";
+    }
+
+    function onError(event) {
+      alert(event.data);
+    }
+
+    function send() {
+        textarea.value += "나 : " + inputMessage.value + "\n";
+        webSocket.send(inputMessage.value);
+        inputMessage.value = "";
+    }
+  </script>
 </html>

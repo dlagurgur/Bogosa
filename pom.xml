@@ -18,12 +18,21 @@
         <version>2.11.3</version>
     </dependency>  
     
-    <dependency>
-    <groupId>org.openengsb.wrapped.csharp</groupId>
-    <artifactId>log4net</artifactId>
-    <version>1.2.11_2</version>
-    <type>pom</type>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>2.0.0-alpha1</version>
 </dependency>
+
+
+<dependency>
+    <groupId>javax.websocket</groupId>
+    <artifactId>javax.websocket-api</artifactId>
+    <version>1.1</version>
+    <scope>provided</scope>
+</dependency>
+
+
 </dependencies>
   
 
