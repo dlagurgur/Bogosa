@@ -7,6 +7,8 @@
 package db;
 
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import bean.SqlMapClient;
@@ -83,6 +85,10 @@ public class UserDBBean {
 	}
 	
 	
+	
+	public int updateUser_address(Map<String, Object> map) {
+		return session.update("db.updateUser_address", map);
+	}
 
 
 }

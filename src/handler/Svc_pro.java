@@ -4,7 +4,9 @@ import java.io.IOException;
 
 
 
+
 import java.io.UnsupportedEncodingException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -32,6 +34,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.socket.WebSocketSession;
 
+import db.Order_history_DBBean;
+import db.Order_history_DataBean;
 import db.Product_DBBean;
 import db.Product_DataBean;
 import db.UserDBBean;
@@ -49,7 +53,10 @@ public class Svc_pro{
 	
 	@Resource
 	private Product_DBBean Product_Dao;
-
+	
+	
+	@Resource
+	private Order_history_DBBean Order_Dao;
 //////////////////////////////////회원 영역///////////////////////////////////////////////	
 	//회원가입
 	@RequestMapping("/svc_join_pro")
@@ -424,6 +431,45 @@ public class Svc_pro{
 		return new ModelAndView("svc/product_insert_pro");
 	}
 	
+	
+	@RequestMapping("/order_insert_pro")
+	public ModelAndView order_insertProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		Order_history_DataBean orderDto = new Order_history_DataBean();
+		orderDto.setOrder_qnt(Integer.parseInt(request.getParameter("product_qnt")));
+		
+		orderDto.setProduct_id(Integer.parseInt(request.getParameter("product_id")));
+		String user_id = request.getParameter("user_id");
+		System.out.println(user_id);
+		orderDto.setUser_id(user_id);
+
+		
+		String user_addr = request.getParameter("user_addr");
+		String user_addr2 = request.getParameter("user_addr2");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_id", user_id);
+		map.put("user_addr", user_addr);
+		map.put("user_addr2", user_addr2);
+		
+		userDao.updateUser_address(map);
+		
+		
+		
+		Order_Dao.insertOrder(orderDto);
+
+		
+		
+	
+		
+		return new ModelAndView("svc/order_insert_pro");
+	}
 
 	
 }

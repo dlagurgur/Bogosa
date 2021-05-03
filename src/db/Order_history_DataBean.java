@@ -1,11 +1,11 @@
 package db;
 
-import java.sql.Time;
+import java.sql.Timestamp;
 
 public class Order_history_DataBean {
 	private int order_num;
 	private int order_qnt;
-	private Time order_date;
+	private Timestamp order_date;
 	private int product_id;
 	private String user_id;
 	
@@ -22,10 +22,10 @@ public class Order_history_DataBean {
 	public void setOrder_qnt(int order_qnt) {
 		this.order_qnt = order_qnt;
 	}
-	public Time getOrder_date() {
+	public Timestamp getOrder_date() {
 		return order_date;
 	}
-	public void setOrder_date(Time order_date) {
+	public void setOrder_date(Timestamp order_date) {
 		this.order_date = order_date;
 	}
 	public int getProduct_id() {

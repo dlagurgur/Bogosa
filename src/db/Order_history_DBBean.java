@@ -10,8 +10,8 @@ public class Order_history_DBBean {
 	private SqlSession session = SqlMapClient.getSession();
 	
 	
-	public int insertOrder(Order_history_DataBean order_history_dto) {
-		return session.insert("db.insertOrder", order_history_dto);
+	public int insertOrder(Order_history_DataBean orderDto) {
+		return session.insert("db.insertOrder", orderDto);
 	}
 
 

@@ -90,4 +90,22 @@
 	<delete id="deletProduct" parameterType="String">
 		delete from product where user_id=#{user_id}
 	</delete>
+	
+	
+	
+	<!--  /////////////////주문기록////////////////////// -->
+	<insert id="insertOrder" parameterType="db.Order_history_DataBean">
+		insert into order_history values(order_num, #{order_qnt}, (NOW()), #{product_id}, #{user_id})
+	</insert>
+	
+	
+		
+	<update id="updateUser_address" parameterType="java.util.Map">
+		update user_general set
+		user_addr=#{user_addr},
+		user_addr2=#{user_addr2}
+		where user_id=#{user_id}
+	</update>
+	
+	
 </mapper>

@@ -81,11 +81,6 @@ function EmailClose(){
 
 
 
-
-$(function() {
-    $( "#testDatepicker").datepicker({
-    });
-});
 //이메일 입력방식 선택
 $('#cus_email2').change(function(){
    $("#cus_email2 option:selected").each(function () {
@@ -131,6 +126,32 @@ function inputcheck() {
 	}
 }
 
+
+
+
+
+function orderNow(product_id) {
+	var menu_id=menuform.menu_id.value;
+	var menu_name=menuform.menu_name.value;
+	var menu_price=menuform.menu_price.value;
+	var menu_image=menuform.menu_image.value;
+	var order_qnt=menuform.qty.value;
+	var user_id = $("#session").val();    
+	var order=[{'product_id':menu_id, 'product_name':menu_name, 'product_price':menu_price, 'product_qnt':order_qnt, 'product_image':menu_image},];
+	
+	sessionStorage.setItem('order', JSON.stringify(order));
+	
+	if(!user_id) {			
+		alert('로그인 먼저 해 주세요.');
+		window.location.href='login.go';
+	} else {
+		window.location.href='order_insert.go';
+	}
+}
+
+
+
+
 /////댓글 목록 
 function commentList(tb_no){
 	var SessionID=$("input[name=session]").val();
@@ -160,23 +181,7 @@ function commentList(tb_no){
 	}
 
 
-function orderNow(menu_id) {
-	var menu_id=menuform.menu_id.value;
-	var menu_name=menuform.menu_name.value;
-	var menu_price=menuform.menu_price.value;
-	var menu_image=menuform.menu_image.value;
-	var order_qnt=menuform.qty.value;
-	var order=[{'menu_id':menu_id, 'menu_name':menu_name, 'menu_price':menu_price, 'order_qnt':order_qnt, 'menu_image':menu_image},];
-	
-	sessionStorage.setItem('order', JSON.stringify(order));
-	
-	if(!sessionStorage.getItem('cus_id')) {			
-		alert('로그인 먼저 해 주세요.');
-		window.location.href='cus_login_form.do?identifier=1';
-	} else {
-		window.location.href='cus_pay.do';
-	}
-}
+
 
 
 
