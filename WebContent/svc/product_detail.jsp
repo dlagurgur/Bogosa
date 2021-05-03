@@ -39,8 +39,7 @@
         <input id="inputMessage" type="text"/>
         <input type="submit" value="send" onclick="send()" />
 </fieldset>
-
-
+<input type="hidden" name="session" id="session" value="${sessionScope.user_id}" /> 
 
 
 			<div class="menuContent col-lg-4 mt-5">
@@ -108,6 +107,7 @@
         var textarea = document.getElementById("messageWindow");
         var webSocket = new WebSocket('ws://localhost:8787/Encore/broadcasting');
         var inputMessage = document.getElementById('inputMessage');
+        var session = $('#session').val();
     webSocket.onerror = function(event) {
       onError(event)
     };
@@ -121,7 +121,7 @@
     };
 
     function onMessage(event) {
-        textarea.value += "상대 : " + event.data + "\n";
+        textarea.value += session + " :  "+ event.data + "\n";
     }
 
     function onOpen(event) {
@@ -133,7 +133,7 @@
     }
 
     function send() {
-        textarea.value += "나 : " + inputMessage.value + "\n";
+        textarea.value += session + " :  " + inputMessage.value + "\n";
         webSocket.send(inputMessage.value);
         inputMessage.value = "";
     }
