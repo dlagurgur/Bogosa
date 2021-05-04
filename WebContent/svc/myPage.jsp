@@ -276,10 +276,18 @@ button {
 		</div>
 		
 		<div class="form__field">
+		<br>
+		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='Order_confirmation.go'" style="height: 65px;margin-top: 8px;" >판매기록 </button>&nbsp;&nbsp;					
+		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='Order_history_select.go'">주문기록</button>
+		</div>
+		
+		
+		<div class="form__field">
 					
 					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='product_insert.go'">방송 시작하기</button>
 				
 			</div>
+			
 			
 	
 	 	
