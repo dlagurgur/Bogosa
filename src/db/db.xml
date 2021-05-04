@@ -117,7 +117,7 @@
 	
 	<!-- ////////////판매자 주문기록/////////// -->
 	<select id="Order_confirmation" parameterType="String" resultType="db.Order_history_select_DataBean">
-	SELECT C.user_name, C.user_addr, P.product_price, O.order_qnt, P.product_name
+	SELECT O.order_num , C.user_name, C.user_addr, P.product_price, O.order_qnt, P.product_name, O.order_date
 	FROM order_history O
 	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
 	LEFT OUTER JOIN product P ON O.product_id = P.product_id
@@ -129,7 +129,7 @@
 	
 	<!-- ////////////사용자 주문기록/////////// -->
 	<select id="Select_order_history" parameterType="String" resultType="db.Order_history_select_DataBean">
-	SELECT C.user_name, C.user_addr, P.product_price, O.order_qnt, P.product_name
+	SELECT O.order_num , C.user_name, C.user_addr, P.product_price, O.order_qnt, P.product_name, O.order_date
     FROM order_history O
 	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
 	LEFT OUTER JOIN product P ON O.product_id = P.product_id
