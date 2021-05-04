@@ -108,11 +108,6 @@
 	</update>
 	
 	
-	<select id="getUser" parameterType="String"
-		resultType="db.UserDataBean">
-		select * from user_general where user_id=#{user_id}
-	</select>
-	
 	
 	
 	<!-- ////////////판매자 주문기록/////////// -->

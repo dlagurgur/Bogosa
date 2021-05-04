@@ -173,9 +173,6 @@ public class Svc_Form{
 	
 	
 	
-	
-	
-	
 	///////주문기록/////////////////
 	
 	///주문내역 확인/////
@@ -192,18 +189,18 @@ public class Svc_Form{
 	
 	
 	
-	
-	///판매한 물품 확인/////
-		@RequestMapping("/Order_confirmation")
-		public ModelAndView Order_confirmationProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-			//I don't know why but it fails to get userDto, so here I try to get it.
-			String user_id=(String)request.getSession().getAttribute("user_id");
-
-			List <Order_history_select_DataBean> cusorderlist = Order_history_selectDao.Order_confirmation(user_id);
-			request.setAttribute("cusorderlist", cusorderlist);						
-			
-			return new ModelAndView("svc/Order_confirmation");
-		}
+//	
+//	///판매한 물품 확인/////
+//		@RequestMapping("/Order_confirmation")
+//		public ModelAndView Order_confirmationProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+//			//I don't know why but it fails to get userDto, so here I try to get it.
+//			String user_id=(String)request.getSession().getAttribute("user_id");
+//
+//			List <Order_history_select_DataBean> cusorderlist = Order_history_selectDao.Order_confirmation(user_id);
+//			request.setAttribute("cusorderlist", cusorderlist);						
+//			
+//			return new ModelAndView("svc/Order_confirmation");
+//		}
 
 
 	

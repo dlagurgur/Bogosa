@@ -15,6 +15,7 @@ import db.UserDBBean;
 
 @Configuration
 public class CreateBean {
+	
 	@Bean
 	public UserDBBean userDao() {
 		return new UserDBBean();
