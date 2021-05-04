@@ -108,4 +108,34 @@
 	</update>
 	
 	
+	<select id="getUser" parameterType="String"
+		resultType="db.UserDataBean">
+		select * from user_general where user_id=#{user_id}
+	</select>
+	
+	
+	
+	<!-- ////////////판매자 주문기록/////////// -->
+	<select id="Order_confirmation" parameterType="String" resultType="db.Order_history_select_DataBean">
+	SELECT C.user_name, C.user_addr, P.product_price, O.order_qnt, P.product_name
+	FROM order_history O
+	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
+	LEFT OUTER JOIN product P ON O.product_id = P.product_id
+    WHERE
+	P.user_id = #{user_id}
+	</select>
+	
+
+	
+	<!-- ////////////사용자 주문기록/////////// -->
+	<select id="Select_order_history" parameterType="String" resultType="db.Order_history_select_DataBean">
+	SELECT C.user_name, C.user_addr, P.product_price, O.order_qnt, P.product_name
+    FROM order_history O
+	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
+	LEFT OUTER JOIN product P ON O.product_id = P.product_id
+    WHERE
+	C.user_id = #{user_id}
+	</select>
+	
+	
 </mapper>
