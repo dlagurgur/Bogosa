@@ -24,8 +24,8 @@ public class Order_history_select_DBBean {
 	
 	
 	
-	public Order_history_select_DataBean detailed_order_history(int order_num) {
-		return session.selectOne("db.detailed_order_history", order_num);
+	public List<Order_history_select_DataBean> detailed_order_history(int order_num) {
+		return session.selectList("db.detailed_order_history", order_num);
 	}
 	
 	

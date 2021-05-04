@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 
+
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ import db.Product_DBBean;
 import db.Product_DataBean;
 import db.UserDBBean;
 import db.UserDataBean;
+
 
 
 @Controller
@@ -191,10 +193,15 @@ public class Svc_Form{
 	@RequestMapping("/detailed_order_history")
 	public ModelAndView detailed_order_historyProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		//I don't know why but it fails to get userDto, so here I try to get it.
-		int order_num=Integer.parseInt(request.getParameter("order_num"));
-		System.out.println(order_num);
-		Order_history_select_DataBean  order_historyDto = Order_history_selectDao.detailed_order_history(order_num);
-		request.setAttribute("order_historyDto", order_historyDto);			
+		int order_num= Integer.parseInt(request.getParameter("order_num"));
+		String order_date = request.getParameter("order_date");
+		
+		List <Order_history_select_DataBean> order_historyDto = Order_history_selectDao.detailed_order_history(order_num);
+
+			
+		request.setAttribute("order_historyDto", order_historyDto);	
+		request.setAttribute("order_num", order_num);		
+		request.setAttribute("order_date", order_date);		
 		return new ModelAndView("svc/detailed_order_history");
 	}
 	
