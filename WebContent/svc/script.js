@@ -65,17 +65,9 @@ function IdCheck() {
 		});
 	}
 }
-$(document).ready(
-		function() {
-$('.clickableRow').on(
-		'click',
-		function(event) {
-			window.location=$(this).data('href');
-		}
-	);
-}
-		
-);
+
+
+
 
 function toMain() {
 	window.location.href='join.go';

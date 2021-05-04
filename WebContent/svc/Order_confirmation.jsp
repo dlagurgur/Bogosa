@@ -64,4 +64,18 @@
 
 		</div>
 	</body>
+
+<script>
+$(document).ready(
+		function() {
+$('.clickableRow').on(
+		'click',
+		function(event) {
+			window.location=$(this).data('href');
+		}
+	);
+}
+		
+);
+</script>
 </html>

@@ -192,7 +192,7 @@ public class Svc_Form{
 	public ModelAndView detailed_order_historyProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		//I don't know why but it fails to get userDto, so here I try to get it.
 		int order_num=Integer.parseInt(request.getParameter("order_num"));
-			
+		System.out.println(order_num);
 		Order_history_select_DataBean  order_historyDto = Order_history_selectDao.detailed_order_history(order_num);
 		request.setAttribute("order_historyDto", order_historyDto);			
 		return new ModelAndView("svc/detailed_order_history");
