@@ -119,17 +119,27 @@
     WHERE
 	P.user_id = #{user_id}
 	</select>
-	
 
 	
 	<!-- ////////////사용자 주문기록/////////// -->
 	<select id="Select_order_history" parameterType="String" resultType="db.Order_history_select_DataBean">
-	SELECT O.order_num , C.user_name, C.user_addr, P.product_price, O.order_qnt, P.product_name, O.order_date
+	SELECT O.order_num , C.user_name, C.user_addr,P.product_price, O.order_qnt, P.product_name, O.order_date
     FROM order_history O
 	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
 	LEFT OUTER JOIN product P ON O.product_id = P.product_id
     WHERE
 	C.user_id = #{user_id}
+	</select>
+	
+	
+	
+	<select id="detailed_order_history" parameterType="String" resultType="db.Order_history_select_DataBean">
+	SELECT O.order_num , C.user_name, C.user_addr, C.user_addr2,P.product_price, O.order_qnt, P.product_name, O.order_date
+	FROM order_history O
+	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
+	LEFT OUTER JOIN product P ON O.product_id = P.product_id
+    WHERE
+	O.order_num = #{order_num}
 	</select>
 	
 	

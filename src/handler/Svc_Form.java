@@ -187,20 +187,32 @@ public class Svc_Form{
 		return new ModelAndView("svc/Order_history_select");
 	}
 	
+
+	@RequestMapping("/detailed_order_history")
+	public ModelAndView detailed_order_historyProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		//I don't know why but it fails to get userDto, so here I try to get it.
+		int order_num=Integer.parseInt(request.getParameter("order_num"));
+			
+		Order_history_select_DataBean  order_historyDto = Order_history_selectDao.detailed_order_history(order_num);
+		request.setAttribute("order_historyDto", order_historyDto);			
+		return new ModelAndView("svc/detailed_order_history");
+	}
 	
 	
-//	
-//	///판매한 물품 확인/////
-//		@RequestMapping("/Order_confirmation")
-//		public ModelAndView Order_confirmationProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-//			//I don't know why but it fails to get userDto, so here I try to get it.
-//			String user_id=(String)request.getSession().getAttribute("user_id");
-//
-//			List <Order_history_select_DataBean> cusorderlist = Order_history_selectDao.Order_confirmation(user_id);
-//			request.setAttribute("cusorderlist", cusorderlist);						
-//			
-//			return new ModelAndView("svc/Order_confirmation");
-//		}
+	
+	
+	///판매한 물품 확인/////
+		@RequestMapping("/Order_confirmation")
+		public ModelAndView Order_confirmationProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+			//I don't know why but it fails to get userDto, so here I try to get it.
+			String user_id=(String)request.getSession().getAttribute("user_id");
+
+			List <Order_history_select_DataBean> cusorderlist = Order_history_selectDao.Order_confirmation(user_id);
+			request.setAttribute("cusorderlist", cusorderlist);						
+			
+			return new ModelAndView("svc/Order_confirmation");
+		}
+
 
 
 	

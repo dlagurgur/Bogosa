@@ -39,13 +39,13 @@
 					<tr>
 						<th scope="col" class="order_no">주문번호</th>
 						<th scope="col" class="order_date">날짜</th>
-						<th scope="col" class="menu_name">주문 품목</th>
+						<th scope="col" class="menu_name">주문내역</th>
 					</tr>
 				</thead>
 		
 			
 			
-				<c:forEach var="i" begin="0" end="${fn:length(cusorderlist)-1}" step="1">
+			<c:forEach var="i" begin="0" end="${fn:length(cusorderlist)-1}" step="1">
 				<c:set var="count" value="${counts[i]}"/>
 				<c:set var="cusorder" value="${cusorderlist[i]}"/>
 						<tr class="clickableRow" data-href="detailed_order_history.go?order_num=${cusorder.order_num}&order_date=${cusorder.order_date}">
@@ -60,7 +60,6 @@
 							</td>
 						</tr>
 					</c:forEach>
-			
 			</table>
 
 		</div>
