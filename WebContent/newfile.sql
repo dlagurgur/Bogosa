@@ -15,6 +15,7 @@ CREATE TABLE Order_history
 (
 	order_num int NOT NULL AUTO_INCREMENT,
 	order_date  timestamp,
+	order_qnt int NOT NULL,
 	product_id int NOT NULL,
 	user_id varchar(20) NOT NULL,
 	PRIMARY KEY (order_num)

@@ -20,9 +20,6 @@ var sizeerror="이미지 용량은 5M이하만 가능합니다.";
 
 
 
-
-
-
 //AJAX 또는 DOM
 var passwdch = 0;
 function passwordCheckFunction() {
@@ -181,9 +178,6 @@ function commentList(tb_no){
         }
     });
 	}
-
-
-
 
 
 

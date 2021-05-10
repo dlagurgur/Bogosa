@@ -105,7 +105,7 @@
 	
  <script type="text/javascript">
         var textarea = document.getElementById("messageWindow");
-        var webSocket = new WebSocket('ws://localhost:8787/Encore/broadcasting');
+        var webSocket = new WebSocket('ws://localhost:8000/Encore/broadcasting');
         var inputMessage = document.getElementById('inputMessage');
         var session = $('#session').val();
     webSocket.onerror = function(event) {
