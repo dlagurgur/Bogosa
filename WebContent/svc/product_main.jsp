@@ -48,34 +48,13 @@
 			</div>
 			
 		</div>
-<iframe src="${project}config.txt" id="config"></iframe>
 	</body>
 	
 	
-<script src="${project}aws-sdk-2.897.0.min.js"> </script>
+
 
 <script type="text/javascript">
 
-
-
-AWS.config.region = 'us-east-1'; // 리전
-AWS.config.update({"accessKeyId": "AKIAUUHFXRLVBFMMWAY3","secretAccessKey": "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","region": "us-east-1"});
-
-var ivs = new AWS.IVS();
-
-var params = {
-    authorized : false ,
-    name: 'test7' //{user_id를 채널이름으로}
-  };
-  
-  ivs.createChannel(params, function(err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    else     console.log(data);           // successful response
-    var a = (JSON.stringify(data))
-    console.log(a)
-    var a1 = JSON.parse(channel) 
-    console.log(a1)
-  });
   </script>
   
 

@@ -46,6 +46,9 @@ CREATE TABLE User_general
 	user_addr2 varchar(20) NOT NULL,
 	user_email varchar(30) NOT NULL,
 	user_corp int(5) NOT NULL,
+	a varchar(1000) NOT NULL,
+	b varchar(1000) NOT NULL,
+	c varchar(1000) NOT NULL,
 	PRIMARY KEY (user_id),
 	UNIQUE (user_id),
 	UNIQUE (user_email)
@@ -77,6 +80,14 @@ ALTER TABLE product
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
+
+
+
+ALTER TABLE product convert to charset utf8;
+
+ALTER TABLE Order_history convert to charset utf8;
+
+ALTER TABLE User_general convert to charset utf8;
 
 
 

@@ -1,22 +1,12 @@
 /* 회원 관리 */
 var emailerror = "이메일 형식에 맞지 않습니다";
 var confirmerror = "아이디 중복확인 해 주세요";
-var gendererror = "성별을 선택해 주세요";
 
 var emailconfirmerror = "이메일 인증에 실패하였습니다."
 var inputerror = "회원가입에 실패했습니다.\n잠시 후 다시 시도하세요.";
 var loginiderror = "입력하신 아이디가 없습니다.\n아이디를 다시 확인하세요.";
 var loginpasswderror = "입력하신 비밀번호가 다릅니다.\n비밀번호를 다시 확인하세요.";
 var deleteerror = "회원탈퇴에 실패했습니다.\n잠시 후 다시 시도하세요.";
-
-/* 게시물 관리 */
-var trip_tileerror = "글제목을 입력해주세요";
-var contenterror = "글내용을 입력해주세요";
-
-var boarddeleteerror="게시물 삭제에 실패했습니다.\n잠시후 다시 시도하세요";
-var photodeleteerror="사진 삭제에 실패했습니다.\n잠시후 다시 시도하세요";
-var extensionerror="jpg, gif, png 확장자만 업로드 가능합니다.";
-var sizeerror="이미지 용량은 5M이하만 가능합니다.";
 
 
 
@@ -105,6 +95,50 @@ function EmailIdPasswd(email2){
 }
 
 
+var AWS = 0;
+function AWScheck(){
+	var user_id = $('#id_val').val();
+	if (!user_id){
+		alert('아이디를 입력해주세요')
+		return false;
+	}else{
+		
+	
+	AWS.config.update({
+		  "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
+		  "secretAccessKey": "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",
+		  "region": "us-east-1"
+		});
+
+		// AWS.config.loadFromPath('./config.json');
+		AWS.config.region = 'us-east-1'; // 리전
+
+		var ivs = new AWS.IVS();
+
+		var params = {
+		    authorized : false ,
+		    name: user_id //{user_id를 채널이름으로}
+		  };
+		  ivs.createChannel(params, function(err, data) {
+		    if (err) console.log(err, err.stack); // an error occurred
+		    else     console.log(data);        
+		    var a = data.channel.playbackUrl; // 영상 url
+		    var b = data.streamKey.value;	// 키값
+		    var c = data.channel.ingestEndpoint; // 키값
+		    document.getElementById("a").value = a
+		    document.getElementById("b").value = b
+		    document.getElementById("c").value = c
+		    AWS = 1;
+		    alert("채널 생성완료!")
+		    // return a, b; // successful response
+		  });
+  
+	}
+
+	
+}
+
+
 
 
 function inputcheck() {
@@ -118,14 +152,12 @@ function inputcheck() {
 		} else if (passwdch == 0){
 			alert('비밀번호를 같도록 입력하세요');
 			return false;
-		} else {
+		} else {			
 			alert("회원가입을 축하합니다");
 			$("#inputform").button();
 		}
 	}
 }
-
-
 
 
 
@@ -151,33 +183,6 @@ function orderNow(product_id) {
 
 
 
-/////댓글 목록 
-function commentList(tb_no){
-	var SessionID=$("input[name=session]").val();
-	$.ajax({
-        url : 'commentSelect.go',
-        type : 'get',
-        data : {tb_no : tb_no},
-        success : function(data){
-            var commentView ='';
-            var UserName = 'Ex-User';
-            $.each(data, function(key, comment){ 
-            	commentView += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-            	commentView += '</div class="commentInfo'+comment.c_id+'"><b>'+comment.user_name+'</b>';
-            	if(SessionID == comment.user_id && comment.user_name != UserName){
-            	commentView += '<a onclick="commentUpdate('+comment.c_id+',\''+comment.c_content+'\');"> 수정 </a>';
-            	commentView += '<a onclick="commentDelete('+comment.c_id+');"> 삭제 </a>';
-            	}
-            	commentView += '<div class="commentContent"> <p>'+comment.c_content +'</p>';
-            	commentView += '</div></div>'
-            });
-            $(".commentList").html(commentView);
-        },
-        error : function(error) {
-            alert("댓글을 입력해주세요!");
-        }
-    });
-	}
 
 
 

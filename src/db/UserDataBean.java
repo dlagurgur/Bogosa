@@ -9,6 +9,9 @@ public class UserDataBean {
 	private String user_addr2;
 	private String user_email;
 	private int user_corp;
+	private String a;
+	private String b;
+	private String c;
 	
 	
 	public String getUser_id() {
@@ -75,6 +78,33 @@ public class UserDataBean {
 	}
 	public void setUser_corp(int user_corp) {
 		this.user_corp = user_corp;
+	}
+	
+	
+	
+	public String getA() {
+		return a;
+	}
+	public void setA(String a) {
+		this.a = a;
+	}
+	
+	
+	public String getB() {
+		return b;
+	}
+	public void setB(String b) {
+		this.b = b;
+	}
+	
+	
+	
+	
+	public String getC() {
+		return c;
+	}
+	public void setC(String c) {
+		this.c = c;
 	}
 	
 	

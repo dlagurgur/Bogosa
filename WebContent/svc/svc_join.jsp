@@ -19,6 +19,7 @@
     <!-- Bootstrap core CSS -->
 	 <!-- Custom style for this template -->
 	<script src="${project}script.js"></script>
+	<script src="${project}aws-sdk-2.897.0.min.js"> </script>
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
@@ -313,6 +314,7 @@ button {
         
         
         
+        
         <div class="form__field">
           <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
           <input style="color:white;" id="user_email"  name="user_email" type="text" class="form__input" placeholder="Email" required>
@@ -322,11 +324,7 @@ button {
  								<button type="button" class="btn btn-md btn-secondary" onclick="emailAuthentic()">이메일인증</button>
 								<input type="hidden" id="ccccc" name="confirm" value="0">
 							</div>
-							
-		
-        
-        
-        
+						
         
         
         <div class="form__field">
@@ -339,11 +337,26 @@ button {
 			</div>
 			
 			
+			
+					<div class="form__field">
+ 								<button type="button" class="btn btn-md btn-secondary" onclick="AWScheck()">방송 채널 생성</button>
+								<input type="hidden" id="a" name="a" >
+								<input type="hidden" id="b" name="b" >
+								<input type="hidden" id="c" name="c" >
+		</div>		
+			
+			
 			<div class="form__field">
+		
+		
+		
+			
+			
+	
 		
      <input type="submit" value="회원 가입">&nbsp;	&nbsp;			
        <button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='login.go'">취소</button>
-				
+
 </div>
 
 
@@ -358,6 +371,8 @@ button {
 
 </html>
 <script>
+
+
 function emailAuthentic(){
 	var url="emailCheck.go?email="+joinform.user_email.value;
 	window.open(url, "b", "width=600,height=300,scrollbars=yes,resizeable=no,left=150,top=150") 

@@ -78,6 +78,18 @@ public class Svc_pro{
 		userDto.setUser_email(request.getParameter("user_email"));
 		userDto.setUser_corp(corp);
 		
+		String a = request.getParameter("a");
+		String b = request.getParameter("b");
+		String c = request.getParameter("c");
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(c);
+		
+		
+		userDto.setA(request.getParameter("a"));
+		userDto.setB(request.getParameter("b"));
+		userDto.setC(request.getParameter("c"));
+		
 		String cus_tel = null;
 		String cus_tel1 = request.getParameter( "cus_tel1" );
 		String cus_tel2 = request.getParameter( "cus_tel2" );

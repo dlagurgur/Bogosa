@@ -209,6 +209,40 @@ button {
 </style>
 </head>
 
+
+
+
+
+
+
+<script language="JavaScript"> 
+function check()
+{ 
+	document.zz.a1.value = "a3" document.zz.submit(); 
+}
+
+</script> <body>
+ <Input Type="hidden" name="a1" value=""> 
+ <Input Type="Button" OnClick="check();" value="버튼"> 
+ </form> 
+ </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body class="align" style="padding-top: 20px;margin-right: 160px; color:white;">
 
   

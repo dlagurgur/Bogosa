@@ -190,6 +190,7 @@ public class Svc_Form{
 	}
 	
 
+	
 	@RequestMapping("/detailed_order_history")
 	public ModelAndView detailed_order_historyProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		//I don't know why but it fails to get userDto, so here I try to get it.
