@@ -269,14 +269,14 @@ button {
 		</div>
 		
 		<div class="form__field">
-		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">방송</label>
-				<input style="color:white;" class="form__input" type="text" value="${userDto.a}" readonly>
+		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">방송키</label>
+				<input style="color:white;" class="form__input" type="text" value="${userDto.b}" readonly>
 		</div>
 		
 		
 		<div class="form__field">
-		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">방송</label>
-				<input style="color:white;" class="form__input" type="text" value="${userDto.b}" readonly>
+		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">방송키</label>
+				<input style="color:white;" class="form__input" type="text" value="${userDto.c}" readonly>
 		</div>
 		
 		
