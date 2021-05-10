@@ -89,7 +89,7 @@ public class Svc_pro{
 		
 		userDto.setA(request.getParameter("a"));
 		userDto.setB(request.getParameter("b"));
-		userDto.setC(request.getParameter("c"));
+		userDto.setC("rtmps://" + c + "/app/");
 		
 		String cus_tel = null;
 		String cus_tel1 = request.getParameter( "cus_tel1" );
