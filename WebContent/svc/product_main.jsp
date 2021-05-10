@@ -77,6 +77,111 @@ var params = {
     console.log(a1)
   });
   </script>
+  
+
 
  
-</html>
+</html> 
+
+
+<!-- 
+// var AWS = require("aws-sdk");
+
+AWS.config.update({
+  "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
+  "secretAccessKey": "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",
+  "region": "us-east-1"
+});
+
+// AWS.config.loadFromPath('./config.json');
+AWS.config.region = 'us-east-1'; // 리전
+
+var ivs = new AWS.IVS();
+
+var params = {
+    authorized : false ,
+    name: 'test4' //{user_id를 채널이름으로}
+  };
+  ivs.createChannel(params, function(err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else     console.log(data);        
+    var a = data.channel.playbackUrl;
+    var b = data.streamKey.value;
+    var c = data.channel.ingestEndpoint;
+    console.log(a);
+    console.log(b);
+    // return a, b; // successful response
+  });
+
+
+//   ivs.createChannel(params, function(err, data) {
+//     if (err) console.log(err, err.stack); // an error occurred
+//     else
+//     var elements = JSON.parse(data);
+//     return elements;           // successful response
+//   });
+
+// //   {
+// //     "channel": { 
+// //        "arn": "string",
+// //        "authorized": boolean,
+// //        "ingestEndpoint": "string",
+// //        "latencyMode": "string",
+// //        "name": "string",
+// //        "playbackUrl": "string",
+// //        "recordingConfigurationArn": "string",
+// //        "tags": { 
+// //           "string" : "string" 
+// //        },
+// //        "type": "string"
+// //     },
+// //     "streamKey": { 
+// //        "arn": "string",
+// //        "channelArn": "string",
+// //        "tags": { 
+// //           "string" : "string" 
+// //        },
+// //        "value": "string"
+// //     }
+// //  }
+
+// // var params = {
+// //     arn: 'STRING_VALUE' /* required */
+// //   };
+//   ivs.deleteChannel(params, function(err, data) {
+//     if (err) console.log(err, err.stack); // an error occurred
+//     else     console.log(data);           // successful response
+//   });
+
+  
+
+
+
+// // var params = {
+// //     arn: 'STRING_VALUE' /* required */
+// //   };
+
+//   ivs.getChannel(params, function(err, data) {
+//     if (err) console.log(err, err.stack); // an error occurred
+//     else     console.log(data);           // successful response
+//   });
+
+// //   {
+// //     "channel": { 
+// //        "arn": "string",
+// //        "authorized": boolean,
+// //        "ingestEndpoint": "string",
+// //        "latencyMode": "string",
+// //        "name": "string",
+// //        "playbackUrl": "string",
+// //        "recordingConfigurationArn": "string",
+// //        "tags": { 
+// //           "string" : "string" 
+// //        },
+// //        "type": "string"
+// //     }
+// //  }
+
+
+
+ -->
