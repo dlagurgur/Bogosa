@@ -411,13 +411,19 @@ public class Svc_pro{
 		
 	MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
 		
+	
+	
+	
+	
 		
+
+	
 		String product_name = multi.getParameter("product_name");
+		String aws_url = multi.getParameter("aws_url");
 		int product_category = Integer.parseInt(multi.getParameter("product_category"));
 		int product_price = Integer.parseInt(multi.getParameter("product_price"));
 		String product_detail = multi.getParameter("product_detail");
 		String user_id = multi.getParameter("session");
-	
 		@SuppressWarnings("rawtypes")
 		Enumeration files = multi.getFileNames();
 
@@ -425,11 +431,13 @@ public class Svc_pro{
 		filename = multi.getFilesystemName(file);
 	
 		
+		
 		product_dto.setProduct_name(product_name);
 		product_dto.setProduct_price(product_price);
 		product_dto.setProduct_category(product_category);
 		product_dto.setProduct_detail(product_detail);
 		product_dto.setUser_id(user_id);
+		product_dto.setAws_url(aws_url);
 		product_dto.setProduct_image(filename);
 			
 		

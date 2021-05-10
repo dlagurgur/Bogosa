@@ -31,6 +31,7 @@ CREATE TABLE product
 	product_category int NOT NULL,
 	product_detail varchar(5000) NOT NULL,
 	user_id varchar(20) NOT NULL,
+	aws_url varchar(200) NOT NULL,
 	PRIMARY KEY (product_id),
 	UNIQUE (product_id)
 );

@@ -22,10 +22,11 @@
 <script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
 <video id="video-player" playsinline width= 720 height= 480></video>
 <script>
+var asw_url = $('#aws_url').val();
   if (IVSPlayer.isPlayerSupported) {
     const player = IVSPlayer.create();
     player.attachHTMLVideoElement(document.getElementById('video-player'));
-    player.load('https://1735a613b59b.us-east-1.playback.live-video.net/api/video/v1/us-east-1.318309370602.channel.8r00mK4nocgM.m3u8');
+    player.load(asw_url);
     player.play();
   }
   
@@ -40,6 +41,7 @@
         <input type="submit" value="send" onclick="send()" />
 </fieldset>
 <input type="hidden" name="session" id="session" value="${sessionScope.user_id}" /> 
+<input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" /> 
 
 
 			<div class="menuContent col-lg-4 mt-5">

@@ -8,6 +8,7 @@ public class Product_DataBean {
 	private int product_category;
 	private String product_detail;
 	private String user_id;
+	private String aws_url;
 	
 	
 	public int getProduct_id() {
@@ -59,6 +60,14 @@ public class Product_DataBean {
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+	
+	
+	public String getAws_url() {
+		return aws_url;
+	}
+	public void setAws_url(String aws_url) {
+		this.aws_url = aws_url;
 	}
 	
 }
