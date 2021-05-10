@@ -22,13 +22,7 @@
 <script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
 <video id="video-player" playsinline width= 720 height= 480></video>
 <script>
-var asw_url = $('#aws_url').val();
-  if (IVSPlayer.isPlayerSupported) {
-    const player = IVSPlayer.create();
-    player.attachHTMLVideoElement(document.getElementById('video-player'));
-    player.load(asw_url);
-    player.play();
-  }
+
   
   
  
@@ -106,6 +100,19 @@ var asw_url = $('#aws_url').val();
 	</body>
 	
  <script type="text/javascript">
+ var aws_url = $('#aws_url').val();
+ if (IVSPlayer.isPlayerSupported) {
+	alert(aws_url);
+   const player = IVSPlayer.create();
+   player.attachHTMLVideoElement(document.getElementById('video-player'));
+   player.load(aws_url);
+   player.play();
+ }
+ 
+ 
+ 
+ 
+ 
         var textarea = document.getElementById("messageWindow");
         var webSocket = new WebSocket('ws://localhost:8000/Encore/broadcasting');
         var inputMessage = document.getElementById('inputMessage');
