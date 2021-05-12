@@ -157,10 +157,20 @@ h3 {
 }
 
 </style>
+
 	</head>
 	<body>
 		
 		<!-- Container -->
+<h1 style="
+    padding-left: 50px;
+    padding-bottom: 0px;
+    color:white;
+    margin-bottom: 0px;
+    width: 1550px;
+    height: 5px;
+    margin-top: 20px;
+">${Produt_dto.product_name}</h1>
 		<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
 <video controls id="video-player" style="
     padding-top: 0px;
@@ -173,15 +183,17 @@ h3 {
 
 
   <textarea id="messageWindow" rows="10" cols="50" readonly="true" style="
-    height: 699px;
+    height: 664px;
     width: 404px;
     background-color: black;
-    color:white;">
+    color:white;
+    margin-bottom: 35px;
+    ">
 
 </textarea>
 
-        <input id="inputMessage" type="text"/>
-        <input type="submit" value="send" onclick="send()" />
+        <input id="inputMessage" type="text" style=" background-color: black; color:white;"/>
+        <input type="submit" value="send" onclick="send()" style=" background-color: black; color:white;"/>
 
 
 
@@ -190,23 +202,13 @@ h3 {
 
 			<!-- Menu Item -->
 			<div class="menuItem col-lg-6 mt-5">
-				<img class="menuImg border-0 w-100" src="menu_images/${Produt_dto.product_image}" alt="Menu Img">
+				<img class="card-img-top img-fluid" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width: 800px;height: 500px;margin-left: 35px;margin-bottom: 0px;border-bottom-width: 50px;padding-bottom: 0px;margin-top: -40;">
 			</div>
 
 
 
-<!--  아마존 ivs  --> 	
 
-<script>
 
-  
-  
- 
-</script>
-
-<fieldset>
-
-</fieldset>
 <input type="hidden" name="session" id="session" value="${sessionScope.user_id}" /> 
 <input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" /> 
 
@@ -218,8 +220,8 @@ h3 {
       
     	        
         <div class="form__field">
-		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">아이디</label>
-				<input style="color:white;" class="form__input" type="text" value="${userDto.user_id}" readonly>
+		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">판매자</label>
+				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.user_id}" readonly>
 		</div>
 	 	
 <div class="form__field">
@@ -282,8 +284,7 @@ h3 {
 				
 			
 			
-			<div class="jumbotron bg-white">
-			</div>
+			
 	
 	</body>
 	
