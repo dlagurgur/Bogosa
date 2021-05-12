@@ -17,7 +17,7 @@
 		<div class="form-group row">
 		
 		
-		<input class="form-control" type="text" name="aws_url" id="aws_url" value="${userDto.a}" >
+		<input class="form-control" type="hidden" name="aws_url" id="aws_url" value="${userDto.a}" >
 			<div class="col-xs-2">
 				<label for="product_name">상품 명</label>
 			</div>

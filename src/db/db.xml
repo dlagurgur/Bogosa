@@ -95,7 +95,7 @@
 	
 	<!--  /////////////////주문기록////////////////////// -->
 	<insert id="insertOrder" parameterType="db.Order_history_DataBean">
-		insert into order_history values(order_num, #{order_qnt}, (NOW()), #{product_id}, #{user_id})
+		insert into order_history values(order_num, (NOW()),#{order_qnt}, #{product_id}, #{user_id})
 	</insert>
 	
 	

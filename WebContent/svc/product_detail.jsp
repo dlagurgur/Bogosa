@@ -20,7 +20,7 @@
 
 <!--  아마존 ivs  --> 	
 <script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
-<video id="video-player" playsinline width= 720 height= 480></video>
+<video controls id="video-player" width=1000 height= 480></video>
 <script>
 
   
@@ -102,7 +102,6 @@
  <script type="text/javascript">
  var aws_url = $('#aws_url').val();
  if (IVSPlayer.isPlayerSupported) {
-	alert(aws_url);
    const player = IVSPlayer.create();
    player.attachHTMLVideoElement(document.getElementById('video-player'));
    player.load(aws_url);
