@@ -35,7 +35,7 @@ html {
 }
 
 body {
-  background-color: #000000;
+  background-color: #151515;
   color: #606468;
   font: 400 0.875rem/1.5 "Open Sans", sans-serif;
   margin: 0;
@@ -212,12 +212,12 @@ background-color: bg-black;
 		<div class="container">
 			
 			<!-- Menu List shown in Cards -->
-			<div class="card-deck bg-black mt-4 mb-4" style="background-color: black;">
+			<div class="card-deck bg-black mt-4 mb-4" style="background-color: #151515;">
 				<c:forEach var="menu" items="${menus}">
 				<a class="menuListItem" href="product_detail.go?product_id=${menu.product_id}">
-					<div class="card bg-black mt-4 mb-4" style="background-color: black;">
+					<div class="card bg-black mt-4 mb-4" style="background-color: #151515;">
 						<img class="card-img-top img-fluid" src="menu_images/${menu.product_image}" alt="Menu Img" style="width: 300px; height: 170px;">
-						<div class="card-body text-center font-weight-bold flex-fill" style="background-color: black;">
+						<div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
 							<b class="card-title" style="color:#D8D8D8;">${menu.product_name}</b>
 							<p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p>
 						</div>

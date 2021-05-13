@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  background-color: #000000;
+  background-color: #151515;
   color: #606468;
   font: 400 0.875rem/1.5 "Open Sans", sans-serif;
   margin: 0;
@@ -36,6 +36,20 @@ a {
 a:focus, a:hover {
   text-decoration: underline;
 }
+
+button {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+}
+
+
+
 
 input {
   border: 0;
@@ -68,7 +82,7 @@ h3 {
   padding: 3rem 0;
 }
 
-.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form input[type="number"] {
+.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form button[type="button"],.form input[type="number"] {
   width: 100%;
 }
 .form--login {
@@ -78,7 +92,8 @@ h3 {
 .form input[type="number"],
 .form--login input[type="text"],
 .form--login input[type="password"],
-.form--login input[type="submit"] {
+.form--login input[type="submit"],
+.form--login button[type="button"] {
   border-radius: 0.25rem;
   padding: 1rem;
 }
@@ -132,8 +147,6 @@ h3 {
   width: 100%;
 }
 
-
-
 .form--login button[type="button"] {
   background-color: #AC58FA;
   color: #eee;
@@ -182,6 +195,7 @@ h3 {
   max-width: 20rem;
   width: 90%;
 }
+
 
 </style>
 
