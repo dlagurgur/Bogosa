@@ -22,7 +22,7 @@
 				<label for="product_name">상품 명</label>
 			</div>
 			<div class="col-xs-2">
-				<input class="form-control" type="text" name="product_name" id="product_name" maxlength="15">
+				<input class="form-control" type="text" name="product_name" id="product_name" maxlength="50">
 			</div>
 		</div>
 		<div class="form-group row">

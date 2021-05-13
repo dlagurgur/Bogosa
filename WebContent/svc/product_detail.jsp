@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  background-color: #2c3338;
+  background-color: #000000;
   color: #606468;
   font: 400 0.875rem/1.5 "Open Sans", sans-serif;
   margin: 0;
@@ -68,13 +68,14 @@ h3 {
   padding: 3rem 0;
 }
 
-.form input[type="password"], .form input[type="text"], .form input[type="submit"] {
+.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form input[type="number"] {
   width: 100%;
 }
 .form--login {
   color: #606468;
 }
 .form--login label,
+.form input[type="number"],
 .form--login input[type="text"],
 .form--login input[type="password"],
 .form--login input[type="submit"] {
@@ -82,28 +83,29 @@ h3 {
   padding: 1rem;
 }
 .form--login label {
-  background-color: #363b41;
+  background-color: #1C1C1C;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.form--login input[type="text"], .form--login input[type="password"] {
-  background-color: #3b4148;
+.form--login input[type="text"],.form input[type="number"], .form--login input[type="password"] {
+  background-color: #2E2E2E;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
-.form--login input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
-  background-color: #434A52;
+.form--login .form input[type="number"]:focus,input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
+  background-color: #2E2E2E;
 }
+
 .form--login input[type="submit"] {
-  background-color: #ea4c88;
+  background-color: #AC58FA;
   color: #eee;
   font-weight: bold;
   text-transform: uppercase;
 }
 .form--login input[type="submit"]:focus, .form--login input[type="submit"]:hover {
-  background-color: #d44179;
+  background-color: #AC58FA;
 }
 .form__field {
   display: -webkit-box;
@@ -118,6 +120,31 @@ h3 {
       -ms-flex: 1;
           flex: 1;
 }
+
+
+
+.form--login button[type="button"] {
+  border-radius: 0.15rem;
+  padding: 1rem;
+}
+
+.form button[type="button"] {
+  width: 100%;
+}
+
+
+
+.form--login button[type="button"] {
+  background-color: #AC58FA;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.form--login button[type="button"]:focus, .form--login input[type="button"]:hover {
+  background-color: #AC58FA;
+}
+
 
 .align {
   -webkit-box-align: center;
@@ -162,23 +189,16 @@ h3 {
 	<body>
 		
 		<!-- Container -->
-<h1 style="
-    padding-left: 50px;
-    padding-bottom: 0px;
-    color:white;
-    margin-bottom: 0px;
-    width: 1550px;
-    height: 5px;
-    margin-top: 20px;
-">${Produt_dto.product_name}</h1>
+
 		<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
+		
 <video controls id="video-player" style="
     padding-top: 0px;
     padding-left: 0px;
-    height: 700px;
+    height: 750px;
     width: 1300px;
-    margin-left: 50px;
-    margin-top: 50px;
+    margin-left: 70px;
+    margin-top: 20px;
 "></video>
 
 
@@ -187,14 +207,27 @@ h3 {
     width: 404px;
     background-color: black;
     color:white;
-    margin-bottom: 35px;
+    margin-bottom: 85px;
     ">
 
 </textarea>
 
+
+<h1 style="
+    padding-left: 60px;
+    padding-bottom: 0px;
+    color:white;
+    margin-bottom: 0px;
+    width: 1550px;
+    height: 5px;
+    margin-top: 20px;
+">${Produt_dto.product_name}</h1>
+
+<!--  
+
         <input id="inputMessage" type="text" style=" background-color: black; color:white;"/>
         <input type="submit" value="send" onclick="send()" style=" background-color: black; color:white;"/>
-
+-->
 
 
 
@@ -202,7 +235,7 @@ h3 {
 
 			<!-- Menu Item -->
 			<div class="menuItem col-lg-6 mt-5">
-				<img class="card-img-top img-fluid" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width: 800px;height: 500px;margin-left: 35px;margin-bottom: 0px;border-bottom-width: 50px;padding-bottom: 0px;margin-top: -40;">
+				<img class="card-img-top img-fluid" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width: 800px;height: 500px;margin-left: 35px;margin-bottom: 0px;border-bottom-width: 50px;padding-bottom: 0px;margin-top: 80;">
 			</div>
 
 
@@ -216,52 +249,56 @@ h3 {
 
     <div class="grid__container">
 
-	<form class="form form--login" name="joinform" method="post" role="form" style="width: 470px;">
+	<form class="form form--login" id="menuform" name="menuform" role="form" style="width: 870px;margin-left: 100px;margin-bottom: 0px;margin-top: -545;">
       
     	        
         <div class="form__field">
 		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">판매자</label>
 				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.user_id}" readonly>
 		</div>
-	 	
-<div class="form__field">
-					
-						<h3 class="mb-0"><strong>판매자${Produt_dto.user_id}</strong></h3>
-						<h3 class="text dark"><strong>방 제목 ${Produt_dto.product_name}</strong></h3>
-						<p class="text-dark pt-3 pl-3 pr-3">상품 내용 ${Produt_dto.product_detail}</p>
-						<h3 class="mb-0"><strong>가격 ${Produt_dto.product_price}원</strong></h3>
-</div>
-			<div class="form-group row">
-		       <label  class="col-sm-3 col-form-label">카테고리</label>
+		
+		<div class="form__field">
+		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품설명</label>
+				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
+		</div>
+		
+		<div class="form__field">
+		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
+				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
+		</div>
+
+		<div class="form__field">
+		        <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">카테고리</label>
 		       <c:if test="${Produt_dto.product_category eq 1}">
-					<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="가전디지털" readonly></div>
+					<input style="color:white;" class="form__input" type="text" value="가전디지털" readonly>
 				</c:if>
 				<c:if test="${Produt_dto.product_category eq 2}">
-						<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="식품" readonly></div>
+						<input style="color:white;" class="form__input" type="text" value="식품" readonly>
 				</c:if>
 				 <c:if test="${Produt_dto.product_category eq 3}">
-					<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="주방용품" readonly></div>
+					<input style="color:white;" class="form__input" type="text" value="주방용품" readonly>
 				</c:if>
 				<c:if test="${Produt_dto.product_category eq 4}">
-						<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="생활용품" readonly></div>
+						<input style="color:white;" class="form__input" type="text" value="생활용품" readonly>
 				</c:if>
 				 <c:if test="${Produt_dto.product_category eq 5}">
-					<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="의류" readonly></div>
+					<input style="color:white;" class="form__input" type="text" value="의류" readonly>
 				</c:if>
 				<c:if test="${Produt_dto.product_category eq 6}">
-						<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="취미" readonly></div>
+						<input style="color:white;" class="form__input" type="text" value="취미" readonly>
 				</c:if>
 				 <c:if test="${Produt_dto.product_category eq 7}">
-					<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;"  type="text" value="스포츠/레저" readonly></div>
+					<input style="color:white;" class="form__input" type="text" value="스포츠/레저" readonly>
 				</c:if>
 				
 				
 				
 				</div>
-						<div class="row">
-							<div class="input-group justify-content-center mt-3 mb-1">
-								<p>수량:&ensp;</p><input type="number" name="qty" class="form-control form-control-sm text-center font-weight-bold col-lg-3" value="1" min="1" max="19">
-							</div>
+				
+						<div class="form__field">
+							 <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">수량</label>
+								<input type="number" name="qty" class="form__input" value="1" min="1" max="19" style="color:white;">
+							
 						</div>
 					
 					
@@ -271,14 +308,17 @@ h3 {
 					<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">
 					
+		
+		
+
+
 				
-					<div class="mt-3 text-center">
+					<div class="form__field">
 						
-						<button type="button" class="btn btn-warning" onclick="orderNow(${Produt_dto.product_id})"><b>바로 주문하기</b></button>
-						<button type="button" class="mt-1 btn-warning" onclick="returnToList()"><b>목록으로 돌아가기</b></button>
+						<button type="button" class="btn btn-lg btn-secondary btn-block"  onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
 					</div>
 					
-					</form>
+			</form>
 					</div>
 			</div>
 				

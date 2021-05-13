@@ -35,7 +35,7 @@ html {
 }
 
 body {
-  background-color: #2c3338;
+  background-color: #000000;
   color: #606468;
   font: 400 0.875rem/1.5 "Open Sans", sans-serif;
   margin: 0;
@@ -62,6 +62,18 @@ input {
           transition: background-color .3s;
 }
 
+
+h3 {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+}
+
 .site__container {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -70,13 +82,14 @@ input {
   padding: 3rem 0;
 }
 
-.form input[type="password"], .form input[type="text"], .form input[type="submit"] {
+.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form input[type="number"] {
   width: 100%;
 }
 .form--login {
   color: #606468;
 }
 .form--login label,
+.form input[type="number"],
 .form--login input[type="text"],
 .form--login input[type="password"],
 .form--login input[type="submit"] {
@@ -84,28 +97,29 @@ input {
   padding: 1rem;
 }
 .form--login label {
-  background-color: #363b41;
+  background-color: #1C1C1C;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.form--login input[type="text"], .form--login input[type="password"] {
-  background-color: #3b4148;
+.form--login input[type="text"],.form input[type="number"], .form--login input[type="password"] {
+  background-color: #2E2E2E;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
-.form--login input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
-  background-color: #434A52;
+.form--login .form input[type="number"]:focus,input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
+  background-color: #2E2E2E;
 }
+
 .form--login input[type="submit"] {
-  background-color: #ea4c88;
+  background-color: #AC58FA;
   color: #eee;
   font-weight: bold;
   text-transform: uppercase;
 }
 .form--login input[type="submit"]:focus, .form--login input[type="submit"]:hover {
-  background-color: #d44179;
+  background-color: #AC58FA;
 }
 .form__field {
   display: -webkit-box;
@@ -120,6 +134,31 @@ input {
       -ms-flex: 1;
           flex: 1;
 }
+
+
+
+.form--login button[type="button"] {
+  border-radius: 0.15rem;
+  padding: 1rem;
+}
+
+.form button[type="button"] {
+  width: 100%;
+}
+
+
+
+.form--login button[type="button"] {
+  background-color: #AC58FA;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.form--login button[type="button"]:focus, .form--login input[type="button"]:hover {
+  background-color: #AC58FA;
+}
+
 
 .align {
   -webkit-box-align: center;
@@ -158,9 +197,12 @@ input {
   width: 90%;
 }
 
-
-
+.card{
+background-color: bg-black;
+}
 </style>
+
+
 	</head>
 	<body>
 		
@@ -170,14 +212,14 @@ input {
 		<div class="container">
 			
 			<!-- Menu List shown in Cards -->
-			<div class="card-deck mt-4 mb-4">
+			<div class="card-deck bg-black mt-4 mb-4" style="background-color: black;">
 				<c:forEach var="menu" items="${menus}">
 				<a class="menuListItem" href="product_detail.go?product_id=${menu.product_id}">
-					<div class="card mt-4 mb-4">
-						<img class="card-img-top img-fluid" src="menu_images/${menu.product_image}" alt="Menu Img" style="width: 300px; height: 250px;">
-						<div class="card-body text-center font-weight-bold flex-fill">
-							<b class="card-title text-danger">${menu.product_name}</b>
-							<p class="card-text text-dark">${menu.product_price}원</p>
+					<div class="card bg-black mt-4 mb-4" style="background-color: black;">
+						<img class="card-img-top img-fluid" src="menu_images/${menu.product_image}" alt="Menu Img" style="width: 300px; height: 170px;">
+						<div class="card-body text-center font-weight-bold flex-fill" style="background-color: black;">
+							<b class="card-title" style="color:#D8D8D8;">${menu.product_name}</b>
+							<p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p>
 						</div>
 					</div>
 				</a>
