@@ -97,6 +97,7 @@ h3 {
   border-radius: 0.25rem;
   padding: 1rem;
 }
+
 .form--login label {
   background-color: #1C1C1C;
   border-bottom-right-radius: 0;
@@ -237,7 +238,7 @@ h3 {
     margin-top: 20px;
 ">${Produt_dto.product_name}</h1>
 
-<!--  
+ <!--  
 
         <input id="inputMessage" type="text" style=" background-color: black; color:white;"/>
         <input type="submit" value="send" onclick="send()" style=" background-color: black; color:white;"/>
@@ -356,7 +357,7 @@ h3 {
  
  
         var textarea = document.getElementById("messageWindow");
-        var webSocket = new WebSocket('ws://localhost:8000/Encore/broadcasting');
+        var webSocket = new WebSocket('ws://localhost:8787/Encore/broadcasting');
         var inputMessage = document.getElementById('inputMessage');
         var session = $('#session').val();
     webSocket.onerror = function(event) {

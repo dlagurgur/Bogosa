@@ -190,9 +190,12 @@ public class Svc_Form{
 		//I don't know why but it fails to get userDto, so here I try to get it.
 		String user_id=(String)request.getSession().getAttribute("user_id");
 
+		int result = Order_history_selectDao.selectCountOrders(user_id);	
 			
+		
 		List <Order_history_select_DataBean> cusorderlist = Order_history_selectDao.Select_order_history(user_id);
-		request.setAttribute("cusorderlist", cusorderlist);			
+		request.setAttribute("cusorderlist", cusorderlist);
+		request.setAttribute("result", result);	
 		return new ModelAndView("svc/Order_history_select");
 	}
 	
@@ -221,9 +224,12 @@ public class Svc_Form{
 		public ModelAndView Order_confirmationProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 			//I don't know why but it fails to get userDto, so here I try to get it.
 			String user_id=(String)request.getSession().getAttribute("user_id");
+			
+			int result = Order_history_selectDao.selectconfirmation(user_id);	
 
 			List <Order_history_select_DataBean> cusorderlist = Order_history_selectDao.Order_confirmation(user_id);
-			request.setAttribute("cusorderlist", cusorderlist);						
+			request.setAttribute("cusorderlist", cusorderlist);
+			request.setAttribute("result", result);
 			
 			return new ModelAndView("svc/Order_confirmation");
 		}

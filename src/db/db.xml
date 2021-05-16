@@ -143,4 +143,26 @@
 	</select>
 	
 	
+	
+	<select id="selectCountOrders" parameterType="String" resultType="int">
+	SELECT count(*)
+    FROM order_history O
+	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
+	LEFT OUTER JOIN product P ON O.product_id = P.product_id
+    WHERE
+	C.user_id = #{user_id}
+	</select>
+	
+	
+	
+	
+	<select id="selectconfirmation" parameterType="String" resultType="int">
+	SELECT count(*)
+	FROM order_history O
+	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
+	LEFT OUTER JOIN product P ON O.product_id = P.product_id
+    WHERE
+	P.user_id = #{user_id}
+	</select>
+	
 </mapper>
