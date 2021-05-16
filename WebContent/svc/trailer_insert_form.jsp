@@ -12,60 +12,52 @@
 
 <!--enctype="multipart/form-data"-->
 <div class="container">
-	<form name="inputform" action="product_insert_pro.go" method="post" enctype="multipart/form-data" >
+	<form name="inputform" action="trailer_insert_pro.go" method="post">
 		<h3>상품에 대한 정보를 입력하세요</h3>
-		<div class="form-group row">
-		
-		
-		<input class="form-control" type="hidden" name="aws_url" id="aws_url" value="${userDto.a}" >
+		<div class="form-group row">		
 			<div class="col-xs-2">
 				<label for="product_name">상품 명</label>
 			</div>
 			<div class="col-xs-2">
-				<input class="form-control" type="text" name="product_name" id="product_name" maxlength="50">
+				<input class="form-control" type="text" name="trailer_name" id="trailer_name" maxlength="50">
 			</div>
+			
+			
+			<div class="col-xs-2">
+				<label for="product_name">방제목</label>
+			</div>
+			<div class="col-xs-2">
+				<input class="form-control" type="text" name="trailer_title" id="trailer_title" maxlength="50">
+			</div>			
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-2">
 				<label for="product_price">상품 가격</label>
 			</div>
 			<div class="col-xs-2">
-				<input class="form-control" type="number" name="product_price" id="product_price" maxlength="20">
+				<input class="form-control" type="number" name="trailer_price" id="trailer_price" maxlength="20">
 			</div>
 		</div>
-		<div class="form-group row">
+				<div class="form-group row">
 			<div class="col-xs-2">
-				<label for="product_image">상품 이미지 파일</label>
+				<label for="product_price">상품 이미지</label>
 			</div>
 			<div class="col-xs-2">
-				<input class="input" type="file" name="product_image" id="product_image">
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-xs-2">
-				<label for="product_category">분류</label>
-			</div>
-			<div class="col-xs-2">
-				<select name="product_category"	id="product_category">
-				  <option value="1">가전디지털</option>
-				  <option value="2">식품</option>
-				  <option value="3">주방용품</option>
-				  <option value="4">생활용품</option>
-				  <option value="5">의류</option>
-				  <option value="6">취미</option>
-				  <option value="7">스포츠/레저</option>
-				</select>
+				<input class="form-control" type="number" name="trailer_aws_url" id="trailer_aws_url" maxlength="20">
 			</div>
 		</div>
+	
 		<div class="form-group row">
 			<div class="col-xs-2">
 				<label for="product_detail">상품 설명</label>
 			</div>
 			<div class="col-xs-2">
-				<textarea class="form-control" name="product_detail" id="product_detail" rows="10" cols="30">
+				<textarea class="form-control" name="trailer_detail" id="trailer_detail" rows="10" cols="30">
 				</textarea>
 			</div>
 			
+			<input type="hidden" name="session" value="${user_id}" /> 
+			<input type="hidden" name="product_id" value="${product_id}" /> 
 			
 		</div>
 		<div class="form-group row">

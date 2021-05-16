@@ -109,14 +109,8 @@ public class Svc_Form{
 	
 	@RequestMapping("/product_insert")
 	public ModelAndView product_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		String user_id=(String)request.getSession().getAttribute("user_id");
-		if(user_id!=null) {
-			UserDataBean userDto=userDao.getUser(user_id);
-			request.setAttribute("userDto", userDto);
-		}
 		
-		
-		
+			
 		return new ModelAndView("svc/product_insert_form");
 	}
 	
@@ -236,5 +230,13 @@ public class Svc_Form{
 
 
 
+		
+		//////////// 라이브 예정 페이지 /////////////////////////////
+		@RequestMapping("/trailer_insert")
+		public ModelAndView trailer_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+			
+				
+			return new ModelAndView("svc/trailer_insert_form");
+		}
 	
 }

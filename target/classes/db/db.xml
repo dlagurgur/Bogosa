@@ -165,4 +165,19 @@
 	P.user_id = #{user_id}
 	</select>
 	
+	
+	
+	
+	
+	
+	<!-- /////////////라이브 예정 페이지////////////// -->
+	<insert id="insertTrailer" parameterType="db.Trailer_DataBean" >
+		insert into trailer(trailer_id, trailer_name,trailer_title, trailer_price, trailer_aws_url,trailer_detail, user_id)
+		values( trailer_id, #{trailer_name},#{trailer_title}, #{trailer_price},#{trailer_aws_url},#{trailer_detail}, #{user_id})
+		<selectKey keyProperty="trailer_id" resultType="int" order="AFTER">
+    		SELECT LAST_INSERT_ID()
+  		</selectKey>
+	</insert>
+	
+	
 </mapper>

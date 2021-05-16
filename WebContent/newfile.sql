@@ -5,6 +5,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS Order_history;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS User_general;
+DROP TABLE IF EXISTS trailer;
 
 
 
@@ -35,6 +36,25 @@ CREATE TABLE product
 	PRIMARY KEY (product_id),
 	UNIQUE (product_id)
 );
+
+
+
+CREATE TABLE trailer
+(
+	trailer_id int NOT NULL AUTO_INCREMENT,
+	trailer_name varchar(25) NOT NULL,
+	trailer_title varchar(25) NOT NULL,
+	trailer_price int NOT NULL,
+	trailer_aws_url varchar(300),
+	trailer_detail varchar(5000) NOT NULL,
+	user_id varchar(20) NOT NULL,
+	PRIMARY KEY (trailer_id),
+	UNIQUE (trailer_id)
+);
+
+
+
+
 
 
 CREATE TABLE User_general
@@ -83,12 +103,22 @@ ALTER TABLE product
 ;
 
 
+ALTER TABLE trailer
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_general (user_id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
 
 ALTER TABLE product convert to charset utf8;
 
 ALTER TABLE Order_history convert to charset utf8;
 
 ALTER TABLE User_general convert to charset utf8;
+
+ALTER TABLE trailer convert to charset utf8;
 
 
 
