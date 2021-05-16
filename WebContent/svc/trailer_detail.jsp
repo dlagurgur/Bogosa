@@ -344,50 +344,58 @@ h3 {
 	</body>
 	
  <script type="text/javascript">
- var aws_url = $('#aws_url').val();
- if (IVSPlayer.isPlayerSupported) {
-   const player = IVSPlayer.create();
-   player.attachHTMLVideoElement(document.getElementById('video-player'));
-   player.load(aws_url);
-   player.play();
- }
- 
- 
- 
- 
- 
-        var textarea = document.getElementById("messageWindow");
-        var webSocket = new WebSocket('ws://localhost:8787/Encore/broadcasting');
-        var inputMessage = document.getElementById('inputMessage');
-        var session = $('#session').val();
-    webSocket.onerror = function(event) {
-      onError(event)
-    };
+ var AWS = require("aws-sdk");
 
-    webSocket.onopen = function(event) {
-      onOpen(event)
-    };
+ AWS.config.update({
+   "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
+   "secretAccessKey": "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",
+   "region": "us-east-1"
+ });
 
-    webSocket.onmessage = function(event) {
-      onMessage(event)
-    };
+ var s3 = new AWS.S3();
+    
+     s3.getObject({
+         Bucket: "transvideo-source71e471f1-knewdmajkw29", 
+         Key: "jobs-manifest.json"
+        }
+        , function(err, data) {
+         if (err) console.log(err, err.stack); // an error occurred
+         else
+            // console.log(data.Body.toString());           // successful response
+            data = data.Body.toString();
+            // console.log(a);
+            data = JSON.parse(data);
+            
+            data = data.Jobs.filter(function(element){
+                return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/파일명';
+        
+             });
+            console.log(data[0].Outputs.HLS_GROUP[0]);
+        });
 
-    function onMessage(event) {
-        textarea.value += session + " :  "+ event.data + "\n";
-    }
+     
+     
+        s3.upload({
+            Bucket: 'bucket',
+             Key: '업로드할 파일명'}, function(err, data) {
+         console.log(err, data);
+       });
 
-    function onOpen(event) {
-        textarea.value += "연결 성공\n";
-    }
 
-    function onError(event) {
-      alert(event.data);
-    }
+//     s3.getObject(params, function(err, data) {
+//       if (err) console.log(err, err.stack); // an error occurred
+//       else
+//          // console.log(data.Body.toString());           // successful response
+//          var a = data.Body.toString();
+//          // console.log(a);
+//          var b = JSON.parse(a);
+//          var c = b.Jobs;
+//          var d = c.filter(function(element){
+//              return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/Pexels Videos 2219383.mp4';
+     
+//           });
+//          console.log(d[0].Outputs.HLS_GROUP[0]);
+//      });
 
-    function send() {
-        textarea.value += session + " :  " + inputMessage.value + "\n";
-        webSocket.send(inputMessage.value);
-        inputMessage.value = "";
-    }
   </script>
 </html>

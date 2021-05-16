@@ -92,11 +92,25 @@
 	</delete>
 	
 	
+	<delete id="trailer" parameterType="String">
+			delete from trailer where user_id=#{user_id}
+	</delete>
+	
+		<delete id="order" parameterType="String">
+			delete from order_history where user_id=#{user_id}
+	</delete>
+	
+	<delete id="product" parameterType="String">
+			delete from product where user_id=#{user_id}
+	</delete>
 	
 	<!--  /////////////////주문기록////////////////////// -->
 	<insert id="insertOrder" parameterType="db.Order_history_DataBean">
 		insert into order_history values(order_num, (NOW()),#{order_qnt}, #{product_id}, #{user_id})
 	</insert>
+	
+	
+	
 	
 	
 		

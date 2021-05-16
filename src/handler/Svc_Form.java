@@ -238,5 +238,13 @@ public class Svc_Form{
 				
 			return new ModelAndView("svc/trailer_insert_form");
 		}
+		
+		
+		@RequestMapping("/trailer_detail")
+		public ModelAndView trailer_detailprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+			
+				
+			return new ModelAndView("svc/trailer_detail");
+		}
 	
 }

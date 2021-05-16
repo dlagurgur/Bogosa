@@ -80,6 +80,21 @@ public class UserDBBean {
 	}
 	
 	
+	public int trailer(String user_id) {
+		return session.delete("db.trailer", user_id);
+	}
+	
+	public int order(String user_id) {
+		return session.delete("db.order", user_id);
+	}
+	
+	
+	public int product(String user_id) {
+		return session.delete("db.product", user_id);
+	}
+
+	
+
 	public int deletProduct(String user_id) {
 		return session.delete("db.deletProduct", user_id);
 	}

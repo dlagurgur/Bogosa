@@ -33,6 +33,9 @@
 				<input class="form-control" type="number" name="product_price" id="product_price" maxlength="20">
 			</div>
 		</div>
+	
+		
+		
 		<div class="form-group row">
 			<div class="col-xs-2">
 				<label for="product_image">상품 이미지 파일</label>
@@ -41,6 +44,8 @@
 				<input class="input" type="file" name="product_image" id="product_image">
 			</div>
 		</div>
+		
+		
 		<div class="form-group row">
 			<div class="col-xs-2">
 				<label for="product_category">분류</label>
@@ -65,7 +70,8 @@
 				<textarea class="form-control" name="product_detail" id="product_detail" rows="10" cols="30">
 				</textarea>
 			</div>
-			
+						<input type="hidden" name="session" id="session" value="${user_id}" /> 
+			<input type="hidden" name="product_id" value="${product_id}" /> 
 			
 		</div>
 		<div class="form-group row">
