@@ -1,10 +1,6 @@
 package handler;
 
 import javax.servlet.http.HttpServletRequest;
-
-
-
-
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +14,8 @@ import db.Order_history_select_DBBean;
 import db.Order_history_select_DataBean;
 import db.Product_DBBean;
 import db.Product_DataBean;
+import db.Trailer_DBBean;
+import db.Trailer_DataBean;
 import db.UserDBBean;
 import db.UserDataBean;
 
@@ -36,6 +34,9 @@ public class Svc_Form{
 	
 	@Resource
 	private Order_history_select_DBBean Order_history_selectDao;
+	
+	@Resource
+	private Trailer_DBBean Trailer_Dao;
 	
 	
 	// 회원 가입
@@ -288,16 +289,15 @@ public class Svc_Form{
 		public ModelAndView trailer_selectprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 			String user_id=(String)request.getSession().getAttribute("user_id");
 
-			int result = Product_Dao.selectCountProduct(user_id);	
+			int result = Trailer_Dao.selectCounttrailer(user_id);	
 			
 			
 			
 			
 			
-			List <Product_DataBean> Produt_dto = Product_Dao.selectProduct(user_id);
-			System.out.println(Produt_dto);
+			List <Trailer_DataBean> Trailer_dto = Trailer_Dao.trailer_select(user_id);
 			request.setAttribute("result", result);
-			request.setAttribute("Produt_dto", Produt_dto);
+			request.setAttribute("Produt_dto", Trailer_dto);
 			
 			return new ModelAndView("svc/trailer_select");
 		}

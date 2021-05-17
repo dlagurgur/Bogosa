@@ -209,6 +209,12 @@
   		</selectKey>
 	</insert>
 	
+	<select id=	"trailer_select" resultType="db.Trailer_DataBean" parameterType="String">
+		select * from trailer where user_id=#{user_id}
+	</select>
+	
+	
+	
 	
 		<select id="detailTrailer" resultType="db.Trailer_DataBean" parameterType="int">
 		select * from trailer where trailer_id=#{trailer_id}

@@ -10,7 +10,7 @@ import bean.SqlMapClient;
 public class Trailer_DBBean{
 	private SqlSession session = SqlMapClient.getSession();
 	
-
+///////////////////////상혁///////////////////////////////////
 	public int insertTrailer(Trailer_DataBean trailer_dto) {
 		return session.insert("db.insertTrailer", trailer_dto);
 	}
@@ -20,8 +20,20 @@ public class Trailer_DBBean{
 		return session.selectOne("db.detialProduct", product_id);
 	}
 
-
-
+	
+	public List<Trailer_DataBean> trailer_select(String user_id) {
+		return session.selectList("db.trailer_select", user_id);
+	}
+	
+	
+	
+	public int selectCounttrailer(String user_id) {
+		return session.selectOne("db.selectCounttrailer", user_id);
+	}
+	
+	
+	
+///////////////////종현 /////////////////////////////
 	public List<Product_DataBean> selectProduct(String user_id) {
 		return session.selectOne("db.selectProduct", user_id);
 	}
