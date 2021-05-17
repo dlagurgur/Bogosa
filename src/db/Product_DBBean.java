@@ -19,6 +19,12 @@ public class Product_DBBean{
 		return session.selectOne("db.detialProduct", product_id);
 	}
 	
+	
+	public List<Product_DataBean> selectProduct(String user_id) {
+		return session.selectOne("db.detialProduct", user_id);
+	}
+	
+	
 	public Product_DataBean getProductid( ) {
 		return session.selectOne("db.getUser");
 	}

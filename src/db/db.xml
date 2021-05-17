@@ -74,6 +74,12 @@
 	</select>
 	
 	
+		<select id="selectProduct" resultType="db.Product_DataBean" parameterType="String">
+		select * from product where user_id=#{user_id}
+	</select>
+	
+	
+	
 	
 	<select id="selectMenusByCategory" parameterType="java.util.Map" resultType="db.Product_DataBean">
 		select * from product where product_category=#{product_category} order by product_id desc

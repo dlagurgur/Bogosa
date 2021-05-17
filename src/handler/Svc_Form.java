@@ -128,6 +128,24 @@ public class Svc_Form{
 	
 	
 	
+	@RequestMapping("/product_select")
+	public ModelAndView product_selectprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		String user_id=(String)request.getSession().getAttribute("user_id");
+		
+		List <Product_DataBean> Produt_dto = Product_Dao.selectProduct(user_id);
+		request.setAttribute("Produt_dto", Produt_dto);
+		
+		return new ModelAndView("svc/product_select");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/product_main")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
