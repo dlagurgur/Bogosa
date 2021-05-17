@@ -86,7 +86,7 @@ ALTER TABLE Order_history
 	ADD FOREIGN KEY (product_id)
 	REFERENCES product (product_id)
 	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON DELETE Cascade
 ;
 
 
@@ -94,7 +94,7 @@ ALTER TABLE Order_history
 	ADD FOREIGN KEY (user_id)
 	REFERENCES User_general (user_id)
 	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON DELETE Cascade
 ;
 
 
@@ -102,7 +102,7 @@ ALTER TABLE product
 	ADD FOREIGN KEY (user_id)
 	REFERENCES User_general (user_id)
 	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON DELETE Cascade
 ;
 
 
@@ -110,7 +110,7 @@ ALTER TABLE trailer
 	ADD FOREIGN KEY (user_id)
 	REFERENCES User_general (user_id)
 	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON DELETE Cascade
 ;
 
 

@@ -14,17 +14,19 @@
 <div class="container">
 	<form name="inputform" action="product_insert_pro.go" method="post" enctype="multipart/form-data" >
 		<h3>상품에 대한 정보를 입력하세요</h3>
-		<div class="form-group row">
 		
 		
-		<input class="form-control" type="hidden" name="aws_url" id="aws_url" value="${userDto.a}" >
+<div class="form-group row">		
 			<div class="col-xs-2">
 				<label for="product_name">상품 명</label>
 			</div>
 			<div class="col-xs-2">
 				<input class="form-control" type="text" name="product_name" id="product_name" maxlength="50">
-			</div>
-		</div>
+			</div>		
+		
+</div>		
+		
+		
 		<div class="form-group row">
 			<div class="col-xs-2">
 				<label for="product_price">상품 가격</label>
@@ -72,6 +74,8 @@
 			</div>
 						<input type="hidden" name="session" id="session" value="${user_id}" /> 
 			<input type="hidden" name="product_id" value="${product_id}" /> 
+					
+		<input type="hidden" name="aws_url" id="aws_url" value="${userDto.a}" >
 			
 		</div>
 		<div class="form-group row">

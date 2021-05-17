@@ -383,10 +383,10 @@ public class Svc_pro{
 		
 		
 		if(user_pw.equals(userDto.getUser_pw()) ) {
-			userDao.deletProduct(user_id);
+//			userDao.deletProduct(user_id);
 			userDao.deleteCustomer(user_id);
-			userDao.trailer(user_id);
-			userDao.order(user_id);
+//			userDao.trailer(user_id);
+//			userDao.order(user_id);
 		
 			result = 1;
 		} else {
