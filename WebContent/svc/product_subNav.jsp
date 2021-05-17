@@ -29,6 +29,11 @@
 			<li class="nav-item">
 			<a class="nav-link text-white ml-5 mr-5" href="product_main.go?menu_category=7">스포츠/레저</a>
 		</li>
+		
+		
+		<li class="nav-item">
+			<a class="nav-link text-white ml-5 mr-5" href="product_main.go?menu_category=8">라이브 예정</a>
+		</li>
 
 	</ul>
 </nav>

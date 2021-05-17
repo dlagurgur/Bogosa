@@ -96,6 +96,11 @@
 			<li class="nav-item">
 			<a class="nav-item" href="product_main.go?menu_category=7">스포츠/레저</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
+		
+		
+		<li class="nav-item">
+			<a class="nav-item" href="trailer_main.go">라이브 예정</a>
+		</li>
 				</ul>
 				<form class="form form--login" name="serch_trip" method="post" action="searchTrip.go" >
 
@@ -159,6 +164,11 @@
 		</li>
 			<li class="nav-item">
 			<a class="nav-item" href="product_main.go?menu_category=7">스포츠/레저</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		
+		<li class="nav-item">
+			<a class="nav-item" href="trailer_main.go">라이브 예정</a>
 		</li>
 				</ul>
 		

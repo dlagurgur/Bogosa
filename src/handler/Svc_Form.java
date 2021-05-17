@@ -150,7 +150,6 @@ public class Svc_Form{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
 		int product_category=Integer.parseInt(request.getParameter("menu_category"));
-		System.out.println(product_category);
 		if(product_category > 0) {
 
 			
@@ -263,6 +262,14 @@ public class Svc_Form{
 			
 				
 			return new ModelAndView("svc/trailer_detail");
+		}
+		
+		
+		@RequestMapping("/trailer_main")
+		public ModelAndView trailer_mainprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+			
+		
+			return new ModelAndView("svc/trailer_main");
 		}
 	
 }
