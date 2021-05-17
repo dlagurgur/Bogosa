@@ -100,9 +100,8 @@
     var fileChooser = document.getElementById('file-chooser');
     var button = document.getElementById('upload-button');
     var results = document.getElementById('results');
-    var session = document.getElementById('session');
-    
-    
+    var session = $('#session').val();
+    alert(session);
     button.addEventListener("click", function(){
         var file = fileChooser.files[0];
 
