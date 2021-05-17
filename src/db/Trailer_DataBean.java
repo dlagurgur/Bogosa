@@ -1,5 +1,7 @@
 package db;
 
+import java.sql.Timestamp;
+
 public class Trailer_DataBean {
 	private int trailer_id;
 	private String trailer_name;
@@ -7,7 +9,10 @@ public class Trailer_DataBean {
 	private int trailer_price;
 	private String trailer_aws_url;
 	private String trailer_detail;
+	private Timestamp trailer_launchdate;
+	private Timestamp trailer_updatedate;
 	private String user_id;
+	
 	public int getTrailer_id() {
 		return trailer_id;
 	}
@@ -43,6 +48,18 @@ public class Trailer_DataBean {
 	}
 	public void setTrailer_detail(String trailer_detail) {
 		this.trailer_detail = trailer_detail;
+	}
+	public Timestamp getTrailer_launchdate() {
+		return trailer_launchdate;
+	}
+	public void setTrailer_launchdate(Timestamp trailer_launchdate) {
+		this.trailer_launchdate = trailer_launchdate;
+	}
+	public Timestamp getTrailer_updatedate() {
+		return trailer_updatedate;
+	}
+	public void setTrailer_updatedate(Timestamp trailer_updatedate) {
+		this.trailer_updatedate = trailer_updatedate;
 	}
 	public String getUser_id() {
 		return user_id;
