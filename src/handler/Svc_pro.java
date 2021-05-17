@@ -39,6 +39,8 @@ import db.Order_history_DBBean;
 import db.Order_history_DataBean;
 import db.Product_DBBean;
 import db.Product_DataBean;
+import db.Trailer_DBBean;
+import db.Trailer_DataBean;
 import db.UserDBBean;
 import db.UserDataBean;
 
@@ -54,6 +56,9 @@ public class Svc_pro{
 	
 	@Resource
 	private Product_DBBean Product_Dao;
+	
+	@Resource
+	private Trailer_DBBean Trailer_Dao;
 	
 	
 	@Resource
@@ -274,6 +279,7 @@ public class Svc_pro{
 				}
 			});
 
+			
 			Message msg = new MimeMessage(mailSession);
 			InternetAddress[] address = { new InternetAddress(email) };
 			msg.setFrom(new InternetAddress(from, MimeUtility.encodeText(fromName, "utf-8", "B")));
@@ -379,8 +385,11 @@ public class Svc_pro{
 		if(user_pw.equals(userDto.getUser_pw()) ) {
 			userDao.deletProduct(user_id);
 			userDao.deleteCustomer(user_id);
+			userDao.trailer(user_id);
+			userDao.order(user_id);
+		
 			result = 1;
-		}else {
+		} else {
 			result = 0;
 		}
 		
@@ -494,4 +503,40 @@ public class Svc_pro{
 	}
 
 	
+	
+	
+	// 라이브 예고 페이지
+	
+	@RequestMapping("/trailer_insert_pro")
+	public ModelAndView trailer_insertProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		Trailer_DataBean trailer_dto = new Trailer_DataBean();
+		trailer_dto.setTrailer_name(request.getParameter("trailer_name"));
+		trailer_dto.setTrailer_title(request.getParameter("trailer_title"));
+		trailer_dto.setTrailer_price(Integer.parseInt(request.getParameter("trailer_price")));
+		String aws_url = request.getParameter("trailer_aws_url");
+		trailer_dto.setTrailer_aws_url(user_id+aws_url);
+		trailer_dto.setTrailer_detail(request.getParameter("trailer_detail"));
+		trailer_dto.setUser_id(request.getParameter("session"));
+		
+		
+		
+		int result = Trailer_Dao.insertTrailer(trailer_dto);
+
+		int tb_no = trailer_dto.getTrailer_id();// tb_no
+		
+		
+		
+		request.setAttribute("tb_no", tb_no);
+		request.setAttribute("result", result);
+
+
+		return new ModelAndView("svc/trailer_insert_pro");
+	}
 }

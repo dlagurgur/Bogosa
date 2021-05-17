@@ -17,9 +17,95 @@
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" type="text/css"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 	<!-- Custom styles for this template -->
 	<style>
-	
+	.box{
+  margin: 100px auto;
+  width: 300px;
+  height: 50px;
+	}
+
+.container-4{
+  overflow: hidden;
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.container-4 input#search{
+  width: 300px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #fff;
+  padding-left: 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+
+.container-4 input#search::-webkit-input-placeholder {
+   color: #65737e;
+}
+ 
+.container-4 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;  
+}
+ 
+.container-4 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;  
+}
+ 
+.container-4 input#search:-ms-input-placeholder {  
+   color: #65737e;  
+}
+
+
+
+.container-4 button.icon{
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+ 
+  border: none;
+  background: #232833;
+  height: 50px;
+  width: 50px;
+  color: #4f5b66;
+  opacity: 0;
+  font-size: 10pt;
+ 
+  -webkit-transition: all .55s ease;
+  -moz-transition: all .55s ease;
+  -ms-transition: all .55s ease;
+  -o-transition: all .55s ease;
+  transition: all .55s ease;
+}
+
+
+.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
+    outline: none;
+    opacity: 1;
+    margin-left: -50px;
+  }
+ 
+  .container-4:hover button.icon:hover{
+    background: white;
+  }
+ 
+
+
+
+
 
 		body {
 			min-height: 75rem;
@@ -37,6 +123,13 @@
     	border: 1px solid #006fff;
     	border-radius: 3px;
 		}
+.form__field {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1rem;
+}
 	</style>
 </head>
 
@@ -81,15 +174,14 @@
 			<a class="nav-item" href="product_main.go?menu_category=7">스포츠/레저</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</li>
 				</ul>
-				<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
-					<select name="search_type">
-						<option value="schedule">${search_trip_schedule}</option>
-						<option value="trip_writer">${trip_writer}</option>
-					</select> &nbsp;
-					<input type="text" class="form-control" name="keyword" placeholder="${search_guide}"> &nbsp;
-					<button type="submit" style="border: none; background: transparent;"><img alt="" src="${project}img/search-m2-24.png"></button> &nbsp;&nbsp;
-					<a href="login.go" class="nav-item">${page_login}</a> &nbsp;|&nbsp;
-					<a href="join.go" class="nav-item">${page_input}</a>
+				<form class="form form--login" name="serch_trip" method="post" action="searchTrip.go" >
+				     <div class="form__field" style="
+    height: 20px;
+    width: 200px;
+">
+				<button type="button"  onclick="location='login.go'">로그인</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="button"  onclick="location='join.go'">회원가입</button>
+					</div>
 				</form>
 			</div>
 		</nav>
@@ -150,16 +242,16 @@
 		</li>
 				</ul>
 		
-				
+<div class="box">
+  <div class="container-4">
+    <input type="search" id="search" placeholder="Search..." style="" />
+    <button class="icon"><i class="fa fa-search"></i></button>
+  </div>
+</div>		
 					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
-						<select name="search_type">
-						<option value="schedule">${search_trip_schedule}</option>
-						<option value="trip_writer">${trip_writer}</option>
-					</select> &nbsp;
-					<input type="text" class="form-control" name="keyword" placeholder="${search_guide}"> &nbsp;
-					<button type="submit" style="border: none; background: transparent;"><img alt="" src="${project}img/login.jpg" width="30" height="30" ></button> &nbsp;|&nbsp;
-						<a href="myPage.go" class="nav-item">${page_mypage2}</a> &nbsp;&nbsp;&nbsp;
-						<a class="nav-item" href="logout.go">${btn_logout}</a>
+						<i class="fas fa-user-cog"></i>
+						<a class="nav-item" href="logout.go">${btn_logout}</a>&nbsp;&nbsp;&nbsp;
+						<a  class="fas fa-address-card fa-2x" href="myPage.go" ></a> 
 					</form>
 				
 			</div>

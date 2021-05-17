@@ -92,11 +92,25 @@
 	</delete>
 	
 	
+	<delete id="trailer" parameterType="String">
+			delete from trailer where user_id=#{user_id}
+	</delete>
+	
+		<delete id="order" parameterType="String">
+			delete from order_history where user_id=#{user_id}
+	</delete>
+	
+	<delete id="product" parameterType="String">
+			delete from product where user_id=#{user_id}
+	</delete>
 	
 	<!--  /////////////////주문기록////////////////////// -->
 	<insert id="insertOrder" parameterType="db.Order_history_DataBean">
 		insert into order_history values(order_num, (NOW()),#{order_qnt}, #{product_id}, #{user_id})
 	</insert>
+	
+	
+	
 	
 	
 		
@@ -141,6 +155,43 @@
     WHERE
 	O.order_num = #{order_num}
 	</select>
+	
+	
+	
+	<select id="selectCountOrders" parameterType="String" resultType="int">
+	SELECT count(*)
+    FROM order_history O
+	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
+	LEFT OUTER JOIN product P ON O.product_id = P.product_id
+    WHERE
+	C.user_id = #{user_id}
+	</select>
+	
+	
+	
+	
+	<select id="selectconfirmation" parameterType="String" resultType="int">
+	SELECT count(*)
+	FROM order_history O
+	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
+	LEFT OUTER JOIN product P ON O.product_id = P.product_id
+    WHERE
+	P.user_id = #{user_id}
+	</select>
+	
+	
+	
+	
+	
+	
+	<!-- /////////////라이브 예정 페이지////////////// -->
+	<insert id="insertTrailer" parameterType="db.Trailer_DataBean" >
+		insert into trailer(trailer_id, trailer_name,trailer_title, trailer_price, trailer_aws_url,trailer_detail, user_id)
+		values( trailer_id, #{trailer_name},#{trailer_title}, #{trailer_price},#{trailer_aws_url},#{trailer_detail}, #{user_id})
+		<selectKey keyProperty="trailer_id" resultType="int" order="AFTER">
+    		SELECT LAST_INSERT_ID()
+  		</selectKey>
+	</insert>
 	
 	
 </mapper>

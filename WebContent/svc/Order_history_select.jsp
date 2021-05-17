@@ -33,7 +33,10 @@
 		
 		<!-- Container -->
 		<div class="container">
-
+		<c:if test="${result eq 0}">
+ 			<h1 class="text-center text-dark" id="a">주문이력이 없습니다.</h1>
+		</c:if>
+		<c:if test="${result ne 0}">
 			<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-5 mb-5">
 				<thead>
 					<tr>
@@ -62,7 +65,7 @@
 					</c:forEach>
 			
 			</table>
-
+</c:if>
 		</div>
 	</body>
 	

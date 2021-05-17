@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import db.Order_history_DBBean;
 import db.Order_history_select_DBBean;
 import db.Product_DBBean;
+import db.Trailer_DBBean;
 import db.UserDBBean;
 
 
@@ -36,6 +37,11 @@ public class CreateBean {
 	@Bean
 	public Order_history_select_DBBean Order_history_select() {
 		return new Order_history_select_DBBean();
+	}
+	
+	@Bean
+	public Trailer_DBBean Trailer_Dao() {
+		return new Trailer_DBBean();
 	}
 	
 	

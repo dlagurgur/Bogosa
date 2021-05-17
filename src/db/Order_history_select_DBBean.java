@@ -29,7 +29,15 @@ public class Order_history_select_DBBean {
 	}
 	
 	
-
+	public int selectCountOrders(String user_id) {
+		return session.selectOne("db.selectCountOrders", user_id);
+	}
+	
+	
+	
+	public int selectconfirmation(String user_id) {
+		return session.selectOne("db.selectconfirmation", user_id);
+	}
 
 	
 }

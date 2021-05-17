@@ -109,14 +109,8 @@ public class Svc_Form{
 	
 	@RequestMapping("/product_insert")
 	public ModelAndView product_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		String user_id=(String)request.getSession().getAttribute("user_id");
-		if(user_id!=null) {
-			UserDataBean userDto=userDao.getUser(user_id);
-			request.setAttribute("userDto", userDto);
-		}
 		
-		
-		
+			
 		return new ModelAndView("svc/product_insert_form");
 	}
 	
@@ -190,9 +184,12 @@ public class Svc_Form{
 		//I don't know why but it fails to get userDto, so here I try to get it.
 		String user_id=(String)request.getSession().getAttribute("user_id");
 
+		int result = Order_history_selectDao.selectCountOrders(user_id);	
 			
+		
 		List <Order_history_select_DataBean> cusorderlist = Order_history_selectDao.Select_order_history(user_id);
-		request.setAttribute("cusorderlist", cusorderlist);			
+		request.setAttribute("cusorderlist", cusorderlist);
+		request.setAttribute("result", result);	
 		return new ModelAndView("svc/Order_history_select");
 	}
 	
@@ -221,14 +218,33 @@ public class Svc_Form{
 		public ModelAndView Order_confirmationProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 			//I don't know why but it fails to get userDto, so here I try to get it.
 			String user_id=(String)request.getSession().getAttribute("user_id");
+			
+			int result = Order_history_selectDao.selectconfirmation(user_id);	
 
 			List <Order_history_select_DataBean> cusorderlist = Order_history_selectDao.Order_confirmation(user_id);
-			request.setAttribute("cusorderlist", cusorderlist);						
+			request.setAttribute("cusorderlist", cusorderlist);
+			request.setAttribute("result", result);
 			
 			return new ModelAndView("svc/Order_confirmation");
 		}
 
 
 
+		
+		//////////// 라이브 예정 페이지 /////////////////////////////
+		@RequestMapping("/trailer_insert")
+		public ModelAndView trailer_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+			
+				
+			return new ModelAndView("svc/trailer_insert_form");
+		}
+		
+		
+		@RequestMapping("/trailer_detail")
+		public ModelAndView trailer_detailprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+			
+				
+			return new ModelAndView("svc/trailer_detail");
+		}
 	
 }

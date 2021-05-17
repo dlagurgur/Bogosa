@@ -105,10 +105,10 @@ function AWScheck(){
 		
 	
 	AWS.config.update({
-		  "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
+		"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
 		  "secretAccessKey": "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",
 		  "region": "us-east-1"
-		});
+	});
 
 		// AWS.config.loadFromPath('./config.json');
 		AWS.config.region = 'us-east-1'; // 리전
