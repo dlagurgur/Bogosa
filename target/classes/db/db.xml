@@ -202,12 +202,47 @@
 	
 	<!-- /////////////라이브 예정 페이지////////////// -->
 	<insert id="insertTrailer" parameterType="db.Trailer_DataBean" >
-		insert into trailer(trailer_id, trailer_name,trailer_title, trailer_price, trailer_aws_url,trailer_detail, user_id)
-		values( trailer_id, #{trailer_name},#{trailer_title}, #{trailer_price},#{trailer_aws_url},#{trailer_detail}, #{user_id})
+		insert into trailer(trailer_id, trailer_name,trailer_title, trailer_price, trailer_aws_url,trailer_detail, trailer_launchdate, trailer_updatedate, user_id)
+		values( trailer_id, #{trailer_name},#{trailer_title}, #{trailer_price},#{trailer_aws_url},#{trailer_detail},(NOW()), (NOW()), #{user_id})
 		<selectKey keyProperty="trailer_id" resultType="int" order="AFTER">
     		SELECT LAST_INSERT_ID()
   		</selectKey>
 	</insert>
+	
+	
+		<select id="detailTrailer" resultType="db.Trailer_DataBean" parameterType="int">
+		select * from trailer where trailer_id=#{trailer_id}
+	</select>
+
+
+		<select id="selectTrailer" resultType="db.Trailer_DataBean" parameterType="String">
+		select * from trailer where user_id=#{user_id}
+	</select>
+
+
+
+<!--
+	<select id="selectMenusByCategory" parameterType="java.util.Map" resultType="db.Product_DataBean">
+		select * from trailer where trailer_category=#{trailer_category} order by product_id desc
+	</select>
+-->
+
+
+	<select id="allTrailer" resultType="db.Trailer_DataBean">
+		select * from trailer order by trailer_updatedate desc
+	</select>
+
+	<select id="updateTrailerDate" resultType="db.Trailer_DataBean">
+		update trailer SET trailer_updatedate=NOW() where user_id=#{user_id}
+
+		select * from trailer order by trailer_updatedate desc
+	</select>
+
+
+
+	<!-- <delete id="deleteTraier" parameterType="String">
+		delete from trailer where user_id=#{user_id}
+	</delete> -->
 	
 	
 </mapper>
