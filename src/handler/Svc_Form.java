@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Resource;
+
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -291,13 +293,12 @@ public class Svc_Form{
 
 			int result = Trailer_Dao.selectCounttrailer(user_id);	
 			
-			
-			
-			
+			System.out.println(result);
 			
 			List <Trailer_DataBean> Trailer_dto = Trailer_Dao.trailer_select(user_id);
+
 			request.setAttribute("result", result);
-			request.setAttribute("Produt_dto", Trailer_dto);
+			request.setAttribute("Trailer_dto", Trailer_dto);
 			
 			return new ModelAndView("svc/trailer_select");
 		}

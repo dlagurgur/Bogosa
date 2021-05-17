@@ -214,6 +214,20 @@
 	</select>
 	
 	
+	<select id="selectCounttrailer" parameterType="String" resultType="int">
+	select count(*)
+   from trailer P
+	LEFT OUTER JOIN user_general C ON P.user_id = C.user_id
+    WHERE
+	C.user_id = #{user_id}
+	</select>
+	
+	
+	
+	
+	
+	
+		
 	
 	
 		<select id="detailTrailer" resultType="db.Trailer_DataBean" parameterType="int">

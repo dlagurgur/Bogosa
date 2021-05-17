@@ -49,10 +49,10 @@
 		
 			
 			
-				<c:forEach var="i" begin="0" end="${fn:length(Produt_dto)-1}" step="1">
+				<c:forEach var="i" begin="0" end="${fn:length(Trailer_dto)-1}" step="1">
 				<c:set var="count" value="${counts[i]}"/>
-				<c:set var="cusorder" value="${Produt_dto[i]}"/>
-						<tr class="clickableRow" data-href="product_detail.go?product_id=${cusorder.product_id}">
+				<c:set var="cusorder" value="${Trailer_dto[i]}"/>
+						<tr class="clickableRow" data-href="product_detail.go?product_id=${cusorder.trailer_id}">
 							<td scope="row">
 								${cusorder.trailer_id}
 							</td>
