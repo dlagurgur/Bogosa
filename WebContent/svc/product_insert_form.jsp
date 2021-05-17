@@ -72,8 +72,8 @@
 				<textarea class="form-control" name="product_detail" id="product_detail" rows="10" cols="30">
 				</textarea>
 			</div>
-						<input type="hidden" name="session" id="session" value="${user_id}" /> 
-			<input type="hidden" name="product_id" value="${product_id}" /> 
+		<input type="hidden" name="session" id="session" value="${user_id}" /> 
+		<input type="hidden" name="product_id" value="${product_id}" /> 
 					
 		<input type="hidden" name="aws_url" id="aws_url" value="${userDto.a}" >
 			
