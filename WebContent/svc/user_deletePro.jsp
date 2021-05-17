@@ -10,8 +10,8 @@
 	</script>
 	<meta http-equiv="refresh" content="0; url=myPage.go">
 </c:if>
+
 <c:if test="${result eq 1}">
-	${sessionScope.cus_id = null}
 	<script type="text/javascript">
 		alert( "탈퇴되셧습니다." );
 		sessionStorage.removeItem('user_id');
