@@ -43,9 +43,14 @@
 				<label for="product_price">상품 이미지</label>
 			</div>
 			<div class="col-xs-2">
-				<input class="form-control" type="file" name="trailer_aws_url" id="file-chooser" maxlength="20">
-				<button type="button" id="uplodat-button">Upload to S3</button>
-				 <div id="results"></div>
+				 							 
+				 
+				 	<input class="form-control" type="file" id="file-chooser" name="trailer_aws_url"/>
+    				<button type="button"  id="upload-button">Upload to S3</button>
+    				<div id="results"></div>		 
+				 
+				 
+				 
 			</div>
 		</div>
 	
@@ -101,7 +106,7 @@
     var button = document.getElementById('upload-button');
     var results = document.getElementById('results');
     var session = $('#session').val();
-    alert(session);
+
     button.addEventListener("click", function(){
         var file = fileChooser.files[0];
 

@@ -1,9 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
 
 <head>
     <title>AWS S3 File Upload</title>
-    <script src="./aws-sdk-2.897.0.min.js"></script>
+     <script src="${project}aws-sdk-2.897.0.min.js"></script>
+     
+     
 </head>
 
 <body>
@@ -73,5 +81,4 @@
     // }
     </script>
 </body>
-
 </html>
