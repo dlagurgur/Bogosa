@@ -300,6 +300,13 @@ h3 {
 		
 		
 		<div class="form__field">
+		<br>
+		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='product_select.go'" style="height: 65px;margin-top: 8px;" >등록한 상품 </button>&nbsp;&nbsp;					
+		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='trailer_select.go'">등록한 예고</button>
+		</div>
+		
+		
+		<div class="form__field">
 					
 					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='product_insert.go'">방송 시작하기</button>
 				

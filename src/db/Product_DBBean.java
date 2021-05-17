@@ -3,6 +3,7 @@ package db;
 
 import java.util.List;
 
+
 import org.apache.ibatis.session.SqlSession;
 
 import bean.SqlMapClient;
@@ -21,7 +22,13 @@ public class Product_DBBean{
 	
 	
 	public List<Product_DataBean> selectProduct(String user_id) {
-		return session.selectOne("db.detialProduct", user_id);
+		return session.selectList("db.selectProduct", user_id);
+	}
+	
+	
+	
+	public int selectCountProduct(String user_id) {
+		return session.selectOne("db.selectCountProduct", user_id);
 	}
 	
 	

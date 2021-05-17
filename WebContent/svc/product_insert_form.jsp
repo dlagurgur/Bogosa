@@ -14,7 +14,20 @@
 <div class="container">
 	<form name="inputform" action="product_insert_pro.go" method="post" enctype="multipart/form-data" >
 		<h3>상품에 대한 정보를 입력하세요</h3>
+<div class="form-group row">		
+			<div class="col-xs-2">
+				<label for="product_title">방제목</label>
+			</div>
+			<div class="col-xs-2">
+				<input class="form-control" type="text" name="product_title" id="product_title" maxlength="50">
+			</div>		
 		
+</div>				
+	
+	
+	
+	
+	
 		
 <div class="form-group row">		
 			<div class="col-xs-2">

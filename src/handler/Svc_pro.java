@@ -426,6 +426,7 @@ public class Svc_pro{
 
 	
 		String product_name = multi.getParameter("product_name");
+		String product_title = multi.getParameter("product_title");
 		String aws_url = multi.getParameter("aws_url");
 		int product_category = Integer.parseInt(multi.getParameter("product_category"));
 		int product_price = Integer.parseInt(multi.getParameter("product_price"));
@@ -438,7 +439,7 @@ public class Svc_pro{
 		filename = multi.getFilesystemName(file);
 	
 		
-		
+		product_dto.setProduct_title(product_title);
 		product_dto.setProduct_name(product_name);
 		product_dto.setProduct_price(product_price);
 		product_dto.setProduct_category(product_category);
