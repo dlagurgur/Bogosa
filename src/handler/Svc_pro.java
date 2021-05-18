@@ -1,3 +1,4 @@
+
 package handler;
 
 import java.io.IOException;
@@ -6,12 +7,10 @@ import java.io.IOException;
 
 
 
+
 import java.io.UnsupportedEncodingException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -33,7 +32,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.socket.WebSocketSession;
 
 import db.Order_history_DBBean;
 import db.Order_history_DataBean;
@@ -46,8 +44,6 @@ import db.UserDataBean;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Controller
 public class Svc_pro{
@@ -512,7 +508,6 @@ public class Svc_pro{
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String user_id = (String) request.getSession().getAttribute("user_id");
 		Trailer_DataBean trailer_dto = new Trailer_DataBean();
 		trailer_dto.setTrailer_name(request.getParameter("trailer_name"));
 		trailer_dto.setTrailer_title(request.getParameter("trailer_title"));
