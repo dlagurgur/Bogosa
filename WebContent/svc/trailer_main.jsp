@@ -213,13 +213,13 @@ background-color: bg-black;
 			
 			<!-- Menu List shown in Cards -->
 			<div class="card-deck bg-black mt-4 mb-4" style="background-color: #151515;">
-				<c:forEach var="menu" items="${menus}">
-				<a class="menuListItem" href="product_detail.go?product_id=${menu.product_id}">
+				<c:forEach var="menu" items="${Trailer_dto}">
+				<a class="menuListItem" href="trailer_detail.go?trailer_id=${menu.trailer_id}">
 					<div class="card bg-black mt-4 mb-4" style="background-color: #151515;">
-						<img class="card-img-top img-fluid" src="menu_images/${menu.product_image}" alt="Menu Img" style="width: 300px; height: 170px;">
+						<img class="card-img-top img-fluid" src="menu_images/${menu.trailer_image}" alt="Menu Img" style="width: 300px; height: 170px;">
 						<div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
-							<b class="card-title" style="color:#D8D8D8;">${menu.product_name}</b>
-							<p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p>
+							<b class="card-title" style="color:#D8D8D8;">${menu.trailer_name}</b>
+							<p class="card-text" style="color:#D8D8D8;">${menu.trailer_price}원</p>
 						</div>
 					</div>
 				</a>
@@ -233,7 +233,6 @@ background-color: bg-black;
 
 
 <script type="text/javascript">
-
   </script>
   
 

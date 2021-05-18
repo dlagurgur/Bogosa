@@ -204,9 +204,9 @@ h3 {
 	<body>
 		
 		<!-- Container -->
-
+<!--
 		<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
-		
+	  	
 <video controls id="video-player" style="
     padding-top: 0px;
     padding-left: 0px;
@@ -215,6 +215,7 @@ h3 {
     margin-left: 70px;
     margin-top: 20px;
 "></video>
+-->
 
 
   <textarea id="messageWindow" rows="10" cols="50" readonly="true" style="
@@ -269,69 +270,37 @@ h3 {
     	        
         <div class="form__field">
 		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">판매자</label>
-				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.user_id}" readonly>
+				<input style="color:white;" class="form__input" type="text" value="${Trailer_dto.user_id}" readonly>
 		</div>
 		
 		<div class="form__field">
 		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품설명</label>
-				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
+				<input style="color:white;" class="form__input" type="text" value="${Trailer_dto.trailer_detail}" readonly>
 		</div>
 		
 		<div class="form__field">
 		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
-				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
+				<input style="color:white;" class="form__input" type="text" value="${Trailer_dto.trailer_price}원" readonly>
 		</div>
 
-		<div class="form__field">
-		        <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">카테고리</label>
-		       <c:if test="${Produt_dto.product_category eq 1}">
-					<input style="color:white;" class="form__input" type="text" value="가전디지털" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 2}">
-						<input style="color:white;" class="form__input" type="text" value="식품" readonly>
-				</c:if>
-				 <c:if test="${Produt_dto.product_category eq 3}">
-					<input style="color:white;" class="form__input" type="text" value="주방용품" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 4}">
-						<input style="color:white;" class="form__input" type="text" value="생활용품" readonly>
-				</c:if>
-				 <c:if test="${Produt_dto.product_category eq 5}">
-					<input style="color:white;" class="form__input" type="text" value="의류" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 6}">
-						<input style="color:white;" class="form__input" type="text" value="취미" readonly>
-				</c:if>
-				 <c:if test="${Produt_dto.product_category eq 7}">
-					<input style="color:white;" class="form__input" type="text" value="스포츠/레저" readonly>
-				</c:if>
-				
-				
-				
-				</div>
-				
-						<div class="form__field">
-							 <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">수량</label>
-								<input type="number" name="qty" class="form__input" value="1" min="1" max="19" style="color:white;">
-							
-						</div>
 					
 					
 				
-					<input type="hidden" name="menu_id" value="${Produt_dto.product_id}">
-					<input type="hidden" name="menu_name" value="${Produt_dto.product_name}">
-					<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
-					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">
+					<input type="hidden" name="menu_id" value="${Trailer_dto.trailer_id}">
+					<input type="hidden" name="menu_name" value="${Trailer_dto.trailer_name}">
+					<input type="hidden" name="menu_image" value="${Trailer_dto.trailer_image}">
+					<input type="hidden" name="menu_price" value="${Trailer_dto.trailer_price}">
 					
 		
 		
 
 
-				
+				<!--  
 					<div class="form__field">
 						
 						<button type="button" class="btn btn-lg btn-secondary btn-block"  onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
 					</div>
+					-->
 					
 			</form>
 					</div>
