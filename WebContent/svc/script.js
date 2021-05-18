@@ -202,7 +202,7 @@ function commentList(trailer_id){
            	commentView += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
            	commentView += '</div class="commentInfo'+comment.comment_id+'"><b>'+comment.user_id+'</b>';
            	if(SessionID == comment.user_id){
-           	commentView += '<a onclick="commentUpdate('+comment.comment_id+',\''+comment.trailer_content+'\');"> 수정 </a>';
+           	commentView += '<a onclick="commentUpdate('+comment.comment_id+',\''+comment.comment_content+'\');"> 수정 </a>';
            	commentView += '<a onclick="commentDelete('+comment.comment_id+');"> 삭제 </a>';
            	}
            	commentView += '<div class="commentContent"> <p>'+comment.comment_content +'</p>';
@@ -244,16 +244,18 @@ function CmtInsert(insertData){
 
 //댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
 function commentUpdate(comment_id, comment_content){
-   var commentModify ='';
-   
-   commentModify += '<div class="input-group">';
-   commentModify += '<input type="text" class="form-control" name="comment_content_'+comment_id+'" value="'+comment_content+'"/>';
-   commentModify += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+comment_id+');">수정</button> </span>';
-   commentModify += '</div>';
-   
-   $('.commentContent'+comment_id).html(commentModify);
-   
+    var commentModify ='';
+    
+    commentModify += '<div class="input-group">';
+    commentModify += '<input type="text" class="form-control" name="comment_content_'+comment_id+'" value="'+comment_content+'"/>';
+    commentModify += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+comment_id+');">수정</button> </span>';
+    commentModify += '</div>';
+    
+    $('.commentContent'+comment_id).html(commentModify);
+    
 }
+
+
 
 //댓글 수정
 function commentUpdateProc(comment_id){
