@@ -265,4 +265,25 @@
 	</delete> -->
 	
 	
+	
+	
+	<!--  Ajax 댓글 -->
+	
+	<insert id="insertComment" parameterType="db.CmtDataBean">
+		INSERT INTO trailer_comment(comment_id, comment_content, comment_date,user_id,trailer_id)
+values(comment_id, #{comment_content}, NOW(), #{user_id}, #{trailer_id})
+
+	</insert>
+
+	<select id="getComment" parameterType="int" resultType="db.CmtDataBean">
+		select * from trailer_comment where trailer_id=#{trailer_id} order by user_id desc
+	</select>
+
+	<update id="updateComment" parameterType="db.CmtDataBean">
+		update trailer_comment set comment_content = #{comment_content} where user_id = #{user_id}
+	</update>
+
+	<delete id="deleteComment" parameterType="int">
+		delete trailer_comment comment where user_id = #{user_id}
+	</delete>
 </mapper>
