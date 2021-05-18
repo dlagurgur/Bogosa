@@ -280,10 +280,10 @@ values(comment_id, #{comment_content}, NOW(), #{user_id}, #{trailer_id})
 	</select>
 
 	<update id="updateComment" parameterType="db.Comment_DataBean">
-		update trailer_comment set comment_content = #{comment_content} where user_id = #{user_id}
+		update trailer_comment set comment_content = #{comment_content} where comment_id = #{comment_id}
 	</update>
 
 	<delete id="deleteComment" parameterType="int">
-		delete trailer_comment comment where user_id = #{user_id}
+		delete from trailer_comment where comment_id = #{comment_id}
 	</delete>
 </mapper>

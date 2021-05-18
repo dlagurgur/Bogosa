@@ -15,16 +15,16 @@ public class Comment_DBBean {
 		return session.insert("db.insertComment", cmtDto);
 	}
 	
-	public List<Comment_DataBean> getComment( int tb_no ) {
-		return session.selectList("db.getComment", tb_no);
+	public List<Comment_DataBean> getComment( int trailer_id ) {
+		return session.selectList("db.getComment", trailer_id);
 	}
 	
 	public int updateComment(Comment_DataBean cmtDto) {
 		return session.update("db.updateComment", cmtDto);
 	}
 	
-	public int deleteComment( int c_id ) {
-		return session.delete("db.deleteComment", c_id);
+	public int deleteComment( int comment_id ) {
+		return session.delete("db.deleteComment", comment_id);
 	}
 
 	

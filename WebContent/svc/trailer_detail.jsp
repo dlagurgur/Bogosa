@@ -5,6 +5,7 @@
 	<head>
 		<%@include file="header.jsp"%>
 		<script src="${project}script.js"></script>
+		<script src="//code.jquery.com/jquery.js"></script>
 <style type="text/css">
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
@@ -237,7 +238,7 @@ h3 {
     width: 1550px;
     height: 5px;
     margin-top: 20px;
-">${Produt_dto.product_name}</h1>
+">${Trailer_dto.trailer_name}</h1>
 
  <!--  
 
@@ -250,16 +251,13 @@ h3 {
 
 
 			<!-- Menu Item -->
-			<div class="menuItem col-lg-6 mt-5">
-				<img class="card-img-top img-fluid" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width: 800px;height: 500px;margin-left: 35px;margin-bottom: 0px;border-bottom-width: 50px;padding-bottom: 0px;margin-top: 80;">
-			</div>
 
 
 
 
 
 <input type="hidden" name="session" id="session" value="${sessionScope.user_id}" /> 
-<input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" /> 
+<input type="hidden" name="aws_url" id="aws_url" value="${Trailer_dto.trailer_aws_url}" /> 
 
 <div class="site__container">
 
@@ -288,7 +286,6 @@ h3 {
 				
 					<input type="hidden" name="menu_id" value="${Trailer_dto.trailer_id}">
 					<input type="hidden" name="menu_name" value="${Trailer_dto.trailer_name}">
-					<input type="hidden" name="menu_image" value="${Trailer_dto.trailer_image}">
 					<input type="hidden" name="menu_price" value="${Trailer_dto.trailer_price}">
 					
 		
@@ -306,12 +303,33 @@ h3 {
 					</div>
 			</div>
 				
-			
+	
 			
 			
 	
 	</body>
 	
+	
+
+		<c:if test="${sessionScope.user_id != null}">
+			<div class="container">
+				<label for="content">comment</label>
+				<form name="commentInsertForm" method="post">
+					<div class="input-group">
+						<input type="hidden" name="trailer_id" value="${Trailer_dto.trailer_id}" /> <input
+							type="hidden" name="session" value="${sessionScope.user_id}" /> <input
+							type="text" class="input col-11" id="comment_content" name="comment_content"
+							placeholder="댓글"> <span
+							class="input-group-btn">
+							<button class="btn btn-default" type="button"
+								onclick="commentInsert()">등록</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</c:if>
+		<div class="commentList"></div>
+
  <script type="text/javascript">
  var AWS = require("aws-sdk");
 
