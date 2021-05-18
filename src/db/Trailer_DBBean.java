@@ -48,8 +48,12 @@ public class Trailer_DBBean{
 		return session.selectList("db.selectMenusByCategory", product_category);
 	}
 
-	public List<Product_DataBean> selectMenus() {
-		return session.selectList("db.selectMenus");
+	public List<Trailer_DataBean> allTrailer() {
+		return session.selectList("db.allTrailer");
+	}
+	
+	public Trailer_DataBean detailTrailer(int trailer_id) {
+		return session.selectOne("db.detailTrailer", trailer_id);
 	}
 	
 }

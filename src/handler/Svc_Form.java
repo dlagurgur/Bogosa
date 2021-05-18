@@ -266,6 +266,10 @@ public class Svc_Form{
 		@RequestMapping("/trailer_insert")
 		public ModelAndView trailer_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 			
+			String user_id=(String)request.getSession().getAttribute("user_id");
+
+			UserDataBean userDto=userDao.getUser(user_id);
+			request.setAttribute("userDto", userDto);
 				
 			return new ModelAndView("svc/trailer_insert_form");
 		}
@@ -274,7 +278,10 @@ public class Svc_Form{
 		@RequestMapping("/trailer_detail")
 		public ModelAndView trailer_detailprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 			
-				
+			int trailer_id=Integer.parseInt(request.getParameter("trailer_id"));
+			Trailer_DataBean Trailer_dto = Trailer_Dao.detailTrailer(trailer_id);
+			request.setAttribute("Trailer_dto", Trailer_dto);	
+			
 			return new ModelAndView("svc/trailer_detail");
 		}
 		
@@ -282,7 +289,9 @@ public class Svc_Form{
 		@RequestMapping("/trailer_main")
 		public ModelAndView trailer_mainprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 			
-		
+			List <Trailer_DataBean> Trailer_dto = Trailer_Dao.allTrailer();
+			
+			request.setAttribute("Trailer_dto", Trailer_dto);
 			return new ModelAndView("svc/trailer_main");
 		}
 		
