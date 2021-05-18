@@ -520,7 +520,9 @@ public class Svc_pro{
 		//String aws_url = request.getParameter("trailer_aws_url");
 		//System.out.println(aws_url);
 		//trailer_dto.setTrailer_aws_url(aws_url);
-		trailer_dto.setTrailer_aws_url(request.getParameter("trailer_aws_url").toString());
+		String aws_url = request.getParameter("trailer_aws_url");
+		System.out.println(aws_url);
+		trailer_dto.setTrailer_aws_url(aws_url);
 		trailer_dto.setTrailer_detail(request.getParameter("trailer_detail"));
 		trailer_dto.setUser_id(request.getParameter("session"));
 		

@@ -158,17 +158,15 @@
                         	   return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/Pexels Videos 2541964.mp4';
                        
                             });
-                           console.log(data[0].Outputs.HLS_GROUP[0].val());
+                           
                            trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
-                           console.log(trailer_aws_url);
-                           console.log(typeof(trailer_aws_url));
-                           console.log(typeof(trailer_aws_url.value));
+                           results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="'+trailer_aws_url+'">'
+                           document.getElementById('target').submit();
                        });
+                                      
+                   
                     
-                    results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="">';
-                    document.inputform.trailer_aws_url.value = trailer_aws_url;
-                    
-                    document.getElementById('target').submit();
+                   
                 }
             });
         } else {
