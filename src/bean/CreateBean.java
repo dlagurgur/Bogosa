@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
+import db.Comment_DBBean;
 import db.Order_history_DBBean;
 import db.Order_history_select_DBBean;
 import db.Product_DBBean;
@@ -43,6 +44,13 @@ public class CreateBean {
 	public Trailer_DBBean Trailer_Dao() {
 		return new Trailer_DBBean();
 	}
+	
+	
+	@Bean
+	public Comment_DBBean Comment_Dao() {
+		return new Comment_DBBean();
+	}
+	
 	
 	
 	@Bean

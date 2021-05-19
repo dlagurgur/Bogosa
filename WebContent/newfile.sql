@@ -44,17 +44,21 @@ CREATE TABLE product
 
 CREATE TABLE trailer
 (
-	trailer_id int NOT NULL AUTO_INCREMENT,
-	trailer_name varchar(25) NOT NULL,
-	trailer_title varchar(25) NOT NULL,
-	trailer_price int NOT NULL,
-	trailer_aws_url varchar(300),
-	trailer_detail varchar(5000) NOT NULL,
-	user_id varchar(20) NOT NULL,
-	PRIMARY KEY (trailer_id),
-	UNIQUE (trailer_id)
+   trailer_id int NOT NULL AUTO_INCREMENT,
+   trailer_name varchar(25) NOT NULL,
+   trailer_title varchar(25) NOT NULL,
+   trailer_price int NOT NULL,
+   trailer_image VARCHAR(300),
+   trailer_aws_url varchar(300),
+   trailer_detail varchar(5000) NOT NULL,
+   trailer_launchdate TIMESTAMP,
+   trailer_updatedate TIMESTAMP,
+   user_id varchar(20) NOT NULL,
+   PRIMARY KEY (trailer_id),
+   UNIQUE (trailer_id)
 
 );
+
 
 
 

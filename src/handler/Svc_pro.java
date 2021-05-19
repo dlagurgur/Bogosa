@@ -1,3 +1,4 @@
+
 package handler;
 
 import java.io.IOException;
@@ -6,9 +7,9 @@ import java.io.IOException;
 
 
 
+
+
 import java.io.UnsupportedEncodingException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,8 +35,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.socket.WebSocketSession;
 
+import db.Comment_DBBean;
+import db.Comment_DataBean;
 import db.Order_history_DBBean;
 import db.Order_history_DataBean;
 import db.Product_DBBean;
@@ -46,8 +49,6 @@ import db.UserDataBean;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Controller
 public class Svc_pro{
@@ -60,9 +61,11 @@ public class Svc_pro{
 	@Resource
 	private Trailer_DBBean Trailer_Dao;
 	
-	
 	@Resource
 	private Order_history_DBBean Order_Dao;
+	
+	@Resource
+	private Comment_DBBean Comment_Dao;
 //////////////////////////////////회원 영역///////////////////////////////////////////////	
 	//회원가입
 	@RequestMapping("/svc_join_pro")
@@ -512,7 +515,6 @@ public class Svc_pro{
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String user_id = (String) request.getSession().getAttribute("user_id");
 		Trailer_DataBean trailer_dto = new Trailer_DataBean();
 		trailer_dto.setTrailer_name(request.getParameter("trailer_name"));
 		trailer_dto.setTrailer_title(request.getParameter("trailer_title"));
@@ -520,7 +522,9 @@ public class Svc_pro{
 		//String aws_url = request.getParameter("trailer_aws_url");
 		//System.out.println(aws_url);
 		//trailer_dto.setTrailer_aws_url(aws_url);
-		trailer_dto.setTrailer_aws_url(request.getParameter("trailer_aws_url").toString());
+		String aws_url = request.getParameter("trailer_aws_url");
+		System.out.println(aws_url);
+		trailer_dto.setTrailer_aws_url(aws_url);
 		trailer_dto.setTrailer_detail(request.getParameter("trailer_detail"));
 		trailer_dto.setUser_id(request.getParameter("session"));
 		
@@ -537,5 +541,69 @@ public class Svc_pro{
 
 
 		return new ModelAndView("svc/trailer_insert_pro");
+	}
+	
+	
+	
+	
+	//ajax
+	
+	@RequestMapping(value = "/commentInsert.go", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public void commentInsertProcess(HttpServletRequest request, HttpSession session) throws HandlerException {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String user_id=(String)request.getSession().getAttribute("user_id");
+		String c_content= request.getParameter("comment_content");
+		Comment_DataBean cmtDto = new Comment_DataBean();
+		if(c_content != null) {
+		cmtDto.setUser_id(user_id); // jsp에서 히든으로 가져오면됨
+		cmtDto.setTrailer_id(Integer.parseInt(request.getParameter("trailer_id")));
+		cmtDto.setComment_content(c_content);
+		
+		Comment_Dao.insertComment(cmtDto);
+		}
+	}
+
+	@RequestMapping(value = "/commentSelect.go", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public List<Comment_DataBean> commentSelectProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+
+		int trailer_id = Integer.parseInt(request.getParameter("trailer_id"));
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		List<Comment_DataBean> comment = Comment_Dao.getComment(trailer_id);
+		for (Comment_DataBean dto : comment) {
+				dto.setUser_name(user_id);
+		}
+
+		request.setAttribute("comment", comment);
+		// don't set the name of variable like this!
+		return comment;
+	}
+
+	@RequestMapping(value = "/commentUpdate.go", method = RequestMethod.POST, produces = "application/json") // 댓글 수정
+	@ResponseBody
+	private void commentUpdateProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		Comment_DataBean cmtDto = new Comment_DataBean();
+		cmtDto.setComment_id(Integer.parseInt(request.getParameter("comment_id")));
+		cmtDto.setComment_content(request.getParameter("comment_content"));
+		Comment_Dao.updateComment(cmtDto);
+	}
+
+	@RequestMapping(value = "/commentDelete.go", method = RequestMethod.POST) // 댓글 삭제
+	@ResponseBody
+	private void commentDeleteProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int comment_id = Integer.parseInt(request.getParameter("comment_id"));
+		Comment_Dao.deleteComment(comment_id);
 	}
 }
