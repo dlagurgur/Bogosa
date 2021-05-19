@@ -40,7 +40,7 @@
 		
 		<div class="form-group row">
 			<div class="col-xs-2">
-				<label for="trailer_image">상품 이미지 파일</label>
+				<label for="trailer_image">상품 이미지</label>
 			</div>
 			<div class="col-xs-2">
 				<input class="input" type="file" name="trailer_image" id="trailer_image">
@@ -160,7 +160,7 @@
                             });
                            console.log(data[0].Outputs.HLS_GROUP[0].val());
                            trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
-                           console.log(trailer_aws_url);
+                           console.log(trailer_aws_url.value);
                            console.log(typeof(trailer_aws_url));
                            console.log(typeof(trailer_aws_url.value));
                        });
@@ -177,52 +177,4 @@
         }
     }, false);
     
-    /*
-    var t = document.getElementById('target')
-    t.addEventListener("submit",function(){
-    	var file = fileChooser.files[0];
-
-        if (file) {
-
-            results.innerHTML = '';
-            var objKey = 'assets01/'+session+file.name;
-            var params = {
-                Key: objKey,
-                ContentType: file.type,
-                Body: file,
-                ACL: 'public-read'
-            };
-
-            bucket.putObject(params, function(err, data) {
-                if (err) {
-                    results.innerHTML = 'ERROR: ' + err; }
-                else {
-                    console.log(data);
-                }
-            });
-        } else {
-            results.innerHTML = 'Nothing to upload.';
-        }
-    },false)
-    */
-    
-    
-    // function listObjs() {
-    //     var prefix = 'testing';
-    //     bucket.listObjects({
-    //         Prefix: prefix
-    //     }, function(err, data) {
-    //         if (err) {
-    //             results.innerHTML = 'ERROR: ' + err;
-    //         } else {
-    //             var objKeys = "";
-    //             data.Contents.forEach(function(obj) {
-    //                 objKeys += obj.Key + "<br>";
-    //             });
-    //             results.innerHTML = objKeys;
-    //         }
-    //     });
-    // }
     </script>
-</body>	
-<!--//////////////////////////////////////////////////////////////////////////////////////////////////////// -->
