@@ -331,8 +331,7 @@ h3 {
 		<div class="commentList"></div>
 
  <script type="text/javascript">
- var AWS = require("aws-sdk");
-
+ /*
  AWS.config.update({
    "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
    "secretAccessKey": "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",
@@ -368,6 +367,7 @@ h3 {
          console.log(err, data);
        });
 
+*/
 
 //     s3.getObject(params, function(err, data) {
 //       if (err) console.log(err, err.stack); // an error occurred

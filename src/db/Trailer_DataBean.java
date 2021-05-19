@@ -7,6 +7,7 @@ public class Trailer_DataBean {
 	private String trailer_name;
 	private String trailer_title;
 	private int trailer_price;
+	private String trailer_image;
 	private String trailer_aws_url;
 	private String trailer_detail;
 	private Timestamp trailer_launchdate;
@@ -66,6 +67,12 @@ public class Trailer_DataBean {
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+	public String getTrailer_image() {
+		return trailer_image;
+	}
+	public void setTrailer_image(String trailer_image) {
+		this.trailer_image = trailer_image;
 	}
 	
 	
