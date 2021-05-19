@@ -154,8 +154,8 @@
                            data = JSON.parse(data);
                            
                            data = data.Jobs.filter(function(element){
-                               //return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/'+session+file.name+'.mp4';
-                        	   return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/Pexels Videos 2541964.mp4';
+                               return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/'+session+file.name;
+                        	   //return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/Pexels Videos 2541964.mp4';
                        
                             });
                            

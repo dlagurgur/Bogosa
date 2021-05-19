@@ -6,6 +6,10 @@
 		<%@include file="header.jsp"%>
 		<script src="${project}script.js"></script>
 		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+		<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <style type="text/css">
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
@@ -202,7 +206,7 @@ h3 {
 </style>
 
 	</head>
-	<body>
+	<body  onload="commentList()">
 		
 		<!-- Container -->
 <!--
@@ -331,6 +335,118 @@ h3 {
 		<div class="commentList"></div>
 
  <script type="text/javascript">
+//ajax
+
+function commentInsert(){ //댓글 등록 버튼 클릭시 
+ 	 var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+ 	 CmtInsert(insertData); //Insert 함수호출(아래)
+ }
+
+ /////댓글 목록 
+
+function commentList(){
+	var trailer_id=$("input[name=trailer_id").val();
+ 	var SessionID=$("input[name=session]").val();
+ 	$.ajax({
+        url : 'commentSelect.go',
+        type : 'get',
+        data : {trailer_id : trailer_id},
+        success : function(data){
+            var commentView ='';
+            $.each(data, function(key, comment){ 
+            	commentView += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+            	commentView += '</div class="commentInfo'+comment.comment_id+'"><b>'+comment.user_id+'</b>';
+            	if(SessionID == comment.user_id){
+            	commentView += '<a onclick="commentUpdate('+comment.comment_id+',\''+comment.comment_content+'\');"> 수정 </a>';
+            	commentView += '<a onclick="commentDelete('+comment.comment_id+');"> 삭제 </a>';
+            	}
+            	commentView += '<div class="commentContent"> <p>'+comment.comment_content +'</p>';
+            	commentView += '</div></div>'
+            });
+            $(".commentList").html(commentView);
+        },
+        error : function(error) {
+            alert("댓글을 입력해주세요!");
+        }
+    });
+ 	}
+
+
+ //댓글 등록
+
+function CmtInsert(insertData){
+ 	var trailer_id=$("input[name=trailer_id").val();
+ 	if(commentInsertForm.comment_content.value){
+ 	$.ajax({
+        url : 'commentInsert.go',
+        type : 'post',
+        data : insertData,
+        success : function(data){
+        	if(data == 1) {
+        		/*오류메세지 작성*/
+           }else{
+        	   commentList();
+        	   $('[name=comment_content]').val('');
+           }
+        },
+    	error : function(error) {
+        alert("error : " + error);
+    }
+    });
+ 	}else{
+ 		alert("댓글을 입력해주세요");
+ 	}
+ 	}
+
+ //댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
+ function commentUpdate(comment_id, comment_content){
+     var commentModify ='';
+     
+     commentModify += '<div class="input-group">';
+     commentModify += '<input type="text" class="form-control" name="comment_content_'+comment_id+'" value="'+comment_content+'"/>';
+     commentModify += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+comment_id+');">수정</button> </span>';
+     commentModify += '</div>';
+     
+     $('.commentContent'+comment_id).html(commentModify);
+     
+ }
+
+
+
+ //댓글 수정
+ function commentUpdateProc(comment_id){
+    var updateContent = $('input[name=comment_content_'+comment_id+']').val();
+    var tb_no=$("input[name=trailer_id").val();
+    $.ajax({
+        url : 'commentUpdate.go',
+        type : 'post',
+        data : {'comment_content' : updateContent, 'comment_id' : comment_id},
+        success : function(data){
+            commentList(trailer_id); //댓글 수정후 목록 출력 
+        
+        }
+    });
+ }
+
+ //댓글 삭제 
+ function commentDelete(comment_id){
+ 	//var tb_no=$("input[name=trailer_id]").val();
+    $.ajax({
+        url : 'commentDelete.go',
+        type : 'post',
+        data : {
+     	   comment_id : comment_id
+        },
+        success : function(data){
+        	commentList(); //댓글 삭제후 목록 출력 
+        },
+        error : function(error) {
+            alert("error : " + error);
+        }
+    });
+ }
+ 
+ 
  /*
  AWS.config.update({
    "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
