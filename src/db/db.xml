@@ -202,7 +202,7 @@
 	
 	<!-- /////////////라이브 예정 페이지////////////// -->
 	<insert id="insertTrailer" parameterType="db.Trailer_DataBean" >
-		insert into trailer(trailer_id, trailer_name,trailer_title, trailer_price, trailer_aws_url,trailer_detail, trailer_launchdate, trailer_updatedate, user_id)
+		insert into trailer(trailer_id, trailer_name,trailer_title, trailer_price, trailer_image,trailer_aws_url,trailer_detail, trailer_launchdate, trailer_updatedate, user_id)
 		values( trailer_id, #{trailer_name},#{trailer_title}, #{trailer_price},#{trailer_image},#{trailer_aws_url},#{trailer_detail},(NOW()), (NOW()), #{user_id})
 		<selectKey keyProperty="trailer_id" resultType="int" order="AFTER">
     		SELECT LAST_INSERT_ID()
