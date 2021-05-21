@@ -231,31 +231,30 @@ h3 {
 <!--enctype="multipart/form-data"-->
 
 
-<c:if test="${trailer_id eq null}">
 <body class="align" style="padding-top: 20px;margin-right: 180px; color:white;">
 	<div class="site__container">
 	<div class="grid__container">
 			<h3 style="
 			padding-bottom: 20px;
 			width:470px;">상품에 대한 정보를 입력하세요</h3>
-		<form class="form form--login" name="productform" action="product_insert_pro.go" method="post" role="form" sytle="width: 470px;" enctype="multipart/form-data" >		
+		<form class="form form--login" name="productform" action="product_insert_pro.go" method="post" role="form" style="width: 700px;"enctype="multipart/form-data" >				
 			<div class="form__field">
 				<label for="product_title" class="col-sm-3 col-form-label" style="color:white;" >방송 제목</label>
-				<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}">
+				<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}" style="color:white;">
 			</div>		
 			<div class="form__field">		
 				<label for="product_name" class="col-sm-3 col-form-label" style="color:white;" >상품 이름</label>
-				<input class="form__input" type="text" name="product_name" id="product_name" maxlength="50" value="${product_dt.trailer_name}">	
+				<input class="form__input" type="text" name="product_name" id="product_name" maxlength="50" value="${product_dt.trailer_name}" style="color:white;">	
 			</div>		
 			<div class="form__field">
 			
 				<label for="product_price" class="col-sm-3 col-form-label" style="color:white;">상품 가격</label>
-				<input class="form__input" type="number" name="product_price" id="product_price" maxlength="20" value="${product_dt.trailer_price}">
+				<input class="form__input" type="number" name="product_price" id="product_price" maxlength="20" value="${product_dt.trailer_price}" style="color:white;">
 			</div>	
 			<div class="form__field">
 			
 				<label for="product_image" class="col-sm-3 col-form-label" style="color:white;">상품 이미지 파일</label>
-				<input class="form__input" type="file" name="product_image" id="product_image">
+				<input class="form__input" type="file" name="product_image" id="product_image" style="color:white;">
 			</div>
 			<div class="form__field">
 				<label for="product_category" class="col-sm-3 col-form-label" style="color:white;">분류</label>
@@ -283,69 +282,13 @@ h3 {
 			<input class="btn btn-primary" type="submit" value="등록">
 			<input class="btn btn-primary" onclick="location='myPage.go'" type="reset" value="취소">
 		</div>
+		</form>
 	</div>
 </div>
 
 
 </body>
-</c:if>
-
-<c:if test="${trailer_id ne null}">
-<body class="align" style="padding-top: 20px;margin-right: 180px; color:white;">
-	<div class="site__container">
-	<div class="grid__container">
-			<h3 style="
-			padding-bottom: 20px;
-			width:470px;">상품에 대한 정보를 입력하세요</h3>
-		<form class="form form--login" name="productform" action="product_insert_pro.go" method="post" role="form" sytle="width: 470px;" enctype="multipart/form-data" >		
-			<div class="form__field">
-				<label for="product_title" class="col-sm-3 col-form-label" style="color:white;" >방송 제목</label>
-				<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}">
-			</div>		
-			<div class="form__field">		
-				<label for="product_name" class="col-sm-3 col-form-label" style="color:white;" >상품 이름</label>
-				<input class="form__input" type="text" name="product_name" id="product_name" maxlength="50" value="${product_dt.trailer_name}">	
-			</div>		
-			<div class="form__field">
-			
-				<label for="product_price" class="col-sm-3 col-form-label" style="color:white;">상품 가격</label>
-				<input class="form__input" type="number" name="product_price" id="product_price" maxlength="20" value="${product_dt.trailer_price}">
-			</div>	
-			<div class="form__field">
-			
-				<label for="product_image" class="col-sm-3 col-form-label" style="color:white;">상품 이미지 파일</label>
-				<input class="form__input" type="file" name="product_image" id="product_image">
-			</div>
-			<div class="form__field">
-				<label for="product_category" class="col-sm-3 col-form-label" style="color:white;">분류</label>
-				<select class="from__input" name="product_category"	id="product_category">
-				  <option value="1">가전디지털</option>
-				  <option value="2">식품</option>
-				  <option value="3">주방용품</option>
-				  <option value="4">생활용품</option>
-				  <option value="5">의류</option>
-				  <option value="6">취미</option>
-				  <option value="7">스포츠/레저</option>
-				</select>
-			</div>
-		<div class="form__field">
-				<label for="product_detail" class="col-sm-3 col-form-label" style="color:white;">상품 설명</label>
-			
-				<textarea class="form-control" name="product_detail" id="product_detail" rows="5" cols="30">
-				</textarea>
-			</div>
-		<input type="hidden" name="session" id="session" value="${user_id}" /> 
-		<input type="hidden" name="product_id" value="${product_id}" /> 
-		<input type="hidden" name="aws_url" id="aws_url" value="${userDto.a}" >
-			
-		<div class="form__field">
-			<input class="btn btn-primary" type="submit" value="등록">
-			<input class="btn btn-primary" onclick="location='myPage.go'" type="reset" value="취소">
-		</div>
-	</div>
-</div>
 
 
-</body>
-</c:if>
+
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////// -->
