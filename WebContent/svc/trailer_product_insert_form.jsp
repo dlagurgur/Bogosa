@@ -237,7 +237,7 @@ h3 {
 			<h3 style="
 			padding-bottom: 20px;
 			width:470px;">상품에 대한 정보를 입력하세요</h3>
-		<form class="form form--login" name="productform" action="product_insert_pro.go" method="post" role="form" style="width: 700px;"enctype="multipart/form-data" >		
+		<form class="form form--login" name="productform" action="product_insert_pro.go" method="post" role="form" style="width: 700px;"enctype="multipart/form-data" >				
 			<div class="form__field">
 				<label for="product_title" class="col-sm-3 col-form-label" style="color:white;" >방송 제목</label>
 				<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}" style="color:white;">
@@ -254,11 +254,11 @@ h3 {
 			<div class="form__field">
 			
 				<label for="product_image" class="col-sm-3 col-form-label" style="color:white;">상품 이미지 파일</label>
-				<input class="form__input" type="file" name="product_image" id="product_image">
+				<input class="form__input" type="file" name="product_image" id="product_image" style="color:white;">
 			</div>
 			<div class="form__field">
 				<label for="product_category" class="col-sm-3 col-form-label" style="color:white;">분류</label>
-				<select class="from__input" name="product_category"	id="product_category" style="width: 150px;">
+				<select class="from__input" name="product_category"	id="product_category">
 				  <option value="1">가전디지털</option>
 				  <option value="2">식품</option>
 				  <option value="3">주방용품</option>

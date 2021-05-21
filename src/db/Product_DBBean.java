@@ -21,6 +21,12 @@ public class Product_DBBean{
 	}
 	
 	
+	public Trailer_DataBean product_trailer_select(int trailer_id) {
+		return session.selectOne("db.product_trailer_select", trailer_id);
+	}
+	
+	
+	
 	public List<Product_DataBean> selectProduct(String user_id) {
 		return session.selectList("db.selectProduct", user_id);
 	}
