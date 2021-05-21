@@ -11,7 +11,7 @@
 <body>
 <!--enctype="multipart/form-data"-->
 <div class="container">
-	<form name="inputform" id ="target" action="trailer_insert_pro.go" method="post">
+	<form name="inputform" id ="target" action="trailer_insert_pro.go" method="post" enctype="multipart/form-data">
 		<h3>상품에 대한 정보를 입력하세요</h3>
 		<div class="form-group row">		
 			<div class="col-xs-2">
@@ -40,10 +40,19 @@
 		
 		<div class="form-group row">
 			<div class="col-xs-2">
+				<label for="trailer_price">라이브 예정 일정</label>
+			</div>
+			<div class="col-xs-2">
+				<input class="form-control" type="datetime-local" name="trailer_launchdate" id="trailer_launchdate" maxlength="20">
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<div class="col-xs-2">
 				<label for="trailer_image">상품 이미지</label>
 			</div>
 			<div class="col-xs-2">
-				<input class="input" type="file" name="trailer_image" id="trailer_image">
+				<input class="form-control" type="file" name="trailer_image" id="trailer_image">
 			</div>
 		</div>
 		
@@ -91,7 +100,6 @@
 
 		<div class="form-group row">
 			<button type="button"  id="upload-button">Upload</button>
-			<input class="btn btn-primary" type="submit" value="등록">
 			<input class="btn btn-primary" type="reset" value="취소">
 		</div>
 		
@@ -143,7 +151,7 @@
             bucket.putObject(params, function(err, data) {
                 if (err) {
                     results.innerHTML = 'ERROR: ' + err;
-                   // document.getElementById('target').submit();
+                    document.getElementById('target').submit();
                 } else {
                 	console.log(data);
                     
@@ -193,7 +201,7 @@
             });
         } else {
             results.innerHTML = 'Nothing to upload.';
-           // document.getElementById('target').submit();
+            document.getElementById('target').submit();
         }
     }, false);
     

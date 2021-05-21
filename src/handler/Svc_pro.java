@@ -10,6 +10,12 @@ import java.io.IOException;
 
 
 import java.io.UnsupportedEncodingException;
+//import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,6 +73,9 @@ public class Svc_pro{
 	
 	@Resource
 	private Comment_DBBean Comment_Dao;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime requestDateTime;
 //////////////////////////////////회원 영역///////////////////////////////////////////////	
 	//회원가입
 	@RequestMapping("/svc_join_pro")
@@ -509,22 +519,63 @@ public class Svc_pro{
 	
 	@RequestMapping("/trailer_insert_pro")
 	public ModelAndView trailer_insertProcess(HttpServletRequest request, HttpServletResponse response)
-			throws HandlerException {
+			throws HandlerException, IOException {
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		
 		Trailer_DataBean trailer_dto = new Trailer_DataBean();
-		trailer_dto.setTrailer_name(request.getParameter("trailer_name"));
-		trailer_dto.setTrailer_title(request.getParameter("trailer_title"));
-		trailer_dto.setTrailer_price(Integer.parseInt(request.getParameter("trailer_price")));
-		String aws_url = request.getParameter("trailer_aws_url");
-		trailer_dto.setTrailer_aws_url(aws_url);
-		String trailer_launchdate = request.getParameter("trailer_launchdate");
-	    trailer_dto.setTrailer_launchdate(trailer_launchdate);
-		trailer_dto.setTrailer_detail(request.getParameter("trailer_detail"));
-		trailer_dto.setUser_id(request.getParameter("session"));
+		
+		int sizeLimit = 1024*1024*15;
+		
+		@SuppressWarnings("deprecation")
+		String imagePath = request.getRealPath("menu_images");
+		
+		String filename = "";
+			
+		MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+		
+		@SuppressWarnings("rawtypes")
+		Enumeration files = multi.getFileNames();
+
+		String file = (String) files.nextElement();
+		
+		String trailer_name = multi.getParameter("trailer_name");
+		String trailer_title = multi.getParameter("trailer_title");
+		int trailer_price = Integer.parseInt(multi.getParameter("trailer_price"));
+		String trailer_aws_url = multi.getParameter("trailer_aws_url");
+		String trailer_detail = multi.getParameter("trailer_detail");
+		
+		
+		//String trailer_launchdate = multi.getParameter("trailer_launchdate");
+		//Timestamp trailer_launchdate = Timestamp.valueOf(multi.getParameter("trailer_launchdate"));
+		//SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		//Date trailer_launchdate = null;
+		//try {
+		//	trailer_launchdate = transFormat.parse(multi.getParameter("trailer_launchdate"));
+		//} catch (ParseException e) {
+			// TODO Auto-generated catch block
+		//	e.printStackTrace();
+		//}	
+		//System.out.println(trailer_launchdate);
+		
+		String trailer_launchdate = multi.getParameter("trailer_launchdate");
+		String user_id = multi.getParameter("session");
+		filename = multi.getFilesystemName(file);
+
+		
+		trailer_dto.setTrailer_name(trailer_name);
+		trailer_dto.setTrailer_title(trailer_title);
+		trailer_dto.setTrailer_price(trailer_price);
+		trailer_dto.setTrailer_aws_url(trailer_aws_url);
+		trailer_dto.setTrailer_detail(trailer_detail);
+		trailer_dto.setTrailer_launchdate(trailer_launchdate);
+		trailer_dto.setUser_id(user_id);
+		trailer_dto.setTrailer_image(filename);
+
 		
 		
 		
