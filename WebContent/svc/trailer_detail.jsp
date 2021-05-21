@@ -325,7 +325,7 @@ h3 {
 	
 	
 
-		<c:if test="${sessionScope.user_id != null}">
+	
 			<div class="container" style="width: 980px;">
 				<label for="content" style="background-color: #8b7fac;font-size: 20;border-radius: 5px;padding: 5px;color: beige">comment</label>
 				<form name="commentInsertForm" method="post">
@@ -341,7 +341,7 @@ h3 {
 					</div>
 				</form>
 			</div>
-		</c:if>
+		
 		<div class="commentList" style="width: 950;margin: auto;margin-top: 50;"></div>
 
  <script type="text/javascript">
@@ -364,13 +364,14 @@ function commentList(){
         success : function(data){
             var commentView ='';
             $.each(data, function(key, comment){ 
+            	
             	commentView += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-            	commentView += '</div class="commentInfo'+comment.comment_id+'"><b>'+comment.user_id+'</b>';
+            	commentView += '</div style="color:white;" id="commentInfo'+comment.comment_id+'"><b style="color:white;">'+comment.user_id+'</b>&nbsp;&nbsp;';
             	if(SessionID == comment.user_id){
-            	commentView += '<a onclick="commentUpdate('+comment.comment_id+',\''+comment.comment_content+'\');"> 수정 </a>';
-            	commentView += '<a onclick="commentDelete('+comment.comment_id+');"> 삭제 </a>';
+            	commentView += '<a style="color:white;" onclick="commentUpdate('+comment.comment_id+',\''+comment.comment_content+'\');"> 수정 </a> &nbsp';
+            	commentView += '<a style="color:white;" onclick="commentDelete('+comment.comment_id+');"> 삭제 </a>';
             	}
-            	commentView += '<div class="commentContent"> <p>'+comment.comment_content +'</p>';
+            	commentView += '<div id="commentContent"> <p style="color:white;">'+comment.comment_content +'</p>';
             	commentView += '</div></div>'
             });
             $(".commentList").html(commentView);
@@ -400,7 +401,7 @@ function CmtInsert(insertData){
            }
         },
     	error : function(error) {
-        alert("error : " + error);
+        alert("로그인해주세요");
     }
     });
  	}else{
@@ -409,7 +410,7 @@ function CmtInsert(insertData){
  	}
 
  //댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
- function commentUpdate(comment_id, comment_content){
+ function commentUpdate(comment_id,comment_content){
      var commentModify ='';
      
      commentModify += '<div class="input-group">';
@@ -417,7 +418,8 @@ function CmtInsert(insertData){
      commentModify += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+comment_id+');">수정</button> </span>';
      commentModify += '</div>';
      
-     $('.commentContent'+comment_id).html(commentModify);
+     $('#commentInfo'+comment_id+'').html(commentModify);
+     
      
  }
 
@@ -432,7 +434,7 @@ function CmtInsert(insertData){
         type : 'post',
         data : {'comment_content' : updateContent, 'comment_id' : comment_id},
         success : function(data){
-            commentList(trailer_id); //댓글 수정후 목록 출력 
+            commentList(tb_no); //댓글 수정후 목록 출력 
         
         }
     });
@@ -440,7 +442,6 @@ function CmtInsert(insertData){
 
  //댓글 삭제 
  function commentDelete(comment_id){
- 	//var tb_no=$("input[name=trailer_id]").val();
     $.ajax({
         url : 'commentDelete.go',
         type : 'post',
@@ -456,59 +457,7 @@ function CmtInsert(insertData){
     });
  }
  
- 
- /*
- AWS.config.update({
-   "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
-   "secretAccessKey": "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",
-   "region": "us-east-1"
- });
 
- var s3 = new AWS.S3();
-    
-     s3.getObject({
-         Bucket: "transvideo-source71e471f1-knewdmajkw29", 
-         Key: "jobs-manifest.json"
-        }
-        , function(err, data) {
-         if (err) console.log(err, err.stack); // an error occurred
-         else
-            // console.log(data.Body.toString());           // successful response
-            data = data.Body.toString();
-            // console.log(a);
-            data = JSON.parse(data);
-            
-            data = data.Jobs.filter(function(element){
-                return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/파일명';
-        
-             });
-            console.log(data[0].Outputs.HLS_GROUP[0]);
-        });
-
-     
-     
-        s3.upload({
-            Bucket: 'bucket',
-             Key: '업로드할 파일명'}, function(err, data) {
-         console.log(err, data);
-       });
-
-*/
-
-//     s3.getObject(params, function(err, data) {
-//       if (err) console.log(err, err.stack); // an error occurred
-//       else
-//          // console.log(data.Body.toString());           // successful response
-//          var a = data.Body.toString();
-//          // console.log(a);
-//          var b = JSON.parse(a);
-//          var c = b.Jobs;
-//          var d = c.filter(function(element){
-//              return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/Pexels Videos 2219383.mp4';
-     
-//           });
-//          console.log(d[0].Outputs.HLS_GROUP[0]);
-//      });
 
   </script>
 </html>
