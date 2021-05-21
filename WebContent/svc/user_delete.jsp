@@ -206,7 +206,7 @@ h3 {
 		<!-- Container -->
 		<div class="container max-auto" style="min-height: 100%;">
 		  <div class="site__container">
-
+			<div class="grid__container">
     		
 			<form method="post" name="modify_info_form" action="deletePro.go" style="width: 350px;">
 			 <div class="jb-large">
@@ -224,6 +224,7 @@ h3 {
 		</form>
 			
 			</div>
+		</div>
 		</div>
 	
 			
