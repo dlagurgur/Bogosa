@@ -8,6 +8,9 @@
 		<script src="//code.jquery.com/jquery.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 		<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+		<link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+   		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <style type="text/css">
@@ -202,6 +205,11 @@ h3 {
   width: 90%;
 }
 
+ #video{
+            width: 640px;
+            height: 360px;
+        }
+
 
 </style>
 
@@ -209,18 +217,6 @@ h3 {
 	<body  onload="commentList()">
 		
 		<!-- Container -->
-<!--
-		<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
-	  	
-<video controls id="video-player" style="
-    padding-top: 0px;
-    padding-left: 0px;
-    height: 750px;
-    width: 1300px;
-    margin-left: 70px;
-    margin-top: 20px;
-"></video>
--->
 
 
   
@@ -235,6 +231,15 @@ h3 {
     height: 5px;
     margin-top: 20px;
 ">${Trailer_dto.trailer_name}</h1>
+
+<video id=video  class="video-js vjs-big-play-centered" controls>
+    <source src="${Trailer_dto.trailer_aws_url}" type="application/x-mpegURL">
+</video>
+
+<script>
+    var player = videojs('video');
+    // player.play();
+</script>
 
  <!--  
 
