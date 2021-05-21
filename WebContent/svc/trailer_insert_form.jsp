@@ -166,17 +166,31 @@
                                data = JSON.parse(data);
                                
                                data = data.Jobs.filter(function(element){
-                                  return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/'+session+file.name;
+                                  if(element.Job != undefined){
+                                	  return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/'+session+file.name;
+                                	  //return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/adminpexels-c-technical-6121389.mp4';
+                                  }
+                                  else{
+                                      
+                                      return element.InputFile == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/'+session+file.name;
+                                    }
                                 });
                                 
                                 if(data.length != 0){
-                                    trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
-                                    console.log(trailer_aws_url);
-                                    //console.log(typeof(trailer_aws_url));
-                                    //console.log(typeof(trailer_aws_url.value));
-                                    results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="'+trailer_aws_url+'">'
-                                    document.getElementById('target').submit();
-                                    clearInterval(timer);
+                                	if(data[0].Outputs !=undefined){
+                                		trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
+                                        console.log(trailer_aws_url);
+                                        //console.log(typeof(trailer_aws_url));
+                                        //console.log(typeof(trailer_aws_url.value));
+                                        results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="'+trailer_aws_url+'">'
+                                        document.getElementById('target').submit();
+                                        clearInterval(timer);
+                                	}
+                                	else{
+                                		alert("파일 업로드 중 문제가 발생했습니다. 다시 시도해 주세요.");
+                                		clearInterval(timer);
+                                	}
+                                    
                                 }
                                 else{
                                     console.log("data is not detected")
