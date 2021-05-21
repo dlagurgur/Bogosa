@@ -80,13 +80,7 @@
 			</div>
 			
 			
-		 <div class="form-group row">
-            <label for="inputNickname" class="col-sm-2 col-form-label">라이브 예정일</label>
-            <div class="col-sm-8">
-               <input class="form-control" type="datetime-local" name="trailer_launchdate" id="trailer_launchdate" maxlength="20">
-            </div>
-         </div>
-			
+	
 			
 			
 		
