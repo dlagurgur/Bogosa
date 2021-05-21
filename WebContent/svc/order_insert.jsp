@@ -107,14 +107,6 @@
 	</div>
 	
 	
-	<p style="margin-top:-12px">
-    <em class="link">
-        <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
-        </a>
-    </em>
-</p>
-<div id="map" style="width:100%;height:350px;"></div>
 </form>
 </div>
 
@@ -248,12 +240,12 @@ function displayCenterInfo(result, status) {
 }
 
 //주문표 출력
-function setMenus(storageLocation){
-	var storageLoc=eval(storageLocation);
+
+
+function setMenusForPay(storageLocation){
+	var storageLoc=eval('sessionStorage');
 	var orderDetail = JSON.parse(storageLoc.getItem("order"));
-	
 	var total_pay = 0;
-    
     var x = "";
     x+=	'<div class="container">';
     x+= 	'<table class="table table-sm table-hover text-center">';
@@ -269,40 +261,42 @@ function setMenus(storageLocation){
     x+=						'수량';
     x+=					'</th>';
     x+=					'<th scope="col">';
-    x+=						'삭제';
+    x+=						'전체 가격 ';
     x+=					'</th>';
     x+= 			'</tr>';
     x+= 		'</thead>';
     x+= 		'<tbody>';    
-    
+
     for(i in orderDetail){
-    	x+= 		'<tr>';
-    	x+=				'<td>';
+    	x+=			'<tr>';
+    	x+=		 		'<td>';
     	x+=					orderDetail[i].product_name;
-    	x+=				'</td>';
-    	x+=				'<td>';
+    	x+=		 		'</td>';
+    	x+=		 		'<td>';
     	x+=					orderDetail[i].product_price;
-    	x+=				'</td>';
-    	x+=				'<td>';
+    	x+=					'원';
+    	x+=		 		'</td>';
+    	x+=		 		'<td>';
     	x+=					orderDetail[i].product_qnt;
-    	x+=				'</td>';
-    	x+=				'<td>';
-    	x+=					'<button type="button" class="btn btn-warning btn-sm" value="삭제" onclick="deleteMenu('+i+')">';
-    	x+=				'</td>';
-    	x += 			'<input type="hidden" id="menu_id" name="product_id" value="'+orderDetail[i].product_id+'">';
-    	x += 			'<input type="hidden" id="order_qnt" name="product_qnt" value="'+orderDetail[i].product_qnt+'">';
-    	x += 			'<input type="hidden" id="ordered_menus" name="product_menus" value="'+orderDetail+'">';
+    	x+=					'개';
+    	x+=		 		'</td>';
+    	
+		
+    	x += '<input type="hidden" id="menu_id" name="product_id" value="'+orderDetail[i].product_id+'">';
+    	x += '<input type="hidden" id="order_qnt" name="product_qnt" value="'+orderDetail[i].product_qnt+'">';
+    	x += '<input type="hidden" id="ordered_menus" name="ordered_menus" value="'+orderDetail+'">';
     	
     	total_pay +=orderDetail[i].product_price*orderDetail[i].product_qnt;
-    	x+= 		'</tr>';
     }
-    x+= 		'</tbody>';
-    x+=		'</table>';
-    x+=	'</div>';
-    x+="전체 가격 : "+ total_pay+"원<br>";
-    
+    x+=		 		'<td>';
+	x+=					total_pay;
+	x+=					'원';
+	x+=		 		'</td>';
+    x+=		 	'</tr>';
+    x+= '</table>';
     document.getElementById("ordered_menus").innerHTML = x;
 } 
+
 
 
 //주문표 삭제
