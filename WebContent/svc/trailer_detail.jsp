@@ -223,8 +223,14 @@ h3 {
 
   
 
-<div class="grid__container" style="margin: 0 auto;width: 50%;margin-top: 30px;color:white;">
-<h1>${Trailer_dto.trailer_name}</h1>
+<div class="grid__container" style="margin: 0 auto;width:950px;margin-top: 30px;color:white;">
+<h2 style="background-color: #988bbde6;
+	color: beige;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10;
+    padding-bottom: 10;">${Trailer_dto.trailer_name}</h2>
 </div>
 
 <video id=video  class="video-js vjs-big-play-centered" controls>
@@ -321,7 +327,7 @@ h3 {
 
 		<c:if test="${sessionScope.user_id != null}">
 			<div class="container" style="width: 980px;">
-				<label for="content">comment</label>
+				<label for="content" style="background-color: #8b7fac;font-size: 20;border-radius: 5px;padding: 5px;color: beige">comment</label>
 				<form name="commentInsertForm" method="post">
 					<div class="input-group">
 						<input type="hidden" name="trailer_id" value="${Trailer_dto.trailer_id}" /> <input
@@ -336,7 +342,7 @@ h3 {
 				</form>
 			</div>
 		</c:if>
-		<div class="commentList" style="width: 50%;margin: auto;margin-top: 50;"></div>
+		<div class="commentList" style="width: 950;margin: auto;margin-top: 50;"></div>
 
  <script type="text/javascript">
 //ajax
