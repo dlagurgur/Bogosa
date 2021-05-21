@@ -74,8 +74,6 @@ public class Svc_pro{
 	@Resource
 	private Comment_DBBean Comment_Dao;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime requestDateTime;
 //////////////////////////////////회원 영역///////////////////////////////////////////////	
 	//회원가입
 	@RequestMapping("/svc_join_pro")
