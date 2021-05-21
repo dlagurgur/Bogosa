@@ -202,13 +202,17 @@ h3 {
 .grid__container {
   margin: 0 auto;
   max-width: 20rem;
-  width: 90%;
+  width: 50%;
 }
 
  #video{
-            width: 640px;
-            height: 360px;
+            width: 960px;
+            height: 540px;
+            margin:0 auto; 
+            margin-top:200px;
         }
+        
+ 
 
 
 </style>
@@ -264,7 +268,7 @@ h3 {
 
     <div class="grid__container">
 
-	<form class="form form--login" id="menuform" name="menuform" role="form" style="width: 870px;margin-left: 100px;margin-bottom: 0px;margin-top: -545;">
+	<form class="form form--login" id="menuform" name="menuform" role="form" style="width: 870px;margin-left: 100px;margin-bottom: 0px;margin-top: 0;">
       
     	        
         <div class="form__field">

@@ -187,7 +187,7 @@
                                         clearInterval(timer);
                                 	}
                                 	else{
-                                		console.log("파일 업로드 중 문제가 발생했습니다. 다시 시도해 주세요.");
+                                		alert("파일 업로드 중 문제가 발생했습니다. 다시 시도해 주세요.");
                                 		clearInterval(timer);
                                 	}
                                     
