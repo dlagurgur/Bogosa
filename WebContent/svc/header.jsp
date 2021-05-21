@@ -60,8 +60,8 @@
 	<body>
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-#1C1C1C" style="background-color: #1C1C1C; height: 51px;">
 			<a class="navbar-brand" href="product_main.go?menu_category=0"> <img
-				src="${project}img/login.jpg" width="30" height="30"
-				class="d-inline-block align-top"> Encore
+				src="${project}img/BOGOSA.jpg" width="30" height="30"
+				class="d-inline-block align-top"> BOGOSA
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -131,8 +131,8 @@
 	<body>
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-#1C1C1C" style="background-color: #1C1C1C; height: 51px;">
 			<a class="navbar-brand" href="product_main.go?menu_category=0"> <img
-				src="${project}img/login.jpg" width="30" height="30"
-				class="d-inline-block align-top"> Encore
+				src="${project}img/BOGOSA.jpg" width="30" height="30"
+				class="d-inline-block align-top"> BOGOSA
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarCollapse" aria-controls="navbarCollapse"

@@ -13,7 +13,7 @@
 
 <c:if test="${result eq 1}">
 	<script type="text/javascript">
-		alert( "탈퇴되셧습니다." );
+		alert( "탈퇴되셨습니다." );
 		sessionStorage.removeItem('user_id');
 	</script>
 	<meta http-equiv="refresh" content="0; url=login.go">
