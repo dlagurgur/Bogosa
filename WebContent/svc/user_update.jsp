@@ -17,13 +17,214 @@
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">	
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+    <!-- Bootstrap core CSS -->
+	 <!-- Custom style for this template -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 <script src="${project}script.js"></script>
 <style>
-	#a{
-		margin-top:50px;
-	}
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #151515;
+  color: #606468;
+  font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+  margin: 0;
+  min-height: 100%;
+}
+
+a {
+  color: #eee;
+  outline: 0;
+  text-decoration: none;
+}
+a:focus, a:hover {
+  text-decoration: underline;
+}
+
+button {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+}
+
+
+
+
+input {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+}
+
+
+h3 {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+}
+
+.site__container {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 3rem 0;
+}
+
+.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form button[type="button"],.form input[type="number"], .form input[type="reset"] {
+  width: 100%;
+}
+.form--login {
+  color: #606468;
+}
+.form--login label,
+.form input[type="number"],
+.form--login input[type="text"],
+.form--login input[type="password"],
+.form--login input[type="submit"],
+.form--login button[type="button"],
+.form--Login input[type="reset"]
+. {
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+.form--login label {
+  background-color: #1C1C1C;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.form--login input[type="text"],.form input[type="number"], .form--login input[type="password"] {
+  background-color: #2E2E2E;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.form--login .form input[type="number"]:focus,input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
+  background-color: #2E2E2E;
+}
+
+.form--login input[type="submit"] {
+  background-color: #AC58FA;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.form--login input[type="reset"] {
+  background-color: #AC58FA;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.form--login input[type="submit"]:focus, .form--login input[type="submit"]:hover {
+  background-color: #AC58FA;
+}
+.form--login input[type="reset"]:focus, .form--login input[type="reset"]:hover {
+  background-color: #AC58FA;
+}
+.form__field {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.form__input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+
+
+.form--login button[type="button"] {
+  border-radius: 0.15rem;
+  padding: 1rem;
+}
+
+.form button[type="button"] {
+  width: 100%;
+}
+
+.form--login button[type="button"] {
+  background-color: #AC58FA;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.form--login button[type="button"]:focus, .form--login input[type="button"]:hover {
+  background-color: #AC58FA;
+}
+
+
+.align {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.grid__container {
+  margin: 0 auto;
+  max-width: 30rem;
+  width: 90%;
+}
+
+
 </style>
 </head>
 <article class="container">
@@ -33,23 +234,23 @@
 
      <form class="form-horizontal" name="joinform" method="post" action="updatePro.go" onsubmit="return modifyCheck()">
      			
-        		<h2 class="text-left text-dark" >내 정보수정</h2>
+        		<h2 class="text-left text-white" >내 정보수정</h2>
         		<br><br>  		
 		        <div class="form-group row">
 		        
-					<label for="nickname" class="col-sm-3 col-form-label">아이디</label>
+					<label for="nickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white text-white">아이디</label>
 					<div class="col-sm-8"><input class="form-control" type="text" value="${userDto.user_id}" readonly></div>
 					
 				</div>
 		        
 		         <div class="form-group row">
-					<label for="nickname" class="col-sm-3 col-form-label">이름</label>
+					<label for="nickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">이름</label>
 					<div class="col-sm-8"><input class="form-control" type="text" value="${userDto.user_name}" readonly></div>
 				</div>
 		        
 		        
 		        <div class="form-group row">
-		         	 <label class="col-sm-3 col-form-label">비밀번호</label>   <!--    password     -->
+		         	 <label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">비밀번호</label>   <!--    password     -->
 		         	 
 		        		<div class="col-sm-8">
 		         		 <input class="form-control" name="user_pw" id="password" type="password" value="${userDto.user_pw }" placeholder="변경할 비밀번호 입력 ">
@@ -59,7 +260,7 @@
 		        
 		          		          
 		        <div class="form-group row">
-		           <label for="inputNickname" class="col-sm-3 col-form-label">배달지 주소</label>   <!--    Address     -->
+		           <label for="inputNickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">배달지 주소</label>   <!--    Address     -->
 		           
 		          	<div class="col-sm-8 row">
 		            	&nbsp;&nbsp;&nbsp;<input class="form-control col-sm-8 "  name="user_addr" id="cus_address" type="text" placeholder="주소" value="${userDto.user_addr}">
@@ -74,7 +275,7 @@
 		         
 		        
 		          <div class="form-group row">
-		          	<label  for="inputNickname" class="col-sm-3 col-form-label">상세주소</label>
+		          	<label  for="inputNickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">상세주소</label>
 		       			<div class="col-sm-8 text-right">
 		         		 <input class="form-control" name="user_addr2" id="cus_address2" type="text"  placeholder="상세주소를 입력하세요" value="${userDto.user_addr2 }" >
 		        		</div>
@@ -82,7 +283,7 @@
 		        
 		        		     
             	<div class="form-group row">
-					<label class="col-sm-3 col-form-label">이메일
+					<label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">이메일
 					</label>
 					<div class="col-sm-8">
 					 <input class="form-control" name="email" type="text" value="${userDto.user_email}" readonly>
@@ -91,7 +292,7 @@
 		        
 		      		             
 		        <div class="form-group row">                                        
-		            <label class="col-sm-3 col-form-label" for="inputNumber">휴대폰번호</label>           <!--    Telephone     -->
+		            <label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" for="inputNumber">휴대폰번호</label>           <!--    Telephone     -->
 		              <div class="col-sm-6">
 		                <div class="input-group">
 		                
