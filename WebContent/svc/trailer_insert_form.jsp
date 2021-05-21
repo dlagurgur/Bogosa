@@ -11,7 +11,7 @@
 <body>
 <!--enctype="multipart/form-data"-->
 <div class="container">
-	<form name="inputform" id ="target" action="trailer_insert_pro.go" method="post">
+	<form name="inputform" id ="target" action="trailer_insert_pro.go" method="post" enctype="multipart/form-data">
 		<h3>상품에 대한 정보를 입력하세요</h3>
 		<div class="form-group row">		
 			<div class="col-xs-2">
@@ -40,10 +40,19 @@
 		
 		<div class="form-group row">
 			<div class="col-xs-2">
+				<label for="trailer_price">라이브 예정 일정</label>
+			</div>
+			<div class="col-xs-2">
+				<input class="form-control" type="datetime-local" name="trailer_launchdate" id="trailer_launchdate" maxlength="20">
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<div class="col-xs-2">
 				<label for="trailer_image">상품 이미지</label>
 			</div>
 			<div class="col-xs-2">
-				<input class="input" type="file" name="trailer_image" id="trailer_image">
+				<input class="form-control" type="file" name="trailer_image" id="trailer_image">
 			</div>
 		</div>
 		
@@ -71,6 +80,14 @@
 			</div>
 			
 			
+		 <div class="form-group row">
+            <label for="inputNickname" class="col-sm-2 col-form-label">라이브 예정일</label>
+            <div class="col-sm-8">
+               <input class="form-control" type="datetime-local" name="trailer_launchdate" id="trailer_launchdate" maxlength="20">
+            </div>
+         </div>
+			
+			
 			
 		
 			
@@ -83,7 +100,6 @@
 
 		<div class="form-group row">
 			<button type="button"  id="upload-button">Upload</button>
-			<input class="btn btn-primary" type="submit" value="등록">
 			<input class="btn btn-primary" type="reset" value="취소">
 		</div>
 		
@@ -105,7 +121,7 @@
         "region": "us-east-1"
         });
 
-    var bucketName = 'transvideo-source71e471f1-knewdmajkw29'; // Enter your bucket name
+    var bucketName = 'cdn-video-source71e471f1-1w5ehaaqw3boh'; // Enter your bucket name
     var bucket = new AWS.S3({
         params: {
             Bucket: bucketName
@@ -137,39 +153,50 @@
                     results.innerHTML = 'ERROR: ' + err;
                     document.getElementById('target').submit();
                 } else {
-                    console.log(data);
-                    
+                	console.log(data);
                     
                     var s3 = new AWS.S3();
-                    s3.getObject({
-                        Bucket: "transvideo-source71e471f1-knewdmajkw29", 
-                        Key: "jobs-manifest.json"
-                       }
-                       , function(err, data) {
-                        if (err) console.log(err, err.stack); // an error occurred
-                        else
-                           // console.log(data.Body.toString());           // successful response
-                           data = data.Body.toString();
-                           // console.log(a);
-                           data = JSON.parse(data);
-                           
-                           data = data.Jobs.filter(function(element){
-                               return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/'+session+file.name;
-                        	   //return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/Pexels Videos 2541964.mp4';
-                       
-                            });
-                           
-                           trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
-                           console.log(trailer_aws_url.value);
-                           console.log(typeof(trailer_aws_url));
-                           console.log(typeof(trailer_aws_url.value));
-                           results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="'+trailer_aws_url+'">'
-                           document.getElementById('target').submit();
-                       });
-                                      
-                   
                     
-                   
+                    var timer = setInterval(function(){
+                    	console.log("hello");
+                        s3.getObject({
+                            Bucket: "cdn-video-source71e471f1-1w5ehaaqw3boh", 
+                            Key: "jobs-manifest.json"
+                           }
+                           , function(err, data) {
+                            if (err) console.log(err, err.stack); 
+                            else
+                             
+                               data = data.Body.toString();
+                               
+                               data = JSON.parse(data);
+                               
+                               data = data.Jobs.filter(function(element){
+                                  return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/'+session+file.name;
+                                });
+                                
+                                if(data.length != 0){
+                                    trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
+                                    console.log(trailer_aws_url);
+                                    //console.log(typeof(trailer_aws_url));
+                                    //console.log(typeof(trailer_aws_url.value));
+                                    results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="'+trailer_aws_url+'">'
+                                    document.getElementById('target').submit();
+                                    clearInterval(timer);
+                                }
+                                else{
+                                    console.log("data is not detected")
+                                }
+
+                                 
+                        
+                           })
+                    }, 10000);
+                    
+                    timer;
+
+                    
+ 
                 }
             });
         } else {
