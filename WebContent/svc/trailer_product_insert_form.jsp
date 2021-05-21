@@ -279,7 +279,7 @@ h3 {
 		<input type="hidden" name="aws_url" id="aws_url" value="${userDto.a}" >
 			
 		<div class="form__field">
-			<input class="btn btn-primary" type="submit" value="등록">
+			<input class="btn btn-primary" type="submit" value="등록">&nbsp;&nbsp;&nbsp;
 			<input class="btn btn-primary" onclick="location='myPage.go'" type="reset" value="취소">
 		</div>
 		</form>
