@@ -32,7 +32,7 @@ body {
   background-color: #151515;
   color: #606468;
   font: 400 0.875rem/1.5 "Open Sans", sans-serif;
-  margin: 0;
+  margin-all: 50px;
   min-height: 100%;
 }
 
@@ -201,15 +201,13 @@ h3 {
 
 .grid__container {
   margin: 0 auto;
-  max-width: 20rem;
-  width: 50%;
 }
 
  #video{
             width: 960px;
             height: 540px;
             margin:0 auto; 
-            margin-top:200px;
+            margin-top:50px;
         }
         
  
@@ -225,16 +223,9 @@ h3 {
 
   
 
-
-<h1 style="
-    padding-left: 60px;
-    padding-bottom: 0px;
-    color:white;
-    margin-bottom: 0px;
-    width: 1550px;
-    height: 5px;
-    margin-top: 20px;
-">${Trailer_dto.trailer_name}</h1>
+<div class="grid__container" style="margin: 0 auto;width: 50%;margin-top: 30px;color:white;">
+<h1>${Trailer_dto.trailer_name}</h1>
+</div>
 
 <video id=video  class="video-js vjs-big-play-centered" controls>
     <source src="${Trailer_dto.trailer_aws_url}" type="application/x-mpegURL">
@@ -268,7 +259,7 @@ h3 {
 
     <div class="grid__container">
 
-	<form class="form form--login" id="menuform" name="menuform" role="form" style="width: 870px;margin-left: 100px;margin-bottom: 0px;margin-top: 0;">
+	<form class="form form--login" id="menuform" name="menuform" role="form" style="width: 950px; margin:0 auto;">
       
     	        
         <div class="form__field">
@@ -277,13 +268,13 @@ h3 {
 		</div>
 		
 		<div class="form__field">
-		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품설명</label>
-				<input style="color:white;" class="form__input" type="text" value="${Trailer_dto.trailer_detail}" readonly>
+		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
+				<input style="color:white;" class="form__input" type="text" value="${Trailer_dto.trailer_price}원" readonly>
 		</div>
 		
 		<div class="form__field">
-		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
-				<input style="color:white;" class="form__input" type="text" value="${Trailer_dto.trailer_price}원" readonly>
+		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품설명</label>
+				<input style="color:white;" class="form__input" type="text" value="${Trailer_dto.trailer_detail}" readonly>
 		</div>
 
 					
@@ -329,7 +320,7 @@ h3 {
 	
 
 		<c:if test="${sessionScope.user_id != null}">
-			<div class="container">
+			<div class="container" style="width: 980px;">
 				<label for="content">comment</label>
 				<form name="commentInsertForm" method="post">
 					<div class="input-group">
@@ -345,7 +336,7 @@ h3 {
 				</form>
 			</div>
 		</c:if>
-		<div class="commentList"></div>
+		<div class="commentList" style="width: 50%;margin: auto;margin-top: 50;"></div>
 
  <script type="text/javascript">
 //ajax
