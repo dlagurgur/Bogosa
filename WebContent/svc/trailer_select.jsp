@@ -29,7 +29,7 @@
 	
 	<body>
 		
-		
+		<form class="form form--login" id="menuform" name="menuform" role="form" >
 		<!-- Container -->
 		<div class="container">
 		<c:if test="${result eq 0}">
@@ -44,6 +44,7 @@
 						<th scope="col" class="menu_name">상품명 </th>
 						<th scope="col" class="menu_name">가격</th>
 						<th scope="col" class="menu_name">방송 예정일</th>
+						<th scope="col" class="menu_name">방송 시작하기</th>
 					</tr>
 				</thead>
 		
@@ -52,7 +53,7 @@
 				<c:forEach var="i" begin="0" end="${fn:length(Trailer_dto)-1}" step="1">
 				<c:set var="count" value="${counts[i]}"/>
 				<c:set var="cusorder" value="${Trailer_dto[i]}"/>
-						<tr class="clickableRow" data-href="product_detail.go?product_id=${cusorder.trailer_id}">
+						<tr>
 							<td scope="row">
 								${cusorder.trailer_id}
 							</td>
@@ -70,15 +71,30 @@
 							<td scope="row">
 							${cusorder.trailer_launchdate}
 							</td>
+							<td scope="row">
+							<button type="button" onclick="location.href='product_insert.go?trailer_id=${cusorder.trailer_id}'">방송하기</button>
+
+							</td>
 						</tr>
 					</c:forEach>
 			
 			</table>
 </c:if>
 		</div>
+			
+					
+		</form>
 	</body>
 	
 <script>
+
+
+
+
+
+
+
+
 $(document).ready(
 		function() {
 $('.clickableRow').on(

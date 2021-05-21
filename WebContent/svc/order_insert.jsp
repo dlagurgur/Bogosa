@@ -304,61 +304,6 @@ function setMenus(storageLocation){
     document.getElementById("ordered_menus").innerHTML = x;
 } 
 
-//주문표 출력
-function setMenusForPay(storageLocation){
-	var storageLoc=eval('sessionStorage');
-	var orderDetail = JSON.parse(storageLoc.getItem("order"));
-	var total_pay = 0;
-    var x = "";
-    x+=	'<div class="container">';
-    x+= 	'<table class="table table-sm table-hover text-center">';
-    x+=			'<thead>'
-    x+= 			'<tr>';
-    x+=					'<th scope="col">';
-    x+=						'제품명';
-    x+=					'</th>';
-    x+=					'<th scope="col">';
-    x+=						'가격';
-    x+=					'</th>';
-    x+=					'<th scope="col">';
-    x+=						'수량';
-    x+=					'</th>';
-    x+=					'<th scope="col">';
-    x+=						'전체 가격 ';
-    x+=					'</th>';
-    x+= 			'</tr>';
-    x+= 		'</thead>';
-    x+= 		'<tbody>';    
-
-    for(i in orderDetail){
-    	x+=			'<tr>';
-    	x+=		 		'<td>';
-    	x+=					orderDetail[i].product_name;
-    	x+=		 		'</td>';
-    	x+=		 		'<td>';
-    	x+=					orderDetail[i].product_price;
-    	x+=					'원';
-    	x+=		 		'</td>';
-    	x+=		 		'<td>';
-    	x+=					orderDetail[i].product_qnt;
-    	x+=					'개';
-    	x+=		 		'</td>';
-    	
-		
-    	x += '<input type="hidden" id="menu_id" name="product_id" value="'+orderDetail[i].product_id+'">';
-    	x += '<input type="hidden" id="order_qnt" name="product_qnt" value="'+orderDetail[i].product_qnt+'">';
-    	x += '<input type="hidden" id="ordered_menus" name="ordered_menus" value="'+orderDetail+'">';
-    	
-    	total_pay +=orderDetail[i].product_price*orderDetail[i].product_qnt;
-    }
-    x+=		 		'<td>';
-	x+=					total_pay;
-	x+=					'원';
-	x+=		 		'</td>';
-    x+=		 	'</tr>';
-    x+= '</table>';
-    document.getElementById("ordered_menus").innerHTML = x;
-} 
 
 //주문표 삭제
 function deleteMenu(index){

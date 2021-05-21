@@ -113,10 +113,12 @@ public class Svc_Form{
 	@RequestMapping("/product_insert")
 	public ModelAndView product_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String user_id=(String)request.getSession().getAttribute("user_id");
-
+		
 		UserDataBean userDto=userDao.getUser(user_id);
 		request.setAttribute("userDto", userDto);
-	
+		int trailer_id=Integer.parseInt(request.getParameter("trailer_id"));
+		Trailer_DataBean product_dt = Product_Dao.product_trailer_select(trailer_id);
+		request.setAttribute("product_dt", product_dt);
 			
 		return new ModelAndView("svc/product_insert_form");
 	}

@@ -238,16 +238,16 @@ h3 {
 		<form class="form form--login" name="productform" action="product_insert_pro.go" method="post" role="form" sytle="width: 470px;" enctype="multipart/form-data" >		
 			<div class="form__field">
 				<label for="product_title" class="col-sm-3 col-form-label" style="color:white;" >방송 제목</label>
-				<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50">
+				<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}">
 			</div>		
 			<div class="form__field">		
 				<label for="product_name" class="col-sm-3 col-form-label" style="color:white;" >상품 이름</label>
-				<input class="form__input" type="text" name="product_name" id="product_name" maxlength="50">	
+				<input class="form__input" type="text" name="product_name" id="product_name" maxlength="50" value="${product_dt.trailer_name}">	
 			</div>		
 			<div class="form__field">
 			
 				<label for="product_price" class="col-sm-3 col-form-label" style="color:white;">상품 가격</label>
-				<input class="form__input" type="number" name="product_price" id="product_price" maxlength="20">
+				<input class="form__input" type="number" name="product_price" id="product_price" maxlength="20" value="${product_dt.trailer_price}">
 			</div>	
 			<div class="form__field">
 			
@@ -283,5 +283,7 @@ h3 {
 	</div>
 </div>
 
+
 </body>
+
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////// -->

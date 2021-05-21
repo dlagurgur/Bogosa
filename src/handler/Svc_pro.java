@@ -526,6 +526,7 @@ public class Svc_pro{
 			e.printStackTrace();
 		}
 		
+		
 		Trailer_DataBean trailer_dto = new Trailer_DataBean();
 		
 		int sizeLimit = 1024*1024*15;
@@ -546,22 +547,7 @@ public class Svc_pro{
 		String trailer_title = multi.getParameter("trailer_title");
 		int trailer_price = Integer.parseInt(multi.getParameter("trailer_price"));
 		String trailer_aws_url = multi.getParameter("trailer_aws_url");
-		String trailer_detail = multi.getParameter("trailer_detail");
-		
-		
-		//String trailer_launchdate = multi.getParameter("trailer_launchdate");
-		//Timestamp trailer_launchdate = Timestamp.valueOf(multi.getParameter("trailer_launchdate"));
-		//SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-		//Date trailer_launchdate = null;
-		//try {
-		//	trailer_launchdate = transFormat.parse(multi.getParameter("trailer_launchdate"));
-		//} catch (ParseException e) {
-			// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//}	
-		//System.out.println(trailer_launchdate);
-		
+		String trailer_detail = multi.getParameter("trailer_detail");	
 		String trailer_launchdate = multi.getParameter("trailer_launchdate");
 		String user_id = multi.getParameter("session");
 		filename = multi.getFilesystemName(file);

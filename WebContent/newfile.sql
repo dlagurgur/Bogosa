@@ -29,6 +29,7 @@ CREATE TABLE product
 (
 	product_id int NOT NULL AUTO_INCREMENT,
 	product_name varchar(25) NOT NULL,
+	product_title varchar(80) NOT NULL,
 	product_price int NOT NULL,
 	product_image varchar(300),
 	product_category int NOT NULL,
