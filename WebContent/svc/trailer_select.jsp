@@ -72,7 +72,7 @@
 							${cusorder.trailer_launchdate}
 							</td>
 							<td scope="row">
-							<button type="button" onclick="location.href='product_insert.go?trailer_id=${cusorder.trailer_id}'">방송하기</button>
+							<button type="button" onclick="location.href='trailer_product_insert_form.go?trailer_id=${cusorder.trailer_id}'">방송하기</button>
 
 							</td>
 						</tr>
