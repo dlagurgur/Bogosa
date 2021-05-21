@@ -519,12 +519,10 @@ public class Svc_pro{
 		trailer_dto.setTrailer_name(request.getParameter("trailer_name"));
 		trailer_dto.setTrailer_title(request.getParameter("trailer_title"));
 		trailer_dto.setTrailer_price(Integer.parseInt(request.getParameter("trailer_price")));
-		//String aws_url = request.getParameter("trailer_aws_url");
-		//System.out.println(aws_url);
-		//trailer_dto.setTrailer_aws_url(aws_url);
 		String aws_url = request.getParameter("trailer_aws_url");
-		System.out.println(aws_url);
 		trailer_dto.setTrailer_aws_url(aws_url);
+		String trailer_launchdate = request.getParameter("trailer_launchdate");
+	    trailer_dto.setTrailer_launchdate(trailer_launchdate);
 		trailer_dto.setTrailer_detail(request.getParameter("trailer_detail"));
 		trailer_dto.setUser_id(request.getParameter("session"));
 		
