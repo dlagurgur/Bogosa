@@ -223,15 +223,7 @@ h3 {
 -->
 
 
-  <textarea id="messageWindow" rows="10" cols="50" readonly="true" style="
-    height: 664px;
-    width: 404px;
-    background-color: black;
-    color:white;
-    margin-bottom: 85px;
-    ">
-
-</textarea>
+  
 
 
 <h1 style="

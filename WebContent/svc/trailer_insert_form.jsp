@@ -105,7 +105,7 @@
         "region": "us-east-1"
         });
 
-    var bucketName = 'transvideo-source71e471f1-knewdmajkw29'; // Enter your bucket name
+    var bucketName = 'cdn-video-source71e471f1-1w5ehaaqw3boh'; // Enter your bucket name
     var bucket = new AWS.S3({
         params: {
             Bucket: bucketName
@@ -135,46 +135,57 @@
             bucket.putObject(params, function(err, data) {
                 if (err) {
                     results.innerHTML = 'ERROR: ' + err;
-                    document.getElementById('target').submit();
+                   // document.getElementById('target').submit();
                 } else {
-                    console.log(data);
-                    
+                	console.log(data);
                     
                     var s3 = new AWS.S3();
-                    s3.getObject({
-                        Bucket: "transvideo-source71e471f1-knewdmajkw29", 
-                        Key: "jobs-manifest.json"
-                       }
-                       , function(err, data) {
-                        if (err) console.log(err, err.stack); // an error occurred
-                        else
-                           // console.log(data.Body.toString());           // successful response
-                           data = data.Body.toString();
-                           // console.log(a);
-                           data = JSON.parse(data);
-                           
-                           data = data.Jobs.filter(function(element){
-                               return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/'+session+file.name;
-                        	   //return element.InputFile == 's3://transvideo-source71e471f1-knewdmajkw29/assets01/Pexels Videos 2541964.mp4';
-                       
-                            });
-                           
-                           trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
-                           console.log(trailer_aws_url.value);
-                           console.log(typeof(trailer_aws_url));
-                           console.log(typeof(trailer_aws_url.value));
-                           results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="'+trailer_aws_url+'">'
-                           document.getElementById('target').submit();
-                       });
-                                      
-                   
                     
-                   
+                    var timer = setInterval(function(){
+                    	console.log("hello");
+                        s3.getObject({
+                            Bucket: "cdn-video-source71e471f1-1w5ehaaqw3boh", 
+                            Key: "jobs-manifest.json"
+                           }
+                           , function(err, data) {
+                            if (err) console.log(err, err.stack); 
+                            else
+                             
+                               data = data.Body.toString();
+                               
+                               data = JSON.parse(data);
+                               
+                               data = data.Jobs.filter(function(element){
+                                  return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/'+session+file.name;
+                                });
+                                
+                                if(data.length != 0){
+                                    trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
+                                    console.log(trailer_aws_url);
+                                    //console.log(typeof(trailer_aws_url));
+                                    //console.log(typeof(trailer_aws_url.value));
+                                    results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="'+trailer_aws_url+'">'
+                                    document.getElementById('target').submit();
+                                    clearInterval(timer);
+                                }
+                                else{
+                                    console.log("data is not detected")
+                                }
+
+                                 
+                        
+                           })
+                    }, 10000);
+                    
+                    timer;
+
+                    
+ 
                 }
             });
         } else {
             results.innerHTML = 'Nothing to upload.';
-            document.getElementById('target').submit();
+           // document.getElementById('target').submit();
         }
     }, false);
     
