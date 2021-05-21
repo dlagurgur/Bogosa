@@ -227,107 +227,98 @@ h3 {
 
 </style>
 </head>
-<article class="container">
-      
-        <div class="mx-auto" style="width: 700px" id="a">
-      
-
-     <form class="form-horizontal" name="joinform" method="post" action="updatePro.go" onsubmit="return modifyCheck()">
-     			
+<body class="align" style="padding-top: 20px;margin-right: 180px; color:white;">
+	<div class="site__container">
+		<div class="grid__container">
         		<h2 class="text-left text-white" >내 정보수정</h2>
         		<br><br>  		
-		        <div class="form-group row">
-		        
+	<form class="form form--login" name="joinform" method="post" action="updatePro.go" onsubmit="return modifyCheck()">	        
+		        <div class="form__field">
 					<label for="nickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white text-white">아이디</label>
-					<div class="col-sm-8"><input class="form-control" type="text" value="${userDto.user_id}" readonly></div>
-					
-				</div>
+					<input style="color:white;" class="form__input" type="text" value="${userDto.user_id}" readonly>
+				</div>	
 		        
-		         <div class="form-group row">
+		         <div class="form__field">
 					<label for="nickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">이름</label>
-					<div class="col-sm-8"><input class="form-control" type="text" value="${userDto.user_name}" readonly></div>
-				</div>
+					<input style="color:white;" class="form__input" type="text" value="${userDto.user_name}" readonly>
+				 </div>
 		        
 		        
-		        <div class="form-group row">
+		        <div class="form__field">
 		         	 <label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">비밀번호</label>   <!--    password     -->
-		         	 
-		        		<div class="col-sm-8">
-		         		 <input class="form-control" name="user_pw" id="password" type="password" value="${userDto.user_pw }" placeholder="변경할 비밀번호 입력 ">
-		        		</div>
+		         	 <input style="color:white;" class="form__input" name="user_pw" id="password" type="password" value="${userDto.user_pw }" placeholder="변경할 비밀번호 입력 ">
+		        		
 		        </div>
 		        
 		        
 		          		          
-		        <div class="form-group row">
-		           <label for="inputNickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">배달지 주소</label>   <!--    Address     -->
+		        <div class="form__field">
+		           <label for="inputNickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">주소</label>   <!--    Address     -->
 		           
-		          	<div class="col-sm-8 row">
-		            	&nbsp;&nbsp;&nbsp;<input class="form-control col-sm-8 "  name="user_addr" id="cus_address" type="text" placeholder="주소" value="${userDto.user_addr}">
-							            	
-		            	<span style="float:right">
-		            	&nbsp;<button class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()" >주소검색</button>
+		          	
+		            	<input style="color:white;" class="form__input"  name="user_addr" id="cus_address" type="text" placeholder="주소" value="${userDto.user_addr}">
+						<span style="float:right">
+		            	<button style="height: 40px;"  type="button" onclick="sample4_execDaumPostcode()" >주소검색</button>
 		            	</span>
 		            	
-		            </div>
+		           
 		            
 		        </div>
 		         
 		        
-		          <div class="form-group row">
+		          <div class="form__field">
 		          	<label  for="inputNickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">상세주소</label>
-		       			<div class="col-sm-8 text-right">
-		         		 <input class="form-control" name="user_addr2" id="cus_address2" type="text"  placeholder="상세주소를 입력하세요" value="${userDto.user_addr2 }" >
-		        		</div>
+	
+		         		 <input style="color:white;" class="form__input"name="user_addr2" id="cus_address2" type="text"  placeholder="상세주소를 입력하세요" value="${userDto.user_addr2 }" >
+		       
 		         </div>
 		        
 		        		     
-            	<div class="form-group row">
+            	<div class="form__field">
 					<label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">이메일
 					</label>
-					<div class="col-sm-8">
-					 <input class="form-control" name="email" type="text" value="${userDto.user_email}" readonly>
-					 </div>
+					
+					 <input style="color:white;" class="form__input" name="email" type="text" value="${userDto.user_email}" readonly>
+					
 				</div>
 		        
 		      		             
-		        <div class="form-group row">                                        
+		        <div class="form__field">                                      
 		            <label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" for="inputNumber">휴대폰번호</label>           <!--    Telephone     -->
-		              <div class="col-sm-6">
+		               
 		                <div class="input-group">
-		                
-							 <c:if test="${userDto.user_phone == null eq null or userDto.user_phone eq ''}">
-								<input class="form-control" type="text" name="tel1" maxlength="3" style="width: 27px">
-								- <input class="form-control" type="text" name="tel2" maxlength="4" style="width: 33px">
-								- <input class="form-control" type="text" name="tel3" maxlength="4" style="width: 33px">
+							<c:if test="${userDto.user_phone == null eq null or userDto.user_phone eq ''}">
+								<input style="color:white;"class="form__input" type="text" name="tel1" maxlength="3" style="width: 27px">
+								- <input style="color:white;"class="form__input" type="text" name="tel2" maxlength="4" style="width: 33px">
+								- <input style="color:white;"class="form__input" type="text" name="tel3" maxlength="4" style="width: 33px">
 							</c:if>
 							<c:if test="${userDto.user_phone ne null and userDto.user_phone ne ''}">
 								<c:set var="t" value="${fn:split(userDto.user_phone, '-')}"/>
-								<input class="form-control" type="text" name="tel1" maxlength="3" style="width: 27px"
+								<input style="color:white;" class="form__input" type="text" name="tel1" maxlength="3" style="width: 27px"
 									value="${t[0]}">
-								- <input class="form-control" type="text" name="tel2" maxlength="4" style="width: 33px"
+								- <input style="color:white;"class="form__input" type="text" name="tel2" maxlength="4" style="width: 33px"
 									value="${t[1]}">
-								- <input class="form-control" type="text" name="tel3" maxlength="4" style="width: 33px"
+								- <input style="color:white;"class="form__input" type="text" name="tel3" maxlength="4" style="width: 33px"
 									value="${t[2]}">
 							</c:if> 
 								
-		                </div>
+		                
 		              </div>
 		        </div>
 		        
 		        <div class="form-group">
 		          <div class="col-sm-12 text-center">
-		            <button class="btn btn-lg btn-secondary btn-block" type="submit">정보수정</button>
+		            <input class="btn btn-lg btn-secondary btn-block" type="submit" value="정보수정"></input>
 		            <button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='myPage.go'">취소</button>
+		         
 		          </div>
-		        </div>
-		        
-        </form>
-     
-          <hr>
-        </div>
-        
-      </article>
+		         
+		        </div> 
+		      <hr>
+			</form>
+		</div>
+	</div>
+</body>
 
 
 </html>
