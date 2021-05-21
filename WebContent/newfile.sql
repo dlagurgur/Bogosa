@@ -98,6 +98,17 @@ CREATE TABLE trailer_comment
 );
 
 
+CREATE TABLE product_chat
+(
+	chat_id int NOT NULL AUTO_INCREMENT,
+	chat_content VARCHAR(200),
+	chat_date  timestamp,
+	user_id varchar(20) NOT NULL,
+	product_id int NOT NULL,
+	PRIMARY KEY (comment_id)
+
+);
+
 
 
 /* Create Foreign Keys */
@@ -149,6 +160,21 @@ ALTER TABLE trailer_comment
 ;
 
 
+ALTER TABLE product_chat
+	ADD FOREIGN KEY (product_id)
+	REFERENCES product (product_id)
+	ON UPDATE RESTRICT
+	ON DELETE Cascade
+;
+
+ALTER TABLE product_chat
+	ADD FOREIGN KEY (user_id)
+	REFERENCES user_general (user_id)
+	ON UPDATE RESTRICT
+	ON DELETE Cascade
+;
+
+
 
 
 
@@ -163,3 +189,4 @@ ALTER TABLE trailer convert to charset utf8;
 
 ALTER TABLE trailer_comment convert to charset utf8;
 
+ALTER TABLE product_chat convert to charset utf8;
