@@ -293,4 +293,19 @@ values(comment_id, #{comment_content}, NOW(), #{user_id}, #{trailer_id})
 	<delete id="deleteComment" parameterType="int">
 		delete from trailer_comment where comment_id = #{comment_id}
 	</delete>
+	
+	
+		<!--  Ajax 채팅 -->
+			
+	<insert id="insertChat_comment" parameterType="db.Product_chat_DataBean">
+		INSERT INTO product_chat(chat_id, chat_content, chat_date,user_id, product_id)
+values(chat_id, #{chat_content}, NOW(), #{user_id}, #{product_id})
+
+	</insert>
+
+	<select id="getProduct_chat" parameterType="int" resultType="db.Product_chat_DataBean">
+		select * from product_chat where product_id=#{product_id} order by chat_date asc
+	</select>
+		
+		
 </mapper>

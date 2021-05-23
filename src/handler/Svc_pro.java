@@ -1,21 +1,7 @@
-
 package handler;
 
 import java.io.IOException;
-
-
-
-
-
-
-
 import java.io.UnsupportedEncodingException;
-//import java.sql.Date;
-import java.util.Date;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +34,8 @@ import db.Order_history_DBBean;
 import db.Order_history_DataBean;
 import db.Product_DBBean;
 import db.Product_DataBean;
+import db.Product_chat_DBBean;
+import db.Product_chat_DataBean;
 import db.Trailer_DBBean;
 import db.Trailer_DataBean;
 import db.UserDBBean;
@@ -73,6 +60,10 @@ public class Svc_pro{
 	
 	@Resource
 	private Comment_DBBean Comment_Dao;
+	
+	
+	@Resource
+	private Product_chat_DBBean Product_chat_Dao;
 	
 //////////////////////////////////회원 영역///////////////////////////////////////////////	
 	//회원가입
@@ -639,4 +630,54 @@ public class Svc_pro{
 		int comment_id = Integer.parseInt(request.getParameter("comment_id"));
 		Comment_Dao.deleteComment(comment_id);
 	}
+	
+	
+	
+	
+	//product_chat
+	
+	
+	@RequestMapping(value = "/insertChat_comment.go", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public void insertChat_commentProcess(HttpServletRequest request, HttpSession session) throws HandlerException {
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		String user_id=(String)request.getSession().getAttribute("user_id");
+		
+		String c_content= request.getParameter("chat_content");
+		Product_chat_DataBean chatDto = new Product_chat_DataBean();
+		if(c_content != null) {
+		chatDto.setUser_id(user_id); // jsp에서 히든으로 가져오면됨
+		chatDto.setProduct_id(Integer.parseInt(request.getParameter("product_id")));
+		chatDto.setChat_content(c_content+"\r\n");
+		
+		Product_chat_Dao.insertChat_comment(chatDto);
+		}
+	}
+
+	
+	
+	@RequestMapping(value = "/getProduct_chat.go", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public List<Product_chat_DataBean> getProduct_chatProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+
+		int product_id = Integer.parseInt(request.getParameter("product_id"));
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		List<Product_chat_DataBean> comment = Product_chat_Dao.getProduct_chat(product_id);
+		for (Product_chat_DataBean dto : comment) {
+				dto.setUser_name(user_id);
+		}
+
+		request.setAttribute("comment", comment);
+		// don't set the name of variable like this!
+		return comment;
+	}
+	
+	
 }

@@ -5,6 +5,14 @@
 	<head>
 		<%@include file="header.jsp"%>
 		<script src="${project}script.js"></script>
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+		<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+		<link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+   		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <style type="text/css">
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
@@ -332,7 +340,7 @@ s0.parentNode.insertBefore(s1,s0);
 					<input type="hidden" name="menu_name" value="${Produt_dto.product_name}">
 					<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">
-					
+					<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
 		
 		
 
@@ -349,6 +357,22 @@ s0.parentNode.insertBefore(s1,s0);
 				
 			
 			
+			<textarea class="commentList" rows="10" cols="50" readonly="true" ></textarea>
+			<div class="container">
+				<label for="content">채팅</label>
+				<form name="commentInsertForm" method="post">
+					<div class="input-group">
+						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" /> <input
+							type="hidden" name="session" value="${sessionScope.user_id}" /> <input
+							type="text" class="input col-11" id="chat_content" name="chat_content"
+							placeholder="채팅입력"> <span
+							class="input-group-btn">
+							<button class="btn btn-default" type="button"
+								onclick="commentInsert()">등록</button>
+						</span>
+					</div>
+				</form>
+			</div>
 			
 	
 	</body>
@@ -356,6 +380,79 @@ s0.parentNode.insertBefore(s1,s0);
 	
 	
  <script type="text/javascript">
+//ajax
+
+ function commentInsert(){ //댓글 등록 버튼 클릭시 
+  	 var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+  	 CmtInsert(insertData); //Insert 함수호출(아래)
+  }
+
+  /////패팅 목록 
+
+setInterval(function commentList(){
+ 	var product_id=$("input[name=product_id").val();
+  	var SessionID=$("input[name=session]").val();
+  	 var user_id = $('#user_id').val();
+  	$.ajax({
+         url : 'getProduct_chat.go',
+         type : 'get',
+         data : {product_id : product_id},
+         success : function(data){
+             var commentView ='';
+             $.each(data, function(key, comment){ 
+            	 if(user_id==comment.user_id){
+            		 commentView += '방장 '+comment.user_id+' : '+comment.chat_content;
+            	 }else{
+            		 commentView += comment.user_id+' : '+comment.chat_content; 
+            	 }
+             	
+             
+             });
+             $(".commentList").html(commentView);
+         },
+         error : function(error) {
+             alert("채팅을 입력해주세요!");
+         }
+     });
+  	},1000)
+
+
+//채팅 등록
+ function CmtInsert(insertData){
+  	var product_id=$("input[name=product_id").val();
+  	if(commentInsertForm.chat_content.value){
+  		
+  	$.ajax({
+         url : 'insertChat_comment.go',
+         type : 'post',
+         data : insertData,
+         success : function(data){
+         	if(data == 1) {
+         		/*오류메세지 작성*/
+            }else{
+         	  /// commentList();
+         	   $('[name=chat_content]').val('');
+            }
+         },
+     	error : function(error) {
+         alert("error : " + error);
+     }
+     });
+  	}else{
+  		alert("채팅을 입력해주세요");
+  	}
+  	}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  var aws_url = $('#aws_url').val();
  if (IVSPlayer.isPlayerSupported) {
    const player = IVSPlayer.create();
