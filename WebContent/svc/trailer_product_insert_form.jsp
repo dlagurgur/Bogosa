@@ -258,7 +258,7 @@ h3 {
 			</div>
 			<div class="form__field">
 				<label for="product_category" class="col-sm-3 col-form-label" style="color:white;">분류</label>
-				<select class="from__input" name="product_category"	id="product_category">
+				<select class="from__input" name="product_category"	id="product_category" style="width: 150px;">
 				  <option value="1">가전디지털</option>
 				  <option value="2">식품</option>
 				  <option value="3">주방용품</option>

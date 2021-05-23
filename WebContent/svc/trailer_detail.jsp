@@ -418,7 +418,7 @@ function CmtInsert(insertData){
      commentModify += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+comment_id+');">수정</button> </span>';
      commentModify += '</div>';
      
-     $('#commentInfo'+comment_id+'').html(commentModify);
+     $('#commentContent').html(commentModify);
      
      
  }

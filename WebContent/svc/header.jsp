@@ -102,12 +102,12 @@
 			<a class="nav-item" href="trailer_main.go">라이브 예정</a>
 		</li>
 				</ul>
-				<form class="form form--login" name="serch_trip" method="post" action="searchTrip.go" >
+				
 
 				<button type="button"  onclick="location='login.go'">로그인</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="button"  onclick="location='join.go'">회원가입</button>
 				
-				</form>
+				
 			</div>
 		</nav>
 
@@ -177,9 +177,8 @@
     <input type="search" id="search" placeholder="Search..." style="" />
     <button class="icon"><i class="fa fa-search"></i></button>
   </div>
-</div>		
+</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
 					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
-						<i class="fas fa-user-cog"></i>
 						<a class="nav-item" href="logout.go">${btn_logout}</a>&nbsp;&nbsp;&nbsp;
 						<a  class="fas fa-address-card fa-2x" href="myPage.go" ></a> 
 					</form>

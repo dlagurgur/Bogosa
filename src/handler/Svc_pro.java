@@ -85,14 +85,7 @@ public class Svc_pro{
 		int corp = Integer.parseInt(request.getParameter("user_corp"));
 		userDto.setUser_email(request.getParameter("user_email"));
 		userDto.setUser_corp(corp);
-		
-		String a = request.getParameter("a");
-		String b = request.getParameter("b");
 		String c = request.getParameter("c");
-		System.out.println(a);
-		System.out.println(b);
-		System.out.println(c);
-		
 		
 		userDto.setA(request.getParameter("a"));
 		userDto.setB(request.getParameter("b"));

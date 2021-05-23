@@ -105,7 +105,6 @@ h3 {
   border-radius: 0.25rem;
   padding: 1rem;
 }
-
 .form--login label {
   background-color: #1C1C1C;
   border-bottom-right-radius: 0;
@@ -235,7 +234,7 @@ s0.parentNode.insertBefore(s1,s0);
 "></video>
 
 
-  <textarea onkeyup="Check()" id="aaaa" class="commentList" rows="10" cols="50" readonly="true" style="
+  <textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly="true" style="
     height: 664px;
     width: 404px;
     background-color: black;
@@ -244,23 +243,24 @@ s0.parentNode.insertBefore(s1,s0);
     ">
 
 </textarea>
-			<div class="container">
-				<label for="content">채팅</label>
-				<form name="commentInsertForm" method="post">
-					<div class="input-group">
-						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" /> <input
-							type="hidden" name="session" value="${sessionScope.user_id}" /> <input
-							type="text" class="input col-11" id="chat_content" name="chat_content"
-							placeholder="채팅입력"> <span
-							class="input-group-btn">
-							<button class="btn btn-default" type="button"
-								onclick="commentInsert()">등록</button>
-						</span>
+
+<div class="site__container">
+
+    <div class="grid__container">
+	
+				<form class="form form--login" name="commentInsertForm" method="post">
+					<div class="form__field">
+						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" /> 
+						<input type="hidden" name="session" value="${sessionScope.user_id}" /> 
+						<input type="text" class="form__input" id="chat_content" name="chat_content" placeholder="채팅입력"> 
+							
+						<button class="form__input" type="button" onclick="commentInsert()">등록</button>
+					
 					</div>
 				</form>
-			</div>
 
-
+</div>
+</div>
 
 <h1 style="
     padding-left: 60px;
@@ -271,13 +271,6 @@ s0.parentNode.insertBefore(s1,s0);
     height: 5px;
     margin-top: 20px;
 ">${Produt_dto.product_name}</h1>
-
- <!--  
-
-        <input id="inputMessage" type="text" style=" background-color: black; color:white;"/>
-        <input type="submit" value="send" onclick="send()" style=" background-color: black; color:white;"/>
--->
-
 
 
 
@@ -378,29 +371,25 @@ s0.parentNode.insertBefore(s1,s0);
 	
 	
  <script type="text/javascript">
- function Check(){
- var str = $("#aaaa").val();
-
- var str_arr = str.split("\n");  // 줄바꿈 기준으로 나눔 
-
- var row = str_arr.length;  // row = 줄 수 
-
- if(row >10){
-
- //마지막 입력문자 삭제
-
-
- var lastChar = str.slice(0,-1); //열 
-
- $("#aaaa").val(lastChar)
-
-
-
- }
-
- }
+ function changeRGB(){
+	    
+	    var text = document.getElementById("aaaa"); 
+	    // 이벤트가 발생한 id가 "test1"인 객체를 찾아서 text변수에 넣는다. 
+	    var r = Math.round(Math.random() * 255); 
+	    var g = Math.round(Math.random() * 255);
+	    var b = Math.round(Math.random() * 255);
+	    // 0~255값을 랜덤으로 뽑아내서 각각의 변수 r,g,b 에 들어간다.
+	 
+	    var random_color = "rgb(" + r + "," + g + "," + b + ")";
+	    // random_color = rgb(r,g,b)
+	 
+	    text.style.color = random_color; 
+	    // text(test1)에 색상을 바꿉니다.
+	    }     
  
  
+ 
+
 //ajax
 
  function commentInsert(){ //댓글 등록 버튼 클릭시 
@@ -421,7 +410,7 @@ setInterval(function commentList(){
              var commentView ='';
              $.each(data, function(key, comment){ 
             	 if(user_id==comment.user_id){
-            		 commentView += '방장 '+comment.user_id+' : '+comment.chat_content;
+            		 commentView += '방장'+ comment.user_id+' : '+comment.chat_content;
             	 }else{
             		 commentView += comment.user_id+' : '+comment.chat_content; 
             	 }
