@@ -411,7 +411,6 @@ setInterval(function commentList(){
              $(".commentList").html(commentView);
          },
          error : function(error) {
-             alert("채팅을 입력해주세요!");
          }
      });
   	},1000)
@@ -442,13 +441,6 @@ setInterval(function commentList(){
   		alert("채팅을 입력해주세요");
   	}
   	}
- 
- 
- 
- 
- 
- 
- 
  
  
  
