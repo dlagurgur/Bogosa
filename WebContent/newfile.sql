@@ -105,7 +105,7 @@ CREATE TABLE product_chat
 	chat_date  timestamp,
 	user_id varchar(20) NOT NULL,
 	product_id int NOT NULL,
-	PRIMARY KEY (comment_id)
+	PRIMARY KEY (chat_id)
 
 );
 
