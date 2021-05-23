@@ -476,7 +476,7 @@ setInterval(function commentList(){
  
  
  
- 
+ /*
  
         var textarea = document.getElementById("messageWindow");
         var webSocket = new WebSocket('ws://localhost:8787/Encore/broadcasting');
@@ -511,5 +511,7 @@ setInterval(function commentList(){
         webSocket.send(inputMessage.value);
         inputMessage.value = "";
     }
+    
+    */
   </script>
 </html>
