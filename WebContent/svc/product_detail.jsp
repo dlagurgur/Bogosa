@@ -235,7 +235,7 @@ s0.parentNode.insertBefore(s1,s0);
 "></video>
 
 
-  <textarea id="messageWindow" rows="10" cols="50" readonly="true" style="
+  <textarea class="commentList" rows="10" cols="50" readonly="true" style="
     height: 664px;
     width: 404px;
     background-color: black;
@@ -244,6 +244,22 @@ s0.parentNode.insertBefore(s1,s0);
     ">
 
 </textarea>
+			<div class="container">
+				<label for="content">채팅</label>
+				<form name="commentInsertForm" method="post">
+					<div class="input-group">
+						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" /> <input
+							type="hidden" name="session" value="${sessionScope.user_id}" /> <input
+							type="text" class="input col-11" id="chat_content" name="chat_content"
+							placeholder="채팅입력"> <span
+							class="input-group-btn">
+							<button class="btn btn-default" type="button"
+								onclick="commentInsert()">등록</button>
+						</span>
+					</div>
+				</form>
+			</div>
+
 
 
 <h1 style="
@@ -356,24 +372,6 @@ s0.parentNode.insertBefore(s1,s0);
 			</div>
 				
 			
-			
-			<textarea class="commentList" rows="10" cols="50" readonly="true" ></textarea>
-			<div class="container">
-				<label for="content">채팅</label>
-				<form name="commentInsertForm" method="post">
-					<div class="input-group">
-						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" /> <input
-							type="hidden" name="session" value="${sessionScope.user_id}" /> <input
-							type="text" class="input col-11" id="chat_content" name="chat_content"
-							placeholder="채팅입력"> <span
-							class="input-group-btn">
-							<button class="btn btn-default" type="button"
-								onclick="commentInsert()">등록</button>
-						</span>
-					</div>
-				</form>
-			</div>
-			
 	
 	</body>
 	
@@ -387,8 +385,7 @@ s0.parentNode.insertBefore(s1,s0);
   	 CmtInsert(insertData); //Insert 함수호출(아래)
   }
 
-  /////패팅 목록 
-
+/////패팅 목록 
 setInterval(function commentList(){
  	var product_id=$("input[name=product_id").val();
   	var SessionID=$("input[name=session]").val();
@@ -411,9 +408,10 @@ setInterval(function commentList(){
              $(".commentList").html(commentView);
          },
          error : function(error) {
+
          }
      });
-  	},1000)
+  	},500)
 
 
 //채팅 등록

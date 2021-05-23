@@ -98,6 +98,7 @@ CREATE TABLE trailer_comment
 );
 
 
+
 CREATE TABLE product_chat
 (
 	chat_id int NOT NULL AUTO_INCREMENT,
@@ -174,8 +175,6 @@ ALTER TABLE product_chat
 	ON UPDATE RESTRICT
 	ON DELETE Cascade
 ;
-
-
 
 
 
