@@ -304,7 +304,7 @@ values(chat_id, #{chat_content}, NOW(), #{user_id}, #{product_id})
 	</insert>
 
 	<select id="getProduct_chat" parameterType="int" resultType="db.Product_chat_DataBean">
-		select * from product_chat where product_id=#{product_id} order by chat_date asc
+		SELECT *FROM (select * FROM product_chat where product_id=#{product_id} order by chat_id desc LIMIT 20)as reverse order by chat_id asc
 	</select>
 		
 		

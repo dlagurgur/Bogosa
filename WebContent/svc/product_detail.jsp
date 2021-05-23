@@ -235,7 +235,7 @@ s0.parentNode.insertBefore(s1,s0);
 "></video>
 
 
-  <textarea class="commentList" rows="10" cols="50" readonly="true" style="
+  <textarea onkeyup="Check()" id="aaaa" class="commentList" rows="10" cols="50" readonly="true" style="
     height: 664px;
     width: 404px;
     background-color: black;
@@ -378,6 +378,29 @@ s0.parentNode.insertBefore(s1,s0);
 	
 	
  <script type="text/javascript">
+ function Check(){
+ var str = $("#aaaa").val();
+
+ var str_arr = str.split("\n");  // 줄바꿈 기준으로 나눔 
+
+ var row = str_arr.length;  // row = 줄 수 
+
+ if(row >10){
+
+ //마지막 입력문자 삭제
+
+
+ var lastChar = str.slice(0,-1); //열 
+
+ $("#aaaa").val(lastChar)
+
+
+
+ }
+
+ }
+ 
+ 
 //ajax
 
  function commentInsert(){ //댓글 등록 버튼 클릭시 
