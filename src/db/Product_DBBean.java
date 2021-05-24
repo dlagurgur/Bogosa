@@ -51,4 +51,21 @@ public class Product_DBBean{
 		return session.selectList("db.selectMenus");
 	}
 	
+	
+	
+	
+	
+	public List<Product_DataBean> findTripByKeyword(String keyword) {
+		return session.selectList("db.findTripByKeyword", keyword);
+	}
+	
+	
+	
+	public List<Product_DataBean> findTripByUser(String keyword) {
+		return session.selectList("db.findTripByUser", keyword);
+	}
+	
+	
+	
+	
 }

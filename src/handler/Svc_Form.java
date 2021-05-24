@@ -1,7 +1,10 @@
 package handler;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -331,6 +334,40 @@ public class Svc_Form{
 			request.setAttribute("Trailer_dto", Trailer_dto);
 			
 			return new ModelAndView("svc/trailer_select");
+		}
+		
+		
+		
+		//검색기능
+		@RequestMapping("/search")
+		public ModelAndView svcSearchProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException, UnsupportedEncodingException {
+			try {
+				request.setCharacterEncoding("utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			
+			//get the type and keyword of searching
+			String selectedType=request.getParameter("search_type");
+			String keyword=request.getParameter("keyword");
+			
+			//set List
+			List<Product_DataBean> foundList;
+			
+			//find trips for each type
+			if(selectedType.equals("name")) {
+				foundList=Product_Dao.findTripByUser(keyword);
+			} else {
+				foundList=Product_Dao.findTripByKeyword(keyword);
+			}
+			
+			int count=0;
+			if(foundList.size()>0) {
+				count=foundList.size();
+			}
+			request.setAttribute("count", count);
+			request.setAttribute("foundList", foundList);
+			return new ModelAndView("svc/foundList");
 		}
 	
 }
