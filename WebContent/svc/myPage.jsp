@@ -312,6 +312,12 @@ h3 {
 				
 			</div>
 			
+		<div class="form__field">
+					
+					<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='trailer_insert.go'">예고편 작성</button>
+				
+			</div>
+			
 			
 	
 	 	

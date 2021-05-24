@@ -1,27 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<html>
-<head>
+    pageEncoding="UTF-8"%>   
+<%@include file="setting.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="setting.jsp"%>
-<html lang="ko">
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./jquery-3.3.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
     <!-- Bootstrap core CSS -->
 	 <!-- Custom style for this template -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
-<script src="${project}script.js"></script>
+	<script src="${project}script.js"></script>
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
@@ -99,7 +96,7 @@ h3 {
   padding: 3rem 0;
 }
 
-.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form button[type="button"],.form input[type="number"], .form input[type="reset"] {
+.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form button[type="button"],.form input[type="number"] {
   width: 100%;
 }
 .form--login {
@@ -110,9 +107,7 @@ h3 {
 .form--login input[type="text"],
 .form--login input[type="password"],
 .form--login input[type="submit"],
-.form--login button[type="button"],
-.form--Login input[type="reset"]
-. {
+.form--login button[type="button"] {
   border-radius: 0.25rem;
   padding: 1rem;
 }
@@ -138,16 +133,7 @@ h3 {
   font-weight: bold;
   text-transform: uppercase;
 }
-.form--login input[type="reset"] {
-  background-color: #AC58FA;
-  color: #eee;
-  font-weight: bold;
-  text-transform: uppercase;
-}
 .form--login input[type="submit"]:focus, .form--login input[type="submit"]:hover {
-  background-color: #AC58FA;
-}
-.form--login input[type="reset"]:focus, .form--login input[type="reset"]:hover {
   background-color: #AC58FA;
 }
 .form__field {
@@ -220,62 +206,75 @@ h3 {
 
 .grid__container {
   margin: 0 auto;
-  max-width: 30rem;
+  max-width: 20rem;
   width: 90%;
 }
 
+ input[type='radio']:checked:before {
+  	background:#606468;
+  }
+  
 
 </style>
 </head>
-<body class="align" style="padding-top: 20px;margin-right: 180px; color:white;">
+<body class="align" style="padding-top: 20px;margin-right: 160px; color:white;">
+	
 	<div class="site__container">
 		<div class="grid__container">
-        		<h2 class="text-left text-white" >내 정보수정</h2>
+        		
+            <h1 style="
+    padding-left: 195px;
+    padding-bottom: 20px;
+">Modify</h1>
         		<br><br>  		
-	<form class="form form--login" name="joinform" method="post" action="updatePro.go" onsubmit="return modifyCheck()">	        
+	<form class="form form--login" name="joinform" method="post" action="updatePro.go" onsubmit="return modifyCheck()" style="
+	    width: 490px;">        
+		        
 		        <div class="form__field">
-					<label for="nickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white text-white">아이디</label>
+					<label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" style="color:white;">아이디&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					<input style="color:white;" class="form__input" type="text" value="${userDto.user_id}" readonly>
 				</div>	
 		        
-		         <div class="form__field">
-					<label for="nickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">이름</label>
+		        
+		  
+		        <div class="form__field">
+					<label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" style="color:white;">이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					<input style="color:white;" class="form__input" type="text" value="${userDto.user_name}" readonly>
 				 </div>
 		        
 		        
 		        <div class="form__field">
-		         	 <label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">비밀번호</label>   <!--    password     -->
-		         	 <input style="color:white;" class="form__input" name="user_pw" id="password" type="password" value="${userDto.user_pw }" placeholder="변경할 비밀번호 입력 ">
+		         	 <label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" style="color:white;">비밀번호</label>
+		         	 <input style="color:white;" class="form__input" name="user_pw" id="password" type="password" value="${userDto.user_pw }">
 		        		
 		        </div>
 		        
+		        		        
 		        
-		          		          
-		        <div class="form__field">
-		           <label for="inputNickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">주소</label>   <!--    Address     -->
-		           
-		          	
-		            	<input style="color:white;" class="form__input"  name="user_addr" id="cus_address" type="text" placeholder="주소" value="${userDto.user_addr}">
-						<span style="float:right">
-		            	<button style="height: 40px;"  type="button" onclick="sample4_execDaumPostcode()" >주소검색</button>
-		            	</span>
-		            	
-		           
-		            
-		        </div>
-		         
 		        
-		          <div class="form__field">
-		          	<label  for="inputNickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">상세주소</label>
+		        
+		        
+		         <div class="form__field">
+       <label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" style="color:white;">주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input style="color:white;" class="form__input"  name="user_addr" id="cus_address" type="text" placeholder="주소" value="${userDto.user_addr}">
+          	 
+       
+       &nbsp;&nbsp;&nbsp; <button class="form__input" type="button" onclick="sample4_execDaumPostcode()">주소찾기</button>
+        			
+        </div>
+		        
+		        
+		        
+		     <div class="form__field">
+		          	<label  for="inputNickname" class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" style="color:white;">상세주소</label>
 	
-		         		 <input style="color:white;" class="form__input"name="user_addr2" id="cus_address2" type="text"  placeholder="상세주소를 입력하세요" value="${userDto.user_addr2 }" >
+		         		 <input style="color:white;" class="form__input"name="user_addr2" id="cus_address2" type="text" value="${userDto.user_addr2 }" >
 		       
 		         </div>
 		        
 		        		     
             	<div class="form__field">
-					<label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white">이메일
+					<label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" style="color:white;">이메일&nbsp;&nbsp;&nbsp;&nbsp;
 					</label>
 					
 					 <input style="color:white;" class="form__input" name="email" type="text" value="${userDto.user_email}" readonly>
@@ -284,45 +283,45 @@ h3 {
 		        
 		      		             
 		        <div class="form__field">                                      
-		            <label class="col-sm-3 col-form-label text-white text-white text-white text-white text-white" for="inputNumber">휴대폰번호</label>           <!--    Telephone     -->
-		               
-		                <div class="input-group">
+		      
+		            
 							<c:if test="${userDto.user_phone == null eq null or userDto.user_phone eq ''}">
-								<input style="color:white;"class="form__input" type="text" name="tel1" maxlength="3" style="width: 27px">
-								- <input style="color:white;"class="form__input" type="text" name="tel2" maxlength="4" style="width: 33px">
-								- <input style="color:white;"class="form__input" type="text" name="tel3" maxlength="4" style="width: 33px">
+								<input style="color:white;"class="form__input" type="text" name="tel1" maxlength="3" style="width: 100px">
+								- <input style="color:white;"class="form__input" type="text" name="tel2" maxlength="4" style="width: 100px">
+								- <input style="color:white;"class="form__input" type="text" name="tel3" maxlength="4" style="width: 100px">
 							</c:if>
 							<c:if test="${userDto.user_phone ne null and userDto.user_phone ne ''}">
 								<c:set var="t" value="${fn:split(userDto.user_phone, '-')}"/>
-								<input style="color:white;" class="form__input" type="text" name="tel1" maxlength="3" style="width: 27px"
+								<input style="color:white;" class="form__input" type="text" name="tel1" maxlength="3" style="width: 100px"
 									value="${t[0]}">
-								- <input style="color:white;"class="form__input" type="text" name="tel2" maxlength="4" style="width: 33px"
+								- <input style="color:white;"class="form__input" type="text" name="tel2" maxlength="4" style="width: 100px"
 									value="${t[1]}">
-								- <input style="color:white;"class="form__input" type="text" name="tel3" maxlength="4" style="width: 33px"
+								- <input style="color:white;"class="form__input" type="text" name="tel3" maxlength="4" style="width: 100px"
 									value="${t[2]}">
 							</c:if> 
 								
 		                
-		              </div>
-		        </div>
+		           		        </div>
+		    
 		        
-		        <div class="form-group">
-		          <div class="col-sm-12 text-center">
-		            <input class="btn btn-lg btn-secondary btn-block" type="submit" value="정보수정"></input>
-		            <button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='myPage.go'">취소</button>
-		         
-		          </div>
-		         
-		        </div> 
-		      <hr>
+		        	<div class="form__field">		
+							<input type="submit" value="정보수정">&nbsp;	&nbsp;			
+       						<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='myPage.go'">취소</button>
+       				</div>
+		        
+		        
+		        
+		        
+		        
+		        
+		      
 			</form>
 		</div>
 	</div>
 </body>
-
-
-</html>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+
 <script>
 function sample4_execDaumPostcode() {  //다음 주소 api
     new daum.Postcode({
@@ -397,3 +396,10 @@ function modifyCheck(){
 	
 }
 </script>
+
+
+
+</html>
+
+
+
