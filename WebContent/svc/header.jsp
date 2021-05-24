@@ -103,6 +103,25 @@
 		</li>
 				</ul>
 				
+		
+		<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="search.go" >		
+<div class="box">
+  <div class="container-4">
+  <select name="search_type">
+	<option value="name">작성자</option>
+	<option value="title">제목</option>
+	<option value="product_detail">내용</option>
+</select> &nbsp;
+    <input type="search" id="search" name="keyword" placeholder="Search..." style="" />
+    <button type="submit" class="icon"><i class="fa fa-search"></i></button>
+  </div>
+</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+</form>
+				
+		
+				
+				
+				
 
 				<button type="button"  onclick="location='login.go'">로그인</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="button"  onclick="location='join.go'">회원가입</button>
@@ -184,10 +203,10 @@
   </div>
 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
 </form>
-					<form class="form-inline mt-2 mt-md-0 login-section" name="serch_trip" method="post" action="searchTrip.go" >
+					
 						<a class="nav-item" href="logout.go">${btn_logout}</a>&nbsp;&nbsp;&nbsp;
 						<a  class="fas fa-address-card fa-2x" href="myPage.go" ></a> 
-					</form>
+			
 					
 					
 					
