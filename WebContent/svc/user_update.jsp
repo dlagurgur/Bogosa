@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -223,7 +224,7 @@ h3 {
 		<div class="grid__container">
         		
             <h1 style="
-    padding-left: 195px;
+    padding-left: 185px;
     padding-bottom: 20px;
 ">Modify</h1>
         		<br><br>  		
@@ -396,6 +397,8 @@ function modifyCheck(){
 	
 }
 </script>
+
+
 
 
 
