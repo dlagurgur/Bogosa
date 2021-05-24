@@ -70,6 +70,12 @@ public class Product_DBBean{
 		return session.selectList("db.findTripTitle", keyword);
 	}
 	
+	
+	public int deletProduct(int product_id) {
+		return session.delete("db.deletProduct", product_id);
+	}
+	
+	
 
 	
 	

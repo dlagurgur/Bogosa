@@ -53,6 +53,9 @@
 	</select>
 	
 	
+	
+	<!--  방송영역  -->
+	
 	<select id="selectCountProduct" parameterType="String" resultType="int">
 	select count(*)
    from product P
@@ -103,22 +106,11 @@
 	
 	
 	
-	<delete id="deletProduct" parameterType="String">
-		delete from product where user_id=#{user_id}
+	<delete id="deletProduct" parameterType="int">
+		DELETE FROM product WHERE product_id = #{product_id}
 	</delete>
 	
 	
-	<delete id="trailer" parameterType="String">
-			delete from trailer where user_id=#{user_id}
-	</delete>
-	
-		<delete id="order" parameterType="String">
-			delete from order_history where user_id=#{user_id}
-	</delete>
-	
-	<delete id="product" parameterType="String">
-			delete from product where user_id=#{user_id}
-	</delete>
 	
 	<!--  /////////////////주문기록////////////////////// -->
 	<insert id="insertOrder" parameterType="db.Order_history_DataBean">

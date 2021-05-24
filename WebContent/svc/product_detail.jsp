@@ -234,7 +234,7 @@ s0.parentNode.insertBefore(s1,s0);
 "></video>
 
 
-  <textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly="true" style="
+  <textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly style="
     height: 664px;
     width: 404px;
     background-color: black;
@@ -251,10 +251,16 @@ s0.parentNode.insertBefore(s1,s0);
 				<form class="form form--login" name="commentInsertForm" method="post">
 					<div class="form__field">
 						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" /> 
-						<input type="hidden" name="session" value="${sessionScope.user_id}" /> 
-						<input type="text" class="form__input" id="chat_content" name="chat_content" placeholder="채팅입력"> 
-							
+						<input type="hidden" name="session" value="${sessionScope.user_id}" />
+						<c:if test="${sessionScope.user_id eq null}"> 
+						<input type="text" class="form__input" id="chat_content" name="chat_content" placeholder="로그인을 해주세요" readonly> 
+						<button class="form__input" type="button" >등록</button>
+						</c:if>
+						<c:if test="${sessionScope.user_id ne null}">
+						<input type="text" class="form__input" id="chat_content" name="chat_content" placeholder="채팅입력">
 						<button class="form__input" type="button" onclick="commentInsert()">등록</button>
+						</c:if>
+						
 					
 					</div>
 				</form>
@@ -291,8 +297,15 @@ s0.parentNode.insertBefore(s1,s0);
 
     <div class="grid__container">
 
-	<form class="form form--login" id="menuform" name="menuform" role="form" style="width: 870px;margin-left: 100px;margin-bottom: 0px;margin-top: -545;">
-      
+	<form class="form form--login" id="menuform"  action="product_detaile_delete.go"  name="menuform" role="form" style="width: 870px;margin-left: 100px;margin-bottom: 0px;margin-top: -545;">
+      	<div class="form__field">
+      					<c:if test="${Produt_dto.user_id eq sessionScope.user_id}"> 
+						<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
+      						<button type="submit" class="btn btn-lg btn-secondary btn-block" >방송종료</button>
+						</c:if>
+						
+      	</div>
+     
     	        
         <div class="form__field">
 		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">판매자</label>
@@ -345,7 +358,7 @@ s0.parentNode.insertBefore(s1,s0);
 					
 					
 				
-					<input type="hidden" name="menu_id" value="${Produt_dto.product_id}">
+					
 					<input type="hidden" name="menu_name" value="${Produt_dto.product_name}">
 					<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">

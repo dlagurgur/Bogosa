@@ -455,6 +455,24 @@ public class Svc_pro{
 	}
 	
 	
+	
+	@RequestMapping("/product_detaile_delete")
+	public ModelAndView deletProductProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException{
+		int product_id=Integer.parseInt(request.getParameter("product_id"));
+		
+		
+		int result = Product_Dao.deletProduct(product_id);
+	
+		request.setAttribute("result", result);
+		return new ModelAndView("svc/deletProduct");
+		
+	}
+	
+	
+	
+	
+	
 	@RequestMapping("/order_insert_pro")
 	public ModelAndView order_insertProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
