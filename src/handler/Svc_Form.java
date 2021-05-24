@@ -357,7 +357,9 @@ public class Svc_Form{
 			//find trips for each type
 			if(selectedType.equals("name")) {
 				foundList=Product_Dao.findTripByUser(keyword);
-			} else {
+			}else if(selectedType.equals("title")) {
+				foundList=Product_Dao.findTripTitle(keyword);
+			}else {
 				foundList=Product_Dao.findTripByKeyword(keyword);
 			}
 			

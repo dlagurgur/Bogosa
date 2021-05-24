@@ -176,6 +176,7 @@
   <div class="container-4">
   <select name="search_type">
 	<option value="name">작성자</option>
+	<option value="title">제목</option>
 	<option value="product_detail">내용</option>
 </select> &nbsp;
     <input type="search" id="search" name="keyword" placeholder="Search..." style="" />

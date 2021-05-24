@@ -66,6 +66,11 @@ public class Product_DBBean{
 	}
 	
 	
+	public List<Product_DataBean> findTripTitle(String keyword) {
+		return session.selectList("db.findTripTitle", keyword);
+	}
+	
+
 	
 	
 }

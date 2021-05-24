@@ -320,4 +320,10 @@ values(chat_id, #{chat_content}, NOW(), #{user_id}, #{product_id})
 	<select id="findTripByUser" parameterType="String" resultType="db.Product_DataBean">
 		select * from product where user_id= (select user_id from user_general where user_id=#{keyword})
 	</select>
+	
+	
+	<select id="findTripTitle" parameterType="String" resultType="db.Product_DataBean">
+		SELECT * FROM product WHERE product_title LIKE CONCAT('%',#{keyword},'%')
+		
+	</select>
 </mapper>
