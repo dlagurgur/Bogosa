@@ -388,7 +388,7 @@ width: 72%;
 					
 					
 				
-					
+					<input type="hidden" name="menu_id" value="${Produt_dto.product_id}">
 					<input type="hidden" name="menu_name" value="${Produt_dto.product_name}">
 					<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">

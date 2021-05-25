@@ -11,6 +11,7 @@ public class Order_history_select_DataBean {
 	private int order_qnt;
 	private String product_name;
 	private Timestamp order_date;
+	private int product_id;
 	
 	public int getOrder_num() {
 		return order_num;
@@ -63,6 +64,12 @@ public class Order_history_select_DataBean {
 		this.order_date = order_date;
 	}
 	
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
+	}
+	public int getProduct_id() {
+		return product_id;
+	}
 	
 	
 }

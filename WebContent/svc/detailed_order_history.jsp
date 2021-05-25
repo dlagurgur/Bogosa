@@ -21,6 +21,7 @@
 						<th scope="col" class="order_qnt">주소</th>
 						<th scope="col" class="order_qnt">상세주소</th>
 						<th scope="col" class="menu_price">금액</th>
+						<th scope="col" class="12">상품페이지</th>
 					</tr>
 				</thead>
 				<c:set var="total" value="0"/>
@@ -39,10 +40,16 @@
 							${order_historyDto.user_addr2}
 						</td>
 						
+
+						
 						<td scope="row">
 							<c:set var="sum" value="${order_historyDto.order_qnt * order_historyDto.product_price }"/>
 							<c:out value="${sum}"/>
 							<c:set var="total" value="${total + sum}"/>
+						</td>
+						<td scope="row">
+							<button type="button" onclick="location.href='product_detail.go?product_id=${order_historyDto.product_id}'">상품페이지</button>
+
 						</td>
 					</tr>
 				</c:forEach>
