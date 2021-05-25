@@ -72,8 +72,8 @@
 	
 
 	<insert id="insertProduct" parameterType="db.Product_DataBean" >
-		insert into product(product_id, product_name, product_title,product_price, product_image, product_category, product_detail, product_off,user_id, aws_url)
-		values( product_id, #{product_name}, #{product_title}, #{product_price},#{product_image},#{product_category},#{product_detail}, 1,#{user_id}, #{aws_url} )
+		insert into product(product_id, product_name, product_title,product_price, product_image, product_category, product_detail, product_off,user_id, aws_url, trailer_id)
+		values( product_id, #{product_name}, #{product_title}, #{product_price},#{product_image},#{product_category},#{product_detail}, 1,#{user_id}, #{aws_url},#{trailer_id} )
 		<selectKey keyProperty="product_id" resultType="int" order="AFTER">
     		SELECT LAST_INSERT_ID()
   		</selectKey>
@@ -222,6 +222,9 @@
 	</select>
 	
 	
+	<delete id="trailer_delete" parameterType="int">
+		DELETE from trailer WHERE trailer_id = #{trailer_id}
+	</delete> 
 	
 	
 	

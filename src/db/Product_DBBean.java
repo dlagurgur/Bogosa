@@ -76,6 +76,12 @@ public class Product_DBBean{
 	}
 	
 	
+	
+	public int trailer_delete(int trailer_id) {
+		return session.delete("db.trailer_delete", trailer_id);
+	}
+	
+	
 
 	
 	
