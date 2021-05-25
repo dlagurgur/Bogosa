@@ -156,7 +156,7 @@
 	
 	
 	<select id="detailed_order_history" parameterType="int" resultType="db.Order_history_select_DataBean">
-	SELECT O.order_num , C.user_name, C.user_addr, C.user_addr2,P.product_price, O.order_qnt, P.product_name, O.order_date
+	SELECT O.order_num , C.user_name, C.user_addr, C.user_addr2,P.product_price, O.order_qnt, P.product_name, O.order_date, O.product_id
 	FROM order_history O
 	LEFT OUTER JOIN user_general C ON O.user_id = C.user_id
 	LEFT OUTER JOIN product P ON O.product_id = P.product_id
