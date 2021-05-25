@@ -251,7 +251,9 @@ width: 72%;
     
 "></video>
     
-<div style="display:inline-block; margin-left: 25px;"><textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly
+<div style="display:inline-block; margin-left: 25px;">
+
+<textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly
     style="
     height: 508px;
     width: 300px;
@@ -260,7 +262,7 @@ width: 72%;
     ">
 
 </textarea>
-<form class="form form--login" name="commentInsertForm" method="post">
+	<form class="form form--login" name="commentInsertForm" method="post">
 					<div class="form__field">
 						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" /> 
 						<input type="hidden" name="session" value="${sessionScope.user_id}" />
@@ -390,7 +392,7 @@ width: 72%;
 					<input type="hidden" name="menu_name" value="${Produt_dto.product_name}">
 					<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">
-					<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
+					<input type="hidden" name="menu_id" value="${Produt_dto.product_id}">
 		
 		
 
