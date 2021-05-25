@@ -71,8 +71,8 @@ public class Product_DBBean{
 	}
 	
 	
-	public int deletProduct(int product_id) {
-		return session.delete("db.deletProduct", product_id);
+	public int Product_off(int product_id) {
+		return session.update("db.Product_off", product_id);
 	}
 	
 	

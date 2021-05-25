@@ -72,8 +72,8 @@
 	
 
 	<insert id="insertProduct" parameterType="db.Product_DataBean" >
-		insert into product(product_id, product_name, product_title,product_price, product_image, product_category, product_detail, user_id, aws_url)
-		values( product_id, #{product_name}, #{product_title}, #{product_price},#{product_image},#{product_category},#{product_detail}, #{user_id}, #{aws_url} )
+		insert into product(product_id, product_name, product_title,product_price, product_image, product_category, product_detail, product_off,user_id, aws_url)
+		values( product_id, #{product_name}, #{product_title}, #{product_price},#{product_image},#{product_category},#{product_detail}, 1,#{user_id}, #{aws_url} )
 		<selectKey keyProperty="product_id" resultType="int" order="AFTER">
     		SELECT LAST_INSERT_ID()
   		</selectKey>
@@ -95,20 +95,20 @@
 	
 	
 	<select id="selectMenusByCategory" parameterType="java.util.Map" resultType="db.Product_DataBean">
-		select * from product where product_category=#{product_category} order by product_id desc
+		select * from product where product_category=#{product_category} and product_off=1 order by product_id desc
 	</select>
 	
 	
 	
 	<select id="selectMenus" resultType="db.Product_DataBean">
-		select * from product order by product_id desc
+		select * from product where product_off=1 order by product_id desc
 	</select>
 	
 	
 	
-	<delete id="deletProduct" parameterType="int">
-		DELETE FROM product WHERE product_id = #{product_id}
-	</delete>
+	<update id="Product_off" parameterType="int">
+		update product SET product_off= 2 WHERE product_id=#{product_id}
+	</update>
 	
 	
 	

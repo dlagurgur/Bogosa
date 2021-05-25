@@ -462,7 +462,7 @@ public class Svc_pro{
 		int product_id=Integer.parseInt(request.getParameter("product_id"));
 		
 		
-		int result = Product_Dao.deletProduct(product_id);
+		int result = Product_Dao.Product_off(product_id);
 	
 		request.setAttribute("result", result);
 		return new ModelAndView("svc/deletProduct");
