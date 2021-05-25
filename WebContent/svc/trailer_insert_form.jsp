@@ -6,7 +6,11 @@
 <%@ include file="setting.jsp" %>
 <%@ include file="header.jsp" %>
 <script src="${project}script.js"></script>
-
+<head>
+<meta http-equiv="Pragma" content="no-cache"> <!-- ← HTTP 1.0에서 사용하던 방법 -->
+ <meta http-equiv="Cache-Control" content="no-cache">
+ <meta http-equiv="Expires" content="0"/>
+ </head>
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <body>
 <!--enctype="multipart/form-data"-->
@@ -175,6 +179,7 @@
                                       return element.InputFile == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/'+session+file.name;
                                     }
                                 });
+                                console.log(data.length);
                                 
                                 if(data.length != 0){
                                 	if(data[0].Outputs !=undefined){

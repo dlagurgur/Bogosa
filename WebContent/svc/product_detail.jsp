@@ -200,8 +200,7 @@ h3 {
 
 .grid__container {
   margin: 0 auto;
-  max-width: 20rem;
-  width: 90%;
+  text-align: center;
 }
 
 
@@ -224,31 +223,44 @@ s0.parentNode.insertBefore(s1,s0);
 
 		<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
 		
-<video controls id="video-player" style="
+
+
+
+  
+
+<div style="
+width: 72%;
+    margin: 0 auto;
+    margin-top: 30;"><h2 style="
+        color: white;
+">${Produt_dto.product_name}</h2></div>
+
+<div class="site__container" style="padding-top: 0px;">
+
+    <div class="grid__container"style="
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 90%;
+"	>
+<br>
+    <video controls id="video-player" style="
     padding-top: 0px;
     padding-left: 0px;
-    height: 750px;
-    width: 1300px;
-    margin-left: 70px;
-    margin-top: 20px;
+    height:540px;
+    width: 960px;
+    
 "></video>
-
-
-  <textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly style="
-    height: 664px;
-    width: 404px;
+    
+<div style="display:inline-block; margin-left: 25px;"><textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly
+    style="
+    height: 508px;
+    width: 300px;
     background-color: black;
     color:white;
-    margin-bottom: 85px;
     ">
 
 </textarea>
-
-<div class="site__container">
-
-    <div class="grid__container">
-	
-				<form class="form form--login" name="commentInsertForm" method="post">
+<form class="form form--login" name="commentInsertForm" method="post">
 					<div class="form__field">
 						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" /> 
 						<input type="hidden" name="session" value="${sessionScope.user_id}" />
@@ -264,28 +276,25 @@ s0.parentNode.insertBefore(s1,s0);
 					
 					</div>
 				</form>
+				
+				</div>
+    
+	
+				
 
 </div>
 </div>
 
-<h1 style="
-    padding-left: 60px;
-    padding-bottom: 0px;
-    color:white;
-    margin-bottom: 0px;
-    width: 1550px;
-    height: 5px;
-    margin-top: 20px;
-">${Produt_dto.product_name}</h1>
 
 
 
 
-			<!-- Menu Item -->
-			<div class="menuItem col-lg-6 mt-5">
-				<img class="card-img-top img-fluid" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width: 800px;height: 500px;margin-left: 35px;margin-bottom: 0px;border-bottom-width: 50px;padding-bottom: 0px;margin-top: 80;">
-			</div>
 
+			<!-- Menu Item
+							<img class="card-img-top img-fluid" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width: 800px;height: 500px;margin-left: 35px;margin-bottom: 0px;border-bottom-width: 50px;padding-bottom: 0px;margin-top: 80;">
+			
+			 -->
+			
 
 
 
@@ -293,11 +302,18 @@ s0.parentNode.insertBefore(s1,s0);
 <input type="hidden" name="session" id="session" value="${sessionScope.user_id}" /> 
 <input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" /> 
 
-<div class="site__container">
+<div>
+	
+    <div class="grid__container" style="
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 90%;">
+    
+    <div>
+	<h2>상품 상세정보</h2>
+	</div>
 
-    <div class="grid__container">
-
-	<form class="form form--login" id="menuform"  action="product_detaile_delete.go"  name="menuform" role="form" style="width: 870px;margin-left: 100px;margin-bottom: 0px;margin-top: -545;">
+	<form class="form form--login" id="menuform"  action="product_detaile_delete.go"  name="menuform" role="form" style="width: 800;margin: 0 auto;"">
       	<div class="form__field">
       					<c:if test="${Produt_dto.user_id eq sessionScope.user_id}"> 
 						<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
@@ -310,20 +326,7 @@ s0.parentNode.insertBefore(s1,s0);
         <div class="form__field">
 		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">판매자</label>
 				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.user_id}" readonly>
-		</div>
-		
-		<div class="form__field">
-		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품설명</label>
-				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
-		</div>
-		
-		<div class="form__field">
-		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
-				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
-		</div>
-
-		<div class="form__field">
-		        <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">카테고리</label>
+				 <label for="nickname" class="col-sm-3 col-form-label" style="color: white;padding-right: 10px; padding-left: 10px;">카테고리</label>
 		       <c:if test="${Produt_dto.product_category eq 1}">
 					<input style="color:white;" class="form__input" type="text" value="가전디지털" readonly>
 				</c:if>
@@ -345,14 +348,39 @@ s0.parentNode.insertBefore(s1,s0);
 				 <c:if test="${Produt_dto.product_category eq 7}">
 					<input style="color:white;" class="form__input" type="text" value="스포츠/레저" readonly>
 				</c:if>
-				
-				
-				
-				</div>
+		</div>
+		<!--  
+		<div class="form__field">
+		       <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품설명</label>
+				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
+		</div>
+		-->
+		
+		
+		
+		<div class="form__field">
+				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">수량</label>
+				<input type="number" name="qty" class="form__input" value="1" min="1" max="19" style="color:white;">
+		        <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
+				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
+		</div>
+		
+		<div>
+				<img class="card-img-top img-fluid" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width: 800px; height: fit-content; margin-top: 30;">
+		
+		</div>
+		
+		<div class="form__field" style="color: white;
+    margin-top: 30px;
+    display: grid;">
+    			<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품설명</label>
+				<input style="color:white; height: fit-content;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
+		</div>
+
+		
 				
 						<div class="form__field">
-							 <label for="nickname" class="col-sm-3 col-form-label" style="color:white;">수량</label>
-								<input type="number" name="qty" class="form__input" value="1" min="1" max="19" style="color:white;">
+							 
 							
 						</div>
 					
@@ -370,7 +398,7 @@ s0.parentNode.insertBefore(s1,s0);
 				
 					<div class="form__field">
 						
-						<button type="button" class="btn btn-lg btn-secondary btn-block"  onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
+						<button type="button" class="btn btn-lg btn-secondary btn-block" style="width: 400px;margin: 0 auto;" onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
 					</div>
 					
 			</form>
