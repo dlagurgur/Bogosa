@@ -7,9 +7,10 @@
 <%@ include file="header.jsp" %>
 <script src="${project}script.js"></script>
 <head>
-<meta http-equiv="Pragma" content="no-cache"> <!-- ← HTTP 1.0에서 사용하던 방법 -->
  <meta http-equiv="Cache-Control" content="no-cache">
- <meta http-equiv="Expires" content="0"/>
+ <meta http-equiv="Expires" content="0">
+ <meta http-equiv="Pragma" content="no-cache">
+
  </head>
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <body>
@@ -105,6 +106,8 @@
 		
 	</form>
 </div>
+
+<%@include file="tail.jsp"%>
 
 
  <script src="${project}aws-sdk-2.897.0.min.js"></script>
@@ -204,7 +207,7 @@
                                  
                         
                            })
-                    }, 10000);
+                    }, 20000);
                     
                     timer;
 

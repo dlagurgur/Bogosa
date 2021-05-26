@@ -84,7 +84,8 @@
 			
 					
 		</form>
-	</body>
+	
+	<%@include file="tail.jsp"%>
 	
 <script>
 

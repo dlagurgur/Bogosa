@@ -215,17 +215,9 @@ h3 {
 </style>
 
 </head>
-<body class="align" style="padding-top: 20px;margin-right: 180px; color:white;">
 
-  
-  <div class="site__container">
-
-    <div class="grid__container">
-    <h3 style="
-    padding-bottom: 20px;
-    width: 470px;
-">${userDto.user_id}님의 정보</h3>
-	<form class="form form--login" name="joinform" method="post" role="form" style="width: 470px;">
+    <h3 class="fs-2 my-5 text-center text-white">${userDto.user_id}님의 정보</h3>
+	<form class="form form--login my-5" name="joinform" method="post" role="form" style="width: 700px; margin:0 auto;">
       
     	        
         <div class="form__field">
@@ -289,20 +281,20 @@ h3 {
 		<div class="form__field">
 		<br>
 		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='update.go'" style="height: 65px;margin-top: 8px;" >${btn_modify}</button>&nbsp;&nbsp;					
-		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='delete.go'">${btn_user_delete}</button>
+		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='delete.go'" style="height: 65px;margin-top: 8px;">${btn_user_delete}</button>
 		</div>
 		
 		<div class="form__field">
 		<br>
 		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='Order_confirmation.go'" style="height: 65px;margin-top: 8px;" >판매기록 </button>&nbsp;&nbsp;					
-		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='Order_history_select.go'">주문기록</button>
+		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='Order_history_select.go'" style="height: 65px;margin-top: 8px;">주문기록</button>
 		</div>
 		
 		
 		<div class="form__field">
 		<br>
 		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='product_select.go'" style="height: 65px;margin-top: 8px;" >등록한 상품 </button>&nbsp;&nbsp;					
-		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='trailer_select.go'">등록한 예고</button>
+		<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='trailer_select.go'" style="height: 65px;margin-top: 8px;">등록한 예고</button>
 		</div>
 		
 		
@@ -326,7 +318,6 @@ h3 {
 	 
 	
 				
-			</div>
-	 </div>
 
-</html>
+
+<%@include file="tail.jsp"%>

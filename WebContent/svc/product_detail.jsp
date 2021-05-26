@@ -409,7 +409,7 @@ width: 72%;
 				
 			
 	
-	</body>
+	<%@include file="tail.jsp"%>
 	
 	
 	
