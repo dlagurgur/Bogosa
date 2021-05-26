@@ -234,7 +234,7 @@ width: 72%;
     margin-top: 30;"><h2 style="
         color: white;
 ">${Produt_dto.product_name}</h2></div>
-
+<input type="text" id="aa" name="aa">
 <div class="site__container" style="padding-top: 0px;">
 
     <div class="grid__container"style="
@@ -302,7 +302,7 @@ width: 72%;
 
 
 <input type="hidden" name="session" id="session" value="${sessionScope.user_id}" /> 
-<input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" /> 
+
 
 <div>
 	
@@ -395,9 +395,9 @@ width: 72%;
 					<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
 					<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
 					<input type="hidden" id="user_charn" name="user_charn" value="${Produt_dto.user_charn}">
+					<input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" /> 
 
 
-<input type="text" id="aa" name="aa">
 
 				
 					<div class="form__field">
@@ -416,8 +416,9 @@ width: 72%;
 <script src="${project}aws-sdk-2.897.0.min.js"> </script>	
 	
  <script type="text/javascript">
- var user_charn = $('#user_charn').val();
- setInterval(function ChennelViewCount(user_charn){
+
+ setInterval(function ChennelViewCount(){
+	
 		AWS.config.update({
 			"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
 			  "secretAccessKey": "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",
@@ -428,19 +429,19 @@ width: 72%;
 			AWS.config.region = 'us-east-1'; // 리전
 
 			var ivs = new AWS.IVS();
-			
+			 var user_charn = $('#user_charn').val();
 			var params = {
-			    channelArn : user_charn
+			    'channelArn' : user_charn
 			  };
 
 			ivs.getStream(params, function(err, data) {
 			  if (err) console.log(err, err.stack); // an error occurred
 			  else     console.log(data);
 				var view_count = data.stream.viewerCount
-				document.getElementById("aa").value = view_count;
+				document.getElementById("aa").value = view_count +"명";
 			});
-	},5000 );
- 
+	},10000 );
+
  
  
 
