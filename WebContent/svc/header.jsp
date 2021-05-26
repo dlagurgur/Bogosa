@@ -193,13 +193,13 @@
                 </li>
               
             </ul>
-            <form class="d-flex text-center col-7">
-                <select class="mr-5"name="search_type" style="border-radius: 7px;height: 42px;">
+            <form class="d-flex text-center col-7" name="serch_trip" method="post" action="search.go">
+                <select class="mr-5"name="search_type" style="border-radius: 7px;height: 42px;" >
                     <option value="name">작성자</option>
                     <option value="title">제목</option>
                     <option value="product_detail">내용</option>
                 </select>
-              <input class="form-control me-2 ml-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
