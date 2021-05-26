@@ -479,6 +479,7 @@ public class Svc_pro{
 		String product_name = multi.getParameter("product_name");
 		String product_title = multi.getParameter("product_title");
 		String aws_url = multi.getParameter("aws_url");
+		String user_charn = multi.getParameter("user_charn");
 		int product_category = Integer.parseInt(multi.getParameter("product_category"));
 		int product_price = Integer.parseInt(multi.getParameter("product_price"));
 		String product_detail = multi.getParameter("product_detail");
@@ -501,7 +502,7 @@ public class Svc_pro{
 		product_dto.setAws_url(aws_url);
 		product_dto.setProduct_image(filename);
 		product_dto.setTrailer_id(trailer_id);
-			
+		product_dto.setUser_charn(user_charn);	
 		
 	
 			
