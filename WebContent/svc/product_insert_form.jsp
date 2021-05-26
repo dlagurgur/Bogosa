@@ -273,6 +273,7 @@ h3 {
 		<input type="hidden" name="session" id="session" value="${user_id}" /> 
 		<input type="hidden" name="product_id" value="${product_id}" /> 
 		<input type="hidden" name="aws_url" id="aws_url" value="${userDto.a}" >
+		<input type="hidden" name="user_charn" id="user_charn" value="${userDto.user_charn}" >
 			
 		<div class="form__field">
 			<input class="btn btn-primary" type="submit" value="등록">&nbsp;&nbsp;&nbsp;

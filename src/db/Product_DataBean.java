@@ -11,6 +11,7 @@ public class Product_DataBean {
 	private String user_id;
 	private String aws_url;
 	private int trailer_id;
+	private String user_charn;
 	
 	
 	public int getProduct_id() {
@@ -76,5 +77,14 @@ public class Product_DataBean {
 		this.trailer_id = trailer_id;
 	}
 
+	public String getUser_charn() {
+		return user_charn;
+	}
+
+	public void setUser_charn(String user_charn) {
+		this.user_charn = user_charn;
+	}
+
+	
 	
 }

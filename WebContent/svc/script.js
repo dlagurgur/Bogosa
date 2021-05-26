@@ -126,10 +126,11 @@ function AWScheck(){
 		    var b = data.streamKey.value;	// 키값
 		    var c = data.channel.ingestEndpoint; // 키값
 			var user_charn = data.channel.arn;
+			console.log(user_charn)
 		    document.getElementById("a").value = a
 		    document.getElementById("b").value = b
 		    document.getElementById("c").value = c
-			document.getElementById("user_charn") = user_charn
+		    document.getElementById("user_charn").value = user_charn
 		    AWS = 1;
 		    alert("채널 생성완료!")
 		    // return a, b; // successful response

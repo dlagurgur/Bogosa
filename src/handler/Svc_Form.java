@@ -151,9 +151,9 @@ public class Svc_Form{
 	public ModelAndView product_detailprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
 		int product_id=Integer.parseInt(request.getParameter("product_id"));
+		
 		Product_DataBean Produt_dto = Product_Dao.detialProduct(product_id);
 		request.setAttribute("Produt_dto", Produt_dto);
-		
 		return new ModelAndView("svc/product_detail");
 	}
 	

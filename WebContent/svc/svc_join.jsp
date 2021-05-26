@@ -284,25 +284,6 @@ h3 {
 			<br>
 			<br>
 			
-		
-		<!--  
-								<label for="inputNickname" class="col-sm-2 col-form-label">주소</label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" name="user_addr" id="user_add" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
-							</div>
-							<div class="col-sm-2">
-							<button class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()">주소찾기</button>
-							</div>
-					</div>
-						
-					<div class="form-group row">
-								<label for="inputNickname" class="col-sm-2 col-form-label">상세주소</label>							
-							<div class="col-sm-8">
-								<input type="text" class="form-control" name="user_addr2" id="cus_address2" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
-							</div>
-					</div>
-		-->
-        
         <div class="form__field">
         <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
           <input style="color:white;" name="user_addr" id="user_add" type="text" class="form__input" placeholder="Address" required>
@@ -351,6 +332,7 @@ h3 {
 								<input type="hidden" id="a" name="a" >
 								<input type="hidden" id="b" name="b" >
 								<input type="hidden" id="c" name="c" >
+								<input type="text" id="user_charn" name="user_charn" >
 		</div>		
 			
 			

@@ -12,6 +12,7 @@ public class UserDataBean {
 	private String a;
 	private String b;
 	private String c;
+	private String user_charn;
 	
 	
 	public String getUser_id() {
@@ -106,6 +107,15 @@ public class UserDataBean {
 	public void setC(String c) {
 		this.c = c;
 	}
+
+	public String getUser_charn() {
+		return user_charn;
+	}
+
+	public void setUser_charn(String user_charn) {
+		this.user_charn = user_charn;
+	}
+	
 	
 	
 

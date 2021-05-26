@@ -4,7 +4,7 @@
   	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="db">
 	<insert id="insertUser" parameterType="db.UserDataBean">
-		insert into user_general values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_addr}, #{user_addr2},#{user_email},#{user_corp}, #{a}, #{b}, #{c})
+		insert into user_general values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_addr}, #{user_addr2},#{user_email},#{user_corp}, #{a}, #{b}, #{c},#{user_charn})
 	</insert>	
 	
 	<select id="idCheck" parameterType="String" resultType="Integer">
@@ -72,8 +72,8 @@
 	
 
 	<insert id="insertProduct" parameterType="db.Product_DataBean" >
-		insert into product(product_id, product_name, product_title,product_price, product_image, product_category, product_detail, product_off,user_id, aws_url, trailer_id)
-		values( product_id, #{product_name}, #{product_title}, #{product_price},#{product_image},#{product_category},#{product_detail}, 1,#{user_id}, #{aws_url},#{trailer_id} )
+		insert into product(product_id, product_name, product_title,product_price, product_image, product_category, product_detail, product_off,user_id, aws_url, trailer_id,user_charn)
+		values( product_id, #{product_name}, #{product_title}, #{product_price},#{product_image},#{product_category},#{product_detail}, 1,#{user_id}, #{aws_url},#{trailer_id},#{user_charn} )
 		<selectKey keyProperty="product_id" resultType="int" order="AFTER">
     		SELECT LAST_INSERT_ID()
   		</selectKey>
@@ -89,10 +89,14 @@
 		select * from product where user_id=#{user_id}
 	</select>
 	
-
+<!--
 	
-	
-	
+	<select id="user_charn" parameterType="String" resultType="String">
+	SELECT U.user_charn FROM
+	product P JOIN user_general U ON P.user_id = U.user_id
+	WHERE U.user_id = #{user_id} AND P.product_off = 1 LIMIT 1
+	</select>
+	  -->
 	
 	<select id="selectMenusByCategory" parameterType="java.util.Map" resultType="db.Product_DataBean">
 		select * from product where product_category=#{product_category} and product_off=1 order by product_id desc

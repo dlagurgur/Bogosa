@@ -394,7 +394,7 @@ width: 72%;
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">
 					<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
 					<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
-		
+					<input type="hidden" id="user_charn" name="user_charn" value="${Produt_dto.user_charn}">
 
 
 				
