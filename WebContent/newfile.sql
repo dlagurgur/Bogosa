@@ -49,9 +49,7 @@ CREATE TABLE product_chat
 	chat_date timestamp NOT NULL,
 	user_id varchar(20) NOT NULL,
 	product_id int NOT NULL,
-	PRIMARY KEY (chat_id),
-	UNIQUE (user_id),
-	UNIQUE (product_id)
+	PRIMARY KEY (chat_id)
 );
 
 
@@ -67,8 +65,7 @@ CREATE TABLE trailer
 	trailer_launchdate timestamp NOT NULL,
 	trailer_updatedate timestamp NOT NULL,
 	user_id varchar(20) NOT NULL,
-	PRIMARY KEY (trailer_id),
-	UNIQUE (user_id)
+	PRIMARY KEY (trailer_id)
 );
 
 
