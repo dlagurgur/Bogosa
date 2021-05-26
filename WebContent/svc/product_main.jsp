@@ -254,7 +254,7 @@ background-color: bg-black;
 			    <div class="col-sm-4 d-flex justify-content-center">
 			      <div class="card bg-black mt-4 mb-4" style="background-color: #151515; width: 362px;">
 			      <input type="hidden" name="aws_url" id="aws_url" value="${menu.aws_url}" /> 
-			        <video  autoplay id="video-player" style="width: 360px; height: 270px;"></video>
+			        <video  autoplay id="video-player" style="width: 360px; height: 270px;" muted="muted"></video>
 			        <div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
 			          <b class="card-title" style="color:#D8D8D8;">${menu.product_name}</b>
 					  <p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p>

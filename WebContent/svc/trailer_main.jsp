@@ -11,9 +11,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./jquery-3.3.1.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+		<link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+   		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
 <%@include file="header.jsp"%>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
     <!-- Bootstrap core CSS -->
@@ -211,7 +211,16 @@ background-color: bg-black;
 			  
 			    <div class="col-sm-4 d-flex justify-content-center">
 			      <div class="card bg-black mt-4 mb-4" style="background-color: #151515; width: 362px;">
-			        <img class="card-img-top img-fluid" src="menu_images/${menu.trailer_image}" alt="Menu Img" style="width: 360px; height: 270px;">
+			       <c:if test="${menu.trailer_aws_url eq null}"> 
+						<img class="card-img-top img-fluid" src="menu_images/${menu.trailer_image}" alt="Menu Img" style="width: 360px; height: 270px;">
+					</c:if>
+					<!--  -->
+					<c:if test="${menu.trailer_aws_url ne null}">
+						<video id=video  class="video-js vjs-big-play-centered" style="width: 360px; height: 270px;" autoplay muted="muted">
+    					<source src="${menu.trailer_aws_url}" type="application/x-mpegURL" >
+						</video>
+					</c:if>
+			        
 			        <div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
 			          <b class="card-title" style="color:#D8D8D8;">${menu.trailer_name}</b>
 					  <p class="card-text" style="color:#D8D8D8;">${menu.trailer_price}원</p>
@@ -233,6 +242,8 @@ background-color: bg-black;
 
 
 <script type="text/javascript">
+var player = videojs('video');
+player.play();
   </script>
   
 
