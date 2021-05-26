@@ -61,7 +61,7 @@ CREATE TABLE trailer
 	trailer_title varchar(50) NOT NULL,
 	trailer_price int NOT NULL,
 	trailer_image varchar(300),
-	trailer_aws_url varchar(300) NOT NULL,
+	trailer_aws_url varchar(300) ,
 	trailer_detail varchar(2500) NOT NULL,
 	trailer_launchdate timestamp NOT NULL,
 	trailer_updatedate timestamp NOT NULL,
