@@ -141,29 +141,6 @@ function AWScheck(){
 	
 }
 
-function ChennelViewCount(user_charn){
-	AWS.config.update({
-		"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
-		  "secretAccessKey": "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",
-		  "region": "us-east-1"
-	});
-
-		// AWS.config.loadFromPath('./config.json');
-		AWS.config.region = 'us-east-1'; // 리전
-
-		var ivs = new AWS.IVS();
-		
-		var params = {
-		    "channelArn": user_charn
-		  };
-
-		ivs.getStream(params, function(err, data) {
-		  if (err) console.log(err, err.stack); // an error occurred
-		  else     console.log(data);
-			var view_count = data.stream.viewerCount
-			return view_count           // successful response
-		});
-}
 
 
 

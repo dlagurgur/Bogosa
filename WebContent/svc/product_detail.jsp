@@ -397,6 +397,8 @@ width: 72%;
 					<input type="hidden" id="user_charn" name="user_charn" value="${Produt_dto.user_charn}">
 
 
+<input type="text" id="aa" name="aa">
+
 				
 					<div class="form__field">
 						
@@ -411,24 +413,33 @@ width: 72%;
 	
 	<%@include file="tail.jsp"%>
 	
-	
+<script src="${project}aws-sdk-2.897.0.min.js"> </script>	
 	
  <script type="text/javascript">
- function changeRGB(){
-	    
-	    var text = document.getElementById("aaaa"); 
-	    // 이벤트가 발생한 id가 "test1"인 객체를 찾아서 text변수에 넣는다. 
-	    var r = Math.round(Math.random() * 255); 
-	    var g = Math.round(Math.random() * 255);
-	    var b = Math.round(Math.random() * 255);
-	    // 0~255값을 랜덤으로 뽑아내서 각각의 변수 r,g,b 에 들어간다.
-	 
-	    var random_color = "rgb(" + r + "," + g + "," + b + ")";
-	    // random_color = rgb(r,g,b)
-	 
-	    text.style.color = random_color; 
-	    // text(test1)에 색상을 바꿉니다.
-	    }     
+ var user_charn = $('#user_charn').val();
+ setInterval(function ChennelViewCount(user_charn){
+		AWS.config.update({
+			"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
+			  "secretAccessKey": "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",
+			  "region": "us-east-1"
+		});
+
+			// AWS.config.loadFromPath('./config.json');
+			AWS.config.region = 'us-east-1'; // 리전
+
+			var ivs = new AWS.IVS();
+			
+			var params = {
+			    channelArn : user_charn
+			  };
+
+			ivs.getStream(params, function(err, data) {
+			  if (err) console.log(err, err.stack); // an error occurred
+			  else     console.log(data);
+				var view_count = data.stream.viewerCount
+				document.getElementById("aa").value = view_count;
+			});
+	},5000 );
  
  
  
