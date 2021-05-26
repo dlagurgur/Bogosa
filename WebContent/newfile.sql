@@ -94,6 +94,10 @@ CREATE TABLE User_general
 	user_addr2 varchar(20) NOT NULL,
 	user_email varchar(30) NOT NULL,
 	user_corp int(5) NOT NULL,
+	a varchar(100),
+	b varchar(100),
+	c varchar(100),
+	user_charn varchar(100),
 	PRIMARY KEY (user_id),
 	UNIQUE (user_id),
 	UNIQUE (user_email)
