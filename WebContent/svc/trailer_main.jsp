@@ -201,33 +201,33 @@ h3 {
 background-color: bg-black;
 }
 </style>
-
-
-	</head>
-	<body>
-		
-		
-		
-		<!-- Container -->
-		<div class="container">
+</head>
+	
 			
-			<!-- Menu List shown in Cards -->
-			<div class="card-deck bg-black mt-4 mb-4" style="background-color: #151515;">
-				<c:forEach var="menu" items="${Trailer_dto}">
-				<a class="menuListItem" href="trailer_detail.go?trailer_id=${menu.trailer_id}">
-					<div class="card bg-black mt-4 mb-4" style="background-color: #151515;">
-						<img class="card-img-top img-fluid" src="menu_images/${menu.trailer_image}" alt="Menu Img" style="width: 300px; height: 170px;">
-						<div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
-							<b class="card-title" style="color:#D8D8D8;">${menu.trailer_name}</b>
-							<p class="card-text" style="color:#D8D8D8;">${menu.trailer_price}원</p>
-						</div>
-					</div>
-				</a>
-				</c:forEach>
+			<div class="container-fluid">
+			  <div class="row">
+			  
+			  <c:forEach var="menu" items="${Trailer_dto}">
+			  
+			    <div class="col-sm-4 d-flex justify-content-center">
+			      <div class="card bg-black mt-4 mb-4" style="background-color: #151515; width: 362px;">
+			        <img class="card-img-top img-fluid" src="menu_images/${menu.trailer_image}" alt="Menu Img" style="width: 360px; height: 270px;">
+			        <div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
+			          <b class="card-title" style="color:#D8D8D8;">${menu.trailer_name}</b>
+					  <p class="card-text" style="color:#D8D8D8;">${menu.trailer_price}원</p>
+					  <a  href="trailer_detail.go?trailer_id=${menu.trailer_id}" class="btn btn-primary stretched-link">라이브 예정일시 : ${menu.trailer_launchdate}</a>
+			        </div>
+			      </div>
+			    </div>
+			    
+			  </c:forEach>
+			  
+			  </div>
 			</div>
-			
-		</div>
-	</body>
+		
+	
+	
+	<%@include file="tail.jsp"%>
 	
 	
 

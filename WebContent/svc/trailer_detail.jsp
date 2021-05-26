@@ -321,7 +321,7 @@ h3 {
 			
 			
 	
-	</body>
+	<%@include file="tail.jsp"%>
 	
 	
 

@@ -231,13 +231,9 @@ h3 {
 <!--enctype="multipart/form-data"-->
 
 
-<body class="align" style="padding-top: 20px;margin-right: 180px; color:white;">
-	<div class="site__container">
-	<div class="grid__container">
-			<h3 style="
-			padding-bottom: 20px;
-			width:470px;">상품에 대한 정보를 입력하세요</h3>
-		<form class="form form--login" name="productform" action="product_insert_pro.go" method="post" role="form" style="width: 700px;"enctype="multipart/form-data" >		
+
+			<h3 class="fs-2 my-5 text-center text-white">상품에 대한 정보를 입력하세요</h3>
+		<form class="form form--login my-5" name="productform" action="product_insert_pro.go" method="post" role="form" style="width: 700px; margin:0 auto;"enctype="multipart/form-data" >		
 			<div class="form__field">
 				<label for="product_title" class="col-sm-3 col-form-label" style="color:white;" >방송 제목</label>
 				<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}" style="color:white;">
@@ -283,11 +279,10 @@ h3 {
 			<input class="btn btn-primary" onclick="location='myPage.go'" type="reset" value="취소">
 		</div>
 		</form>
-	</div>
-</div>
+	
 
 
-</body>
+<%@include file="tail.jsp"%>
 
 
 
