@@ -14,6 +14,9 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+		<link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+   		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
+   			<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
 <%@include file="header.jsp"%>
 	<script id="config1" src="${project}script.js"></script>
 <style>
@@ -226,6 +229,7 @@ background-color: bg-black;
 ">
 					<div class="carousel-item active">
 						<img class="d-block h-75 newTrex" src="${project}img/1.PNG" alt="First Slide">
+						
 					</div>
 					<div class="carousel-item">
 						<img class="d-block h-75" src="${project}img/1.PNG" alt="Second Slide">
@@ -244,9 +248,14 @@ background-color: bg-black;
 				</a>
 			</div>
 			
-			<!-- Fixed Footer: 붙이는 위치가 Scrollable Footer와는 다릅니다! Fixed Footer는 중단 Container 안에 넣어주셔야 합니다. --> 
+			
 			
 		</div>
+	
+		
+		
+		
+	
 		
 		
 		
@@ -257,30 +266,19 @@ background-color: bg-black;
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<div class="container">
+		<div class="container-sm">
 			
 			<!-- Menu List shown in Cards -->
 			<div class="card-deck bg-black mt-4 mb-4" style="background-color: #151515;">
 				<c:forEach var="menu" items="${menus}">
+				<input type="hidden" name="aws_url" id="aws_url" value="${menu.aws_url}" /> 
 				<a class="menuListItem" href="product_detail.go?product_id=${menu.product_id}">
 					<div class="card bg-black mt-4 mb-4" style="background-color: #151515;">
-						<img class="card-img-top img-fluid" src="menu_images/${menu.product_image}" alt="Menu Img" style="width: 300px; height: 170px;">
-						<div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
-							<b class="card-title" style="color:#D8D8D8;">${menu.product_name}</b>
-							<p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p>
-						</div>
+						 <video  autoplay id="video-player" style="width: 300px; height: 200px;"></video>
+    					<h3>${menu.product_name}</h3>
+   						 <p>${menu.product_price}원</p>
+ 
+					
 					</div>
 				</a>
 				</c:forEach>
@@ -293,113 +291,16 @@ background-color: bg-black;
 
 
 <script type="text/javascript">
-
+var aws_url = $('#aws_url').val();
+if (IVSPlayer.isPlayerSupported) {
+  const player = IVSPlayer.create();
+  player.attachHTMLVideoElement(document.getElementById('video-player'));
+  player.load(aws_url);
+  player.play();
+}
   </script>
   
 
 
  
 </html> 
-
-
-<!-- 
-// var AWS = require("aws-sdk");
-
-AWS.config.update({
-  "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
-  "secretAccessKey": "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",
-  "region": "us-east-1"
-});
-
-// AWS.config.loadFromPath('./config.json');
-AWS.config.region = 'us-east-1'; // 리전
-
-var ivs = new AWS.IVS();
-
-var params = {
-    authorized : false ,
-    name: 'test4' //{user_id를 채널이름으로}
-  };
-  ivs.createChannel(params, function(err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    else     console.log(data);        
-    var a = data.channel.playbackUrl;
-    var b = data.streamKey.value;
-    var c = data.channel.ingestEndpoint;
-    console.log(a);
-    console.log(b);
-    // return a, b; // successful response
-  });
-
-
-//   ivs.createChannel(params, function(err, data) {
-//     if (err) console.log(err, err.stack); // an error occurred
-//     else
-//     var elements = JSON.parse(data);
-//     return elements;           // successful response
-//   });
-
-// //   {
-// //     "channel": { 
-// //        "arn": "string",
-// //        "authorized": boolean,
-// //        "ingestEndpoint": "string",
-// //        "latencyMode": "string",
-// //        "name": "string",
-// //        "playbackUrl": "string",
-// //        "recordingConfigurationArn": "string",
-// //        "tags": { 
-// //           "string" : "string" 
-// //        },
-// //        "type": "string"
-// //     },
-// //     "streamKey": { 
-// //        "arn": "string",
-// //        "channelArn": "string",
-// //        "tags": { 
-// //           "string" : "string" 
-// //        },
-// //        "value": "string"
-// //     }
-// //  }
-
-// // var params = {
-// //     arn: 'STRING_VALUE' /* required */
-// //   };
-//   ivs.deleteChannel(params, function(err, data) {
-//     if (err) console.log(err, err.stack); // an error occurred
-//     else     console.log(data);           // successful response
-//   });
-
-  
-
-
-
-// // var params = {
-// //     arn: 'STRING_VALUE' /* required */
-// //   };
-
-//   ivs.getChannel(params, function(err, data) {
-//     if (err) console.log(err, err.stack); // an error occurred
-//     else     console.log(data);           // successful response
-//   });
-
-// //   {
-// //     "channel": { 
-// //        "arn": "string",
-// //        "authorized": boolean,
-// //        "ingestEndpoint": "string",
-// //        "latencyMode": "string",
-// //        "name": "string",
-// //        "playbackUrl": "string",
-// //        "recordingConfigurationArn": "string",
-// //        "tags": { 
-// //           "string" : "string" 
-// //        },
-// //        "type": "string"
-// //     }
-// //  }
-
-
-
- -->
