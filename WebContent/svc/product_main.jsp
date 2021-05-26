@@ -205,8 +205,43 @@ background-color: bg-black;
 
 	</head>
 	<body style="
-    padding-top: 50px;
+    padding-top: 0px;
 ">
+		
+		
+	<div class="container-fluid">
+			
+			<!-- Carousel (Ads) -->
+			<div id="ads" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#ads" data-slide-to="0" class="active"></li>
+					<li data-target="#ads" data-slide-to="1"></li>
+					<li data-target="#ads" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner"style="
+    height: 400px;
+    width: 1550px;">
+					<div class="carousel-item active">
+						<img class="d-block h-75 newTrex" src="${project}img/1.PNG" alt="First Slide" >
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/1.PNG" alt="Second Slide" >
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/1.PNG" alt="Third Slide">
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#ads" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#ads" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>				
+				</a>
+			</div>
+		
+		</div>
 		
 		
 	
