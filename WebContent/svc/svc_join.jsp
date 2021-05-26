@@ -332,7 +332,7 @@ h3 {
 								<input type="hidden" id="a" name="a" >
 								<input type="hidden" id="b" name="b" >
 								<input type="hidden" id="c" name="c" >
-								<input type="text" id="user_charn" name="user_charn" >
+								<input type="hidden" id="user_charn" name="user_charn" >
 		</div>		
 			
 			
