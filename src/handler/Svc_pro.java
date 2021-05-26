@@ -414,7 +414,7 @@ public class Svc_pro{
 	MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
 		
 	
-	
+
 	
 	
 		
@@ -427,6 +427,9 @@ public class Svc_pro{
 		int product_price = Integer.parseInt(multi.getParameter("product_price"));
 		String product_detail = multi.getParameter("product_detail");
 		String user_id = multi.getParameter("session");
+		
+		int trailer_id = Integer.parseInt(multi.getParameter("trailer_id"));
+	
 		@SuppressWarnings("rawtypes")
 		Enumeration files = multi.getFileNames();
 
@@ -442,6 +445,7 @@ public class Svc_pro{
 		product_dto.setUser_id(user_id);
 		product_dto.setAws_url(aws_url);
 		product_dto.setProduct_image(filename);
+		product_dto.setTrailer_id(trailer_id);
 			
 		
 	
@@ -460,11 +464,22 @@ public class Svc_pro{
 	public ModelAndView deletProductProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
 		int product_id=Integer.parseInt(request.getParameter("product_id"));
+		int trailer_id=Integer.parseInt(request.getParameter("trailer_id"));
+		String trailer_id1=request.getParameter("trailer_id");
+		
+		if(trailer_id1==null) {
+			int result = Product_Dao.Product_off(product_id);
+			request.setAttribute("result", result);
+
+		}else {
+			Product_Dao.trailer_delete(trailer_id);
+			int result = Product_Dao.Product_off(product_id);
+			request.setAttribute("result", result);
+		}
 		
 		
-		int result = Product_Dao.Product_off(product_id);
-	
-		request.setAttribute("result", result);
+		
+
 		return new ModelAndView("svc/deletProduct");
 		
 	}

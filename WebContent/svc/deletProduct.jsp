@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="setting.jsp"%>
-<%@include file="script.js" %>
+
     
 <h2>cus_delete_info_pro.jsp</h2>
 <c:if test="${result eq 0}">

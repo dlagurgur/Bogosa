@@ -10,12 +10,13 @@ public class Product_DataBean {
 	private String product_detail;
 	private String user_id;
 	private String aws_url;
-	
+	private int trailer_id;
 	
 	
 	public int getProduct_id() {
 		return product_id;
 	}
+	
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
@@ -68,7 +69,12 @@ public class Product_DataBean {
 		this.aws_url = aws_url;
 	}
 	
-	
+	public int getTrailer_id() {
+		return trailer_id;
+	}
+	public void setTrailer_id(int trailer_id) {
+		this.trailer_id = trailer_id;
+	}
 
 	
 }

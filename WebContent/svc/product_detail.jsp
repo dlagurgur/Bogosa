@@ -392,8 +392,8 @@ width: 72%;
 					<input type="hidden" name="menu_name" value="${Produt_dto.product_name}">
 					<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
 					<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">
-					<input type="hidden" name="menu_id" value="${Produt_dto.product_id}">
-		
+					<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
+					<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
 		
 
 

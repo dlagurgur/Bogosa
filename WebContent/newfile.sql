@@ -37,6 +37,7 @@ CREATE TABLE product
 	product_off int NOT NULL,
 	user_id varchar(20) NOT NULL,
 	aws_url varchar(200) NOT NULL,
+	trailer_id int,
 	PRIMARY KEY (product_id),
 	UNIQUE (product_id)
 
