@@ -78,7 +78,6 @@ CREATE TABLE trailer_comment
 	user_id varchar(20) NOT NULL,
 	trailer_id int NOT NULL,
 	PRIMARY KEY (comment_id),
-	UNIQUE (user_id)
 );
 
 
