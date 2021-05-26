@@ -412,13 +412,7 @@ public class Svc_pro{
 	String filename = "";
 		
 	MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-		
 	
-
-	
-	
-		
-
 	
 		String product_name = multi.getParameter("product_name");
 		String product_title = multi.getParameter("product_title");
@@ -427,7 +421,65 @@ public class Svc_pro{
 		int product_price = Integer.parseInt(multi.getParameter("product_price"));
 		String product_detail = multi.getParameter("product_detail");
 		String user_id = multi.getParameter("session");
+	
+		@SuppressWarnings("rawtypes")
+		Enumeration files = multi.getFileNames();
+
+		String file = (String) files.nextElement();
+		filename = multi.getFilesystemName(file);
+	
 		
+		product_dto.setProduct_title(product_title);
+		product_dto.setProduct_name(product_name);
+		product_dto.setProduct_price(product_price);
+		product_dto.setProduct_category(product_category);
+		product_dto.setProduct_detail(product_detail);
+		product_dto.setUser_id(user_id);
+		product_dto.setAws_url(aws_url);
+		product_dto.setProduct_image(filename);
+	
+			
+		
+	
+			
+		int result = Product_Dao.insertProduct(product_dto);
+		int tb_no = product_dto.getProduct_id();// tb_no
+		request.setAttribute("tb_no", tb_no);	
+		
+		request.setAttribute("result", result);
+		return new ModelAndView("svc/product_insert_pro");
+	}
+	
+	
+	
+	@RequestMapping("/trailer_product_insert_pro")
+	public ModelAndView trailer_product_insert_proprocess(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	try {
+		request.setCharacterEncoding( "utf-8" );
+	} catch (UnsupportedEncodingException e) {
+		e.printStackTrace();
+	}
+	
+	Product_DataBean product_dto = new Product_DataBean();
+	 
+	// 파일 크기 15MB로 제한
+	int sizeLimit = 1024*1024*15;
+	
+	@SuppressWarnings("deprecation")
+	String imagePath = request.getRealPath("menu_images");
+	
+	String filename = "";
+		
+	MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+	
+	
+		String product_name = multi.getParameter("product_name");
+		String product_title = multi.getParameter("product_title");
+		String aws_url = multi.getParameter("aws_url");
+		int product_category = Integer.parseInt(multi.getParameter("product_category"));
+		int product_price = Integer.parseInt(multi.getParameter("product_price"));
+		String product_detail = multi.getParameter("product_detail");
+		String user_id = multi.getParameter("session");
 		int trailer_id = Integer.parseInt(multi.getParameter("trailer_id"));
 	
 		@SuppressWarnings("rawtypes")
@@ -457,6 +509,7 @@ public class Svc_pro{
 		request.setAttribute("result", result);
 		return new ModelAndView("svc/product_insert_pro");
 	}
+	
 	
 	
 	
