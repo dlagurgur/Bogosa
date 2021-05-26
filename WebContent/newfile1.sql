@@ -3,12 +3,14 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 /* Drop Tables */
 
 DROP TABLE IF EXISTS Order_history;
-DROP TABLE IF EXISTS product;
-DROP TABLE IF EXISTS User_general;
-DROP TABLE IF EXISTS trailer;
-DROP TABLE IF EXISTS trailer_comment;
 DROP TABLE IF EXISTS product_chat;
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS trailer_comment;
+DROP TABLE IF EXISTS trailer;
 DROP TABLE IF EXISTS user_review;
+DROP TABLE IF EXISTS User_general;
+
+
 
 
 /* Create Tables */
@@ -107,9 +109,9 @@ CREATE TABLE user_review
 	review_date timestamp NOT NULL,
 	review_scope int(5) NOT NULL,
 	user_id varchar(20) NOT NULL,
-	PRIMARY KEY (review_id)
+	PRIMARY KEY (review_id),
+	UNIQUE (user_id)
 );
-
 
 
 
@@ -119,46 +121,7 @@ ALTER TABLE Order_history
 	ADD FOREIGN KEY (product_id)
 	REFERENCES product (product_id)
 	ON UPDATE RESTRICT
-	ON DELETE Cascade
-;
-
-
-ALTER TABLE Order_history
-	ADD FOREIGN KEY (user_id)
-	REFERENCES User_general (user_id)
-	ON UPDATE RESTRICT
-	ON DELETE Cascade
-;
-
-
-ALTER TABLE product
-	ADD FOREIGN KEY (user_id)
-	REFERENCES User_general (user_id)
-	ON UPDATE RESTRICT
-	ON DELETE Cascade
-;
-
-
-ALTER TABLE trailer
-	ADD FOREIGN KEY (user_id)
-	REFERENCES User_general (user_id)
-	ON UPDATE RESTRICT
-	ON DELETE Cascade
-;
-
-
-ALTER TABLE trailer_comment
-	ADD FOREIGN KEY (trailer_id)
-	REFERENCES trailer (trailer_id)
-	ON UPDATE RESTRICT
-	ON DELETE Cascade
-;
-
-ALTER TABLE trailer_comment
-	ADD FOREIGN KEY (user_id)
-	REFERENCES user_general (user_id)
-	ON UPDATE RESTRICT
-	ON DELETE Cascade
+	ON DELETE RESTRICT
 ;
 
 
@@ -166,38 +129,64 @@ ALTER TABLE product_chat
 	ADD FOREIGN KEY (product_id)
 	REFERENCES product (product_id)
 	ON UPDATE RESTRICT
-	ON DELETE Cascade
+	ON DELETE RESTRICT
 ;
+
+
+ALTER TABLE trailer_comment
+	ADD FOREIGN KEY (trailer_id)
+	REFERENCES trailer (trailer_id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE Order_history
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_general (user_id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE product
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_general (user_id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
 
 ALTER TABLE product_chat
 	ADD FOREIGN KEY (user_id)
-	REFERENCES user_general (user_id)
+	REFERENCES User_general (user_id)
 	ON UPDATE RESTRICT
-	ON DELETE Cascade
+	ON DELETE RESTRICT
 ;
+
+
+ALTER TABLE trailer
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_general (user_id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE trailer_comment
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_general (user_id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
 
 ALTER TABLE user_review
 	ADD FOREIGN KEY (user_id)
-	REFERENCES user_general (user_id)
+	REFERENCES User_general (user_id)
 	ON UPDATE RESTRICT
-	ON DELETE Cascade
+	ON DELETE RESTRICT
 ;
 
 
-
-
-
-ALTER TABLE product convert to charset utf8;
-
-ALTER TABLE Order_history convert to charset utf8;
-
-ALTER TABLE User_general convert to charset utf8;
-
-ALTER TABLE trailer convert to charset utf8;
-
-ALTER TABLE trailer_comment convert to charset utf8;
-
-ALTER TABLE product_chat convert to charset utf8;
-
-ALTER TABLE user_review convert to charset utf8;
 
