@@ -15,9 +15,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
 <%@include file="header.jsp"%>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
-    <!-- Bootstrap core CSS -->
-	 <!-- Custom style for this template -->
 	<script id="config1" src="${project}script.js"></script>
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
@@ -204,11 +201,74 @@ background-color: bg-black;
 
 
 	</head>
-	<body>
+	<body style="
+    padding-top: 50px;
+">
 		
 		
 		
-		<!-- Container -->
+<div class="container-fluid" style="
+    padding-left: 0px;
+    padding-right: 0px;
+">
+			
+			<!-- Carousel (Ads) -->
+			<div id="ads" class="carousel slide" data-ride="carousel" style="
+    padding-left: 13px;
+">
+				<ol class="carousel-indicators">
+					<li data-target="#ads" data-slide-to="0" class="active"></li>
+					<li data-target="#ads" data-slide-to="1"></li>
+					<li data-target="#ads" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner" style="
+    height: 400px;
+">
+					<div class="carousel-item active">
+						<img class="d-block h-75 newTrex" src="${project}img/1.PNG" alt="First Slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/1.PNG" alt="Second Slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/1.PNG" alt="Third Slide">
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#ads" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#ads" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>				
+				</a>
+			</div>
+			
+			<!-- Fixed Footer: 붙이는 위치가 Scrollable Footer와는 다릅니다! Fixed Footer는 중단 Container 안에 넣어주셔야 합니다. --> 
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<div class="container">
 			
 			<!-- Menu List shown in Cards -->
