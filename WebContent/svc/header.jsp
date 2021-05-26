@@ -170,20 +170,7 @@
             </ul>
         </div>
 
-          <!-- 패널 타이틀2 -->
-        <div class="panel panel-default my-3">
-          <div class="panel-heading">
-            <h4 class="panel-title text-white text-center my-3 py-2" style="
-              background-color: #6b5a79;
-          ">ON-AIR 판매</h4>
-          </div>
-            <!-- 사이드바 메뉴목록2 -->
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item "><a class="text-white p-3" href="product_insert.go">LIVE로 판매하기</a></li>
-                <li class="list-group-item "><a class="text-white p-3" href="Order_confirmation.go">판매내역</a></li>
-                <li class="list-group-item "><a class="text-white p-3" href="Order_history_select.go">주문내역</a></li>
-              </ul>
-        </div>   
+          
     	  </div>
 	      <div class="col-10" style="top: 70px;margin-left: 296px; padding-left:50px; padding-right:50px; height:100%;">
 	      <!-- 
