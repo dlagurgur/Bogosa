@@ -10,7 +10,7 @@
 </head>
 <body>
     <fieldset>
-        <textarea id="messageWindow" rows="10" cols="50" readonly="true"></textarea>
+        <textarea id="messageWindow" rows="10" cols="50" readonly></textarea>
         <br/>
         <input id="inputMessage" type="text"/>
         <input type="submit" value="send" onclick="send()" />

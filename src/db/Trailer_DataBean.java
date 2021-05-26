@@ -1,7 +1,6 @@
 package db;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Trailer_DataBean {
 	private int trailer_id;
