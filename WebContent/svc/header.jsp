@@ -351,7 +351,7 @@
                       <option value="title">제목</option>
                       <option value="product_detail">내용</option>
                   </select>
-                <input class="form-control form-control-sm bg-dark border-white me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+                <input style="color:white;" class="form-control form-control-sm bg-dark border-white me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light border-0" type="submit">Search</button>
               </form>
             </div>
@@ -458,7 +458,7 @@
                   <option value="title">제목</option>
                   <option value="product_detail">내용</option>
               </select>
-            <input class="form-control form-control-sm bg-dark border-white me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+            <input style="color:white;" class="form-control form-control-sm bg-dark border-white me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-light border-0" type="submit">Search</button>
           </form>
         </div>
