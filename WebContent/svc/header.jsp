@@ -18,9 +18,11 @@
 	<link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
 	<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
 	<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
 	<script id="config1" src="${project}script.js"></script>
 	<script src="${project}script.js"></script>
 	<script src="${project}aws-sdk-2.897.0.min.js"></script>
+	<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -241,6 +243,12 @@
 	            z-index: 998;
 	            display: none;
 	        }
+	        
+	        #video{
+            width: 960px;
+            height: 540px;
+            margin:0 auto; 
+        	}
 	
 	        #main{
 	            transition: all 0.3s;
@@ -328,7 +336,8 @@
                           <span></span>
                           <span></span>
                       </label>
-                  </li>      
+                  </li> 
+                   
               </ul>
               
               <form class="d-flex text-center col-7"  name="serch_trip" method="post" action="search.go">
@@ -417,14 +426,25 @@
               <li class="nav-item mr-1">
                   <a class="nav-item text-white fw-bold" href="trailer_main.go">라이브 예정</a>
               </li>
-              <li class="nav-item mr-1" style="margin-left:30px;">
+              <li class="nav-item mr-1" style="margin-left:30px; margin-right:30px;">
                   <input type="checkbox" name="" id="menuicon">
                   <label for="menuicon">
                       <span></span>
                       <span></span>
                       <span></span>
                   </label>
-              </li>      
+              </li>
+              
+              <c:if test="${Produt_dto.user_id eq sessionScope.user_id}">
+					<li>
+						<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form">
+							<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
+							<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
+							<button type="submit" class="btn btn-sm btn-danger p-0">방송종료</button>
+						</form>
+					</li>
+				</c:if>
+                  
           </ul>
           
           <form class="d-flex text-center col-7"  name="serch_trip" method="post" action="search.go">
