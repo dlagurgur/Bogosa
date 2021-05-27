@@ -12,15 +12,15 @@
 	<form class="form form--login my-2" name="productform" action="product_insert_pro.go" method="post" role="form" style="width: 700px; margin:0 auto;" enctype="multipart/form-data">
 		<div class="form__field">
 			<label for="product_title" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">방송 제목</label>
-			<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}" style="color:white;background-color: #cfc4d6;"">
+			<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}" style="color:white;background-color: #cfc4d661;"">
 		</div>
 		<div class="form__field">
 			<label for="product_name" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">상품 이름</label>
-			<input class="form__input" type="text" name="product_name" id="product_name" maxlength="50" value="${product_dt.trailer_name}" style="color:white;background-color: #cfc4d6;">
+			<input class="form__input" type="text" name="product_name" id="product_name" maxlength="50" value="${product_dt.trailer_name}" style="color:white;background-color: #cfc4d661;">
 		</div>
 		<div class="form__field">
 			<label for="product_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">상품 가격</label>
-			<input class="form__input" type="number" name="product_price" id="product_price" maxlength="20" value="${product_dt.trailer_price}" style="color:white;background-color: #cfc4d6;">
+			<input class="form__input" type="number" name="product_price" id="product_price" maxlength="20" value="${product_dt.trailer_price}" style="color:white;background-color: #cfc4d661;">
 		</div>
 		
 		<div class="form_field">
