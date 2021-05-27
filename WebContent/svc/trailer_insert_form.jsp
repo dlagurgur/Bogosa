@@ -1,23 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="setting.jsp" %>
 <%@ include file="header.jsp" %>
-<script src="${project}script.js"></script>
-<head>
- <meta http-equiv="Cache-Control" content="no-cache">
- <meta http-equiv="Expires" content="0">
- <meta http-equiv="Pragma" content="no-cache">
 
- </head>
-<!--//////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<body>
-<!--enctype="multipart/form-data"-->
 <div class="container">
-	<form name="inputform" id ="target" action="trailer_insert_pro.go" method="post" enctype="multipart/form-data">
-		<h3>상품에 대한 정보를 입력하세요</h3>
+	<form name="inputform" id ="target" action="trailer_insert_pro.go" method="post" enctype="multipart/form-data" style="width: 700px; margin:0 auto;">
+		<h3 class="fs-3 my-3 text-white text-center">라이브로 판매예정인 상품정보를 입력해주세요</h3>
 		<div class="form-group row">		
 			<div class="col-xs-2">
 				<label for="trailer_name">상품 명</label>
@@ -107,118 +97,84 @@
 	</form>
 </div>
 
-<%@include file="tail.jsp"%>
-
-
- <script src="${project}aws-sdk-2.897.0.min.js"></script>
  <script type="text/javascript">
-
- 
-    AWS.config.region = 'us-east-1'; // 1. Enter your region
-
-    AWS.config.update({
-        "accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
-        "secretAccessKey": "9LogjlXLsizoYkPCOBUnc/phg3Si6SoVXPy9KPIN",
-        "region": "us-east-1"
-        });
-
-    var bucketName = 'cdn-video-source71e471f1-1w5ehaaqw3boh'; // Enter your bucket name
-    var bucket = new AWS.S3({
-        params: {
-            Bucket: bucketName
-        }
-    });
-
-    var fileChooser = document.getElementById('file-chooser');
-    var button = document.getElementById('upload-button');
-    var results = document.getElementById('results');
-    var session = $('#session').val();
-    
-
-    button.addEventListener("click", function(){
-        var file = fileChooser.files[0];
-
-        if (file) {
-
-            results.innerHTML = '';
-            var objKey = 'assets01/'+session+file.name;
-            var params = {
-                Key: objKey,
-                ContentType: file.type,
-                Body: file,
-                ACL: 'public-read'
-            };
-
-            bucket.putObject(params, function(err, data) {
-                if (err) {
-                    results.innerHTML = 'ERROR: ' + err;
-                    document.getElementById('target').submit();
-                } else {
-                	console.log(data);
-                    
-                    var s3 = new AWS.S3();
-                    
-                    var timer = setInterval(function(){
-                    	console.log("hello");
-                        s3.getObject({
-                            Bucket: "cdn-video-source71e471f1-1w5ehaaqw3boh", 
-                            Key: "jobs-manifest.json"
-                           }
-                           , function(err, data) {
-                            if (err) console.log(err, err.stack); 
-                            else
-                             
-                               data = data.Body.toString();
-                               
-                               data = JSON.parse(data);
-                               
-                               data = data.Jobs.filter(function(element){
-                                  if(element.Job != undefined){
-                                	  return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/'+session+file.name;
-                                	  //return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/adminpexels-c-technical-6121389.mp4';
-                                  }
-                                  else{
-                                      
-                                      return element.InputFile == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/'+session+file.name;
-                                    }
-                                });
-                                console.log(data.length);
-                                
-                                if(data.length != 0){
-                                	if(data[0].Outputs !=undefined){
-                                		trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
-                                        console.log(trailer_aws_url);
-                                        //console.log(typeof(trailer_aws_url));
-                                        //console.log(typeof(trailer_aws_url.value));
-                                        results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="'+trailer_aws_url+'">'
-                                        document.getElementById('target').submit();
-                                        clearInterval(timer);
-                                	}
-                                	else{
-                                		alert("파일 업로드 중 문제가 발생했습니다. 다시 시도해 주세요.");
-                                		clearInterval(timer);
-                                	}
-                                    
-                                }
-                                else{
-                                    console.log("data is not detected")
-                                }
-
-                                 
-                        
-                           })
-                    }, 20000);
-                    
-                    timer;
-
-                    
- 
-                }
-            });
-        } else {
-            results.innerHTML = 'Nothing to upload.';
-            document.getElementById('target').submit();
-        }
-    }, false);
-    
-    </script>
+	 AWS.config.region = 'us-east-1'; // 1. Enter your region
+	 AWS.config.update({
+	 	"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
+	 	"secretAccessKey": "9LogjlXLsizoYkPCOBUnc/phg3Si6SoVXPy9KPIN",
+	 	"region": "us-east-1"
+	 });
+	 var bucketName = 'cdn-video-source71e471f1-1w5ehaaqw3boh'; // Enter your bucket name
+	 var bucket = new AWS.S3({
+	 	params: {
+	 		Bucket: bucketName
+	 	}
+	 });
+	 var fileChooser = document.getElementById('file-chooser');
+	 var button = document.getElementById('upload-button');
+	 var results = document.getElementById('results');
+	 var session = $('#session').val();
+	 button.addEventListener("click", function() {
+	 	var file = fileChooser.files[0];
+	 	if(file) {
+	 		results.innerHTML = '';
+	 		var objKey = 'assets01/' + session + file.name;
+	 		var params = {
+	 			Key: objKey,
+	 			ContentType: file.type,
+	 			Body: file,
+	 			ACL: 'public-read'
+	 		};
+	 		bucket.putObject(params, function(err, data) {
+	 			if(err) {
+	 				results.innerHTML = 'ERROR: ' + err;
+	 				document.getElementById('target').submit();
+	 			} else {
+	 				console.log(data);
+	 				var s3 = new AWS.S3();
+	 				var timer = setInterval(function() {
+	 					console.log("hello");
+	 					s3.getObject({
+	 						Bucket: "cdn-video-source71e471f1-1w5ehaaqw3boh",
+	 						Key: "jobs-manifest.json"
+	 					}, function(err, data) {
+	 						if(err) console.log(err, err.stack);
+	 						else data = data.Body.toString();
+	 						data = JSON.parse(data);
+	 						data = data.Jobs.filter(function(element) {
+	 							if(element.Job != undefined) {
+	 								return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/' + session + file.name;
+	 								//return element.Job.Settings.Inputs[0].FileInput == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/adminpexels-c-technical-6121389.mp4';
+	 							} else {
+	 								return element.InputFile == 's3://cdn-video-source71e471f1-1w5ehaaqw3boh/assets01/' + session + file.name;
+	 							}
+	 						});
+	 						console.log(data.length);
+	 						if(data.length != 0) {
+	 							if(data[0].Outputs != undefined) {
+	 								trailer_aws_url = data[0].Outputs.HLS_GROUP[0];
+	 								console.log(trailer_aws_url);
+	 								//console.log(typeof(trailer_aws_url));
+	 								//console.log(typeof(trailer_aws_url.value));
+	 								results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="' + trailer_aws_url + '">'
+	 								document.getElementById('target').submit();
+	 								clearInterval(timer);
+	 							} else {
+	 								alert("파일 업로드 중 문제가 발생했습니다. 다시 시도해 주세요.");
+	 								clearInterval(timer);
+	 							}
+	 						} else {
+	 							console.log("data is not detected")
+	 						}
+	 					})
+	 				}, 20000);
+	 				timer;
+	 			}
+	 		});
+	 	} else {
+	 		results.innerHTML = 'Nothing to upload.';
+	 		document.getElementById('target').submit();
+	 	}
+	 }, false);
+ </script>
+<%@include file="tail.jsp"%>
