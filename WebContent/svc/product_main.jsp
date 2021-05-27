@@ -12,18 +12,31 @@
 			<div id="ads" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#ads" data-slide-to="0" class="active"></li>
-					<li data-target="#ads" data-slide-to="1"></li>
+					<li data-target="#ads" data-slide-to="1" class="active"></li>
 					<li data-target="#ads" data-slide-to="2"></li>
+					<li data-target="#ads" data-slide-to="3"></li>
+					<li data-target="#ads" data-slide-to="4"></li>
+					<li data-target="#ads" data-slide-to="5"></li>
+					
 				</ol>
 				<div class="carousel-inner" style="height: 400px; width: 100%;">
 					<div class="carousel-item active">
 						<img class="d-block h-75 newTrex" src="${project}img/1.PNG" alt="First Slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block h-75" src="${project}img/1.PNG" alt="Second Slide">
+						<img class="d-block h-75" src="${project}img/2.jpg" alt="Second Slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block h-75" src="${project}img/1.PNG" alt="Third Slide">
+						<img class="d-block h-75" src="${project}img/3.jpg" alt="Third Slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/4.jpg" alt="Third Slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/5.jpg" alt="Third Slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/6.jpg" alt="Third Slide">
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#ads" role="button" data-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,8 +55,8 @@
 							<input type="hidden" name="aws_url" id="aws_url" value="${menu.aws_url}" />
 							<video autoplay id="video-player" style="width: 360px; height: 270px;" muted="muted"></video>
 							<div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;"> <b class="card-title" style="color:#D8D8D8;">${menu.product_name}</b>
-								<p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p> <a href="product_detail.go?product_id=${menu.product_id}" class="btn btn-primary stretched-link"> ON AIR </a>
-								<p class="card-text" style="color:#D8D8D8;">${menu.product_title}</p>
+								<p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p> <a href="product_detail.go?product_id=${menu.product_id}" class="btn btn-danger stretched-link"> ON AIR </a>
+								<p class="card-text mt-4" style="color:#D8D8D8;">${menu.product_title}</p>
 							</div>
 						</div>
 					</div>
