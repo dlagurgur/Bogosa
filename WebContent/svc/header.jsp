@@ -300,6 +300,11 @@
 	            transform: translateY(50%) rotate(-45deg);
 	        }
 	        
+	        .insert-label{
+			    color: white;
+			    background-color: #6b48af;
+			}
+	        
     </style>
 
     <title>BOGOSA</title>
