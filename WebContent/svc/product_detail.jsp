@@ -16,7 +16,7 @@
 		<video controls id="video-player" style="padding-top: 0px; padding-left: 0px; height:540px; width: 960px;"></video>
 		<div class="col" style="display:inline-block; margin-left: 25px;">
 			<textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" 
-			readonly style="height: 508px;width: 300px;background-color: #886fd4;color:white;border:none;"></textarea>
+			readonly style="height: 508px;width: 300px;background-color: #886fd4;color:white;border:none; resize:none;"></textarea>
 			<form class="form form--login" name="commentInsertForm" method="post">
 				<div class="form__field">
 					<input type="hidden" name="product_id" value="${Produt_dto.product_id}" />

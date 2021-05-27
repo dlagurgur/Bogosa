@@ -12,18 +12,31 @@
 			<div id="ads" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#ads" data-slide-to="0" class="active"></li>
-					<li data-target="#ads" data-slide-to="1"></li>
+					<li data-target="#ads" data-slide-to="1" class="active"></li>
 					<li data-target="#ads" data-slide-to="2"></li>
+					<li data-target="#ads" data-slide-to="3"></li>
+					<li data-target="#ads" data-slide-to="4"></li>
+					<li data-target="#ads" data-slide-to="5"></li>
+					
 				</ol>
 				<div class="carousel-inner" style="height: 400px; width: 100%;">
 					<div class="carousel-item active">
 						<img class="d-block h-75 newTrex" src="${project}img/1.PNG" alt="First Slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block h-75" src="${project}img/1.PNG" alt="Second Slide">
+						<img class="d-block h-75" src="${project}img/2.jpg" alt="Second Slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block h-75" src="${project}img/1.PNG" alt="Third Slide">
+						<img class="d-block h-75" src="${project}img/3.jpg" alt="Third Slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/4.jpg" alt="Third Slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/5.jpg" alt="Third Slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block h-75" src="${project}img/6.jpg" alt="Third Slide">
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#ads" role="button" data-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
