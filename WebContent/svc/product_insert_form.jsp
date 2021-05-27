@@ -76,6 +76,29 @@ input {
           transition: background-color .3s;
 }
 
+textarea {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+}
+
+
+select {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+}
+
 
 h3 {
   border: 0;
@@ -125,6 +148,21 @@ h3 {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
+
+
+.form--login textarea{
+  background-color: #2E2E2E;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+
+.form--login select{
+  background-color: #2E2E2E;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
 .form--login .form input[type="number"]:focus,input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
   background-color: #2E2E2E;
 }
@@ -254,7 +292,7 @@ h3 {
 			</div>
 			<div class="form__field">
 				<label for="product_category" class="col-sm-3 col-form-label" style="color:white;">분류</label>
-				<select class="from__input" name="product_category"	id="product_category" style="width: 150px; color:white; background-color: #2E2E2E;">
+				<select class="from__input" name="product_category"	id="product_category" style="width: 150px; color:white; ">
 				  <option value="1">가전디지털</option>
 				  <option value="2">식품</option>
 				  <option value="3">주방용품</option>
@@ -267,7 +305,7 @@ h3 {
 		<div class="form__field">
 				<label for="product_detail" class="col-sm-3 col-form-label" style="color:white;">상품 설명</label>
 			
-				<textarea style="color:white; background-color: #2E2E2E;"class="form-control" name="product_detail" id="product_detail" rows="5" cols="30">
+				<textarea style="color:white;"class="form__input" name="product_detail" id="product_detail" rows="5" cols="30">
 				</textarea>
 			</div>
 		<input type="hidden" name="session" id="session" value="${user_id}" /> 
