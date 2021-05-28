@@ -77,7 +77,7 @@ CREATE TABLE trailer_comment
 	comment_date timestamp NOT NULL,
 	user_id varchar(20) NOT NULL,
 	trailer_id int NOT NULL,
-	PRIMARY KEY (comment_id),
+	PRIMARY KEY (comment_id)
 );
 
 
