@@ -342,12 +342,12 @@ values(chat_id, #{chat_content}, NOW(), #{user_id}, #{product_id})
 	
 	<!--  리뷰 작성  -->
 	<insert id="insertReview" parameterType="db.Product_review_DataBean">
-		INSERT INTO product_review (review_id, review_content, review_date,review_scope,review_image,user_id)
-values(review_id, #{review_content}, NOW(),#{review_scope}, #{review_image}, #{user_id})
+		INSERT INTO product_review (review_id, review_content, review_date,review_scope,review_image,user_id,product_id)
+values(review_id, #{review_content}, NOW(),#{review_scope}, #{review_image}, #{user_id}, #{product_id})
 </insert>
 
 	<select id="getReview" parameterType="int" resultType="db.Product_review_DataBean">
-		select * from product_review where trailer_id=#{trailer_id} order by user_id desc
+		select * from product_review where product_id=#{product_id} order by user_id desc
 	</select>
 
 	<update id="updateReview" parameterType="db.Product_review_DataBean">

@@ -10,6 +10,7 @@ public class Product_review_DataBean {
 	private String review_image;
 	private String user_id;
 	private String user_name;
+	private int product_id;
 	
 	
 	public int getReview_id() {
@@ -53,6 +54,12 @@ public class Product_review_DataBean {
 	}
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+	public int getProduct_id() {
+		return product_id;
+	}
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
 
 	
