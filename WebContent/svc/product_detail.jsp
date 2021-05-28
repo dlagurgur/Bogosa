@@ -31,8 +31,8 @@
 		<div>
 			<h2 class="text-center text-white my-5">상품 상세정보</h2>
 		</div>
-		<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width: 800;margin: 0 auto;">
-		<input type="text" id="aa" name="aa">
+	<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width: 800;margin: 0 auto;">
+	<input type="text" id="aa" name="aa">
 	<input type="hidden" id="menu_id" name="menu_id" value="${Produt_dto.product_id}">
 	<input type="hidden" id="menu_name" name="menu_name" value="${Produt_dto.product_name}">
 	<input type="hidden" id="menu_image" name="menu_image" value="${Produt_dto.product_image}">
@@ -70,7 +70,7 @@
 			</div>
 			<div class="form__field">
 				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">판매자</label>
-				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.user_id}" readonly>
+				<a ><input style="color:white;" class="form__input" type="text" value="${Produt_dto.user_id}" readonly></a>
 				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
 				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
 			</div>

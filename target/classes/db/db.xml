@@ -325,4 +325,30 @@ values(chat_id, #{chat_content}, NOW(), #{user_id}, #{product_id})
 		SELECT * FROM product WHERE product_off=1 and product_title LIKE CONCAT('%',#{keyword},'%')
 		
 	</select>
+	
+	
+	
+	
+	
+	<!--  리뷰 작성  -->
+	<insert id="insertReview" parameterType="db.Product_review_DataBean">
+		INSERT INTO product_review (review_id, review_content, review_date,review_scope,review_image,user_id)
+values(review_id, #{review_content}, NOW(),#{review_scope}, #{review_image}, #{user_id})
+</insert>
+
+	<select id="getReview" parameterType="int" resultType="db.Product_review_DataBean">
+		select * from product_review where trailer_id=#{trailer_id} order by user_id desc
+	</select>
+
+	<update id="updateReview" parameterType="db.Product_review_DataBean">
+		update product_review set review_content = #{review_content} where review_id = #{review_id}
+	</update>
+
+	<delete id="deleteReview" parameterType="int">
+		delete from product_review where review_id = #{review_id}
+	</delete>
+	
+<select id="order_count" parameterType="String" resultType="int">
+SELECT COUNT(*) FROM order_history WHERE product_id = #{product_id} AND user_id= #{user_id}
+</select>
 </mapper>
