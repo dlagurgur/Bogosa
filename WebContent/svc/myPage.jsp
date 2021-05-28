@@ -7,7 +7,7 @@
 <%@include file="header.jsp" %>
 
 
-    <h3 class="fs-2 my-3 text-center text-white">${userDto.user_id}님의 정보</h3>
+    <h3 class="fs-4 my-3 mt-5 text-center text-white">${userDto.user_id}님의 정보</h3>
 	<form class="form form--login my-2" name="joinform" method="post" role="form" style="width: 700px; margin:0 auto;">
 		<div class="form__field">
 			<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">아이디</label>

@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS User_general;
 DROP TABLE IF EXISTS trailer;
 DROP TABLE IF EXISTS trailer_comment;
 DROP TABLE IF EXISTS product_chat;
-DROP TABLE IF EXISTS user_review;
+DROP TABLE IF EXISTS product_review;
 
 
 /* Create Tables */
@@ -101,7 +101,7 @@ CREATE TABLE User_general
 );
 
 
-CREATE TABLE user_review
+CREATE TABLE product_review
 (
 	review_id int NOT NULL AUTO_INCREMENT,
 	review_content varchar(200) NOT NULL,
@@ -177,7 +177,7 @@ ALTER TABLE product_chat
 	ON DELETE Cascade
 ;
 
-ALTER TABLE user_review
+ALTER TABLE product_review
 	ADD FOREIGN KEY (user_id)
 	REFERENCES user_general (user_id)
 	ON UPDATE RESTRICT
@@ -200,5 +200,5 @@ ALTER TABLE trailer_comment convert to charset utf8;
 
 ALTER TABLE product_chat convert to charset utf8;
 
-ALTER TABLE user_review convert to charset utf8;
+ALTER TABLE product_review convert to charset utf8;
 

@@ -209,7 +209,7 @@ public class Svc_Form{
 	
 	
 	@RequestMapping("/product_main")
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+	public ModelAndView process1(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
 		int product_category=Integer.parseInt(request.getParameter("menu_category"));
 		if(product_category > 0) {
@@ -236,35 +236,7 @@ public class Svc_Form{
 		}
 		return new ModelAndView("svc/product_main");
 	}
-	
-	@RequestMapping("/product_off_main")
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		
-		int product_category=Integer.parseInt(request.getParameter("menu_category"));
-		if(product_category > 0) {
 
-			
-			
-			List<Product_DataBean> menus1=Product_Dao.selectMenusByCategory(product_category);
-			
-		
-			
-			List<Product_DataBean> menus=Stream.of(menus1).flatMap(x->x.stream()).collect(Collectors.toList());
-			request.setAttribute("menus", menus);
-			
-		} else {
-
-			
-			
-				// 硫붾돱移댄뀒怨좊━ 0: �쟾泥대찓�돱 (�쎒�쑝濡� 泥섎━�븯�뒗 �궗�빆)
-				
-				List<Product_DataBean> menus=Product_Dao.selectMenus();
-				request.setAttribute("menus", menus);
-				
-			
-		}
-		return new ModelAndView("svc/product_main");
-	}
 	
 	
 	///////二쇰Ц 愿��젴//////

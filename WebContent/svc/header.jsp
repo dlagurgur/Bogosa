@@ -271,7 +271,7 @@
 	            width: 100%;
 	            height: 3px;
 	            border-radius: 18px;
-	            background: rgb(214, 179, 238);
+	            background: white;
 	            transition: all .35s;
 	        }
 	
@@ -369,7 +369,7 @@
               <div class="panel panel-info my-3">
                   <div class="panel-heading">
                     <h4 class="panel-title text-white text-center mx-auto py-2" style="
-                    background-color: #6b5a79;
+                    background-color: #7550e6;
                     margin-bottom: 16px;
                 ">ON-AIR 구매</h4> 
                   </div>
@@ -402,7 +402,7 @@
             <div class="panel panel-default my-3">
                 <div class="panel-heading">
                   <h4 class="panel-title text-white text-center my-3 py-2" style="
-                    background-color: #6b5a79;
+                    background-color: #7550e6;
                   ">방송 종료된 상품</h4> 
                 </div>
                   <!-- 사이드바 메뉴목록4 -->
@@ -453,16 +453,6 @@
                       <span></span>
                   </label>
               </li>
-              <c:if test="${Product_dto.user_id eq sessionScope.user_id}">
-					<li>
-						<form class="form form--login" action="product_detaile_delete.go" role="form">
-							<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
-							<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
-							<button type="submit" class="btn btn-sm btn-danger p-0">방송종료</button>
-						</form>
-					</li>
-				</c:if>
-				
                   
           </ul>
           
@@ -492,7 +482,7 @@
             <div class="panel panel-info my-3">
                 <div class="panel-heading">
                   <h4 class="panel-title text-white text-center mx-auto py-2" style="
-                  background-color: #6b5a79;
+                  background-color: #7550e6;
                   margin-bottom: 16px;
                  ">ON-AIR 구매</h4> 
                 </div>
@@ -526,7 +516,7 @@
             <div class="panel panel-default my-3">
                 <div class="panel-heading">
                   <h4 class="panel-title text-white text-center my-3 py-2" style="
-                    background-color: #6b5a79;
+                    background-color: #7550e6;
                   ">ON-AIR 판매</h4> 
                 </div>
                   <!-- 사이드바 메뉴목록2 -->
@@ -541,7 +531,7 @@
              <div class="panel panel-default my-3">
                 <div class="panel-heading">
                   <h4 class="panel-title text-white text-center my-3 py-2" style="
-                    background-color: #6b5a79;
+                    background-color: #7550e6;
                   ">LIVE 예고</h4>
                 </div>
                     <!-- 사이드바 메뉴목록3 -->
@@ -554,7 +544,7 @@
 	            <div class="panel panel-default my-3">
 	                <div class="panel-heading">
 	                  <h4 class="panel-title text-white text-center my-3 py-2" style="
-	                    background-color: #6b5a79;
+	                    background-color: #7550e6;
 	                  ">지난 LIVE 상품</h4> 
 	                </div>
 	                  <!-- 사이드바 메뉴목록4 -->
