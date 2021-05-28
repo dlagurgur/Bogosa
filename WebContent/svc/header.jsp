@@ -453,7 +453,6 @@
                       <span></span>
                   </label>
               </li>
-
               <c:if test="${Product_dto.user_id eq sessionScope.user_id}">
 					<li>
 						<form class="form form--login" action="product_detaile_delete.go" role="form">

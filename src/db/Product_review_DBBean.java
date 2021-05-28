@@ -16,8 +16,8 @@ public class Product_review_DBBean {
 		return session.insert("db.insertReview", reviewDto);
 	}
 	
-	public List<Product_review_DataBean> getReview( int trailer_id ) {
-		return session.selectList("db.getReview", trailer_id);
+	public List<Product_review_DataBean> getReview( int product_id ) {
+		return session.selectList("db.getReview", product_id);
 	}
 	
 	public int updateReview(Product_review_DataBean reviewDto) {
