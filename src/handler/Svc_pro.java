@@ -793,7 +793,7 @@ public class Svc_pro{
 		
 	
 		String review_content= multi.getParameter("review_content");
-		int review_scope= Integer.parseInt(multi.getParameter("review_scope"));
+		int review_scope= Integer.parseInt(multi.getParameter("review_score"));
 		String user_id = multi.getParameter("session");
 		
 		@SuppressWarnings("rawtypes")
@@ -821,9 +821,9 @@ public class Svc_pro{
 	public List<Product_review_DataBean> getReviewProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
 
-		int trailer_id = Integer.parseInt(request.getParameter("trailer_id"));
+		int product_id = Integer.parseInt(request.getParameter("product_id"));
 		String user_id = (String) request.getSession().getAttribute("user_id");
-		List<Product_review_DataBean> comment = review_Dao.getReview(trailer_id);
+		List<Product_review_DataBean> comment = review_Dao.getReview(product_id);
 		for (Product_review_DataBean reviewDto : comment) {
 			reviewDto.setUser_name(user_id);
 		}

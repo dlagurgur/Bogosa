@@ -166,7 +166,7 @@ public class Svc_Form{
 		
 		Product_DataBean Produt_dto = Product_Dao.detialProduct(product_id);
 		request.setAttribute("Produt_dto", Produt_dto);
-		return new ModelAndView("svc/product_detail");
+		return new ModelAndView("svc/product_off_detail");
 	}
 	
 	
@@ -175,7 +175,7 @@ public class Svc_Form{
 	public ModelAndView product_off_mainprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
 		List <Product_DataBean> Produt_dto = Product_Dao.selectProduct_off();
-		
+		System.out.println(Produt_dto);
 		request.setAttribute("Produt_dto", Produt_dto);
 		return new ModelAndView("svc/product_off_main");
 	}

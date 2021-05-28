@@ -440,7 +440,7 @@
                   </label>
               </li>
               
-              <c:if test="${Produt_dto.user_id eq sessionScope.user_id}">
+              <c:if test="${Product_dto.user_id eq sessionScope.user_id}">
 					<li>
 						<form class="form form--login" action="product_detaile_delete.go" role="form">
 							<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
