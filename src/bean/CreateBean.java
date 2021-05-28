@@ -13,6 +13,7 @@ import db.Order_history_DBBean;
 import db.Order_history_select_DBBean;
 import db.Product_DBBean;
 import db.Product_chat_DBBean;
+import db.Product_review_DBBean;
 import db.Trailer_DBBean;
 import db.UserDBBean;
 
@@ -58,6 +59,12 @@ public class CreateBean {
 	@Bean
 	public Product_chat_DBBean Product_chat_Dao() {
 		return new Product_chat_DBBean();
+	}
+	
+	
+	@Bean
+	public Product_review_DBBean Product_review_Dao() {
+		return new Product_review_DBBean();
 	}
 	
 	

@@ -348,7 +348,7 @@ values(review_id, #{review_content}, NOW(),#{review_scope}, #{review_image}, #{u
 		delete from product_review where review_id = #{review_id}
 	</delete>
 	
-<select id="order_count" parameterType="String" resultType="int">
+<select id="order_count" parameterType="java.util.Map" resultType="int">
 SELECT COUNT(*) FROM order_history WHERE product_id = #{product_id} AND user_id= #{user_id}
 </select>
 </mapper>

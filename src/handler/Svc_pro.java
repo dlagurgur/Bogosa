@@ -36,6 +36,8 @@ import db.Product_DBBean;
 import db.Product_DataBean;
 import db.Product_chat_DBBean;
 import db.Product_chat_DataBean;
+import db.Product_review_DBBean;
+import db.Product_review_DataBean;
 import db.Trailer_DBBean;
 import db.Trailer_DataBean;
 import db.UserDBBean;
@@ -65,8 +67,12 @@ public class Svc_pro{
 	@Resource
 	private Product_chat_DBBean Product_chat_Dao;
 	
-//////////////////////////////////회원 영역///////////////////////////////////////////////	
-	//회원가입
+	
+	@Resource
+	private Product_review_DBBean review_Dao;
+	
+//////////////////////////////////�쉶�썝 �쁺�뿭///////////////////////////////////////////////	
+	//�쉶�썝媛��엯
 	@RequestMapping("/svc_join_pro")
 	public ModelAndView UserInputProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
@@ -114,7 +120,7 @@ public class Svc_pro{
 	}
 	
 	
-	//아이디 중복확인
+	//�븘�씠�뵒 以묐났�솗�씤
 	@RequestMapping(value = "/idCheck.go", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public Map<Object, Object> idCheck(@RequestBody String user_id) {
@@ -129,15 +135,15 @@ public class Svc_pro{
 		return map;
 	}	
 	
-	//// Email 인증
+	//// Email �씤利�
 	@RequestMapping("/emailCheck")
 	public ModelAndView EmailCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp 서버
-		String subject = "EmailCheck"; // 보내는 제목 설정
-		String fromName = "Admin"; // 보내는 이름 설정
-		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
-		String authNum = Svc_pro.authNum(); // 인증번호 위한 난수 발생부분
-		String content = "Number [" + authNum + "]"; // 이메일 내용 설정
+		String host = "smtp.gmail.com"; // smtp �꽌踰�
+		String subject = "EmailCheck"; // 蹂대궡�뒗 �젣紐� �꽕�젙
+		String fromName = "Admin"; // 蹂대궡�뒗 �씠由� �꽕�젙
+		String from = "dlagurgur123@gmail.com"; // 蹂대궡�뒗 �궗�엺(援ш�怨꾩젙)
+		String authNum = Svc_pro.authNum(); // �씤利앸쾲�샇 �쐞�븳 �궃�닔 諛쒖깮遺�遺�
+		String content = "Number [" + authNum + "]"; // �씠硫붿씪 �궡�슜 �꽕�젙
 		
 		String user_email=request.getParameter("email");
 
@@ -183,7 +189,7 @@ public class Svc_pro{
 		return new ModelAndView("svc/emailCheck");
 	}
 	
-	public static String authNum() { // 난수발생부분
+	public static String authNum() { // �궃�닔諛쒖깮遺�遺�
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i <= 4; i++) {
 			int num = (int) (Math.random() * 9 + 1);
@@ -192,19 +198,19 @@ public class Svc_pro{
 		return buffer.toString();
 	}
 	
-	//// 아이디 찾기
+	//// �븘�씠�뵒 李얘린
 	@RequestMapping("/EmailIdd")
 	public ModelAndView EmailIdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp 서버
-		String subject = "EmailCheck"; // 보내는 제목 설정
-		String fromName = "Admin"; // 보내는 이름 설정
-		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
+		String host = "smtp.gmail.com"; // smtp �꽌踰�
+		String subject = "EmailCheck"; // 蹂대궡�뒗 �젣紐� �꽕�젙
+		String fromName = "Admin"; // 蹂대궡�뒗 �씠由� �꽕�젙
+		String from = "dlagurgur123@gmail.com"; // 蹂대궡�뒗 �궗�엺(援ш�怨꾩젙)
 		String email = request.getParameter("email2");
 		int result = userDao.EmailCheck(email);
 		if(result == 1) {
 		UserDataBean userDto = userDao.getUserEmailId(email);
 		String user_id = userDto.getUser_id();
-		String content = "당신의 아이디는 [" + user_id + "]입니다"; // 이메일 내용 설정
+		String content = "�떦�떊�쓽 �븘�씠�뵒�뒗 [" + user_id + "]�엯�땲�떎"; // �씠硫붿씪 �궡�슜 �꽕�젙
 		
 		request.setAttribute("email", email);
 
@@ -243,19 +249,19 @@ public class Svc_pro{
 		return new ModelAndView("svc/EmailIdd");
 	}
 	
-	/////비밀번호찾기
+	/////鍮꾨�踰덊샇李얘린
 	@RequestMapping("/EmailPasswdd")
 	public ModelAndView EmailPasswdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp 서버
-		String subject = "EmailCheck"; // 보내는 제목 설정
-		String fromName = "Admin"; // 보내는 이름 설정
-		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
+		String host = "smtp.gmail.com"; // smtp �꽌踰�
+		String subject = "EmailCheck"; // 蹂대궡�뒗 �젣紐� �꽕�젙
+		String fromName = "Admin"; // 蹂대궡�뒗 �씠由� �꽕�젙
+		String from = "dlagurgur123@gmail.com"; // 蹂대궡�뒗 �궗�엺(援ш�怨꾩젙)
 		String email = request.getParameter("email2");
 		int result = userDao.EmailCheck(email);
 		if(result == 1) {
 		UserDataBean userDto = userDao.getUserEmailPasswd(email);
 		String user_passwd = userDto.getUser_pw();
-		String content = "당신의 비밀번호는 [" + user_passwd + "]입니다"; // 이메일 내용 설정
+		String content = "�떦�떊�쓽 鍮꾨�踰덊샇�뒗 [" + user_passwd + "]�엯�땲�떎"; // �씠硫붿씪 �궡�슜 �꽕�젙
 	
 		request.setAttribute("email", email);
 
@@ -298,7 +304,7 @@ public class Svc_pro{
 
 
 	
-	//로그인 기능
+	//濡쒓렇�씤 湲곕뒫
 	@RequestMapping("/loginPro")
 	public ModelAndView Loginprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String user_id=request.getParameter("user_id");
@@ -315,7 +321,7 @@ public class Svc_pro{
 	}
 	
 	
-	//로그아웃
+	//濡쒓렇�븘�썐
 	
 	@RequestMapping("/logout")
 	public ModelAndView LogoutProcess(HttpServletRequest request, HttpServletResponse response)
@@ -326,7 +332,7 @@ public class Svc_pro{
 		return new ModelAndView("svc/login");
 	}
 	
-	//유저 수정
+	//�쑀�� �닔�젙
 	@RequestMapping("/updatePro")
 	public ModelAndView UserModifyprocess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
@@ -346,7 +352,7 @@ public class Svc_pro{
 		userDto.setUser_addr(request.getParameter("user_addr"));
 		userDto.setUser_addr2(request.getParameter("user_addr2"));
 		
-		// 전화번호
+		// �쟾�솕踰덊샇
 		String tel = null;
 		String tel1 = request.getParameter( "tel1" );
 		String tel2 = request.getParameter( "tel2" );
@@ -365,7 +371,7 @@ public class Svc_pro{
 	}
 	
 	
-	//유저 삭제
+	//�쑀�� �궘�젣
 	@RequestMapping("/deletePro")
 	public ModelAndView DeleteProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
@@ -391,7 +397,7 @@ public class Svc_pro{
 		
 	}
 	
-	///////////// 주문 관련 영역 //////////////////////////////////////
+	///////////// 二쇰Ц 愿��젴 �쁺�뿭 //////////////////////////////////////
 	
 	
 	@RequestMapping("/product_insert_pro")
@@ -404,7 +410,7 @@ public class Svc_pro{
 	
 	Product_DataBean product_dto = new Product_DataBean();
 	 
-	// 파일 크기 15MB로 제한
+	// �뙆�씪 �겕湲� 15MB濡� �젣�븳
 	int sizeLimit = 1024*1024*15;
 	
 	@SuppressWarnings("deprecation")
@@ -465,7 +471,7 @@ public class Svc_pro{
 	
 	Product_DataBean product_dto = new Product_DataBean();
 	 
-	// 파일 크기 15MB로 제한
+	// �뙆�씪 �겕湲� 15MB濡� �젣�븳
 	int sizeLimit = 1024*1024*15;
 	
 	@SuppressWarnings("deprecation")
@@ -587,7 +593,7 @@ public class Svc_pro{
 	
 	
 	
-	// 라이브 예고 페이지
+	// �씪�씠釉� �삁怨� �럹�씠吏�
 	
 	@RequestMapping("/trailer_insert_pro")
 	public ModelAndView trailer_insertProcess(HttpServletRequest request, HttpServletResponse response)
@@ -667,7 +673,7 @@ public class Svc_pro{
 		String c_content= request.getParameter("comment_content");
 		Comment_DataBean cmtDto = new Comment_DataBean();
 		if(c_content != null) {
-		cmtDto.setUser_id(user_id); // jsp에서 히든으로 가져오면됨
+		cmtDto.setUser_id(user_id); // jsp�뿉�꽌 �엳�뱺�쑝濡� 媛��졇�삤硫대맖
 		cmtDto.setTrailer_id(Integer.parseInt(request.getParameter("trailer_id")));
 		cmtDto.setComment_content(c_content);
 		
@@ -692,7 +698,7 @@ public class Svc_pro{
 		return comment;
 	}
 
-	@RequestMapping(value = "/commentUpdate.go", method = RequestMethod.POST, produces = "application/json") // 댓글 수정
+	@RequestMapping(value = "/commentUpdate.go", method = RequestMethod.POST, produces = "application/json") // �뙎湲� �닔�젙
 	@ResponseBody
 	private void commentUpdateProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
@@ -707,7 +713,7 @@ public class Svc_pro{
 		Comment_Dao.updateComment(cmtDto);
 	}
 
-	@RequestMapping(value = "/commentDelete.go", method = RequestMethod.POST) // 댓글 삭제
+	@RequestMapping(value = "/commentDelete.go", method = RequestMethod.POST) // �뙎湲� �궘�젣
 	@ResponseBody
 	private void commentDeleteProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int comment_id = Integer.parseInt(request.getParameter("comment_id"));
@@ -735,7 +741,7 @@ public class Svc_pro{
 		String c_content= request.getParameter("chat_content");
 		Product_chat_DataBean chatDto = new Product_chat_DataBean();
 		if(c_content != null) {
-		chatDto.setUser_id(user_id); // jsp에서 히든으로 가져오면됨
+		chatDto.setUser_id(user_id); // jsp�뿉�꽌 �엳�뱺�쑝濡� 媛��졇�삤硫대맖
 		chatDto.setProduct_id(Integer.parseInt(request.getParameter("product_id")));
 		chatDto.setChat_content(c_content+"\r\n");
 		
@@ -761,6 +767,94 @@ public class Svc_pro{
 		// don't set the name of variable like this!
 		return comment;
 	}
+	
+	
+	
+	// Product_review
+	
+	@RequestMapping(value = "/reviewInsert.go", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public void reviewInsertProcess(HttpServletRequest request, HttpSession session) throws HandlerException, IOException {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		Product_review_DataBean reviewDto = new Product_review_DataBean();
+		
+		int sizeLimit = 1024*1024*15;
+		
+		@SuppressWarnings("deprecation")
+		String imagePath = request.getRealPath("menu_images");
+		
+		String filename = "";
+			
+		MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+		
+	
+		String review_content= multi.getParameter("review_content");
+		int review_scope= Integer.parseInt(multi.getParameter("review_scope"));
+		String user_id = multi.getParameter("session");
+		
+		@SuppressWarnings("rawtypes")
+		Enumeration files = multi.getFileNames();
+
+		String file = (String) files.nextElement();
+		filename = multi.getFilesystemName(file);
+
+	
+		
+		if(review_content != null) {
+			reviewDto.setReview_content(review_content);
+			reviewDto.setReview_image(review_content);
+			reviewDto.setReview_scope(review_scope);
+			reviewDto.setUser_id(user_id);
+			reviewDto.setReview_image(filename);
+		
+		
+			review_Dao.insertReview(reviewDto);
+		}
+	}
+
+	@RequestMapping(value = "/getReview.go", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public List<Product_review_DataBean> getReviewProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+
+		int trailer_id = Integer.parseInt(request.getParameter("trailer_id"));
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		List<Product_review_DataBean> comment = review_Dao.getReview(trailer_id);
+		for (Product_review_DataBean reviewDto : comment) {
+			reviewDto.setUser_name(user_id);
+		}
+
+		request.setAttribute("comment", comment);
+		// don't set the name of variable like this!
+		return comment;
+	}
+
+	@RequestMapping(value = "/updateReview.go", method = RequestMethod.POST, produces = "application/json") // �뙎湲� �닔�젙
+	@ResponseBody
+	private void updateReviewProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		Product_review_DataBean reviewDto = new Product_review_DataBean();
+		reviewDto.setReview_id(Integer.parseInt(request.getParameter("review_id")));
+		reviewDto.setReview_content(request.getParameter("review_content"));
+		review_Dao.updateReview(reviewDto);
+	}
+
+	@RequestMapping(value = "/deleteReview.go", method = RequestMethod.POST) // �뙎湲� �궘�젣
+	@ResponseBody
+	private void deleteReviewProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int review_id = Integer.parseInt(request.getParameter("review_id"));
+		review_Dao.deleteReview(review_id);
+	}
+	
 	
 	
 }
