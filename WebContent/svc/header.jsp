@@ -398,8 +398,22 @@
                           <a class="text-white p-3" href="product_main.go?menu_category=7">스포츠/레저</a>
                       </li>
                   </ul>
+                  <!-- 패널 타이틀4 -->
+            <div class="panel panel-default my-3">
+                <div class="panel-heading">
+                  <h4 class="panel-title text-white text-center my-3 py-2" style="
+                    background-color: #6b5a79;
+                  ">방송 종료된 상품</h4> 
+                </div>
+                  <!-- 사이드바 메뉴목록4 -->
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item "><a class="text-white p-3" href="product_off_main.go">모든 상품</a></li>
+                  </ul>
+            </div>
               </div>             
           </nav>
+          
+          
 
           <div class="overlay"></div>
           </div>
@@ -439,8 +453,8 @@
                       <span></span>
                   </label>
               </li>
-              
-              <c:if test="${Produt_dto.user_id eq sessionScope.user_id}">
+
+              <c:if test="${Product_dto.user_id eq sessionScope.user_id}">
 					<li>
 						<form class="form form--login" action="product_detaile_delete.go" role="form">
 							<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
@@ -449,6 +463,7 @@
 						</form>
 					</li>
 				</c:if>
+				
                   
           </ul>
           
@@ -535,7 +550,21 @@
                       <li class="list-group-item "><a class="text-white p-3" href="trailer_insert.go">LIVE 예고 등록</a></li>
                       <li class="list-group-item "><a class="text-white p-3" href="trailer_select.go">내 LIVE 예고 목록</a></li>
                     </ul>
-              </div>  
+              </div>
+              <!-- 패널 타이틀4 -->
+	            <div class="panel panel-default my-3">
+	                <div class="panel-heading">
+	                  <h4 class="panel-title text-white text-center my-3 py-2" style="
+	                    background-color: #6b5a79;
+	                  ">지난 LIVE 상품</h4> 
+	                </div>
+	                  <!-- 사이드바 메뉴목록4 -->
+	                  <ul class="list-group list-group-flush">
+	                    <li class="list-group-item "><a class="text-white p-3" href="product_off_main.go">모든 상품</a></li>
+	                  </ul>
+	            </div>
+              
+            
         </nav>
         <div class="overlay"></div>
       </div>
