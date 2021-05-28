@@ -14,7 +14,7 @@
 		
 		
 
-<form class="form form--login my-2" name="cus_pay_form" method='post' action='order_insert_pro.go' onsubmit="return cus_pay_check();" style="width: 700px; margin:0 auto;" enctype="multipart/form-data">
+<form class="form form--login my-2" name="cus_pay_form" method='post' action='order_insert_pro.go' onsubmit="return cus_pay_check();" style="width: 700px; margin:0 auto;">
 
 		<input type="hidden" name="user_id" id="user_id" value="${userDto.user_id}">
 		<div class="form__field">
