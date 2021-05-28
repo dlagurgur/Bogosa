@@ -442,7 +442,7 @@
               
               <c:if test="${Produt_dto.user_id eq sessionScope.user_id}">
 					<li>
-						<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form">
+						<form class="form form--login" action="product_detaile_delete.go" role="form">
 							<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
 							<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
 							<button type="submit" class="btn btn-sm btn-danger p-0">방송종료</button>

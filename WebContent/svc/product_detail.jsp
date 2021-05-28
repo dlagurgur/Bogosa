@@ -2,22 +2,14 @@
 <%@include file="header.jsp"%>
 
 <div style="width: auto; margin: 0 auto; margin-top: 30px;">
-	<input type="hidden" id="aa" name="aa">
-	<input type="hidden" name="menu_id" value="${Produt_dto.product_id}">
-	<input type="hidden" name="menu_name" value="${Produt_dto.product_name}">
-	<input type="hidden" name="menu_image" value="${Produt_dto.product_image}">
-	<input type="hidden" name="menu_price" value="${Produt_dto.product_price}">
-	<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
-	<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
-	<input type="hidden" id="user_charn" name="user_charn" value="${Produt_dto.user_charn}">
-	<input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" />
-	<input type="hidden" name="session" id="session" value="${sessionScope.user_id}" />
+	
 	<div class="col">
 		<video controls id="video-player" style="padding-top: 0px; padding-left: 0px; height:540px; width: 960px;"></video>
 		<div class="col" style="display:inline-block; margin-left: 25px;">
 			<textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" 
 			readonly style="height: 508px;width: 300px;background-color: #886fd4;color:white;border:none; resize:none;"></textarea>
 			<form class="form form--login" name="commentInsertForm" method="post">
+			
 				<div class="form__field">
 					<input type="hidden" name="product_id" value="${Produt_dto.product_id}" />
 					<input type="hidden" name="session" value="${sessionScope.user_id}" />
@@ -40,6 +32,16 @@
 			<h2 class="text-center text-white my-5">상품 상세정보</h2>
 		</div>
 		<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width: 800;margin: 0 auto;">
+		<input type="text" id="aa" name="aa">
+	<input type="hidden" id="menu_id" name="menu_id" value="${Produt_dto.product_id}">
+	<input type="hidden" id="menu_name" name="menu_name" value="${Produt_dto.product_name}">
+	<input type="hidden" id="menu_image" name="menu_image" value="${Produt_dto.product_image}">
+	<input type="hidden" id="menu_price" name="menu_price" value="${Produt_dto.product_price}">
+	<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
+	<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
+	<input type="hidden" id="user_charn" name="user_charn" value="${Produt_dto.user_charn}">
+	<input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" />
+	<input type="hidden" name="session" id="session" value="${sessionScope.user_id}" />
 			<div class="form__field">
 				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품명</label>
 				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_name}" readonly>
@@ -81,7 +83,7 @@
 			</div>
 			<div class="form_field mt-5">
 				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;margin: auto;width: 70px;margin-left: 37.5%;">수량</label>
-				<input type="number" name="qty" class="form_input text-center" value="1" min="1" max="19" style="color:white;width: 180px;">
+				<input type="number" id="qty" name="qty" class="form_input text-center" value="1" min="1" max="19" style="color:white;width: 180px;">
 			</div>
 			<div class="form__field">
 				<button type="button" class="btn btn-lg btn-secondary btn-block" style="width: 250px;margin: 0 auto;" onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
