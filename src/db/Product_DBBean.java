@@ -82,6 +82,12 @@ public class Product_DBBean{
 	}
 	
 	
+	
+	
+	public List<Product_DataBean> selectProduct_off() {
+		return session.selectList("db.selectProduct_off");
+	}
+	
 //	public String user_charn(String user_id) {
 //		return session.selectOne("db.user_charn", user_id);
 //	}

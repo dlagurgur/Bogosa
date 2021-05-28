@@ -44,10 +44,10 @@ public class Svc_Form{
 	private Trailer_DBBean Trailer_Dao;
 	
 	
-	// 회원 가입
+	// �쉶�썝 媛��엯
 	@RequestMapping("/join")
 	public ModelAndView JoinProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		String result="회원 가입 페이지입니다.";
+		String result="�쉶�썝 媛��엯 �럹�씠吏��엯�땲�떎.";
 		request.setAttribute("result", result);
 		return new ModelAndView("svc/svc_join");
 	}
@@ -76,7 +76,7 @@ public class Svc_Form{
 	
 	@RequestMapping("/update")
 	public ModelAndView svcupdateprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		//정보 얻어오기
+		//�젙蹂� �뼸�뼱�삤湲�
 		
 		String user_id=(String)request.getSession().getAttribute("user_id");
 		
@@ -111,7 +111,7 @@ public class Svc_Form{
 	
 	
 	
-	//////////////상품 영역 //////////////////
+	//////////////�긽�뭹 �쁺�뿭 //////////////////
 
 	@RequestMapping("/product_insert")
 	public ModelAndView product_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
@@ -159,6 +159,30 @@ public class Svc_Form{
 	
 	
 	
+	@RequestMapping("/product_off_detail")
+	public ModelAndView product_off_detailprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		int product_id=Integer.parseInt(request.getParameter("product_id"));
+		
+		Product_DataBean Produt_dto = Product_Dao.detialProduct(product_id);
+		request.setAttribute("Produt_dto", Produt_dto);
+		return new ModelAndView("svc/product_detail");
+	}
+	
+	
+	
+	@RequestMapping("/product_off_main")
+	public ModelAndView product_off_mainprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		List <Product_DataBean> Produt_dto = Product_Dao.selectProduct_off();
+		
+		request.setAttribute("Produt_dto", Produt_dto);
+		return new ModelAndView("svc/product_off_main");
+	}
+	
+	
+	
+	
 	@RequestMapping("/product_select")
 	public ModelAndView product_selectprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String user_id=(String)request.getSession().getAttribute("user_id");
@@ -203,7 +227,7 @@ public class Svc_Form{
 
 			
 			
-				// 메뉴카테고리 0: 전체메뉴 (웹으로 처리하는 사항)
+				// 硫붾돱移댄뀒怨좊━ 0: �쟾泥대찓�돱 (�쎒�쑝濡� 泥섎━�븯�뒗 �궗�빆)
 				
 				List<Product_DataBean> menus=Product_Dao.selectMenus();
 				request.setAttribute("menus", menus);
@@ -214,14 +238,14 @@ public class Svc_Form{
 	}
 	
 	
-	///////주문 관련//////
+	///////二쇰Ц 愿��젴//////
 	@RequestMapping("/order_insert")
 	public ModelAndView order_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 	
 	String  user_id = (String) request.getSession().getAttribute("user_id");
 	System.out.println(user_id);
 	
-	UserDataBean userDto = userDao.selectCustomer(user_id);	//신상정보
+	UserDataBean userDto = userDao.selectCustomer(user_id);	//�떊�긽�젙蹂�
 	request.setAttribute("userDto", userDto);
 	
 	return new ModelAndView("svc/order_insert");
@@ -231,9 +255,9 @@ public class Svc_Form{
 	
 	
 	
-	///////주문기록/////////////////
+	///////二쇰Ц湲곕줉/////////////////
 	
-	///주문내역 확인/////
+	///二쇰Ц�궡�뿭 �솗�씤/////
 	@RequestMapping("/Order_history_select")
 	public ModelAndView Order_history_selectProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		//I don't know why but it fails to get userDto, so here I try to get it.
@@ -268,7 +292,7 @@ public class Svc_Form{
 	
 	
 	
-	///판매한 물품 확인/////
+	///�뙋留ㅽ븳 臾쇳뭹 �솗�씤/////
 		@RequestMapping("/Order_confirmation")
 		public ModelAndView Order_confirmationProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 			//I don't know why but it fails to get userDto, so here I try to get it.
@@ -286,7 +310,7 @@ public class Svc_Form{
 
 
 		
-		//////////// 라이브 예정 페이지 /////////////////////////////
+		//////////// �씪�씠釉� �삁�젙 �럹�씠吏� /////////////////////////////
 		@RequestMapping("/trailer_insert")
 		public ModelAndView trailer_insertprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 			
@@ -338,7 +362,7 @@ public class Svc_Form{
 		
 		
 		
-		//검색기능
+		//寃��깋湲곕뒫
 		@RequestMapping("/search")
 		public ModelAndView svcSearchProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException, UnsupportedEncodingException {
 			try {

@@ -89,6 +89,12 @@
 		select * from product where user_id=#{user_id}
 	</select>
 	
+	
+	
+		<select id="selectProduct_off" resultType="db.Product_DataBean">
+		select * from product WHERE product_off =2
+	</select>
+	
 <!--
 	
 	<select id="user_charn" parameterType="String" resultType="String">
@@ -257,6 +263,10 @@
 	<select id="allTrailer" resultType="db.Trailer_DataBean">
 		select * from trailer order by trailer_updatedate desc
 	</select>
+	
+	
+
+
 
 	<select id="updateTrailerDate" resultType="db.Trailer_DataBean">
 		update trailer SET trailer_updatedate=NOW() where user_id=#{user_id}
