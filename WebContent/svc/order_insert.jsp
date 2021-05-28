@@ -9,108 +9,52 @@
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3619266ca6391650a5506641423333bd&libraries=services,clusterer,drawing"></script>
 
 <!-- Descriptor Jumbotron -->
-		<div class="jumbotron mt-1 bg-white">
-			<h1 class="display-5 text-center font-weight-bold text-dark pt-4 bg-white">주문</h1>
-		</div>
+		
+			<h1 class="fs-3 my-4 text-white text-center">주문서 작성</h1>
+		
 		
 
-<div class="container">
-<form class="form-vertical" name="cus_pay_form" method='post' action='order_insert_pro.go' onsubmit="return cus_pay_check();">
-	<div id="cus_pay_row" class="row">
-		<div id="cus_pay_col" class="col">
-		<div id="cus_info">
-			<div class="form-group row">
-				<div class="col">
-					<h4>아이디</h4>
-				</div>
-				<div class="col">
-					<input class="form-control" type="text" value="${userDto.user_id}" readonly>
-				</div>
-				<input type="hidden" name="user_id" id="user_id" value="${userDto.user_id}"><br>
-			</div>
-			
-			<div class="form-group row">
-				<div class="col">
-					<h4>주문자</h4>
-				</div>
-				<div class="col">
-					<input class="form-control" type="text" value="${userDto.user_name}" readonly>
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col">
-					<h4>이메일</h4>
-				</div>
-				<div class="col">
-					<input class="form-control" type="text" value="${userDto.user_email}" readonly>
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col">
-					
-					<h4>전화번호</h4> 
-				</div>
-				<div class="col">
-					<input class="form-control" type="text" value="${userDto.user_phone}" readonly>
-				</div>
-			</div>
-			
-			<div class="form-group row">
-				<div class="col">
-					<h4>주문받을 주소</h4>
-				</div>
-				<div class="col">
-					<input class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()" value="주소 찾기">
-					&nbsp;
-					<input class="btn btn-md btn-secondary" type="button" id="currentLocation" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')" value="현재 주소">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col">
-					<input class="form-control" type="text" name="user_addr" id="user_addr"  value="${userDto.user_addr}">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col">
-					<h4>주문 받을 상세 주소</h4>
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col">
-					<input class="form-control" type="text" name="user_addr2" id="user_addr2" value="${userDto.user_addr2}">
-				</div>
-			</div>
+<form class="form form--login my-2" name="cus_pay_form" method='post' action='order_insert_pro.go' onsubmit="return cus_pay_check();" style="width: 700px; margin:0 auto;" enctype="multipart/form-data">
 
-		
-		<div id="cus_pay_col" class="col">
-			<div class="row">
-				<div class="col">
-					<h4>주문하신 상품</h4>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="row" id="ordered_menus"></div>
-				</div>
-			</div>
+		<input type="hidden" name="user_id" id="user_id" value="${userDto.user_id}">
+		<div class="form__field">
+			<label for="product_title" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">아이디</label>
+			<input class="form-control border-0 p-2" type="text" value="${userDto.user_id}" readonly style="color:white;background-color: #cfc4d661;">
 			
-			<div class="row">
-				<div class="col">
-						<input class="btn btn-md btn-secondary" type="submit" value="주문" style="width:300px;">
-						&nbsp;
-						<input class="btn btn-md btn-secondary" type="reset" value="닫기" style="width:200px;">
-				</div>
-			</div>
 		</div>
-	</div>
-	</div>
-	</div>
+		<div class="form__field">
+			<label for="product_name" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">주문자 성명</label>
+			<input class="form-control border-0 p-2" type="text" value="${userDto.user_name}" readonly style="color:white;background-color: #cfc4d661;">
+		</div>
+		<div class="form__field">
+			<label for="product_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">이메일</label>
+			<input class="form-control border-0 p-2" type="text" value="${userDto.user_email}" readonly style="color:white;background-color: #cfc4d661;">
+		</div>
+		<div class="form__field">
+			<label for="product_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">전화번호</label>
+			<input class="form-control border-0 p-2" type="text" value="${userDto.user_phone}" readonly style="color:white;background-color: #cfc4d661;">
+		</div>
+		<div class="form__field">
+			<label for="product_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">배송받을 주소</label>
+			<input class="form-control border-0 p-2" type="text" name="user_addr" id="user_addr"  value="${userDto.user_addr}" style="color:white;background-color: #cfc4d661;">
+			<input class="btn btn-md btn-secondary  p-2 border-0" type="button" onclick="sample4_execDaumPostcode()" value="주소 찾기" style="margin: 4px; margin-right=0px; background-color: #4a7b7b;">
+			<input class="btn btn-md btn-secondary  p-2 border-0" type="button" id="currentLocation" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')" value="현재 주소" style="margin: 4px; background-color: #4a7b7b;">
+		</div>
+		<div class="form__field">
+			<label for="product_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">상세 주소</label>
+			<input class="form-control border-0 p-2" type="text" name="user_addr2" id="user_addr2" value="${userDto.user_addr2}" style="color:white;background-color: #cfc4d661;">
+		</div>
+		<div class="form_field">
+			<label for="product_detail" class="col-sm-3 col-form-label text-center fs-5 p-2" style="color:white; background-color: #7f5cad00; width:200px;">주문하실 상품 정보</label>
+			<div class="row" id="ordered_menus"></div>
+		</div>
+		
+		<div class="form__field">
+			<input class="btn btn-primary border-0" type="submit" value="주문 등록" style="width:250px; margin-left: 32%;">
+		</div>
+	</form>
 	
-	
-</form>
-</div>
-
-
+ 
 
 
 <script>
@@ -248,7 +192,7 @@ function setMenusForPay(storageLocation){
 	var total_pay = 0;
     var x = "";
     x+=	'<div class="container">';
-    x+= 	'<table class="table table-sm table-hover text-center">';
+    x+= 	'<table class="table table-sm table-hover text-center" style="background-color: #cabfea;">';
     x+=			'<thead>'
     x+= 			'<tr>';
     x+=					'<th scope="col">';
@@ -329,3 +273,5 @@ function deleteMenu(index){
 
 
 </script>
+
+<%@include file="tail.jsp"%>
