@@ -11,13 +11,13 @@
 		<div class="container">
 			<div class="grid_container" style="margin:0 auto; width:60%;">
 				<c:if test="${result eq 0}">
-					<h1 class="text-center text-white" id="a">작성 글이 없습니다.</h1>
+					<h3 class="fs-4 my-4 text-center text-white">등록하신 라이브 예고가 없습니다.</h3>
 				</c:if>
 				
 				
 				<c:if test="${result ne 0}">
 				
-				<h3 class="fs-4 my-2 mt-5 text-center text-white">${sessionScope.user_id}님의 라이브 예고 현황</h3>
+				<h3 class="fs-4 my-4 text-center text-white">${sessionScope.user_id}님의 라이브 예고 현황</h3>
 					<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-3 mb-5 text-white">
 						<thead>
 							<tr>

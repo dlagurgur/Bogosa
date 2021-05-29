@@ -259,7 +259,7 @@
 	        }
 	        input[id="menuicon"] + label{
 	            display: block;
-	            width: 36px;
+	            width: 30px;
 	            height: 24px;
 	            position: relative;
 	            cursor: pointer;
@@ -304,6 +304,22 @@
 			    color: white;
 			    background-color: #6b48af;
 			}
+			
+			.round-button{
+			    height: 2rem;
+			    padding-left: 1rem;
+			    padding-right: 1rem;
+			    font-size: 1rem;
+			    border-radius: 1rem;
+			    border: none;
+			    outline: none;
+			    font-weight: bold;
+			    word-break: keep-all;
+			    background: rgb(117 80 230);
+			    color: white;
+			    transition: all 0.125s ease-in 0s;
+			    cursor: pointer;
+			}
 	        
     </style>
 
@@ -320,8 +336,8 @@
           <div class="container-fluid" style="
           background-color: #47474c6e;">
               <a class="navbar-brand fs-2 mr-5 ml-5 text-center" href="product_main.go?menu_category=0"><img
-                  src="${project}img/BOGOSA.jpg" width="40" height="40"
-                  class="d-inline-block align-top">&nbsp;&nbsp;BOGOSA</a>
+                  src="${project}img/logo2.png" width="120px" height="60px"
+                  class="d-inline-block align-top">&nbsp;&nbsp;</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -351,16 +367,16 @@
                       <option value="title">제목</option>
                       <option value="product_detail">내용</option>
                   </select>
-                <input style="color:white;" class="form-control form-control-sm bg-dark border-white me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light border-0" type="submit">Search</button>
+                <input style="color:white;padding-left: 1rem;padding-right: 1rem;border-radius: 2rem;" class="form-control form-control-sm bg-dark border-white me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light border-0" type="submit" style="background-color: white;border-radius: 3rem;padding-left: 10px;padding-right: 10px; ">
+	           	 <svg width="20" height="20" viewBox="0 0 17 17"><path fill-rule="evenodd" d="M13.66 7.36a6.3 6.3 0 1 1-12.598 0 6.3 6.3 0 0 1 12.598 0zm-1.73 5.772a7.36 7.36 0 1 1 1.201-1.201l3.636 3.635c.31.31.31.815 0 1.126l-.075.075a.796.796 0 0 1-1.126 0l-3.636-3.635z"  ></path></svg>
+	            </button>
               </form>
             </div>
-            <div class="col-3"></div>
-            <div class= "float-end">
-              <button class="btn btn-sm text-white" type="button" style="width: 66px; height:40px; background-color: #ac40b9;
-              border: none;" onclick="location='login.go'">Sign-in</button>  
-              <button class="btn btn-sm text-white" type="button" style="width: 66px; height:40px; background-color: #6833d0;
-              border: none;"  onclick="location='join.go'">Sign-up</button>
+            
+            <div class= "col-4">
+              <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='login.go'" style="width: 95px;">Sign-in</button>  
+              <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='join.go'" style="background-color: #a26de1 width:95px;">Sign-up</button>
             </div>
           </div>
         </nav>
@@ -403,7 +419,7 @@
                 <div class="panel-heading">
                   <h4 class="panel-title text-white text-center my-3 py-2" style="
                     background-color: #7550e6;
-                  ">방송 종료된 상품</h4> 
+                  ">지난 LIVE 상품</h4> 
                 </div>
                   <!-- 사이드바 메뉴목록4 -->
                   <ul class="list-group list-group-flush">
@@ -431,8 +447,8 @@
       <div class="container-fluid" style="
       background-color: #47474c6e;">
           <a class="navbar-brand fs-2 mr-5 ml-5 text-center" href="product_main.go?menu_category=0"><img
-              src="${project}img/BOGOSA.jpg" width="40" height="40"
-              class="d-inline-block align-top">&nbsp;&nbsp;BOGOSA</a>
+               src="${project}img/logo2.png" width="120px" height="60px"
+              class="d-inline-block align-top"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -446,7 +462,7 @@
                   <a class="nav-item text-white fw-bold" href="trailer_main.go">라이브 예정</a>
               </li>
               <li class="nav-item mr-1" style="margin-left:30px; margin-right:30px;">
-                  <input type="checkbox" name="" id="menuicon">
+                  <input type="checkbox" id="menuicon">
                   <label for="menuicon">
                       <span></span>
                       <span></span>
@@ -462,16 +478,16 @@
                   <option value="title">제목</option>
                   <option value="product_detail">내용</option>
               </select>
-            <input style="color:white;" class="form-control form-control-sm bg-dark border-white me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light border-0" type="submit">Search</button>
+            <input style="color:white;padding-left: 1rem;padding-right: 1rem;border-radius: 2rem;" class="form-control form-control-sm bg-dark border-white me-2 ml-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light border-0" type="submit" style="background-color: white;border-radius: 3rem;padding-left: 10px;padding-right: 10px; ">
+            <svg width="20" height="20" viewBox="0 0 17 17"><path fill-rule="evenodd" d="M13.66 7.36a6.3 6.3 0 1 1-12.598 0 6.3 6.3 0 0 1 12.598 0zm-1.73 5.772a7.36 7.36 0 1 1 1.201-1.201l3.636 3.635c.31.31.31.815 0 1.126l-.075.075a.796.796 0 0 1-1.126 0l-3.636-3.635z"  ></path></svg>
+            </button>
           </form>
         </div>
-        <div class="col-3"></div>
-        <div class= "float-end">
-          <button class="btn btn-sm text-white" type="button" style="width: 66px; height:40px; background-color: #ac40b9;
-          border: none;" onclick="location='myPage.go'">MyPage</button>  
-          <button class="btn btn-sm text-white" type="button" style="width: 66px; height:40px; background-color: #6833d0;
-          border: none;"  onclick="location='logout.go'">logOut</button>
+        
+        <div class="col-4" >
+          <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='logout.go'" style="background-color: #a26de1;width: 95px;">LogOut</button>
+          <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='myPage.go'" style="width: 95px;">MyPage</button>  
         </div>
       </div>
     </nav>

@@ -48,7 +48,7 @@
 		<input type="hidden" name="aws_url" id="aws_url" value="${userDto.a}">
 		<input type="hidden" name="user_charn" id="user_charn" value="${userDto.user_charn}">
 		<div class="form__field">
-			<input class="btn btn-primary border-0" style="width: 250px; margin-left: 32%;" type="submit" value="등록">
+			<button class="round-button" style="width: 250px; margin-left: 32%; height:35px" type="submit" >상품 등록</button>
 		</div>
 	</form>
 	

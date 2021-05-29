@@ -15,7 +15,7 @@
 			
 			<c:if test="${result ne 0}">
 			
-			<h3 class="fs-4 my-2 mt-5 text-center text-white">${sessionScope.user_id}님의 판매 목록</h3>
+			<h3 class="fs-4 my-4 text-center text-white">${sessionScope.user_id}님의 판매 목록</h3>
 				<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-3 mb-5 text-white">
 					<thead>
 						<tr>

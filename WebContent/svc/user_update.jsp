@@ -7,7 +7,7 @@
 <%@include file="header.jsp" %>
 
 
- <h3 class="fs-3 my-3 text-white text-center">회원정보 수정</h3>
+ <h3 class="fs-4 my-4 text-white text-center">회원정보 수정</h3>
 <br>
 <br>
 <form class="form form--login" name="joinform" method="post" action="updatePro.go" onsubmit="return modifyCheck()" style="
