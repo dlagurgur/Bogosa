@@ -88,6 +88,14 @@ public class Product_DBBean{
 		return session.selectList("db.selectProduct_off");
 	}
 	
+	
+	public int product_chat_delete(int product_id) {
+		return session.delete("db.product_chat_delete", product_id);
+	}
+	
+	
+	
+	
 //	public String user_charn(String user_id) {
 //		return session.selectOne("db.user_charn", user_id);
 //	}
