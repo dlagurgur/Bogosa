@@ -15,20 +15,20 @@
 							<button class="form__input" type="button">Enter</button>
 						</c:if>
 						<c:if test="${sessionScope.user_id ne null}">
-							<input type="text" class="form_input p-2 text-white" id="chat_content" name="chat_content" placeholder="채팅입력">
-							<button class="form_input p-2" style="width: 60px;" type="button" onclick="commentInsert()">Enter</button>
+							<input type="text" class="form_input p-2 text-white mx-1" id="chat_content" name="chat_content" placeholder="채팅입력" style="border-radius:1rem">
+							<button class="form_input p-2 border-0" style="width: 60px; border-radius:1rem;" type="button" onclick="commentInsert()">Enter</button>
 						</c:if>
 					</div>
 				</form>
 			</div>
 			<form id="12" action="product_detaile_delete.go" name="12" role="form" style="margin: 0 auto;">
 				<div class="form__field">
-					<label for="product_title" class="col-sm-3 col-form-label fs-4 px-3 py-0" style="color:white;background-color: #7f5cad;width: 770px; border-radius:10px">${Produt_dto.product_title}</label>
+					<label for="product_title" class="col-sm-3 col-form-label fs-4 px-3 py-0" style="color:white; border-radius:2rem; background-color:#7f5cad; width: 770px; border-radius:10px">${Produt_dto.product_title}</label>
 					<input class="text-center" type="text" id="aa" name="aa" readonly style="color:white;background-color: #ffffff00; width:120px">
 					<c:if test="${Produt_dto.user_id eq sessionScope.user_id}">
 						<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
 						<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
-						<button type="submit" class="btn btn-sm btn-danger p-0">방송종료</button>	
+						<button type="submit" class="btn round-button" style="height: 35px; background-color: #db2759;">방송종료</button>	
 					</c:if>
 				</div>
 			</form>
@@ -82,25 +82,26 @@
 						<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
 					</div>
 				</div>
+				</form>
 				<div>
 					<img class="rounded mx-auto d-block my-5" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width:800px; height:auto; margin:0 auto; margin-top:30;">
 				</div>
-			</form>
+			
 			<form class="form form--login" id="product" action="product_detaile_delete.go" name="product" role="form" style="width:800px;margin: 0 auto;">
 				<input type="hidden" id="menu_id" name="menu_id" value="${Produt_dto.product_id}">
 				<input type="hidden" id="menu_name" name="menu_name" value="${Produt_dto.product_name}">
 				<input type="hidden" id="menu_image" name="menu_image" value="${Produt_dto.product_image}">
 				<input type="hidden" id="menu_price" name="menu_price" value="${Produt_dto.product_price}">
 				<div class="form__field" style="color: white; margin-top: 30px; display: grid;">
-					<label for="nickname" class="col-sm-3 col-form-label p-0 my-3" style="color:white;background-color: #6495ed00;">상품설명</label>
+					<label for="nickname" class="col-sm-3 col-form-label p-0 my-3 fs-4" style="color:white;background-color: #6495ed00; text-align: inherit;">상품설명</label>
 					<input style="color:white; height: fit-content;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
 				</div>
 				<div class="form_field mt-5">
-					<label for="nickname" class="col-sm-3 col-form-label" style="color:white;margin: auto;width: 70px;margin-left: 34%;">수량</label>
+					<label for="nickname" class="col-sm-3 col-form-label " style="color:white;margin: auto;width: 70px;margin-left: 34%;">수량</label>
 					<input type="number" id="qty" name="qty" class="form_input text-center" value="1" min="1" max="19" style="color:white;width: 180px;">
 				</div>
-				<div class="form__field">
-					<button type="button" class="btn btn-lg btn-secondary btn-block" style="width: 250px;margin: 0 auto;" onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
+				<div class="form__field py-3">
+					<button type="button" class="btn btn-lg btn-secondary btn-block" style="width: 250px;margin: 0 auto; border-radius: 3rem;" onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
 				</div>
 			</form>
 		</div>
@@ -140,9 +141,14 @@
 			if(err) document.getElementById("aa").value = "방송 준비중" // an error occurred
 			
 			else 
-
 			var view_count = data.stream.viewerCount
-			document.getElementById("aa").value = view_count + "명";
+				if(view_count === undefined){
+					document.getElementById("aa").value = "방송 준비중"
+				}
+				else{
+					document.getElementById("aa").value = view_count + "명";
+				}
+				
 		});
 	}, 10000);
 	//ajax

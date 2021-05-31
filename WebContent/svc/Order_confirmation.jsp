@@ -10,7 +10,7 @@
 		<div class="container">
 		<div class="grid_container" style="margin:0 auto; width:60%;">
 			<c:if test="${result eq 0}">
-	 			<h1 class="text-center text-dark" id="a">판매이력이 없습니다.</h1>
+	 			<h3 class="fs-4 my-4 text-center text-white">판매 이력이 없습니다 </h3>
 			</c:if>
 			
 			<c:if test="${result ne 0}">
@@ -31,13 +31,13 @@
 					<c:set var="count" value="${counts[i]}"/>
 					<c:set var="cusorder" value="${cusorderlist[i]}"/>
 							<tr class="clickableRow text-white" data-href="detailed_order_history.go?order_num=${cusorder.order_num}&order_date=${cusorder.order_date}">
-								<td scope="row">
+								<td class="py-3" scope="row">
 									${cusorder.order_num}
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								<fmt:formatDate value="${cusorder.order_date}" pattern="yyyy-MM-dd HH:mm"/>
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								${cusorder.product_name}
 								</td>
 							</tr>

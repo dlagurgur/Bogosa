@@ -4,62 +4,67 @@
 <%@include file="header.jsp" %>
 <script src="${project}script.js"></script>
 	
-	<body>
-	<div class="container mt-1 pt-5"> 
+	
+	<div class="container">
+		<div class="grid_container" style="margin:0 auto; width:60%;">
+		<h3 class="fs-4 my-4 text-center text-white">주문 상세보기</h3>
+		<h3 class="fs-6 mb-5 text-center text-white">주문 일시 : ${order_date}</h3>
+
 		<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-2 mb-5">
-				<thead>
-					<tr>
-						<th scope="col" class="order_no" colspan="3">
-							주문 번호               :          ${order_num}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							주문 날짜               :          ${order_date}
-						</th>
-					</tr>
-					<tr>
-						<th scope="col" class="menu_name">아이템</th>
-						<th scope="col" class="order_qnt">수량</th>
-						<th scope="col" class="order_qnt">주소</th>
-						<th scope="col" class="order_qnt">상세주소</th>
-						<th scope="col" class="menu_price">금액</th>
-						<th scope="col" class="12">상품페이지</th>
+				<thead class="text-white">
+
+					<tr class="text-white">
+						<th scope="col" style="background-color: #7550e6;">아이템</th>
+						<th scope="col" style="background-color: #7550e6;">수량</th>
+						<th scope="col" style="background-color: #7550e6;">주소</th>
+
+						<th scope="col" style="background-color: #7550e6;">금액</th>
+						
 					</tr>
 				</thead>
-				<c:set var="total" value="0"/>
+				
 				<c:forEach var="order_historyDto" items="${order_historyDto}">
-					<tr class="">
-						<td scope="row">
+				<c:set var="total" value="${order_historyDto.order_qnt * order_historyDto.product_price }"/>
+				
+					<tr class="text-white">
+						<td class="py-3" scope="row">
 							${order_historyDto.product_name}
 						</td>
-						<td scope="row">
+						<td class="py-3" scope="row">
 							${order_historyDto.order_qnt}
 						</td>
-						<td scope="row">
-							${order_historyDto.user_addr}
+						<td class="py-3" scope="row">
+							${order_historyDto.user_addr} ${order_historyDto.user_addr2}
 						</td>
-						<td scope="row">
-							${order_historyDto.user_addr2}
-						</td>
+						
 						
 
 						
-						<td scope="row">
-							<c:set var="sum" value="${order_historyDto.order_qnt * order_historyDto.product_price }"/>
-							<c:out value="${sum}"/>
-							<c:set var="total" value="${total + sum}"/>
+						<td class="py-3" scope="row">
+							
+							${order_historyDto.product_price }
+							
 						</td>
-						<td scope="row">
-							<button type="button" onclick="location.href='product_detail.go?product_id=${order_historyDto.product_id}'">상품페이지</button>
-
-						</td>
+						
 					</tr>
-				</c:forEach>
-				<tr>
-					<td scope="row" colspan="2">
-						<b>총 금액</b>
+				
+				<tr class="text-white">
+					<td class="py-3" scope="row" colspan="2">
+						<b class="fs-5">Total</b>
 					</td>
-					<td scope="row">
+					<td class="py-3 fs-5" scope="row">
 						<c:out value="${total}"/>
 					</td>
+					<td class="py-3" scope="row">
+							<button class="round-button" type="button" onclick="location.href='product_detail.go?product_id=${order_historyDto.product_id}'">상품페이지</button>
+
+						</td>
+					
 				</tr>
-			</table>	
+				
+				</c:forEach>
+			</table>
 		</div>
+	</div>
+		
+		<%@include file="tail.jsp"%>

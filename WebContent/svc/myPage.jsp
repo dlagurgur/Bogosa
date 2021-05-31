@@ -8,7 +8,7 @@
 
 
     <h3 class="fs-4 my-4 text-center text-white">${userDto.user_id}님의 정보</h3>
-	<form class="form form--login my-2" name="joinform" method="post" role="form" style="width: 700px; margin:0 auto;">
+	<form class="form form--login my-2" name="joinform" method="post" role="form" style="width: 600px; margin:0 auto;">
 		<div class="form__field">
 			<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">아이디</label>
 			<input style="color:white;" class="form__input" type="text" value="${userDto.user_id}" readonly>
@@ -50,26 +50,29 @@
 			<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">방송서버</label>
 			<input style="color:white;" class="form__input" type="text" value="${userDto.c}" readonly>
 		</div>
-		<div class="form__field">
-			<br>
-			<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='update.go'" style="height: 65px;margin-top: 8px;">${btn_modify}</button>&nbsp;&nbsp;
-			<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='delete.go'" style="height: 65px;margin-top: 8px;">${btn_user_delete}</button>
+		
+		<hr>
+		
+		<h3 class="fs-4 my-4 text-center text-white">회원 기능</h3>
+		
+		
+		<div class="form__field" style=" width: 550px; height: fit-content; margin: 0 auto; ">
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='update.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">${btn_modify}</button>
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='delete.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">${btn_user_delete}</button>
 		</div>
-		<div class="form__field">
-			<br>
-			<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='Order_confirmation.go'" style="height: 65px;margin-top: 8px;">판매기록</button>&nbsp;&nbsp;
-			<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='Order_history_select.go'" style="height: 65px;margin-top: 8px;">주문기록</button>
+		<div class="form__field" style=" width: 550px; height: fit-content; margin: 0 auto; ">
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='Order_confirmation.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">판매기록</button>
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='Order_history_select.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">주문기록</button>
 		</div>
-		<div class="form__field">
-			<br>
-			<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='product_select.go'" style="height: 65px;margin-top: 8px;">등록한 상품</button>&nbsp;&nbsp;
-			<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='trailer_select.go'" style="height: 65px;margin-top: 8px;">등록한 예고</button>
+		<div class="form__field" style=" width: 550px; height: fit-content; margin: 0 auto; ">
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='product_select.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">등록한 상품</button>
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='trailer_select.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">등록한 예고</button>
 		</div>
-		<div class="form__field">
-			<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='product_insert.go'">방송 시작하기</button>
+		<div class="form__field" style=" width: 550px; height: fit-content; margin: 0 auto; ">
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='product_insert.go'" style="border-radius: 1rem;">방송 시작하기</button>
 		</div>
-		<div class="form__field">
-			<button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='trailer_insert.go'">예고편 작성</button>
+		<div class="form__field" style=" width: 550px; height: fit-content; margin: 0 auto; ">
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='trailer_insert.go'" style="border-radius: 1rem;">예고편 작성</button>
 		</div>
 	</form>
 		

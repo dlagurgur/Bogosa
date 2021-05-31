@@ -36,10 +36,10 @@
 								<td scope="row">
 									${cusorder.order_num}
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								<fmt:formatDate value="${cusorder.order_date}" pattern="yyyy-MM-dd HH:mm"/>
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								${cusorder.product_name}
 								</td>
 								
