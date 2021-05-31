@@ -22,6 +22,8 @@
 							<th scope="col" class="order_no" style="background-color: #7550e6;">주문번호</th>
 							<th scope="col" class="order_date" style="background-color: #7550e6;">날짜</th>
 							<th scope="col" class="menu_name" style="background-color: #7550e6;">주문 품목</th>
+							<th scope="col" class="menu_name" style="background-color: #7550e6;">주문 상세 페이지</th>
+							<th scope="col" class="menu_name" style="background-color: #7550e6;">리뷰 작성</th>
 						</tr>
 					</thead>
 			
@@ -30,7 +32,7 @@
 					<c:forEach var="i" begin="0" end="${fn:length(cusorderlist)-1}" step="1">
 					<c:set var="count" value="${counts[i]}"/>
 					<c:set var="cusorder" value="${cusorderlist[i]}"/>
-							<tr class="clickableRow text-white" data-href="detailed_order_history.go?order_num=${cusorder.order_num}&order_date=${cusorder.order_date}">
+							<tr class="text-white" style="height: 40px; vertical-align: middle;">
 								<td scope="row">
 									${cusorder.order_num}
 								</td>
@@ -39,6 +41,14 @@
 								</td>
 								<td scope="row">
 								${cusorder.product_name}
+								</td>
+								
+								<td scope="row">
+									<button type="button" class="btn p-0 text-white" style="background-color:#ef3d55; width: 120px" onclick="location.href='detailed_order_history.go?order_num=${cusorder.order_num}&order_date=${cusorder.order_date}'">주문 상세정보</button>
+								</td>
+								
+								<td scope="row">
+									<button type="button" class="btn p-0 text-white" style="background-color:#ef3d55; width: 120px" onclick="location.href='product_review.go?product_id=${cusorder.product_id}'">리뷰 작성</button>
 								</td>
 							</tr>
 						</c:forEach>

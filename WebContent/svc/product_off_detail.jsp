@@ -11,7 +11,7 @@
 		<div>
 			<h2 class="text-center text-white my-5">상품 상세정보</h2>
 		</div>
-	<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width: 800;margin: 0 auto;">
+	<form class="form form--login" id="product" action="product_detaile_delete.go" name="product" role="form" style="width: 800;margin: 0 auto;">
 	<input type="hidden" id="menu_id" name="menu_id" value="${Produt_dto.product_id}">
 	<input type="hidden" id="menu_name" name="menu_name" value="${Produt_dto.product_name}">
 	<input type="hidden" id="menu_image" name="menu_image" value="${Produt_dto.product_image}">
@@ -72,77 +72,18 @@
 			
 		</form>
 		
-		<div class="row my-4" style="width:960px; margin:0 auto;">
-			<label class="text-center p-1" for="content" style="width:80px; background-color: #8b7fac;font-size: 20;border-radius: 5px;padding: 5px;color: beige">Review</label>
-			<form class="p-1" name="commentInsertForm" id="form" method="POST" enctype="multipart/form-data" style="margin:0 auto">
-					<div class="text-center d-flex flex-inline">
-						<label class="reviewRatings">5점
-							<input type="radio" name="review_score" value="5" checked>
-							<span class="checkmark"></span>
-						</label>
-						
-						<label class="reviewRatings">4점
-							<input type="radio" name="review_score" value="4">
-							<span class="checkmark"></span>
-						</label>
-						
-						<label class="reviewRatings">3점
-							<input type="radio" name="review_score" value="3">
-							<span class="checkmark"></span>
-						</label>
-						
-						<label class="reviewRatings">2점
-							<input type="radio" name="review_score" value="2">
-							<span class="checkmark"></span>
-						</label>
-						
-						<label class="reviewRatings">1점
-							<input type="radio" name="review_score" value="1">
-							<span class="checkmark"></span>
-						</label>
-					</div>			
-				<input type="file" class="form-control" name="review_image" id="review_image" accept=".gif, .jpg, .png, .jpeg" style="background-color: #cfc4d6;">
+		
+			<form class="p-1" name="commentInsertForm" id="form" method="POST" style="margin:0 auto">
 				<div class="input-group">
 					<input type="hidden" name="product_id" value="${Produt_dto.product_id}" />
 					<input type="hidden" name="session" value="${sessionScope.user_id}" />
-					<input type="text" class="form-control text-white" id="review_content" name="review_content" placeholder="댓글"> <span class="input-group-btn">
-							<button class="btn btn-default text-white p-0 m-2" type="button"
-								onclick="commentInsert()">Enter</button>
-						</span>
 				</div>
 			</form>
 			<div class="commentList p-1" style="width: 960;margin: auto;margin-top: 50;"></div>
 	</div>
-	</div>
+
 <script type="text/javascript"> //ajax
-function commentInsert() { //리뷰 등록 버튼 클릭시 
-		var insertData = $('#form')[0]; //commentInsertForm의 내용을 가져옴
-		var insertData1 = new FormData(insertData);
-			var product_id = $("input[name=product_id").val();
-			if (commentInsertForm.review_content.value) {
-				$.ajax({
-					processData: false,    
-			        contentType: false,
-					url: 'reviewInsert.go',
-					type: 'post',
-					cache: false,
-					data: insertData1,
-					success: function (data) {
-						if (data == 1) {
-							/*오류메세지 작성*/
-						} else {
-							commentList();
-							$('[name=review_content]').val('');
-						}
-					},
-					error: function (error) {
-						alert("로그인해주세요");
-					}
-				});
-			} else {
-				alert("댓글을 입력해주세요");
-			}
-		}
+
 	
 	/////댓글 목록 
 function commentList() {
@@ -177,48 +118,6 @@ function commentList() {
 		});
 	}
 	//댓글 등록
-	
-	//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
-	function commentUpdate(review_id, review_content) {
-		var commentModify = '';
-		commentModify += '<div class="input-group">';
-		commentModify += '<input type="text" class="form-control" name="comment_content_' + review_id + '" value="' + review_content + '"/>';
-		commentModify += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc(' + review_id + ');">수정</button> </span>';
-		commentModify += '</div>';
-		$('#commentContent').html(commentModify);
-	}
-	//댓글 수정
-	function commentUpdateProc(review_id) {
-		var updateContent = $('input[name=comment_content_' + review_id + ']').val();
-		var tb_no = $("input[name=product_id").val();
-		$.ajax({
-			url: 'updateReview.go',
-			type: 'post',
-			data: {
-				'review_content': updateContent,
-				'review_id': review_id
-			},
-			success: function (data) {
-				commentList(tb_no); //댓글 수정후 목록 출력 
-			}
-		});
-	}
-	//댓글 삭제 
-	function commentDelete(review_id) {
-		$.ajax({
-			url: 'deleteReview.go',
-			type: 'post',
-			data: {
-				review_id: review_id
-			},
-			success: function (data) {
-				commentList(); //댓글 삭제후 목록 출력 
-			},
-			error: function (error) {
-				alert("error : " + error);
-			}
-		});
-	}
 
 	</script>
 

@@ -396,5 +396,15 @@ public class Svc_Form{
 			request.setAttribute("foundList", foundList);
 			return new ModelAndView("svc/foundList");
 		}
+		
+		
+		
+		
+		@RequestMapping( "/product_review" )
+		public ModelAndView productreviewProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+			return new ModelAndView( "svc/product_review" );
+		}
+		
+
 	
 }

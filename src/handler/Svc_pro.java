@@ -771,50 +771,57 @@ public class Svc_pro{
 	
 	
 	// Product_review
-	
-	@RequestMapping(value = "/reviewInsert.go", method = RequestMethod.POST, produces = "application/json")
-	@ResponseBody
-	public void reviewInsertProcess(HttpServletRequest request, HttpSession session) throws HandlerException, IOException {
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		Product_review_DataBean reviewDto = new Product_review_DataBean();
-		
-		int sizeLimit = 1024*1024*15;
-		
-		@SuppressWarnings("deprecation")
-		String imagePath = request.getRealPath("menu_images");
-		
-		String filename = "";
-			
-		MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-		
-	
-		String review_content= multi.getParameter("review_content");
-		int review_scope= Integer.parseInt(multi.getParameter("review_score"));
-		String user_id = multi.getParameter("session");
-		
-		@SuppressWarnings("rawtypes")
-		Enumeration files = multi.getFileNames();
-
-		String file = (String) files.nextElement();
-		filename = multi.getFilesystemName(file);
-
-	
-		
-		if(review_content != null) {
-			reviewDto.setReview_content(review_content);
-			reviewDto.setReview_image(review_content);
-			reviewDto.setReview_scope(review_scope);
-			reviewDto.setUser_id(user_id);
-			reviewDto.setReview_image(filename);
-			reviewDto.setProduct_id(Integer.parseInt(multi.getParameter("product_id")));
-		
-			review_Dao.insertReview(reviewDto);
-		}
+	@RequestMapping("/product_review_pro")
+	public ModelAndView product_review_pro(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	try {
+		request.setCharacterEncoding("utf-8");
+	} catch (UnsupportedEncodingException e) {
+		e.printStackTrace();
 	}
+	Product_review_DataBean reviewDto = new Product_review_DataBean();
+	
+	int sizeLimit = 1024*1024*15;
+	
+	@SuppressWarnings("deprecation")
+	String imagePath = request.getRealPath("menu_images");
+	
+	String filename = "";
+		
+	MultipartRequest multi = new MultipartRequest( request, imagePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+	
+
+	String review_content= multi.getParameter("review_content");
+	int review_scope= Integer.parseInt(multi.getParameter("review_score"));
+	String user_id = multi.getParameter("session");
+	
+	@SuppressWarnings("rawtypes")
+	Enumeration files = multi.getFileNames();
+
+	String file = (String) files.nextElement();
+	filename = multi.getFilesystemName(file);
+
+
+	
+	if(review_content != null) {
+		reviewDto.setReview_content(review_content);
+		reviewDto.setReview_image(review_content);
+		reviewDto.setReview_scope(review_scope);
+		reviewDto.setUser_id(user_id);
+		reviewDto.setReview_image(filename);
+		reviewDto.setProduct_id(Integer.parseInt(multi.getParameter("product_id")));
+	
+		int result = review_Dao.insertReview(reviewDto);
+		request.setAttribute("result", result);
+
+	}	
+		
+		
+	
+		
+
+		return new ModelAndView("svc/product_review_pro");
+	}
+	
 
 	@RequestMapping(value = "/getReview.go", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
@@ -834,27 +841,27 @@ public class Svc_pro{
 		return comment;
 	}
 
-	@RequestMapping(value = "/updateReview.go", method = RequestMethod.POST, produces = "application/json") // �뙎湲� �닔�젙
-	@ResponseBody
-	private void updateReviewProcess(HttpServletRequest request, HttpServletResponse response)
-			throws HandlerException {
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		Product_review_DataBean reviewDto = new Product_review_DataBean();
-		reviewDto.setReview_id(Integer.parseInt(request.getParameter("review_id")));
-		reviewDto.setReview_content(request.getParameter("review_content"));
-		review_Dao.updateReview(reviewDto);
-	}
-
-	@RequestMapping(value = "/deleteReview.go", method = RequestMethod.POST) // �뙎湲� �궘�젣
-	@ResponseBody
-	private void deleteReviewProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		int review_id = Integer.parseInt(request.getParameter("review_id"));
-		review_Dao.deleteReview(review_id);
-	}
+//	@RequestMapping(value = "/updateReview.go", method = RequestMethod.POST, produces = "application/json") // �뙎湲� �닔�젙
+//	@ResponseBody
+//	private void updateReviewProcess(HttpServletRequest request, HttpServletResponse response)
+//			throws HandlerException {
+//		try {
+//			request.setCharacterEncoding("utf-8");
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//		Product_review_DataBean reviewDto = new Product_review_DataBean();
+//		reviewDto.setReview_id(Integer.parseInt(request.getParameter("review_id")));
+//		reviewDto.setReview_content(request.getParameter("review_content"));
+//		review_Dao.updateReview(reviewDto);
+//	}
+//
+//	@RequestMapping(value = "/deleteReview.go", method = RequestMethod.POST) // �뙎湲� �궘�젣
+//	@ResponseBody
+//	private void deleteReviewProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		int review_id = Integer.parseInt(request.getParameter("review_id"));
+//		review_Dao.deleteReview(review_id);
+//	}
 	
 	
 	
