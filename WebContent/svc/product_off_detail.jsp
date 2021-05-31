@@ -101,7 +101,7 @@ function commentList() {
 				$.each(data, function (key, comment) {
 					
 					commentView += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">'
-					commentView += '</div style="color:white;" id="commentInfo' + comment.review_id + '"><b style="color:white;">' + comment.user_id + ' &nbsp&nbsp 평점/5: ' +comment.review_scope+ '</b>&nbsp;&nbsp;';
+					commentView += '</div style="color:white;" id="commentInfo' + comment.review_id + '"><b style="color:white;">' + comment.user_id + ' &nbsp&nbsp 평점: '+comment.review_scope+'/5</b>&nbsp;&nbsp'
 					if (SessionID == comment.user_id) {
 						commentView += '<a style="color:white;" onclick="commentUpdate(' + comment.review_id + ',\'' + comment.review_content + '\');"> 수정 </a> &nbsp';
 						commentView += '<a style="color:white;" onclick="commentDelete(' + comment.review_id + ');"> 삭제 </a>';
