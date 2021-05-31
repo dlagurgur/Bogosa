@@ -21,7 +21,7 @@
 					</div>
 				</form>
 			</div>
-			<form id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="margin: 0 auto;">
+			<form id="12" action="product_detaile_delete.go" name="12" role="form" style="margin: 0 auto;">
 				<div class="form__field">
 					<label for="product_title" class="col-sm-3 col-form-label fs-4 px-3 py-0" style="color:white;background-color: #7f5cad;width: 770px; border-radius:10px">${Produt_dto.product_title}</label>
 					<input class="text-center" type="text" id="aa" name="aa" readonly style="color:white;background-color: #ffffff00; width:120px">
@@ -39,10 +39,6 @@
 				<h2 class="text-center text-white my-5">상품 상세정보</h2>
 			</div>
 			<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width:400px;margin: 0 auto;">
-				<input type="hidden" id="menu_id" name="menu_id" value="${Produt_dto.product_id}">
-				<input type="hidden" id="menu_name" name="menu_name" value="${Produt_dto.product_name}">
-				<input type="hidden" id="menu_image" name="menu_image" value="${Produt_dto.product_image}">
-				<input type="hidden" id="menu_price" name="menu_price" value="${Produt_dto.product_price}">
 				<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
 				<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
 				<input type="hidden" id="user_charn" name="user_charn" value="${Produt_dto.user_charn}">
@@ -90,7 +86,11 @@
 					<img class="rounded mx-auto d-block my-5" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width:800px; height:auto; margin:0 auto; margin-top:30;">
 				</div>
 			</form>
-			<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width:800px;margin: 0 auto;">
+			<form class="form form--login" id="product" action="product_detaile_delete.go" name="product" role="form" style="width:800px;margin: 0 auto;">
+				<input type="hidden" id="menu_id" name="menu_id" value="${Produt_dto.product_id}">
+				<input type="hidden" id="menu_name" name="menu_name" value="${Produt_dto.product_name}">
+				<input type="hidden" id="menu_image" name="menu_image" value="${Produt_dto.product_image}">
+				<input type="hidden" id="menu_price" name="menu_price" value="${Produt_dto.product_price}">
 				<div class="form__field" style="color: white; margin-top: 30px; display: grid;">
 					<label for="nickname" class="col-sm-3 col-form-label p-0 my-3" style="color:white;background-color: #6495ed00;">상품설명</label>
 					<input style="color:white; height: fit-content;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
@@ -140,7 +140,7 @@
 			if(err) document.getElementById("aa").value = "방송 준비중" // an error occurred
 			
 			else 
-			console.log(data);
+
 			var view_count = data.stream.viewerCount
 			document.getElementById("aa").value = view_count + "명";
 		});

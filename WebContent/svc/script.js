@@ -126,7 +126,6 @@ function AWScheck(){
 		    var b = data.streamKey.value;	// 키값
 		    var c = data.channel.ingestEndpoint; // 키값
 			var user_charn = data.channel.arn;
-			console.log(user_charn)
 		    document.getElementById("a").value = a
 		    document.getElementById("b").value = b
 		    document.getElementById("c").value = c
@@ -166,11 +165,11 @@ function inputcheck() {
 
 
 function orderNow(product_id) {
-	var menu_id=menuform.menu_id.value;
-	var menu_name=menuform.menu_name.value;
-	var menu_price=menuform.menu_price.value;
-	var menu_image=menuform.menu_image.value;
-	var order_qnt=menuform.qty.value;
+	var menu_id=product.menu_id.value;
+	var menu_name=product.menu_name.value;
+	var menu_price=product.menu_price.value;
+	var menu_image=product.menu_image.value;
+	var order_qnt=product.qty.value;
 	var user_id = $("#session").val();    
 	var order=[{'product_id':menu_id, 'product_name':menu_name, 'product_price':menu_price, 'product_qnt':order_qnt, 'product_image':menu_image},];
 	

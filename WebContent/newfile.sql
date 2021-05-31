@@ -108,6 +108,7 @@ CREATE TABLE product_review
 	review_date timestamp NOT NULL,
 	review_scope int(5) NOT NULL,
 	user_id varchar(20) NOT NULL,
+	product_id int NOT NULL,
 	PRIMARY KEY (review_id)
 );
 
@@ -184,6 +185,12 @@ ALTER TABLE product_review
 	ON DELETE Cascade
 ;
 
+ALTER TABLE product_review
+	ADD FOREIGN KEY (product_id)
+	REFERENCES product (product_id)
+	ON UPDATE RESTRICT
+	ON DELETE Cascade
+;
 
 
 

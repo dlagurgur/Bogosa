@@ -757,9 +757,7 @@ public class Svc_pro{
 			throws HandlerException {
 
 		int product_id = Integer.parseInt(request.getParameter("product_id"));
-		System.out.println(product_id);
-		String user_id = (String) request.getSession().getAttribute("user_id");
-		System.out.println(user_id);
+		String user_id = (String) request.getSession().getAttribute("user_id");	
 		List<Product_chat_DataBean> comment = Product_chat_Dao.getProduct_chat(product_id);
 		for (Product_chat_DataBean dto : comment) {
 				dto.setUser_name(user_id);
