@@ -841,27 +841,27 @@ public class Svc_pro{
 		return comment;
 	}
 
-//	@RequestMapping(value = "/updateReview.go", method = RequestMethod.POST, produces = "application/json") // �뙎湲� �닔�젙
-//	@ResponseBody
-//	private void updateReviewProcess(HttpServletRequest request, HttpServletResponse response)
-//			throws HandlerException {
-//		try {
-//			request.setCharacterEncoding("utf-8");
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//		}
-//		Product_review_DataBean reviewDto = new Product_review_DataBean();
-//		reviewDto.setReview_id(Integer.parseInt(request.getParameter("review_id")));
-//		reviewDto.setReview_content(request.getParameter("review_content"));
-//		review_Dao.updateReview(reviewDto);
-//	}
-//
-//	@RequestMapping(value = "/deleteReview.go", method = RequestMethod.POST) // �뙎湲� �궘�젣
-//	@ResponseBody
-//	private void deleteReviewProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		int review_id = Integer.parseInt(request.getParameter("review_id"));
-//		review_Dao.deleteReview(review_id);
-//	}
+	@RequestMapping(value = "/updateReview.go", method = RequestMethod.POST, produces = "application/json") // �뙎湲� �닔�젙
+	@ResponseBody
+	private void updateReviewProcess(HttpServletRequest request, HttpServletResponse response)
+			throws HandlerException {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		Product_review_DataBean reviewDto = new Product_review_DataBean();
+		reviewDto.setReview_id(Integer.parseInt(request.getParameter("review_id")));
+		reviewDto.setReview_content(request.getParameter("review_content"));
+		review_Dao.updateReview(reviewDto);
+	}
+
+	@RequestMapping(value = "/deleteReview.go", method = RequestMethod.POST) // �뙎湲� �궘�젣
+	@ResponseBody
+	private void deleteReviewProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int review_id = Integer.parseInt(request.getParameter("review_id"));
+		review_Dao.deleteReview(review_id);
+	}
 	
 	
 	

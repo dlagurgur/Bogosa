@@ -73,7 +73,8 @@
 		</form>
 		
 		
-			<form class="p-1" name="commentInsertForm" id="form" method="POST" style="margin:0 auto">
+			<form class="p-1" name="commentInsertForm" id="form" method="POST" enctype="multipart/form-data" style="margin:0 auto">
+					<h2> 리뷰 </h2>
 				<div class="input-group">
 					<input type="hidden" name="product_id" value="${Produt_dto.product_id}" />
 					<input type="hidden" name="session" value="${sessionScope.user_id}" />
@@ -99,13 +100,13 @@ function commentList() {
 				var commentView = '';
 				$.each(data, function (key, comment) {
 					
-					commentView += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';+ comment.user_id + ' &nbsp&nbsp평점: ' + comment.chat_content
-					commentView += '<div style="color:white;" id="commentInfo' + comment.review_id + '"><b style="color:white;">' + comment.user_id + ' : ' +comment.review_scope+ '</b>&nbsp;&nbsp;';
+					commentView += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">'
+					commentView += '</div style="color:white;" id="commentInfo' + comment.review_id + '"><b style="color:white;">' + comment.user_id + ' &nbsp&nbsp 평점/5: ' +comment.review_scope+ '</b>&nbsp;&nbsp;';
 					if (SessionID == comment.user_id) {
 						commentView += '<a style="color:white;" onclick="commentUpdate(' + comment.review_id + ',\'' + comment.review_content + '\');"> 수정 </a> &nbsp';
 						commentView += '<a style="color:white;" onclick="commentDelete(' + comment.review_id + ');"> 삭제 </a>';
 					}
-					commentView += '<div id="commentContent"> <p style="color:white;">' + comment.review_content + '</p>';
+					commentView += '<div id="commentContent"> <p style="color:white;"> 내용 : ' + comment.review_content + '</p>';
 					
 					commentView += '<img class="rounded mx-auto d-block my-5" src="menu_images/'+ comment.review_image +'" style="width:150px; height:150px; margin:0 auto; margin-top:30;">'
 					commentView += '</div></div>'
@@ -118,6 +119,48 @@ function commentList() {
 		});
 	}
 	//댓글 등록
+	
+	//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
+	function commentUpdate(review_id, review_content) {
+		var commentModify = '';
+		commentModify += '<div class="input-group">';
+		commentModify += '<input type="text" class="form-control" name="comment_content_' + review_id + '" value="' + review_content + '"/>';
+		commentModify += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc(' + review_id + ');">수정</button> </span>';
+		commentModify += '</div>';
+		$('#commentContent').html(commentModify);
+	}
+	//댓글 수정
+	function commentUpdateProc(review_id) {
+		var updateContent = $('input[name=comment_content_' + review_id + ']').val();
+		var tb_no = $("input[name=product_id").val();
+		$.ajax({
+			url: 'updateReview.go',
+			type: 'post',
+			data: {
+				'review_content': updateContent,
+				'review_id': review_id
+			},
+			success: function (data) {
+				commentList(tb_no); //댓글 수정후 목록 출력 
+			}
+		});
+	}
+	//댓글 삭제 
+	function commentDelete(review_id) {
+		$.ajax({
+			url: 'deleteReview.go',
+			type: 'post',
+			data: {
+				review_id: review_id
+			},
+			success: function (data) {
+				commentList(); //댓글 삭제후 목록 출력 
+			},
+			error: function (error) {
+				alert("error : " + error);
+			}
+		});
+	}
 
 	</script>
 
