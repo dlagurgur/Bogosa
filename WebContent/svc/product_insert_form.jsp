@@ -9,7 +9,7 @@
 
 
 	<h3 class="fs-4 my-4 text-center text-white">상품에 대한 정보를 입력하세요</h3>
-	<form class="form form--login my-2" name="productform" action="product_insert_pro.go" method="post" role="form" style="width: 700px; margin:0 auto;" enctype="multipart/form-data">
+	<form class="form form--login my-2" name="productform" action="product_insert_pro.go" method="post" role="form" style="width: 700px; margin:0 auto;" enctype="multipart/form-data" onsubmit="return product_insert_check();">
 		<div class="form__field">
 			<label for="product_title" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">방송 제목</label>
 			<input class="form__input" type="text" name="product_title" id="product_title" maxlength="50" value="${product_dt.trailer_title}" style="color:white;background-color: #cfc4d661;">

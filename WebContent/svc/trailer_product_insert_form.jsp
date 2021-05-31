@@ -274,7 +274,7 @@ h3 {
 			<h3 style="
 			padding-bottom: 20px;
 			width:470px;">상품에 대한 정보를 입력하세요</h3>
-		<form class="form form--login" name="productform" action="trailer_product_insert_pro.go" method="post" role="form" style="width: 700px;"enctype="multipart/form-data" >
+		<form class="form form--login" name="productform" action="trailer_product_insert_pro.go" method="post" role="form" style="width: 700px;"enctype="multipart/form-data" onsubmit="return product_insert_check();">
 		<input class="form__input" type="hidden" name="trailer_id" id="trailer_id" maxlength="50" value="${product_dt.trailer_id}" style="color:white;">				
 			<div class="form__field">
 				<label for="product_title" class="col-sm-3 col-form-label" style="color:white;" >방송 제목</label>
