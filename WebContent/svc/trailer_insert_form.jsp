@@ -5,73 +5,45 @@
 <%@ include file="setting.jsp" %>
 <%@ include file="header.jsp" %>
 
-	<div class="container">
-		<form name="inputform" id="target" action="trailer_insert_pro.go" method="post" enctype="multipart/form-data" style="width: 700px; margin:0 auto;">
-			<h3 class="fs-3 my-3 text-white text-center">라이브로 판매예정인 상품정보를 입력해주세요</h3>
-			<div class="form-group row">
-				<div class="col-xs-2">
-					<label for="trailer_name">상품 명</label>
-				</div>
-				<div class="col-xs-2">
-					<input class="form-control" type="text" name="trailer_name" id="trailer_name" maxlength="50">
-				</div>
-				<div class="col-xs-2">
-					<label for="trailer_name">방제목</label>
-				</div>
-				<div class="col-xs-2">
-					<input class="form-control" type="text" name="trailer_title" id="trailer_title" maxlength="50">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-xs-2">
-					<label for="trailer_price">상품 가격</label>
-				</div>
-				<div class="col-xs-2">
-					<input class="form-control" type="number" name="trailer_price" id="trailer_price" maxlength="20">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-xs-2">
-					<label for="trailer_price">라이브 예정 일정</label>
-				</div>
-				<div class="col-xs-2">
-					<input class="form-control" type="datetime-local" name="trailer_launchdate" id="trailer_launchdate" maxlength="20">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-xs-2">
-					<label for="trailer_image">상품 이미지</label>
-				</div>
-				<div class="col-xs-2">
-					<input class="form-control" type="file" name="trailer_image" id="trailer_image">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-xs-2">
-					<label for="trailer_aws_url">광고 영상</label>
-				</div>
-				<div class="col-xs-2">
-					<input class="form-control" type="file" id="file-chooser" />
-					<!--  <button type="button"  id="upload-button">Upload to S3</button> -->
-				</div>
-			</div>
-			<div id="results"></div>
-			<div class="form-group row">
-				<div class="col-xs-2">
-					<label for="trailer_detail">상품 설명</label>
-				</div>
-				<div class="col-xs-2">
-					<textarea class="form-control" name="trailer_detail" id="trailer_detail" rows="10" cols="30"></textarea>
-				</div>
-				<input type="hidden" name="session" id="session" value="${user_id}" />
-				<input type="hidden" name="trailer_id" value="${trailer_id}" />
-			</div>
-			<div class="form-group row">
-				<button type="button" id="upload-button">Upload</button>
-				<input class="btn btn-primary" type="reset" value="취소">
-			</div>
-		</form>
+
+<h3 class="fs-4 my-4 text-center text-white">라이브로 판매예정인 상품정보를 입력해주세요</h3>
+<form class="form form--login my-2" name="inputform" id="target" action="trailer_insert_pro.go" method="post" enctype="multipart/form-data" style="width: 700px; margin:0 auto;">
+	<div class="form__field">
+		<label for="trailer_name" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">상품 명</label>
+		<input class="form__input" type="text" name="trailer_name" id="trailer_name" maxlength="50" style="color:white;background-color: #cfc4d661;">
 	</div>
+	<div class="form__field">
+		<label for="trailer_name" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">방제목</label>
+		<input class="form__input" type="text" name="trailer_title" id="trailer_title" maxlength="50" style="color:white;background-color: #cfc4d661;">
+	</div>
+	<div class="form__field">
+		<label for="trailer_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">상품 가격</label>
+		<input class="form__input" type="number" name="trailer_price" id="trailer_price" maxlength="20" style="color:white;background-color: #cfc4d661;">
+	</div>
+	<div class="form__field">
+		<label for="trailer_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">라이브 예정 일정</label>
+		<input class="form__input text-center" type="datetime-local" name="trailer_launchdate" id="trailer_launchdate" maxlength="20" style="color:white;background-color: #cfc4d661;">
+	</div>
+	<div id="results"></div>
+	<div class="form_field">
+		<label for="trailer_detail" class="col-sm-3 col-form-label text-center fs-5 p-2 mb-1" style="color:white; background-color: #7f5cad; width:140px; border-radius:2rem;">라이브 소개</label>
+		<textarea class="form-control mb-3" name="trailer_detail" id="trailer_detail" rows="10" cols="30" style="background-color: #cfc4d6;"></textarea>
+	</div>
+	<div class="input-group mb-3">
+		<p class="fs-6 m-1 text-center text-white p-1" style="width:120px;background-color: #7f5cad;border-radius: 1rem;">상품 이미지</p>
+		<input class="form__input" type="file" name="trailer_image" id="trailer_image" accept=".gif, .jpg, .png, .jpeg" style="background-color: #cfc4d6;height:27px;border-radius: 1rem;margin: auto;">
+	</div>
+	<div class="form__field">
+		<p class="fs-6 m-1 text-center text-white p-1" style="width:120px;background-color: #7f5cad;border-radius: 1rem;">광고 영상</p>
+		<input class="form__input" type="file" id="file-chooser" style="background-color: #cfc4d6;height:27px;border-radius: 1rem;margin: auto;" />
+	</div>
+	<input type="hidden" name="session" id="session" value="${user_id}" />
+	<input type="hidden" name="trailer_id" value="${trailer_id}" />
+	<div class="form__field">
+		<button class="round-button" type="button" id="upload-button" style="margin-left: 32%;width: 250px;height: 50px;background-color: #7550e6;border-radius: 2rem;">라이브 예고 등록</button>
+	</div>
+</form>
+
 
  <script type="text/javascript">
 	 AWS.config.region = 'us-east-1'; // 1. Enter your region

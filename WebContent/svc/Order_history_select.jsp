@@ -44,16 +44,17 @@
 								</td>
 								
 								<td scope="row">
-									<button type="button" class="btn p-0 text-white" style="background-color:#ef3d55; width: 120px" onclick="location.href='detailed_order_history.go?order_num=${cusorder.order_num}&order_date=${cusorder.order_date}'">주문 상세정보</button>
+									<button type="button" class="btn p-1 text-white round-button" style="background-color:#a26de1; width: 120px" onclick="location.href='detailed_order_history.go?order_num=${cusorder.order_num}&order_date=${cusorder.order_date}'">주문 상세정보</button>
 								</td>
 								
 								<td scope="row">
-									<button type="button" class="btn p-0 text-white" style="background-color:#ef3d55; width: 120px" onclick="location.href='product_review.go?product_id=${cusorder.product_id}'">리뷰 작성</button>
+									<button type="button" class="btn p-1 text-white round-button" style="background-color:#55765c; width: 120px" onclick="location.href='product_review.go?product_id=${cusorder.product_id}&product_name=${cusorder.product_name}'">리뷰 작성</button>
 								</td>
 							</tr>
 						</c:forEach>
 				
 				</table>
+				
 	</c:if>
 		</div>
 		
