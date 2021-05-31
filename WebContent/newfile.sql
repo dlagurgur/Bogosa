@@ -107,6 +107,7 @@ CREATE TABLE product_review
 	review_content varchar(200) NOT NULL,
 	review_date timestamp NOT NULL,
 	review_scope int(5) NOT NULL,
+	review_image varchar(250) NOT NULL,
 	user_id varchar(20) NOT NULL,
 	product_id int NOT NULL,
 	PRIMARY KEY (review_id)
