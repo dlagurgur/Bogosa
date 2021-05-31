@@ -209,7 +209,7 @@ public class Svc_Form{
 	
 	
 	@RequestMapping("/product_main")
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+	public ModelAndView process1(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
 		int product_category=Integer.parseInt(request.getParameter("menu_category"));
 		if(product_category > 0) {
@@ -236,6 +236,7 @@ public class Svc_Form{
 		}
 		return new ModelAndView("svc/product_main");
 	}
+
 	
 	
 	///////二쇰Ц 愿��젴//////

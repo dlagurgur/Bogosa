@@ -1,96 +1,110 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 
-<div style="width: auto; margin: 0 auto; margin-top: 30px;">
-	
-	<div class="col">
-		<video controls id="video-player" style="padding-top: 0px; padding-left: 0px; height:540px; width: 960px;"></video>
-		<div class="col" style="display:inline-block; margin-left: 25px;">
-			<textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" 
-			readonly style="height: 508px;width: 300px;background-color: #886fd4;color:white;border:none; resize:none;"></textarea>
-			<form class="form form--login" name="commentInsertForm" method="post">
-			
+	<div style="width: auto; margin: 0 auto; margin-top: 30px;">
+		<div class="col">
+			<video controls id="video-player" style="padding-top: 0px; padding-left: 0px; height:549px; width: 960px; vertical-align:top;"></video>
+			<div class="col" style="display:inline-block; margin-left: 25px;">
+				<textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly style="height: 508px;width: 300px;background-color: #886fd4;color:white;border:none; resize:none;"></textarea>
+				<form class="form form--login" name="commentInsertForm" method="post">
+					<div class="form__field">
+						<input type="hidden" name="product_id" value="${Produt_dto.product_id}" />
+						<input type="hidden" name="session" value="${sessionScope.user_id}" />
+						<c:if test="${sessionScope.user_id eq null}">
+							<input type="text" class="form__input" id="chat_content" name="chat_content" placeholder="로그인을 해주세요" readonly>
+							<button class="form__input" type="button">Enter</button>
+						</c:if>
+						<c:if test="${sessionScope.user_id ne null}">
+							<input type="text" class="form_input p-2 text-white" id="chat_content" name="chat_content" placeholder="채팅입력">
+							<button class="form_input p-2" style="width: 60px;" type="button" onclick="commentInsert()">Enter</button>
+						</c:if>
+					</div>
+				</form>
+			</div>
+			<form id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="margin: 0 auto;">
 				<div class="form__field">
-					<input type="hidden" name="product_id" value="${Produt_dto.product_id}" />
-					<input type="hidden" name="session" value="${sessionScope.user_id}" />
-					<c:if test="${sessionScope.user_id eq null}">
-						<input type="text" class="form__input" id="chat_content" name="chat_content" placeholder="로그인을 해주세요" readonly>
-						<button class="form__input" type="button">Enter</button>
-					</c:if>
-					<c:if test="${sessionScope.user_id ne null}">
-						<input type="text" class="form_input p-2 text-white" id="chat_content" name="chat_content" placeholder="채팅입력">
-						<button class="form_input p-2" style="width: 60px;" type="button" onclick="commentInsert()">Enter</button>
+					<label for="product_title" class="col-sm-3 col-form-label fs-4 px-3 py-0" style="color:white;background-color: #7f5cad;width: 770px; border-radius:10px">${Produt_dto.product_title}</label>
+					<input class="text-center" type="text" id="aa" name="aa" readonly style="color:white;background-color: #ffffff00; width:120px">
+					<c:if test="${Produt_dto.user_id eq sessionScope.user_id}">
+						<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
+						<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
+						<button type="submit" class="btn btn-sm btn-danger p-0">방송종료</button>	
 					</c:if>
 				</div>
 			</form>
+			<hr>
 		</div>
-		<h2 class="fs-4 text-white m0-3 pb-3">${Produt_dto.product_name}</h2>
-		<hr>
-	</div>
-	<div class="grid_container" style="margin:0 auto; width:80%;">
-		<div>
-			<h2 class="text-center text-white my-5">상품 상세정보</h2>
-		</div>
-	<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width: 800;margin: 0 auto;">
-	<input type="text" id="aa" name="aa">
-	<input type="hidden" id="menu_id" name="menu_id" value="${Produt_dto.product_id}">
-	<input type="hidden" id="menu_name" name="menu_name" value="${Produt_dto.product_name}">
-	<input type="hidden" id="menu_image" name="menu_image" value="${Produt_dto.product_image}">
-	<input type="hidden" id="menu_price" name="menu_price" value="${Produt_dto.product_price}">
-	<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
-	<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
-	<input type="hidden" id="user_charn" name="user_charn" value="${Produt_dto.user_charn}">
-	<input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" />
-	<input type="hidden" name="session" id="session" value="${sessionScope.user_id}" />
-			<div class="form__field">
-				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품명</label>
-				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_name}" readonly>
-				<label for="nickname" class="col-sm-3 col-form-label" style="color: white;padding-right: 10px; padding-left: 10px;">카테고리</label>
-				<c:if test="${Produt_dto.product_category eq 1}">
-					<input style="color:white;" class="form__input" type="text" value="가전디지털" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 2}">
-					<input style="color:white;" class="form__input" type="text" value="식품" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 3}">
-					<input style="color:white;" class="form__input" type="text" value="주방용품" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 4}">
-					<input style="color:white;" class="form__input" type="text" value="생활용품" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 5}">
-					<input style="color:white;" class="form__input" type="text" value="의류" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 6}">
-					<input style="color:white;" class="form__input" type="text" value="취미" readonly>
-				</c:if>
-				<c:if test="${Produt_dto.product_category eq 7}">
-					<input style="color:white;" class="form__input" type="text" value="스포츠/레저" readonly>
-				</c:if>
-			</div>
-			<div class="form__field">
-				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">판매자</label>
-				<a ><input style="color:white;" class="form__input" type="text" value="${Produt_dto.user_id}" readonly></a>
-				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
-				<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
-			</div>
+		<div class="grid_container" style="margin:0 auto; width:80%;">
 			<div>
-				<img class="rounded mx-auto d-block my-5" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width:1000px; height:auto; margin:0 auto; margin-top:30;">
+				<h2 class="text-center text-white my-5">상품 상세정보</h2>
 			</div>
-			<div class="form__field" style="color: white; margin-top: 30px; display: grid;">
-				<label for="nickname" class="col-sm-3 col-form-label p-0 my-3" style="color:white;background-color: #6495ed00;">상품설명</label>
-				<input style="color:white; height: fit-content;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
-			</div>
-			<div class="form_field mt-5">
-				<label for="nickname" class="col-sm-3 col-form-label" style="color:white;margin: auto;width: 70px;margin-left: 37.5%;">수량</label>
-				<input type="number" id="qty" name="qty" class="form_input text-center" value="1" min="1" max="19" style="color:white;width: 180px;">
-			</div>
-			<div class="form__field">
-				<button type="button" class="btn btn-lg btn-secondary btn-block" style="width: 250px;margin: 0 auto;" onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
-			</div>
-		</form>
+			<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width:400px;margin: 0 auto;">
+				<input type="hidden" id="menu_id" name="menu_id" value="${Produt_dto.product_id}">
+				<input type="hidden" id="menu_name" name="menu_name" value="${Produt_dto.product_name}">
+				<input type="hidden" id="menu_image" name="menu_image" value="${Produt_dto.product_image}">
+				<input type="hidden" id="menu_price" name="menu_price" value="${Produt_dto.product_price}">
+				<input type="hidden" id="user_id" value="${Produt_dto.user_id}">
+				<input type="hidden" name="trailer_id" value="${Produt_dto.trailer_id}">
+				<input type="hidden" id="user_charn" name="user_charn" value="${Produt_dto.user_charn}">
+				<input type="hidden" name="aws_url" id="aws_url" value="${Produt_dto.aws_url}" />
+				<input type="hidden" name="session" id="session" value="${sessionScope.user_id}" />
+				<div class="grid-container" style="width=700px;">
+					<div class="form__field">
+						<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">상품명</label>
+						<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_name}" readonly>
+					</div>
+					<div class="form__field">
+						<label for="nickname" class="col-sm-3 col-form-label" style="color: white;padding-right: 10px; padding-left: 10px;">카테고리</label>
+						<c:if test="${Produt_dto.product_category eq 1}">
+							<input style="color:white;" class="form__input" type="text" value="가전디지털" readonly>
+						</c:if>
+						<c:if test="${Produt_dto.product_category eq 2}">
+							<input style="color:white;" class="form__input" type="text" value="식품" readonly>
+						</c:if>
+						<c:if test="${Produt_dto.product_category eq 3}">
+							<input style="color:white;" class="form__input" type="text" value="주방용품" readonly>
+						</c:if>
+						<c:if test="${Produt_dto.product_category eq 4}">
+							<input style="color:white;" class="form__input" type="text" value="생활용품" readonly>
+						</c:if>
+						<c:if test="${Produt_dto.product_category eq 5}">
+							<input style="color:white;" class="form__input" type="text" value="의류" readonly>
+						</c:if>
+						<c:if test="${Produt_dto.product_category eq 6}">
+							<input style="color:white;" class="form__input" type="text" value="취미" readonly>
+						</c:if>
+						<c:if test="${Produt_dto.product_category eq 7}">
+							<input style="color:white;" class="form__input" type="text" value="스포츠/레저" readonly>
+						</c:if>
+					</div>
+					<div class="form__field">
+						<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">판매자</label>
+						<input style="color:white;" class="form__input" type="text" value="${Produt_dto.user_id}" readonly>
+					</div>
+					<div class="form__field">
+						<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
+						<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
+					</div>
+				</div>
+				<div>
+					<img class="rounded mx-auto d-block my-5" src="menu_images/${Produt_dto.product_image}" alt="Menu Img" style="width:800px; height:auto; margin:0 auto; margin-top:30;">
+				</div>
+			</form>
+			<form class="form form--login" id="menuform" action="product_detaile_delete.go" name="menuform" role="form" style="width:800px;margin: 0 auto;">
+				<div class="form__field" style="color: white; margin-top: 30px; display: grid;">
+					<label for="nickname" class="col-sm-3 col-form-label p-0 my-3" style="color:white;background-color: #6495ed00;">상품설명</label>
+					<input style="color:white; height: fit-content;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
+				</div>
+				<div class="form_field mt-5">
+					<label for="nickname" class="col-sm-3 col-form-label" style="color:white;margin: auto;width: 70px;margin-left: 34%;">수량</label>
+					<input type="number" id="qty" name="qty" class="form_input text-center" value="1" min="1" max="19" style="color:white;width: 180px;">
+				</div>
+				<div class="form__field">
+					<button type="button" class="btn btn-lg btn-secondary btn-block" style="width: 250px;margin: 0 auto;" onclick="orderNow(${Produt_dto.product_id})">바로 주문하기</button>
+				</div>
+			</form>
+		</div>
 	</div>
-</div>
 
 <script type="text/javascript">
 	var Tawk_API = Tawk_API || {},
@@ -123,8 +137,10 @@
 			'channelArn': user_charn
 		};
 		ivs.getStream(params, function(err, data) {
-			if(err) console.log(err, err.stack); // an error occurred
-			else console.log(data);
+			if(err) document.getElementById("aa").value = "방송 준비중" // an error occurred
+			
+			else 
+			console.log(data);
 			var view_count = data.stream.viewerCount
 			document.getElementById("aa").value = view_count + "명";
 		});
