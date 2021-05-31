@@ -7,7 +7,7 @@
 
 
 <h3 class="fs-4 my-4 text-center text-white">라이브로 판매예정인 상품정보를 입력해주세요</h3>
-<form class="form form--login my-2" name="inputform" id="target" action="trailer_insert_pro.go" method="post" enctype="multipart/form-data" style="width: 700px; margin:0 auto;">
+<form class="form form--login my-2" name="inputform" id="inputform" action="trailer_insert_pro.go" method="post" enctype="multipart/form-data" style="width: 700px; margin:0 auto;">
 	<div class="form__field">
 		<label for="trailer_name" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">상품 명</label>
 		<input class="form__input" type="text" name="trailer_name" id="trailer_name" maxlength="50" style="color:white;background-color: #cfc4d661;">
@@ -46,6 +46,8 @@
 
 
  <script type="text/javascript">
+
+ 
 	 AWS.config.region = 'us-east-1'; // 1. Enter your region
 	 AWS.config.update({
 	 	"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
@@ -76,7 +78,7 @@
 	 		bucket.putObject(params, function(err, data) {
 	 			if(err) {
 	 				results.innerHTML = 'ERROR: ' + err;
-	 				document.getElementById('target').submit();
+	 				document.getElementById('inputform').submit();
 	 			} else {
 	 				console.log(data);
 	 				var s3 = new AWS.S3();
@@ -105,7 +107,7 @@
 	 								//console.log(typeof(trailer_aws_url));
 	 								//console.log(typeof(trailer_aws_url.value));
 	 								results.innerHTML = '<input type="hidden" name="trailer_aws_url" id="trailer_aws_url" value="' + trailer_aws_url + '">'
-	 								document.getElementById('target').submit();
+	 								document.getElementById('inputform').submit();
 	 								clearInterval(timer);
 	 							} else {
 	 								alert("파일 업로드 중 문제가 발생했습니다. 다시 시도해 주세요.");
@@ -120,8 +122,39 @@
 	 			}
 	 		});
 	 	} else {
+	 	 	var trailer_name= inputform.trailer_name.value;
+	 	 	var trailer_title= inputform.trailer_title.value;
+	 	 	var trailer_price= inputform.trailer_price.value;
+	 	 	var trailer_launchdate= inputform.trailer_launchdate.value;
+	 	 	var trailer_detail= inputform.trailer_detail.value;
+	 	 	if (trailer_name == "" || trailer_name == null) {
+	 	         alert("상품 명 을 입력하지 않았습니다.");
+	 	         productform.product_title.focus();
+	 	         return false;
+	 	     }
+	 	 	if (trailer_title == "" || trailer_title == null) {
+	 	 		alert("제목 을 입력하지 않았습니다.");
+	 	 		productform.product_name.focus();
+	 	 		return false;
+	 	 	}
+	 	 	
+	 	 	if (trailer_price == "" || trailer_price == null) {
+	 	 		alert("가격 을 입력하지 않았습니다.");
+	 	 		productform.product_price.focus();
+	 	 		return false;
+	 	 	}
+	 	 	if (trailer_launchdate == "" || trailer_launchdate == null) {
+	 	 		alert("라이브 날짜 을 입력하지 않았습니다.");
+	 	 		productform.product_detail.focus();
+	 	 		return false;
+	 	 	}
+	 	 	if (trailer_detail == "" || trailer_detail == null) {
+	 	 		alert("상품 설명 을 정하지 않았습니다.");
+	 	 		productform.product_category.focus();
+	 	 		return false;
+	 	 	}
 	 		results.innerHTML = 'Nothing to upload.';
-	 		document.getElementById('target').submit();
+	 		document.getElementById('inputform').submit();
 	 	}
 	 }, false);
  </script>
