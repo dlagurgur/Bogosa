@@ -1,5 +1,6 @@
 package handler;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
@@ -71,8 +72,8 @@ public class Svc_pro{
 	@Resource
 	private Product_review_DBBean review_Dao;
 	
-//////////////////////////////////�쉶�썝 �쁺�뿭///////////////////////////////////////////////	
-	//�쉶�썝媛��엯
+//////////////////////////////////占쎌�띰옙�� 占쎌�븝옙肉�///////////////////////////////////////////////	
+	//占쎌�띰옙��揶�占쏙옙��
 	@RequestMapping("/svc_join_pro")
 	public ModelAndView UserInputProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
@@ -120,7 +121,7 @@ public class Svc_pro{
 	}
 	
 	
-	//�븘�씠�뵒 以묐났�솗�씤
+	//占쎈�占쎌��占쎈� 餓λ��э옙��占쎌��
 	@RequestMapping(value = "/idCheck.go", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public Map<Object, Object> idCheck(@RequestBody String user_id) {
@@ -135,15 +136,15 @@ public class Svc_pro{
 		return map;
 	}	
 	
-	//// Email �씤利�
+	//// Email 占쎌�ㅿ�占�
 	@RequestMapping("/emailCheck")
 	public ModelAndView EmailCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp �꽌踰�
-		String subject = "EmailCheck"; // 蹂대궡�뒗 �젣紐� �꽕�젙
-		String fromName = "Admin"; // 蹂대궡�뒗 �씠由� �꽕�젙
-		String from = "dlagurgur123@gmail.com"; // 蹂대궡�뒗 �궗�엺(援ш�怨꾩젙)
-		String authNum = Svc_pro.authNum(); // �씤利앸쾲�샇 �쐞�븳 �궃�닔 諛쒖깮遺�遺�
-		String content = "Number [" + authNum + "]"; // �씠硫붿씪 �궡�슜 �꽕�젙
+		String host = "smtp.gmail.com"; // smtp 占쎄�甕곤옙
+		String subject = "EmailCheck"; // 癰���沅∽옙�� 占쎌�ｏ�占� 占쎄�占쎌��
+		String fromName = "Admin"; // 癰���沅∽옙�� 占쎌���깍옙 占쎄�占쎌��
+		String from = "dlagurgur123@gmail.com"; // 癰���沅∽옙�� 占쎄�占쎌��(�닌�占썸�④쑴��)
+		String authNum = Svc_pro.authNum(); // 占쎌�ㅿ��몄쓰占쎌�� 占쎌��占쎈립 占쎄�占쎈�� 獄���源��븝옙�븝옙
+		String content = "Number [" + authNum + "]"; // 占쎌��筌�遺우�� 占쎄땀占쎌�� 占쎄�占쎌��
 		
 		String user_email=request.getParameter("email");
 
@@ -189,7 +190,7 @@ public class Svc_pro{
 		return new ModelAndView("svc/emailCheck");
 	}
 	
-	public static String authNum() { // �궃�닔諛쒖깮遺�遺�
+	public static String authNum() { // 占쎄�占쎈��獄���源��븝옙�븝옙
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i <= 4; i++) {
 			int num = (int) (Math.random() * 9 + 1);
@@ -198,19 +199,19 @@ public class Svc_pro{
 		return buffer.toString();
 	}
 	
-	//// �븘�씠�뵒 李얘린
+	//// 占쎈�占쎌��占쎈� 筌≪��由�
 	@RequestMapping("/EmailIdd")
 	public ModelAndView EmailIdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp �꽌踰�
-		String subject = "EmailCheck"; // 蹂대궡�뒗 �젣紐� �꽕�젙
-		String fromName = "Admin"; // 蹂대궡�뒗 �씠由� �꽕�젙
-		String from = "dlagurgur123@gmail.com"; // 蹂대궡�뒗 �궗�엺(援ш�怨꾩젙)
+		String host = "smtp.gmail.com"; // smtp 占쎄�甕곤옙
+		String subject = "EmailCheck"; // 癰���沅∽옙�� 占쎌�ｏ�占� 占쎄�占쎌��
+		String fromName = "Admin"; // 癰���沅∽옙�� 占쎌���깍옙 占쎄�占쎌��
+		String from = "dlagurgur123@gmail.com"; // 癰���沅∽옙�� 占쎄�占쎌��(�닌�占썸�④쑴��)
 		String email = request.getParameter("email2");
 		int result = userDao.EmailCheck(email);
 		if(result == 1) {
 		UserDataBean userDto = userDao.getUserEmailId(email);
 		String user_id = userDto.getUser_id();
-		String content = "�떦�떊�쓽 �븘�씠�뵒�뒗 [" + user_id + "]�엯�땲�떎"; // �씠硫붿씪 �궡�슜 �꽕�젙
+		String content = "占쎈��占쎈��占쎌�� 占쎈�占쎌��占쎈�占쎈�� [" + user_id + "]占쎌��占쎈�뀐옙��"; // 占쎌��筌�遺우�� 占쎄땀占쎌�� 占쎄�占쎌��
 		
 		request.setAttribute("email", email);
 
@@ -249,19 +250,19 @@ public class Svc_pro{
 		return new ModelAndView("svc/EmailIdd");
 	}
 	
-	/////鍮꾨�踰덊샇李얘린
+	/////��袁⑨옙甕곕����筌≪��由�
 	@RequestMapping("/EmailPasswdd")
 	public ModelAndView EmailPasswdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp �꽌踰�
-		String subject = "EmailCheck"; // 蹂대궡�뒗 �젣紐� �꽕�젙
-		String fromName = "Admin"; // 蹂대궡�뒗 �씠由� �꽕�젙
-		String from = "dlagurgur123@gmail.com"; // 蹂대궡�뒗 �궗�엺(援ш�怨꾩젙)
+		String host = "smtp.gmail.com"; // smtp 占쎄�甕곤옙
+		String subject = "EmailCheck"; // 癰���沅∽옙�� 占쎌�ｏ�占� 占쎄�占쎌��
+		String fromName = "Admin"; // 癰���沅∽옙�� 占쎌���깍옙 占쎄�占쎌��
+		String from = "dlagurgur123@gmail.com"; // 癰���沅∽옙�� 占쎄�占쎌��(�닌�占썸�④쑴��)
 		String email = request.getParameter("email2");
 		int result = userDao.EmailCheck(email);
 		if(result == 1) {
 		UserDataBean userDto = userDao.getUserEmailPasswd(email);
 		String user_passwd = userDto.getUser_pw();
-		String content = "�떦�떊�쓽 鍮꾨�踰덊샇�뒗 [" + user_passwd + "]�엯�땲�떎"; // �씠硫붿씪 �궡�슜 �꽕�젙
+		String content = "占쎈��占쎈��占쎌�� ��袁⑨옙甕곕����占쎈�� [" + user_passwd + "]占쎌��占쎈�뀐옙��"; // 占쎌��筌�遺우�� 占쎄땀占쎌�� 占쎄�占쎌��
 	
 		request.setAttribute("email", email);
 
@@ -304,7 +305,7 @@ public class Svc_pro{
 
 
 	
-	//濡쒓렇�씤 湲곕뒫
+	//嚥≪����占쎌�� 疫꿸���
 	@RequestMapping("/loginPro")
 	public ModelAndView Loginprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String user_id=request.getParameter("user_id");
@@ -321,7 +322,7 @@ public class Svc_pro{
 	}
 	
 	
-	//濡쒓렇�븘�썐
+	//嚥≪����占쎈�占쎌��
 	
 	@RequestMapping("/logout")
 	public ModelAndView LogoutProcess(HttpServletRequest request, HttpServletResponse response)
@@ -332,7 +333,7 @@ public class Svc_pro{
 		return new ModelAndView("svc/login");
 	}
 	
-	//�쑀�� �닔�젙
+	//占쎌��占쏙옙 占쎈��占쎌��
 	@RequestMapping("/updatePro")
 	public ModelAndView UserModifyprocess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
@@ -352,7 +353,7 @@ public class Svc_pro{
 		userDto.setUser_addr(request.getParameter("user_addr"));
 		userDto.setUser_addr2(request.getParameter("user_addr2"));
 		
-		// �쟾�솕踰덊샇
+		// 占쎌�억옙��甕곕����
 		String tel = null;
 		String tel1 = request.getParameter( "tel1" );
 		String tel2 = request.getParameter( "tel2" );
@@ -371,7 +372,7 @@ public class Svc_pro{
 	}
 	
 	
-	//�쑀�� �궘�젣
+	//占쎌��占쏙옙 占쎄�占쎌��
 	@RequestMapping("/deletePro")
 	public ModelAndView DeleteProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
@@ -397,7 +398,7 @@ public class Svc_pro{
 		
 	}
 	
-	///////////// 二쇰Ц 愿��젴 �쁺�뿭 //////////////////////////////////////
+	///////////// 雅��겆� �울옙占쎌�� 占쎌�븝옙肉� //////////////////////////////////////
 	
 	
 	@RequestMapping("/product_insert_pro")
@@ -410,11 +411,18 @@ public class Svc_pro{
 	
 	Product_DataBean product_dto = new Product_DataBean();
 	 
-	// �뙆�씪 �겕湲� 15MB濡� �젣�븳
+	// 占쎈��占쎌�� 占쎄�疫뀐옙 15MB嚥∽옙 占쎌�ｏ옙釉�
 	int sizeLimit = 1024*1024*15;
 	
 	@SuppressWarnings("deprecation")
 	String imagePath = request.getRealPath("menu_images");
+	
+	File dir = new File(imagePath);
+	
+	if (!dir.exists()) {
+		dir.mkdirs();
+	}
+	
 	
 	String filename = "";
 		
@@ -471,11 +479,18 @@ public class Svc_pro{
 	
 	Product_DataBean product_dto = new Product_DataBean();
 	 
-	// �뙆�씪 �겕湲� 15MB濡� �젣�븳
+	// 占쎈��占쎌�� 占쎄�疫뀐옙 15MB嚥∽옙 占쎌�ｏ옙釉�
 	int sizeLimit = 1024*1024*15;
 	
 	@SuppressWarnings("deprecation")
 	String imagePath = request.getRealPath("menu_images");
+	
+	File dir = new File(imagePath);
+	
+	if (!dir.exists()) {
+		dir.mkdirs();
+	}
+	
 	
 	String filename = "";
 		
@@ -595,7 +610,7 @@ public class Svc_pro{
 	
 	
 	
-	// �씪�씠釉� �삁怨� �럹�씠吏�
+	// 占쎌�わ옙����占� 占쎌���⑨옙 占쎈�뱄옙��筌�占�
 	
 	@RequestMapping("/trailer_insert_pro")
 	public ModelAndView trailer_insertProcess(HttpServletRequest request, HttpServletResponse response)
@@ -675,7 +690,7 @@ public class Svc_pro{
 		String c_content= request.getParameter("comment_content");
 		Comment_DataBean cmtDto = new Comment_DataBean();
 		if(c_content != null) {
-		cmtDto.setUser_id(user_id); // jsp�뿉�꽌 �엳�뱺�쑝濡� 媛��졇�삤硫대맖
+		cmtDto.setUser_id(user_id); // jsp占쎈�占쎄� 占쎌�놂옙諭븝옙��嚥∽옙 揶�占쏙옙議�占쎌�ㅿ���留�
 		cmtDto.setTrailer_id(Integer.parseInt(request.getParameter("trailer_id")));
 		cmtDto.setComment_content(c_content);
 		
@@ -700,7 +715,7 @@ public class Svc_pro{
 		return comment;
 	}
 
-	@RequestMapping(value = "/commentUpdate.go", method = RequestMethod.POST, produces = "application/json") // �뙎湲� �닔�젙
+	@RequestMapping(value = "/commentUpdate.go", method = RequestMethod.POST, produces = "application/json") // 占쎈��疫뀐옙 占쎈��占쎌��
 	@ResponseBody
 	private void commentUpdateProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
@@ -715,7 +730,7 @@ public class Svc_pro{
 		Comment_Dao.updateComment(cmtDto);
 	}
 
-	@RequestMapping(value = "/commentDelete.go", method = RequestMethod.POST) // �뙎湲� �궘�젣
+	@RequestMapping(value = "/commentDelete.go", method = RequestMethod.POST) // 占쎈��疫뀐옙 占쎄�占쎌��
 	@ResponseBody
 	private void commentDeleteProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int comment_id = Integer.parseInt(request.getParameter("comment_id"));
@@ -743,7 +758,7 @@ public class Svc_pro{
 		String c_content= request.getParameter("chat_content");
 		Product_chat_DataBean chatDto = new Product_chat_DataBean();
 		if(c_content != null) {
-		chatDto.setUser_id(user_id); // jsp�뿉�꽌 �엳�뱺�쑝濡� 媛��졇�삤硫대맖
+		chatDto.setUser_id(user_id); // jsp占쎈�占쎄� 占쎌�놂옙諭븝옙��嚥∽옙 揶�占쏙옙議�占쎌�ㅿ���留�
 		chatDto.setProduct_id(Integer.parseInt(request.getParameter("product_id")));
 		chatDto.setChat_content(c_content+"\r\n");
 		
@@ -786,6 +801,13 @@ public class Svc_pro{
 	
 	@SuppressWarnings("deprecation")
 	String imagePath = request.getRealPath("menu_images");
+	
+	File dir = new File(imagePath);
+	
+	if (!dir.exists()) {
+		dir.mkdirs();
+	}
+	
 	
 	String filename = "";
 		
@@ -843,7 +865,7 @@ public class Svc_pro{
 		return comment;
 	}
 
-	@RequestMapping(value = "/updateReview.go", method = RequestMethod.POST, produces = "application/json") // �뙎湲� �닔�젙
+	@RequestMapping(value = "/updateReview.go", method = RequestMethod.POST, produces = "application/json") // 占쎈��疫뀐옙 占쎈��占쎌��
 	@ResponseBody
 	private void updateReviewProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
@@ -858,7 +880,7 @@ public class Svc_pro{
 		review_Dao.updateReview(reviewDto);
 	}
 
-	@RequestMapping(value = "/deleteReview.go", method = RequestMethod.POST) // �뙎湲� �궘�젣
+	@RequestMapping(value = "/deleteReview.go", method = RequestMethod.POST) // 占쎈��疫뀐옙 占쎄�占쎌��
 	@ResponseBody
 	private void deleteReviewProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int review_id = Integer.parseInt(request.getParameter("review_id"));
