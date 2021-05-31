@@ -24,12 +24,12 @@
 		</div>
 		
 		<div class="form_field">
-			<label for="product_detail" class="col-sm-3 col-form-label text-center fs-5 p-2" style="color:white; background-color: #7f5cad00; width:120px;">상품 설명</label>
-			<textarea class="form-control" name="product_detail" id="product_detail" rows="10" cols="30" style="background-color: #cfc4d6;"></textarea>
+			<label for="product_detail" class="col-sm-3 col-form-label text-center fs-5 p-2 mb-1" style="color:white; background-color: #7f5cad; width:140px; border-radius:2rem;">상품 설명</label>
+			<textarea class="form-control my-2" name="product_detail" id="product_detail" rows="10" cols="30" style="background-color: #cfc4d6;"></textarea>
 		</div>
-		<div class="form__field">
-			
-			<select class="form-select mt-3" name="product_category" id="product_category" style="background-color: #cfc4d6;">
+		<div class="form__field m-1">
+			<p class="fs-6 m-2 text-center text-white p-1" style="width:120px;background-color: #7f5cad;border-radius: 1rem;">카테고리</p>
+			<select class="form-select" name="product_category" id="product_category" style="background-color: #cfc4d6; margin:auto; border-radius:2rem;">
 			<option selected>상품의 카테고리를 선택하세요</option>
 				<option value="1">가전디지털</option>
 				<option value="2">식품</option>
@@ -41,14 +41,16 @@
 			</select>
 		</div>
 		<div class="input-group mb-3">
-			<input type="file" class="form-control" name="product_image" id="product_image" accept=".gif, .jpg, .png, .jpeg" style="background-color: #cfc4d6;">
+			<p class="fs-6 m-2 text-center text-white p-1" style="width:120px;background-color: #7f5cad;border-radius: 1rem;">상품 이미지</p>
+			<input type="file"  class="form__input" name="product_image" id="product_image" accept=".gif, .jpg, .png, .jpeg" style="background-color: #cfc4d6;height:27px;border-radius: 1rem;margin: auto;">
 		</div>
+		
 		<input type="hidden" name="session" id="session" value="${user_id}" />
 		<input type="hidden" name="product_id" value="${product_id}" />
 		<input type="hidden" name="aws_url" id="aws_url" value="${userDto.a}">
 		<input type="hidden" name="user_charn" id="user_charn" value="${userDto.user_charn}">
 		<div class="form__field">
-			<button class="round-button" style="width: 250px; margin-left: 32%; height:35px" type="submit" >상품 등록</button>
+			<button class="round-button" style="width: 250px;margin-left: 32%;height: 50px;border-radius: 3rem;" type="submit" >상품 등록</button>
 		</div>
 	</form>
 	

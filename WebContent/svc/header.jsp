@@ -23,7 +23,8 @@
 	<script src="${project}script.js"></script>
 	<script src="${project}aws-sdk-2.897.0.min.js"></script>
 	<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
-
+	
+	
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- Jquery -->
