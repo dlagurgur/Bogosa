@@ -11,7 +11,7 @@
 		<div class="grid_container" style="margin:0 auto; width:60%;">
 		
 			<c:if test="${result eq 0}">
-	 			<h1 class="text-center text-dark" id="a">주문이력이 없습니다.</h1>
+	 			<h3 class="fs-4 my-4 text-center text-white">주문이력이 없습니다</h3>
 			</c:if>
 			<c:if test="${result ne 0}">
 			
