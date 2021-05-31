@@ -531,10 +531,12 @@ public class Svc_pro{
 		String trailer_id1=request.getParameter("trailer_id");
 		
 		if(trailer_id1==null) {
+			Product_Dao.product_chat_delete(product_id);
 			int result = Product_Dao.Product_off(product_id);
 			request.setAttribute("result", result);
 
 		}else {
+			Product_Dao.product_chat_delete(product_id);
 			Product_Dao.trailer_delete(trailer_id);
 			int result = Product_Dao.Product_off(product_id);
 			request.setAttribute("result", result);

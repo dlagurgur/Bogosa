@@ -237,6 +237,11 @@
 	</delete> 
 	
 	
+		<delete id="product_chat_delete" parameterType="int">
+		DELETE from product_chat WHERE product_id = #{product_id}
+	</delete> 
+	
+	
 	
 	
 		
