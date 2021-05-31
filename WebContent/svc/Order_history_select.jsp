@@ -31,13 +31,13 @@
 					<c:set var="count" value="${counts[i]}"/>
 					<c:set var="cusorder" value="${cusorderlist[i]}"/>
 							<tr class="clickableRow text-white" data-href="detailed_order_history.go?order_num=${cusorder.order_num}&order_date=${cusorder.order_date}">
-								<td scope="row">
+								<td class="py-3" scope="row">
 									${cusorder.order_num}
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								<fmt:formatDate value="${cusorder.order_date}" pattern="yyyy-MM-dd HH:mm"/>
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								${cusorder.product_name}
 								</td>
 							</tr>

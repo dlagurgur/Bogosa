@@ -35,16 +35,16 @@
 					<c:set var="count" value="${counts[i]}"/>
 					<c:set var="cusorder" value="${Produt_dto[i]}"/>
 							<tr class="clickableRow text-white" data-href="product_detail.go?product_id=${cusorder.product_id}">
-								<td scope="row">
+								<td class="py-3" scope="row">
 									${cusorder.product_id}
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								${cusorder.product_title}
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								${cusorder.product_name}
 								</td>
-								<td scope="row">
+								<td class="py-3" scope="row">
 								${cusorder.product_price}원
 								</td>
 							</tr>

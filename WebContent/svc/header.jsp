@@ -108,19 +108,21 @@
 			  padding: 1rem;
 			}
 			.form--login label {
-			  background-color: #1C1C1C;
+			  background-color: #7550e6;
 			  border-bottom-right-radius: 0;
 			  border-top-right-radius: 0;
 			  padding-left: 1.25rem;
 			  padding-right: 1.25rem;
+			  text-align: center;
 			}
 			.form--login input[type="text"],.form input[type="number"], .form--login input[type="password"] {
-			  background-color: #2E2E2E;
+			  background-color: #7c8288;
 			  border-bottom-left-radius: 0;
 			  border-top-left-radius: 0;
 			}
 			.form--login .form input[type="number"]:focus,input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
-			  background-color: #2E2E2E;
+			  background-color: ##7c8288;
+			  color:white;
 			}
 			
 			.form--login input[type="submit"] {
@@ -160,7 +162,7 @@
 			
 			
 			.form--login button[type="button"] {
-			  background-color: #AC58FA;
+			  background-color: #a26de1;
 			  color: #eee;
 			  font-weight: bold;
 			  text-transform: uppercase;
@@ -376,7 +378,7 @@
             
             <div class= "col-4">
               <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='login.go'" style="width: 95px;">Sign-in</button>  
-              <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='join.go'" style="background-color: #a26de1 width:95px;">Sign-up</button>
+              <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='join.go'" style="background-color: #a26de1; width:95px;">Sign-up</button>
             </div>
           </div>
         </nav>
@@ -486,8 +488,8 @@
         </div>
         
         <div class="col-4" >
-          <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='logout.go'" style="background-color: #a26de1;width: 95px;">LogOut</button>
-          <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='myPage.go'" style="width: 95px;">MyPage</button>  
+          <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='logout.go'" style="width: 95px;">LogOut</button>
+          <button class="btn btn-sm text-white round-button float-end mx-1" type="button" onclick="location='myPage.go'" style="width: 95px; background-color:#a26de1;">MyPage</button>  
         </div>
       </div>
     </nav>

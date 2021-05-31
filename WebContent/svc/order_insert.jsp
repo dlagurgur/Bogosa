@@ -10,7 +10,7 @@
 
 <!-- Descriptor Jumbotron -->
 		
-			<h1 class="fs-3 my-4 text-white text-center">주문서 작성</h1>
+			<h3 class="fs-4 my-4 text-center text-white">주문서 작성</h3>
 		
 		
 
@@ -37,8 +37,8 @@
 		<div class="form__field">
 			<label for="product_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">배송받을 주소</label>
 			<input class="form-control border-0 p-2" type="text" name="user_addr" id="user_addr"  value="${userDto.user_addr}" style="color:white;background-color: #cfc4d661;">
-			<input class="btn btn-md btn-secondary  p-2 border-0" type="button" onclick="sample4_execDaumPostcode()" value="주소 찾기" style="margin: 4px; margin-right=0px; background-color: #4a7b7b;">
-			<input class="btn btn-md btn-secondary  p-2 border-0" type="button" id="currentLocation" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')" value="현재 주소" style="margin: 4px; background-color: #4a7b7b;">
+			<input class="btn btn-md btn-secondary  p-2 border-0 round-button" type="button" onclick="sample4_execDaumPostcode()" value="주소 찾기" style="margin: 4px; margin-right=0px; background-color: #4a7b7b; height:40px">
+			<input class="btn btn-md btn-secondary  p-2 border-0 round-button" type="button" id="currentLocation" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')" value="현재 주소" style="margin: 4px; background-color: #4a7b7b; height:40px;">
 		</div>
 		<div class="form__field">
 			<label for="product_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">상세 주소</label>
@@ -50,7 +50,7 @@
 		</div>
 		
 		<div class="form__field">
-			<input class="btn btn-primary border-0" type="submit" value="주문 등록" style="width:250px; margin-left: 32%;">
+			<input class="btn btn-primary border-0" type="submit" value="주문 등록" style="width:250px; margin-left: 32%; border-radius:2rem;">
 		</div>
 	</form>
 	
