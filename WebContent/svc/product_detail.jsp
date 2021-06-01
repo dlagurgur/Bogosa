@@ -7,7 +7,7 @@
 	</div>
 	<div class="col-3">
 		<div class="col" style="display:inline-block; margin-left: 25px;">
-			<textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly style="height: 508px;width:100%;background-color: #886fd4;color:white;border:none; resize:none;"></textarea>
+			<textarea onkeyup="changeRGB()" id="aaaa" class="commentList" rows="10" cols="50" readonly style="height: 508px;width:100%;background-color: #4b3c65;color:white;border:none; resize:none;"></textarea>
 			<form class="form form--login" name="commentInsertForm" method="post">
 				<div class="form__field">
 					<input type="hidden" name="product_id" value="${Produt_dto.product_id}" />
@@ -27,7 +27,7 @@
 	<div>
 		<form id="12" action="product_detaile_delete.go" name="12" role="form" style="margin: 0 auto;">
 			<div class="form__field">
-				<label for="product_title" class="col-sm-3 col-form-label fs-4 px-3 py-0" style="color:white; border-radius:2rem; background-color:#7f5cad; width: 770px; border-radius:10px">${Produt_dto.product_title}</label>
+				<label for="product_title" class="col-sm-3 col-form-label fs-4 px-3 py-0" style="color:white; border-radius:2rem; background-color:#7f5cad; width: 60%; min_width:400px; border-radius:10px">${Produt_dto.product_title}</label>
 				<input class="text-center" type="text" id="aa" name="aa" readonly style="color:white;background-color: #ffffff00; width:120px">
 				<c:if test="${Produt_dto.user_id eq sessionScope.user_id}">
 					<input type="hidden" name="product_id" value="${Produt_dto.product_id}">
@@ -83,7 +83,7 @@
 				</div>
 				<div class="form__field">
 					<label for="nickname" class="col-sm-3 col-form-label" style="color:white;">가격</label>
-					<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}원" readonly>
+					<input style="color:white;" class="form__input" type="text" value="${Produt_dto.product_price}₩" readonly>
 				</div>
 			</div>
 		</form>
@@ -127,7 +127,8 @@
 	
  
 	<script>
-		setInterval(function ChennelViewCount() {
+	
+		function ChennelViewCount() {
 			AWS.config.update({
 				"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
 				"secretAccessKey": "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",
@@ -153,7 +154,9 @@
 					}
 					
 			});
-		}, 10000);
+		}
+		ChennelViewCount();
+		setInterval(ChennelViewCount, 10000);
 		//ajax
 		function commentInsert() { //댓글 등록 버튼 클릭시 
 			var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴

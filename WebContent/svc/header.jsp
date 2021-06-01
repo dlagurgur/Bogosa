@@ -117,7 +117,7 @@
 			  text-align: center;
 			}
 			.form--login input[type="text"],.form input[type="number"], .form--login input[type="password"] {
-			  background-color: #7c8288;
+			  background-color: #434344;
 			  border-bottom-left-radius: 0;
 			  border-top-left-radius: 0;
 			}
