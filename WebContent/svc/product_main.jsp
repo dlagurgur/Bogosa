@@ -50,28 +50,28 @@
 		<div class="container-fluid">
 			<div class="row">
 				<c:forEach var="menu" items="${menus}">
-					<div class="col-sm-4 d-flex justify-content-center">
-						<div class="card bg-black mt-4 mb-4" style="background-color: #151515; width: 362px;">
+					<div class="col-sm-3 d-flex justify-content-center">
+						<div class="card bg-black my-4" style="background-color: #151515; width: 362px;">
 							<input type="hidden" name="aws_url" id="aws_url" value="${menu.aws_url}" />
-							<video autoplay id="video-player" style="width: 360px; height: 270px;" muted="muted"></video>
+							<video autoplay id="video-player${menu.product_id}" style="width: 100%;" muted="muted"></video>
 							<div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;"> <b class="card-title" style="color:#D8D8D8;">${menu.product_name}</b>
 								<p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p> <a href="product_detail.go?product_id=${menu.product_id}" class="btn btn-danger stretched-link"> ON AIR </a>
 								<p class="card-text mt-4" style="color:#D8D8D8;">${menu.product_title}</p>
 							</div>
 						</div>
 					</div>
+					<script type="text/javascript">
+						var aws_url = $('#aws_url').val();
+						if (IVSPlayer.isPlayerSupported) {
+						  const player = IVSPlayer.create();
+						  player.attachHTMLVideoElement(document.getElementById('video-player${menu.product_id}'));
+						  player.load(aws_url);
+						  player.play();
+						}
+		</script>
 				</c:forEach>
 			</div>
 		</div>
 		
-		<script type="text/javascript">
-			var aws_url = $('#aws_url').val();
-			if (IVSPlayer.isPlayerSupported) {
-			  const player = IVSPlayer.create();
-			  player.attachHTMLVideoElement(document.getElementById('video-player'));
-			  player.load(aws_url);
-			  player.play();
-			}
-		</script>
 		
 		<%@include file="tail.jsp" %>

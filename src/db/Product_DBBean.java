@@ -93,6 +93,12 @@ public class Product_DBBean{
 		return session.delete("db.product_chat_delete", product_id);
 	}
 	
+	public int product_live_check(String user_id) {
+		int ssiba = session.selectOne("db.livecheck",user_id);
+		System.out.println(ssiba);
+		return session.selectOne("db.livecheck",user_id);
+	}
+	
 	
 	
 	
