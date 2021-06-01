@@ -185,6 +185,49 @@ function orderNow(product_id) {
 
 
 
+function product_insert_check(){
+	var product_title= productform.product_title.value;
+	var product_name= productform.product_name.value;
+	var product_price= productform.product_price.value;
+	var product_detail= productform.product_detail.value;
+	var product_category= productform.product_category.value;
+	if (product_title == "" || product_title == null) {
+        alert("제목을 입력하지 않았습니다.");
+        productform.product_title.focus();
+        return false;
+    }
+	if (product_name == "" || product_name == null) {
+		alert("상품 명을 입력하지 않았습니다.");
+		productform.product_name.focus();
+		return false;
+	}
+	
+	if (product_price == "" || product_price == null) {
+		alert("가격 을 입력하지 않았습니다.");
+		productform.product_price.focus();
+		return false;
+	}
+	if (product_detail == "" || product_detail == null) {
+		alert("상품 설명 을 입력하지 않았습니다.");
+		productform.product_detail.focus();
+		return false;
+	}
+	if (product_category == "상품의 카테고리를 선택하세요" || product_category == null) {
+		alert("카테고리 을 정하지 않았습니다.");
+		productform.product_category.focus();
+		return false;
+	}
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

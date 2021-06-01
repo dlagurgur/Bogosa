@@ -44,10 +44,10 @@ public class Svc_Form{
 	private Trailer_DBBean Trailer_Dao;
 	
 	
-	// �쉶�썝 媛��엯
+	// 회원 가입
 	@RequestMapping("/join")
 	public ModelAndView JoinProcess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		String result="�쉶�썝 媛��엯 �럹�씠吏��엯�땲�떎.";
+		String result="회원 가입 페이지입니다.";
 		request.setAttribute("result", result);
 		return new ModelAndView("svc/svc_join");
 	}
