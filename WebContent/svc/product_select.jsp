@@ -56,12 +56,12 @@
 		</div>
 
 	
-<script>
-	$(document).ready(function () {
-		$('.clickableRow').on('click', function (event) {
-			window.location = $(this).data('href');
+	<script>
+		$(document).ready(function () {
+			$('.clickableRow').on('click', function (event) {
+				window.location = $(this).data('href');
+			});
 		});
-	});
-</script>
-
-<%@include file="tail.jsp" %>
+	</script>
+	
+	<%@include file="tail.jsp" %>

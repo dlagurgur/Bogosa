@@ -23,10 +23,17 @@
 						</video>
 					</c:if>
 			        
+			        <input type=hidden name="showdate" value="${menu.trailer_launchdate}">
 			        <div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
 			          <b class="card-title" style="color:#D8D8D8;">${menu.trailer_name}</b>
 					  <p class="card-text" style="color:#D8D8D8;">${menu.trailer_price}원</p>
-					  <a  href="trailer_detail.go?trailer_id=${menu.trailer_id}" class="btn btn-primary stretched-link">라이브 예정일시 : ${menu.trailer_launchdate}</a>
+					  <a  href="trailer_detail.go?trailer_id=${menu.trailer_id}" class="btn btn-primary stretched-link">라이브 예정일시 : 
+					  <script>
+					 	var showdate = $("input[name=showdate]").val();
+					 	showdate = showdate.slice(0,16);
+					 	document.write(showdate);
+					  </script>
+					  </a>
 			        </div>
 			      </div>
 			    </div>

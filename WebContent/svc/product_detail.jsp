@@ -107,150 +107,150 @@
 		</div>
 	</div>
 
-<script type="text/javascript">
-	var Tawk_API = Tawk_API || {},
-		Tawk_LoadStart = new Date();
-	(function() {
-		var s1 = document.createElement("script"),
-			s0 = document.getElementsByTagName("script")[0];
-		s1.async = true;
-		s1.src = 'https://embed.tawk.to/60a75255b1d5182476bb0d70/1f66pj7ph';
-		s1.charset = 'UTF-8';
-		s1.setAttribute('crossorigin', '*');
-		s0.parentNode.insertBefore(s1, s0);
-	})();
-</script>	
+	<script type="text/javascript">
+		var Tawk_API = Tawk_API || {},
+			Tawk_LoadStart = new Date();
+		(function() {
+			var s1 = document.createElement("script"),
+				s0 = document.getElementsByTagName("script")[0];
+			s1.async = true;
+			s1.src = 'https://embed.tawk.to/60a75255b1d5182476bb0d70/1f66pj7ph';
+			s1.charset = 'UTF-8';
+			s1.setAttribute('crossorigin', '*');
+			s0.parentNode.insertBefore(s1, s0);
+		})();
+	</script>	
 	
 	
  
-<script>
-	setInterval(function ChennelViewCount() {
-		AWS.config.update({
-			"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
-			"secretAccessKey": "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",
-			"region": "us-east-1"
-		});
-		// AWS.config.loadFromPath('./config.json');
-		AWS.config.region = 'us-east-1'; // 리전
-		var ivs = new AWS.IVS();
-		var user_charn = $('#user_charn').val();
-		var params = {
-			'channelArn': user_charn
-		};
-		ivs.getStream(params, function(err, data) {
-			if(err) document.getElementById("aa").value = "방송 준비중" // an error occurred
-			
-			else 
-			var view_count = data.stream.viewerCount
-				if(view_count === undefined){
-					document.getElementById("aa").value = "방송 준비중"
-				}
-				else{
-					document.getElementById("aa").value = view_count + "명";
-				}
+	<script>
+		setInterval(function ChennelViewCount() {
+			AWS.config.update({
+				"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
+				"secretAccessKey": "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",
+				"region": "us-east-1"
+			});
+			// AWS.config.loadFromPath('./config.json');
+			AWS.config.region = 'us-east-1'; // 리전
+			var ivs = new AWS.IVS();
+			var user_charn = $('#user_charn').val();
+			var params = {
+				'channelArn': user_charn
+			};
+			ivs.getStream(params, function(err, data) {
+				if(err) document.getElementById("aa").value = "방송 준비중" // an error occurred
 				
-		});
-	}, 10000);
-	//ajax
-	function commentInsert() { //댓글 등록 버튼 클릭시 
-		var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-		CmtInsert(insertData); //Insert 함수호출(아래)
-	}
-	/////패팅 목록 
-	setInterval(function commentList() {
-			var product_id = $("input[name=product_id").val();
-			var SessionID = $("input[name=session]").val();
-			var user_id = $('#user_id').val();
-			$.ajax({
-				url: 'getProduct_chat.go',
-				type: 'get',
-				data: {
-					product_id: product_id
-				},
-				success: function(data) {
-					var commentView = '';
-					$.each(data, function(key, comment) {
-						if(user_id == comment.user_id) {
-							commentView += '방장' + comment.user_id + ' : ' + comment.chat_content;
-						} else {
-							commentView += comment.user_id + ' : ' + comment.chat_content;
-						}
-					});
-					$(".commentList").html(commentView);
-				},
-				error: function(error) {}
-			});
-		}, 500)
-		//채팅 등록
-	function CmtInsert(insertData) {
-		var product_id = $("input[name=product_id").val();
-		if(commentInsertForm.chat_content.value) {
-			$.ajax({
-				url: 'insertChat_comment.go',
-				type: 'post',
-				data: insertData,
-				success: function(data) {
-					if(data == 1) {
-						/*오류메세지 작성*/
-					} else {
-						/// commentList();
-						$('[name=chat_content]').val('');
+				else 
+				var view_count = data.stream.viewerCount
+					if(view_count === undefined){
+						document.getElementById("aa").value = "방송 준비중"
 					}
-				},
-				error: function(error) {
-					alert("error : " + error);
-				}
+					else{
+						document.getElementById("aa").value = view_count + "명";
+					}
+					
 			});
-		} else {
-			alert("채팅을 입력해주세요");
+		}, 10000);
+		//ajax
+		function commentInsert() { //댓글 등록 버튼 클릭시 
+			var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+			CmtInsert(insertData); //Insert 함수호출(아래)
 		}
-	}
-	var aws_url = $('#aws_url').val();
-	if(IVSPlayer.isPlayerSupported) {
-		const player = IVSPlayer.create();
-		player.attachHTMLVideoElement(document.getElementById('video-player'));
-		player.load(aws_url);
-		player.play();
-	}
+		/////패팅 목록 
+		setInterval(function commentList() {
+				var product_id = $("input[name=product_id").val();
+				var SessionID = $("input[name=session]").val();
+				var user_id = $('#user_id').val();
+				$.ajax({
+					url: 'getProduct_chat.go',
+					type: 'get',
+					data: {
+						product_id: product_id
+					},
+					success: function(data) {
+						var commentView = '';
+						$.each(data, function(key, comment) {
+							if(user_id == comment.user_id) {
+								commentView += '방장' + comment.user_id + ' : ' + comment.chat_content;
+							} else {
+								commentView += comment.user_id + ' : ' + comment.chat_content;
+							}
+						});
+						$(".commentList").html(commentView);
+					},
+					error: function(error) {}
+				});
+			}, 500)
+			//채팅 등록
+		function CmtInsert(insertData) {
+			var product_id = $("input[name=product_id").val();
+			if(commentInsertForm.chat_content.value) {
+				$.ajax({
+					url: 'insertChat_comment.go',
+					type: 'post',
+					data: insertData,
+					success: function(data) {
+						if(data == 1) {
+							/*오류메세지 작성*/
+						} else {
+							/// commentList();
+							$('[name=chat_content]').val('');
+						}
+					},
+					error: function(error) {
+						alert("error : " + error);
+					}
+				});
+			} else {
+				alert("채팅을 입력해주세요");
+			}
+		}
+		var aws_url = $('#aws_url').val();
+		if(IVSPlayer.isPlayerSupported) {
+			const player = IVSPlayer.create();
+			player.attachHTMLVideoElement(document.getElementById('video-player'));
+			player.load(aws_url);
+			player.play();
+		}
 
-</script>
-
-<%@include file="tail.jsp"%>
-
-<!-- /*
- 
-        var textarea = document.getElementById("messageWindow");
-        var webSocket = new WebSocket('ws://localhost:8787/Encore/broadcasting');
-        var inputMessage = document.getElementById('inputMessage');
-        var session = $('#session').val();
-    webSocket.onerror = function(event) {
-      onError(event)
-    };
-
-    webSocket.onopen = function(event) {
-      onOpen(event)
-    };
-
-    webSocket.onmessage = function(event) {
-      onMessage(event)
-    };
-
-    function onMessage(event) {
-        textarea.value += session + " :  "+ event.data + "\n";
-    }
-
-    function onOpen(event) {
-        textarea.value += "연결 성공\n";
-    }
-
-    function onError(event) {
-      alert(event.data);
-    }
-
-    function send() {
-        textarea.value += session + " :  " + inputMessage.value + "\n";
-        webSocket.send(inputMessage.value);
-        inputMessage.value = "";
-    }
-    
-    */ -->
+	</script>
+	
+	<%@include file="tail.jsp"%>
+	
+	<!-- /*
+	 
+	        var textarea = document.getElementById("messageWindow");
+	        var webSocket = new WebSocket('ws://localhost:8787/Encore/broadcasting');
+	        var inputMessage = document.getElementById('inputMessage');
+	        var session = $('#session').val();
+	    webSocket.onerror = function(event) {
+	      onError(event)
+	    };
+	
+	    webSocket.onopen = function(event) {
+	      onOpen(event)
+	    };
+	
+	    webSocket.onmessage = function(event) {
+	      onMessage(event)
+	    };
+	
+	    function onMessage(event) {
+	        textarea.value += session + " :  "+ event.data + "\n";
+	    }
+	
+	    function onOpen(event) {
+	        textarea.value += "연결 성공\n";
+	    }
+	
+	    function onError(event) {
+	      alert(event.data);
+	    }
+	
+	    function send() {
+	        textarea.value += session + " :  " + inputMessage.value + "\n";
+	        webSocket.send(inputMessage.value);
+	        inputMessage.value = "";
+	    }
+	    
+	    */ -->

@@ -35,10 +35,10 @@
 									${cusorder.order_num}
 								</td>
 								<td class="py-3" scope="row">
-								<fmt:formatDate value="${cusorder.order_date}" pattern="yyyy-MM-dd HH:mm"/>
+									<fmt:formatDate value="${cusorder.order_date}" pattern="yyyy-MM-dd HH:mm"/>
 								</td>
 								<td class="py-3" scope="row">
-								${cusorder.product_name}
+									${cusorder.product_name}
 								</td>
 							</tr>
 						</c:forEach>
@@ -49,17 +49,17 @@
 		</div>
 	</body>
 
-<script>
-$(document).ready(
-		function() {
-$('.clickableRow').on(
-		'click',
-		function(event) {
-			window.location=$(this).data('href');
-		}
+	<script>
+	$(document).ready(
+			function() {
+	$('.clickableRow').on(
+			'click',
+			function(event) {
+				window.location=$(this).data('href');
+			}
+		);
+	}
+			
 	);
-}
-		
-);
-</script>
-<%@include file="tail.jsp"%>
+	</script>
+	<%@include file="tail.jsp"%>
