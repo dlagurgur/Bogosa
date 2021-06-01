@@ -72,8 +72,8 @@ public class Svc_pro{
 	@Resource
 	private Product_review_DBBean review_Dao;
 	
-//////////////////////////////////占쎌�띰옙�� 占쎌�븝옙肉�///////////////////////////////////////////////	
-	//占쎌�띰옙��揶�占쏙옙��
+//////////////////////////////////회원 영역///////////////////////////////////////////////	
+//회원가입
 	@RequestMapping("/svc_join_pro")
 	public ModelAndView UserInputProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException {
@@ -121,7 +121,7 @@ public class Svc_pro{
 	}
 	
 	
-	//占쎈�占쎌��占쎈� 餓λ��э옙��占쎌��
+	//아이디 중복확인
 	@RequestMapping(value = "/idCheck.go", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public Map<Object, Object> idCheck(@RequestBody String user_id) {
@@ -136,15 +136,15 @@ public class Svc_pro{
 		return map;
 	}	
 	
-	//// Email 占쎌�ㅿ�占�
+////Email 인증
 	@RequestMapping("/emailCheck")
 	public ModelAndView EmailCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp 占쎄�甕곤옙
-		String subject = "EmailCheck"; // 癰���沅∽옙�� 占쎌�ｏ�占� 占쎄�占쎌��
-		String fromName = "Admin"; // 癰���沅∽옙�� 占쎌���깍옙 占쎄�占쎌��
-		String from = "dlagurgur123@gmail.com"; // 癰���沅∽옙�� 占쎄�占쎌��(�닌�占썸�④쑴��)
-		String authNum = Svc_pro.authNum(); // 占쎌�ㅿ��몄쓰占쎌�� 占쎌��占쎈립 占쎄�占쎈�� 獄���源��븝옙�븝옙
-		String content = "Number [" + authNum + "]"; // 占쎌��筌�遺우�� 占쎄땀占쎌�� 占쎄�占쎌��
+		String host = "smtp.gmail.com"; // smtp 서버
+		String subject = "EmailCheck"; // 보내는 제목 설정
+		String fromName = "Admin"; // 보내는 이름 설정
+		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
+		String authNum = Svc_pro.authNum(); // 인증번호 위한 난수 발생부분
+		String content = "Number [" + authNum + "]"; // 이메일 내용 설정
 		
 		String user_email=request.getParameter("email");
 
@@ -199,19 +199,19 @@ public class Svc_pro{
 		return buffer.toString();
 	}
 	
-	//// 占쎈�占쎌��占쎈� 筌≪��由�
+////아이디 찾기
 	@RequestMapping("/EmailIdd")
 	public ModelAndView EmailIdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp 占쎄�甕곤옙
-		String subject = "EmailCheck"; // 癰���沅∽옙�� 占쎌�ｏ�占� 占쎄�占쎌��
-		String fromName = "Admin"; // 癰���沅∽옙�� 占쎌���깍옙 占쎄�占쎌��
-		String from = "dlagurgur123@gmail.com"; // 癰���沅∽옙�� 占쎄�占쎌��(�닌�占썸�④쑴��)
+		String host = "smtp.gmail.com"; // smtp 서버
+		String subject = "EmailCheck"; // 보내는 제목 설정
+		String fromName = "Admin"; // 보내는 이름 설정
+		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
 		String email = request.getParameter("email2");
 		int result = userDao.EmailCheck(email);
 		if(result == 1) {
 		UserDataBean userDto = userDao.getUserEmailId(email);
 		String user_id = userDto.getUser_id();
-		String content = "占쎈��占쎈��占쎌�� 占쎈�占쎌��占쎈�占쎈�� [" + user_id + "]占쎌��占쎈�뀐옙��"; // 占쎌��筌�遺우�� 占쎄땀占쎌�� 占쎄�占쎌��
+		String content = "당신의 아이디는 [" + user_id + "]입니다"; // 이메일 내용 설정
 		
 		request.setAttribute("email", email);
 
@@ -250,19 +250,19 @@ public class Svc_pro{
 		return new ModelAndView("svc/EmailIdd");
 	}
 	
-	/////��袁⑨옙甕곕����筌≪��由�
+/////비밀번호찾기
 	@RequestMapping("/EmailPasswdd")
 	public ModelAndView EmailPasswdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "smtp.gmail.com"; // smtp 占쎄�甕곤옙
-		String subject = "EmailCheck"; // 癰���沅∽옙�� 占쎌�ｏ�占� 占쎄�占쎌��
-		String fromName = "Admin"; // 癰���沅∽옙�� 占쎌���깍옙 占쎄�占쎌��
-		String from = "dlagurgur123@gmail.com"; // 癰���沅∽옙�� 占쎄�占쎌��(�닌�占썸�④쑴��)
+		String host = "smtp.gmail.com"; // smtp 서버
+		String subject = "EmailCheck"; // 보내는 제목 설정
+		String fromName = "Admin"; // 보내는 이름 설정
+		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
 		String email = request.getParameter("email2");
 		int result = userDao.EmailCheck(email);
 		if(result == 1) {
 		UserDataBean userDto = userDao.getUserEmailPasswd(email);
 		String user_passwd = userDto.getUser_pw();
-		String content = "占쎈��占쎈��占쎌�� ��袁⑨옙甕곕����占쎈�� [" + user_passwd + "]占쎌��占쎈�뀐옙��"; // 占쎌��筌�遺우�� 占쎄땀占쎌�� 占쎄�占쎌��
+		String content = "당신의 비밀번호는 [" + user_passwd + "]입니다"; // 이메일 내용 설정
 	
 		request.setAttribute("email", email);
 
@@ -305,7 +305,7 @@ public class Svc_pro{
 
 
 	
-	//嚥≪����占쎌�� 疫꿸���
+	//로그인 기능
 	@RequestMapping("/loginPro")
 	public ModelAndView Loginprocess(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String user_id=request.getParameter("user_id");
@@ -322,7 +322,7 @@ public class Svc_pro{
 	}
 	
 	
-	//嚥≪����占쎈�占쎌��
+	//유저 수정
 	
 	@RequestMapping("/logout")
 	public ModelAndView LogoutProcess(HttpServletRequest request, HttpServletResponse response)
@@ -333,7 +333,7 @@ public class Svc_pro{
 		return new ModelAndView("svc/login");
 	}
 	
-	//占쎌��占쏙옙 占쎈��占쎌��
+	//유저 수정
 	@RequestMapping("/updatePro")
 	public ModelAndView UserModifyprocess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
@@ -353,7 +353,7 @@ public class Svc_pro{
 		userDto.setUser_addr(request.getParameter("user_addr"));
 		userDto.setUser_addr2(request.getParameter("user_addr2"));
 		
-		// 占쎌�억옙��甕곕����
+		// 전화번호
 		String tel = null;
 		String tel1 = request.getParameter( "tel1" );
 		String tel2 = request.getParameter( "tel2" );
@@ -372,7 +372,7 @@ public class Svc_pro{
 	}
 	
 	
-	//占쎌��占쏙옙 占쎄�占쎌��
+	//유저 삭제
 	@RequestMapping("/deletePro")
 	public ModelAndView DeleteProcess(HttpServletRequest request, HttpServletResponse response)
 			throws HandlerException{
@@ -398,7 +398,7 @@ public class Svc_pro{
 		
 	}
 	
-	///////////// 雅��겆� �울옙占쎌�� 占쎌�븝옙肉� //////////////////////////////////////
+	///////////// 주문 관련 영역 //////////////////////////////////////
 	
 	
 	@RequestMapping("/product_insert_pro")
@@ -411,7 +411,7 @@ public class Svc_pro{
 	
 	Product_DataBean product_dto = new Product_DataBean();
 	 
-	// 占쎈��占쎌�� 占쎄�疫뀐옙 15MB嚥∽옙 占쎌�ｏ옙釉�
+	// 파일 크기 15MB로 제한
 	int sizeLimit = 1024*1024*15;
 	
 	@SuppressWarnings("deprecation")
@@ -479,7 +479,7 @@ public class Svc_pro{
 	
 	Product_DataBean product_dto = new Product_DataBean();
 	 
-	// 占쎈��占쎌�� 占쎄�疫뀐옙 15MB嚥∽옙 占쎌�ｏ옙釉�
+	// 파일 크기 15MB로 제한
 	int sizeLimit = 1024*1024*15;
 	
 	@SuppressWarnings("deprecation")
@@ -610,7 +610,7 @@ public class Svc_pro{
 	
 	
 	
-	// 占쎌�わ옙����占� 占쎌���⑨옙 占쎈�뱄옙��筌�占�
+	// 라이브 예고 페이지
 	
 	@RequestMapping("/trailer_insert_pro")
 	public ModelAndView trailer_insertProcess(HttpServletRequest request, HttpServletResponse response)
