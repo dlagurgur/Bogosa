@@ -163,6 +163,7 @@
 			
 			
 			.form--login button[type="button"] {
+			  border:0px;
 			  background-color: #a26de1;
 			  color: #eee;
 			  font-weight: bold;
