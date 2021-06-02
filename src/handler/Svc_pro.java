@@ -162,7 +162,7 @@ public class Svc_pro{
 			props.put("mail.transport.protocol", "smtp");
 			props.put("mail.smtp.host", host);
 			props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-			props.put("mail.smtp.port", "587");
+			props.put("mail.smtp.port", "25");
 			props.put("mail.smtp.user", from);
 			props.put("mail.smtp.auth", "true");
 
@@ -221,7 +221,7 @@ public class Svc_pro{
 			props.put("mail.transport.protocol", "smtp");
 			props.put("mail.smtp.host", host);
 			props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-			props.put("mail.smtp.port", "587");
+			props.put("mail.smtp.port", "25");
 			props.put("mail.smtp.user", from);
 			props.put("mail.smtp.auth", "true");
 
@@ -272,7 +272,7 @@ public class Svc_pro{
 			props.put("mail.transport.protocol", "smtp");
 			props.put("mail.smtp.host", host);
 			props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-			props.put("mail.smtp.port", "587");
+			props.put("mail.smtp.port", "25");
 			props.put("mail.smtp.user", from);
 			props.put("mail.smtp.auth", "true");
 
