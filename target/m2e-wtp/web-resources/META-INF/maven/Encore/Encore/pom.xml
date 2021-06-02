@@ -6,10 +6,6 @@
   <packaging>war</packaging>
  
  <dependencies>
- <dependency> <groupId>com.amazonaws</groupId> <artifactId>aws-java-sdk-ses</artifactId> <version>1.11.490</version> </dependency>
-
- 
- 
   <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>

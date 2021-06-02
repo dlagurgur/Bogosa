@@ -139,7 +139,7 @@ public class Svc_pro{
 ////Email 인증
 	@RequestMapping("/emailCheck")
 	public ModelAndView EmailCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "email-smtp.ap-northeast-2.amazonaws.com"; // smtp 서버
+		String host = "smtp.gmail.com"; // smtp 서버
 		String subject = "EmailCheck"; // 보내는 제목 설정
 		String fromName = "Admin"; // 보내는 이름 설정
 		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
@@ -202,7 +202,7 @@ public class Svc_pro{
 ////아이디 찾기
 	@RequestMapping("/EmailIdd")
 	public ModelAndView EmailIdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "email-smtp.ap-northeast-2.amazonaws.com"; // smtp 서버
+		String host = "smtp.gmail.com"; // smtp 서버
 		String subject = "EmailCheck"; // 보내는 제목 설정
 		String fromName = "Admin"; // 보내는 이름 설정
 		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
@@ -253,7 +253,7 @@ public class Svc_pro{
 /////비밀번호찾기
 	@RequestMapping("/EmailPasswdd")
 	public ModelAndView EmailPasswdCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "email-smtp.ap-northeast-2.amazonaws.com"; // smtp 서버
+		String host = "smtp.gmail.com"; // smtp 서버
 		String subject = "EmailCheck"; // 보내는 제목 설정
 		String fromName = "Admin"; // 보내는 이름 설정
 		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
