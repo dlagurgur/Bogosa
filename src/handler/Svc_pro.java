@@ -148,7 +148,6 @@ public class Svc_pro{
 	    String HOST = "email-smtp.us-east-1.amazonaws.com";    
 		String user_email=request.getParameter("email");
 		String fromName = "Admin"; // 보내는 이름 설정
-		
 	    int PORT = 25;
 	    System.out.println(authNum);
 	    int result = userDao.EmailCheck(user_email);
@@ -157,21 +156,21 @@ public class Svc_pro{
 		request.setAttribute("result", result);
 	    
 	    
-	        Properties props = System.getProperties();
-	        props.put("mail.transport.protocol", "smtp");
-	        props.put("mail.smtp.port", PORT); 
-	        props.put("mail.smtp.auth", "true");
-	        props.put("mail.smtp.starttls.enable", "true");
+		Properties props = System.getProperties();
+    	props.put("mail.transport.protocol", "smtp");
+    	props.put("mail.smtp.port", PORT); 
+    	props.put("mail.smtp.starttls.enable", "true");
+    	props.put("mail.smtp.auth", "true");
 	        
 	        Session session = Session.getDefaultInstance(props);
 	        MimeMessage msg = new MimeMessage(session);
-	        InternetAddress[] address = { new InternetAddress(user_email) };
-	        System.out.println(address);
+	       
+	        
 	        msg.setFrom(new InternetAddress(FROM,MimeUtility.encodeText(fromName, "utf-8", "B")));
-	        msg.setRecipients(Message.RecipientType.TO, address);
+	        msg.setRecipient(Message.RecipientType.TO, new InternetAddress(user_email));
 	        msg.setSubject(SUBJECT);
 	        msg.setContent(BODY,"text/html; charset=utf-8");
-	        
+	       
 	        
 	        Transport transport = session.getTransport();
 
@@ -294,7 +293,6 @@ public class Svc_pro{
 	        Session session = Session.getDefaultInstance(props);
 	        MimeMessage msg = new MimeMessage(session);
 	        InternetAddress[] address = { new InternetAddress(email) };
-	        System.out.println(address);
 	        msg.setFrom(new InternetAddress(FROM,MimeUtility.encodeText(fromName, "utf-8", "B")));
 	        msg.setRecipients(Message.RecipientType.TO, address);
 	        msg.setSubject(SUBJECT);
