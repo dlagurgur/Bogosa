@@ -457,14 +457,29 @@ public class Svc_pro{
 	
 			
 		
-	
+		int check = Product_Dao.product_live_check(user_id);
+		if(check == 0) {
+			int result = Product_Dao.insertProduct(product_dto);
+			int tb_no = product_dto.getProduct_id();// tb_no
+			request.setAttribute("tb_no", tb_no);	
+			request.setAttribute("result", result);
+			request.setAttribute("check", check);	
 			
-		int result = Product_Dao.insertProduct(product_dto);
+			return new ModelAndView("svc/product_insert_pro");
+		}
+		else {
+			return new ModelAndView("svc/product_insertfail_pro");
+		}
+			
+		/*int result = Product_Dao.insertProduct(product_dto);
+		int check = Product_Dao.product_live_check(user_id);
 		int tb_no = product_dto.getProduct_id();// tb_no
 		request.setAttribute("tb_no", tb_no);	
 		
 		request.setAttribute("result", result);
+		request.setAttribute("check", check);
 		return new ModelAndView("svc/product_insert_pro");
+		*/
 	}
 	
 	

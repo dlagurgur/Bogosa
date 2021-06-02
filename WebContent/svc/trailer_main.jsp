@@ -11,14 +11,14 @@
 			  
 			  <c:forEach var="menu" items="${Trailer_dto}">
 			  
-			    <div class="col-sm-4 d-flex justify-content-center">
-			      <div class="card bg-black mt-4 mb-4" style="background-color: #151515; width: 362px;">
+			    <div class="col-sm-3 d-flex justify-content-center">
+			      <div class="card bg-black mt-5" style="background-color: #151515; width: 362px;">
 			       <c:if test="${menu.trailer_aws_url eq null}"> 
 						<img class="card-img-top img-fluid" src="menu_images/${menu.trailer_image}" alt="Menu Img" style="width: 360px; height: 270px;">
 					</c:if>
 					<!--  -->
 					<c:if test="${menu.trailer_aws_url ne null}">
-						<video id=video  class="video-js vjs-big-play-centered" style="width: 360px; height: 270px;" autoplay muted="muted">
+						<video id=video${menu.trailer_id}  class="video-js vjs-big-play-centered" style="width: 100%;" autoplay muted="muted">
     					<source src="${menu.trailer_aws_url}" type="application/x-mpegURL" >
 						</video>
 					</c:if>
@@ -37,15 +37,16 @@
 			        </div>
 			      </div>
 			    </div>
+			    <script type="text/javascript">
+				var player = videojs('video${menu.trailer_id}');
+				player.play();
+    </script>
 			    
 			  </c:forEach>
 			  
 			  </div>
 			</div>
 		
-	<script type="text/javascript">
-		var player = videojs('video');
-		player.play();
-    </script>
+	
 	
 <%@include file="tail.jsp"%>

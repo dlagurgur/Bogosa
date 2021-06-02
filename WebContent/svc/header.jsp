@@ -47,7 +47,7 @@
 			}
 			
 			body {
-			  background-color: #151515;
+			  background-color: black;
 			  color: #606468;
 			  font: 400 0.875rem/1.5 "Open Sans", sans-serif;
 			  margin: 0;
@@ -117,7 +117,7 @@
 			  text-align: center;
 			}
 			.form--login input[type="text"],.form input[type="number"], .form--login input[type="password"] {
-			  background-color: #7c8288;
+			  background-color: #434344;
 			  border-bottom-left-radius: 0;
 			  border-top-left-radius: 0;
 			}
@@ -324,6 +324,60 @@
 			    transition: all 0.125s ease-in 0s;
 			    cursor: pointer;
 			}
+			
+			.blind {
+				  position: absolute;
+				  overflow: hidden;
+				  margin: -1px;
+				  padding: 0;
+				  width: 1px;
+				  height: 1px;
+				  border: none;
+				  clip: rect(0, 0, 0, 0);
+				}
+				
+				.startRadio {
+				  display: inline-block;
+				  overflow: hidden;
+				  height: 40px;
+				  &:after {
+				    content: "";
+				    display: block;
+				    position: relative;
+				    z-index: 10;
+				    height: 40px;
+				    background: url("${project}img/star.png")
+				      repeat-x 0 0;
+				    background-size: contain;
+				    pointer-events: none;
+				  }
+				  &__box {
+				    position: relative;
+				    z-index: 1;
+				    float: left;
+				    width: 40px;
+				    height: 40px;
+				    cursor: pointer;
+				    input {
+				      opacity: 0 !important;
+				      height: 0 !important;
+				      width: 0 !important;
+				      position: absolute !important;
+				
+				      &:checked + .startRadio__img {
+				        background-color: #0084ff;
+				      }
+				    }
+				  }
+				  &__img {
+				    display: block;
+				    position: absolute;
+				    right: 0;
+				    width: 500px;
+				    height: 40px;
+				    pointer-events: none;
+				  }
+				}
 	        
     </style>
 
@@ -450,7 +504,15 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container-fluid" style="
       background-color: #47474c6e;">
-          <a class="navbar-brand fs-2 mr-5 ml-5 text-center" href="product_main.go?menu_category=0"><img
+ 
+                  <input type="checkbox" id="menuicon">
+                  <label for="menuicon" style="margin-left: 15px;">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </label>
+         
+          <a class="navbar-brand fs-2 mx-4 text-center" href="product_main.go?menu_category=0"><img
                src="${project}img/logo2.png" width="120px" height="60px"
               class="d-inline-block align-top"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -465,14 +527,7 @@
               <li class="nav-item mr-1">
                   <a class="nav-item text-white fw-bold" href="trailer_main.go">라이브 예정</a>
               </li>
-              <li class="nav-item mr-1" style="margin-left:30px; margin-right:30px;">
-                  <input type="checkbox" id="menuicon">
-                  <label for="menuicon">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                  </label>
-              </li>
+              
                   
           </ul>
           
