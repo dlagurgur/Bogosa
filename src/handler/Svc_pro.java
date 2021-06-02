@@ -138,55 +138,60 @@ public class Svc_pro{
 	
 ////Email 인증
 	@RequestMapping("/emailCheck")
-	public ModelAndView EmailCheckProcess(HttpServletRequest request, HttpServletResponse response) {
-		String host = "email-smtp.ap-northeast-2.amazonaws.com"; // smtp 서버
-		String subject = "EmailCheck"; // 보내는 제목 설정
-		String fromName = "Admin"; // 보내는 이름 설정
-		String from = "dlagurgur123@gmail.com"; // 보내는 사람(구글계정)
-		String authNum = Svc_pro.authNum(); // 인증번호 위한 난수 발생부분
-		String content = "Number [" + authNum + "]"; // 이메일 내용 설정
-		
+	public ModelAndView EmailCheckProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String FROM = "tlawogur328@naver.com";   // This has been verified on the Amazon SES setup
+	    String authNum = Svc_pro.authNum(); // 인증번호 위한 난수 발생부분
+	    String BODY = "Number [" + authNum + "]";
+	    String SUBJECT = "이메일 인증";
+	    String SMTP_USERNAME = "AKIAUUHFXRLVDISFQJ5A";
+	    String SMTP_PASSWORD = "BHxBDwQUuZ2WUt0tpjjLJ0RVedj+jpFY8axqBMpo7ZUZ"; 
+	    String HOST = "email-smtp.us-east-1.amazonaws.com";    
 		String user_email=request.getParameter("email");
-
-		System.out.println(authNum);
+		String fromName = "Admin"; // 보내는 이름 설정
 		
-		int result = userDao.EmailCheck(user_email);
-
-		request.setAttribute("authNum", authNum);
+	    int PORT = 25;
+	    System.out.println(authNum);
+	    int result = userDao.EmailCheck(user_email);
+	    request.setAttribute("authNum", authNum);
 		request.setAttribute("user_email", user_email);
 		request.setAttribute("result", result);
+	    
+	    
+	        Properties props = System.getProperties();
+	        props.put("mail.transport.protocol", "smtp");
+	        props.put("mail.smtp.port", PORT); 
+	        props.put("mail.smtp.auth", "true");
+	        props.put("mail.smtp.starttls.enable", "true");
+	        
+	        Session session = Session.getDefaultInstance(props);
+	        MimeMessage msg = new MimeMessage(session);
+	        InternetAddress[] address = { new InternetAddress(user_email) };
+	        msg.setFrom(new InternetAddress(FROM,MimeUtility.encodeText(fromName, "utf-8", "B")));
+	        msg.setRecipients(Message.RecipientType.TO, address);
+	        msg.setSubject(SUBJECT);
+	        msg.setContent(BODY,"text/html; charset=utf-8");
+	        
+	        
+	        Transport transport = session.getTransport();
 
-		try {
-			Properties props = new Properties();
-			props.put("mail.smtp.starttls.enable", "true");
-			props.put("mail.transport.protocol", "smtp");
-			props.put("mail.smtp.host", host);
-			props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-			props.put("mail.smtp.port", "25");
-			props.put("mail.smtp.user", from);
-			props.put("mail.smtp.auth", "true");
+	        try
+	        {
+	          
 
-			Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("dlagurgur123@gmail.com", "asd75311");
-				}
-			});
-
-			Message msg = new MimeMessage(mailSession);
-			InternetAddress[] address = { new InternetAddress(user_email) };
-			msg.setFrom(new InternetAddress(from, MimeUtility.encodeText(fromName, "utf-8", "B")));
-			msg.setRecipients(Message.RecipientType.TO, address);
-			msg.setSubject(subject);
-			msg.setSentDate(new java.util.Date());
-			msg.setContent(content, "text/html; charset=utf-8");
-
-			Transport.send(msg);
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+	            transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+	            transport.sendMessage(msg, msg.getAllRecipients());
+	            System.out.println("Email sent!");
+	            
+	        }
+	        catch (Exception ex) {
+	            System.out.println("The email was not sent.");
+	            System.out.println("Error message: " + ex.getMessage());
+	        }
+	        finally
+	        {
+	            transport.close();          
+	        }
+	    
 		return new ModelAndView("svc/emailCheck");
 	}
 	
