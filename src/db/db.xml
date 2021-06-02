@@ -329,18 +329,33 @@ values(chat_id, #{chat_content}, NOW(), #{user_id}, #{product_id})
 		
 	<!-- 검색 기능 -->
 	
-	<select id="findTripByKeyword" parameterType="String" resultType="db.Product_DataBean">
+	<select id="findProductByKeyword" parameterType="String" resultType="db.Product_DataBean">
 		SELECT * FROM product WHERE product_off=1 and product_detail LIKE CONCAT('%',#{keyword},'%')
 		
 	</select>
 	
-	<select id="findTripByUser" parameterType="String" resultType="db.Product_DataBean">
+	<select id="findProductByUser" parameterType="String" resultType="db.Product_DataBean">
 		select * from product where product_off=1 and user_id LIKE CONCAT('%',#{keyword},'%')
 	</select>
 	
 	
-	<select id="findTripTitle" parameterType="String" resultType="db.Product_DataBean">
+	<select id="findProductTitle" parameterType="String" resultType="db.Product_DataBean">
 		SELECT * FROM product WHERE product_off=1 and product_title LIKE CONCAT('%',#{keyword},'%')
+		
+	</select>
+	
+	<select id="findTrailerByKeyword" parameterType="String" resultType="db.Trailer_DataBean">
+		SELECT * FROM trailer WHERE trailer_detail LIKE CONCAT('%',#{keyword},'%')
+		
+	</select>
+	
+	<select id="findTrailerByUser" parameterType="String" resultType="db.Trailer_DataBean">
+		select * from trailer where user_id LIKE CONCAT('%',#{keyword},'%')
+	</select>
+	
+	
+	<select id="findTrailerTitle" parameterType="String" resultType="db.Trailer_DataBean">
+		SELECT * FROM trailer WHERE trailer_title LIKE CONCAT('%',#{keyword},'%')
 		
 	</select>
 	

@@ -27,7 +27,7 @@
 			<label for="product_detail" class="col-sm-3 col-form-label text-center fs-5 p-2 mb-1" style="color:white; background-color: #7f5cad; width:140px; border-radius:2rem;">상품 설명</label>
 			<textarea class="form-control my-2" name="product_detail" id="product_detail" rows="10" cols="30" style="background-color: #cfc4d6;"></textarea>
 		</div>
-		<div class="form__field m-1">
+		<div class="form__field">
 			<p class="fs-6 m-2 text-center text-white p-1" style="width:120px;background-color: #7f5cad;border-radius: 1rem;">카테고리</p>
 			<select class="form-select" name="product_category" id="product_category" style="background-color: #cfc4d6; margin:auto; border-radius:2rem;">
 			<option selected>상품의 카테고리를 선택하세요</option>
