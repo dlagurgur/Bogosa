@@ -4,261 +4,143 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./jquery-3.3.1.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
-		<link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
-   		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
-   			<script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
-<%@include file="header.jsp"%>
-	<script id="config1" src="${project}script.js"></script>
-<style>
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-[class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
-}
+<%@include file="header.jsp" %>
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  background-color: #151515;
-  color: #606468;
-  font: 400 0.875rem/1.5 "Open Sans", sans-serif;
-  margin: 0;
-  min-height: 100%;
-}
-
-a {
-  color: #eee;
-  outline: 0;
-  text-decoration: none;
-}
-a:focus, a:hover {
-  text-decoration: underline;
-}
-
-input {
-  border: 0;
-  color: inherit;
-  font: inherit;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-  -webkit-transition: background-color .3s;
-          transition: background-color .3s;
-}
-
-
-h3 {
-  border: 0;
-  color: inherit;
-  font: inherit;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-  -webkit-transition: background-color .3s;
-          transition: background-color .3s;
-}
-
-.site__container {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  padding: 3rem 0;
-}
-
-.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form input[type="number"] {
-  width: 100%;
-}
-.form--login {
-  color: #606468;
-}
-.form--login label,
-.form input[type="number"],
-.form--login input[type="text"],
-.form--login input[type="password"],
-.form--login input[type="submit"] {
-  border-radius: 0.25rem;
-  padding: 1rem;
-}
-.form--login label {
-  background-color: #1C1C1C;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-.form--login input[type="text"],.form input[type="number"], .form--login input[type="password"] {
-  background-color: #2E2E2E;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-}
-.form--login .form input[type="number"]:focus,input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
-  background-color: #2E2E2E;
-}
-
-.form--login input[type="submit"] {
-  background-color: #AC58FA;
-  color: #eee;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.form--login input[type="submit"]:focus, .form--login input[type="submit"]:hover {
-  background-color: #AC58FA;
-}
-.form__field {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 1rem;
-}
-.form__input {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-
-
-.form--login button[type="button"] {
-  border-radius: 0.15rem;
-  padding: 1rem;
-}
-
-.form button[type="button"] {
-  width: 100%;
-}
-
-
-
-.form--login button[type="button"] {
-  background-color: #AC58FA;
-  color: #eee;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.form--login button[type="button"]:focus, .form--login input[type="button"]:hover {
-  background-color: #AC58FA;
-}
-
-
-.align {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-.text--center {
-  text-align: center;
-}
-
-.grid__container {
-  margin: 0 auto;
-  max-width: 20rem;
-  width: 90%;
-}
-
-.card{
-background-color: bg-black;
-}
-</style>
-
-
-	</head>
-	<body style="
-    padding-top: 0px;
-">
-		
-		
-	
-			<div class="container-fluid">
-			<c:choose>
-				<c:when test="${count ne 0}">
-			  <div class="row">
-			  
-			  <c:forEach var="menu" items="${foundList}">
-			  
-			    <div class="col-sm-4 d-flex justify-content-center">
-			      <div class="card bg-black mt-4 mb-4" style="background-color: #151515; width: 362px;">
-			      <input type="hidden" name="aws_url" id="aws_url" value="${menu.aws_url}" /> 
-			        <video  autoplay id="video-player" style="width: 360px; height: 270px;" muted="muted"></video>
-			        <div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;">
-			          <b class="card-title" style="color:#D8D8D8;">${menu.product_name}</b>
-					  <p class="card-text" style="color:#D8D8D8;">${menu.product_price}원</p>
-					  <a  href="product_detail.go?product_id=${menu.product_id}" class="btn btn-primary stretched-link"> ON AIR </a>
-					  <p class="card-text" style="color:#D8D8D8;">${menu.product_title}</p>
-			        </div>
-			      </div>
-			    </div>
-			    
-			  </c:forEach>
-			  
-			  </div>
-	</c:when>
-	</c:choose>
+	<div class="container-fluid">
+		<c:choose>
+			<c:when test="${count*trailerCount eq 0}">
+				<h3 class="fs-4 my-4 text-center text-white">"${keyword}"로 검색된 결과가 없습니다.</h3>
+			</c:when>
+			<c:when test="${count*trailerCount ne 0}">
+				<div class="row">
+					<c:if test="${count eq 0}">
+						<h3 class="fs-4 m-4  text-white">"${keyword}" 로 검색된 라이브 방송이 없습니다.</h3>
+					</c:if>
+					<c:if test="${count ne 0}">
+						<h3 class="fs-4 m-4  text-white">"${keyword}" 로 검색된 라이브 방송입니다.</h3>
+						<hr>
+						<c:forEach var="menu" items="${foundList}">
+							<input type="hidden" id="user_charn${menu.product_id}" name="user_charn${menu.product_id}" value="${menu.user_charn}">
+							<div class="col-sm-3 d-flex justify-content-center">
+								<div class="card bg-black my-4" style="background-color: #151515; width: 362px;">
+									<input type="hidden" name="aws_url" id="aws_url" value="${menu.aws_url}" />
+									<video autoplay id="video-player${menu.product_id}" style="width: 100%; height:200px;" muted="muted"></video>
+									<img id="ready-image${menu.product_id}" src="${project}img/19-1.jpg" width="360px" height="200px">
+									<div class="card-body text-center font-weight-bold flex-fill p-1" style="background-color:#151515;">	<a href="product_detail.go?product_id=${menu.product_id}" class="btn btn-danger stretched-link p-0"> ON AIR </a>
+										<input class="text-center m-1" type="text" id="aa${menu.product_id}" name="aa${menu.product_id}" readonly style="color:white;background-color: #ffffff00; width:80px">
+										<hr class="m-1">
+										<div class="m-1">
+											<div class="row m-0">
+												<p class="card-text my-1 fs-6" style="color:#D8D8D8; text-align: initial;">${menu.product_title}</p>
+											</div>
+											<hr class="m-1">
+											<div class="row m-0">
+												<div class="col-4 px-0">
+													<img src="menu_images/${menu.product_image}" alt="Menu Img" style="width:100%; height:100px; margin:0 auto;">
+												</div>
+												<div class="col-8 px-4">
+													<p class="card-title fs-6" style="color:#D8D8D8; text-align:initial; margin-top:20px">${menu.product_name}</p>
+													<p class="card-text fs-6" style="color:#D8D8D8; text-align:initial; margin-top:15px">${menu.product_price}원</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<script type="text/javascript">
+								var aws_url = $('#aws_url').val();
+								if (IVSPlayer.isPlayerSupported) {
+								  const player = IVSPlayer.create();
+								  player.attachHTMLVideoElement(document.getElementById('video-player${menu.product_id}'));
+								  player.load(aws_url);
+								  player.play();
+								}
+								
+								function ChennelViewCount() {
+									
+									var ivs = new AWS.IVS();
+									var user_charn = $('#user_charn${menu.product_id}').val();
+									var params = {
+										'channelArn': user_charn
+									};
+									ivs.getStream(params, function(err, data) {
+										if(err) document.getElementById("aa${menu.product_id}").value = "방송 준비중" // an error occurred
+										
+										else 
+										var view_count = data.stream.viewerCount
+											if(view_count === undefined){
+												document.getElementById("aa${menu.product_id}").value = "방송 준비중"
+												$("#video-player${menu.product_id}").hide();
+												$("#ready-image${menu.product_id}").show();
+											}
+											else{
+												document.getElementById("aa${menu.product_id}").value = view_count + "명";
+												$("#video-player${menu.product_id}").show();
+												$("#ready-image${menu.product_id}").hide();
+											}
+											
+									});
+								}
+								ChennelViewCount();
+								setInterval(ChennelViewCount, 10000);
+								//ajax
+								function commentInsert() { //댓글 등록 버튼 클릭시 
+									var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+									CmtInsert(insertData); //Insert 함수호출(아래)
+								}
+							</script>
+						</c:forEach>
+					</c:if>
+				</div>
+				<hr class="m-0">
+				<div class="row">
+					<c:if test="${trailerCount eq 0}">
+						<h3 class="fs-4 m-4  text-white">"${keyword}" 로 검색된 라이브예고가 없습니다.</h3>
+					</c:if>
+					<c:if test="${trailerCount ne 0}">
+						<h3 class="fs-4 m-4  text-white">"${keyword}" 로 검색된 라이브예고 입니다.</h3>
+						<hr>
+						<c:forEach var="menu" items="${foundTrailerList}">
+							<div class="col-sm-3 d-flex justify-content-center">
+								<div class="card bg-black mt-5" style="background-color: #151515; width: 362px;">
+									<c:if test="${menu.trailer_aws_url eq null}">
+										<img class="card-img-top img-fluid" src="menu_images/${menu.trailer_image}" alt="Menu Img" style="width: 360px; height: 270px;">
+									</c:if>
+									<!--  -->
+									<c:if test="${menu.trailer_aws_url ne null}">
+										<video id=video${menu.trailer_id} class="video-js vjs-big-play-centered" style="width: 100%;" autoplay muted="muted">
+											<source src="${menu.trailer_aws_url}" type="application/x-mpegURL">
+										</video>
+									</c:if>
+									<input type=hidden name="showdate" value="${menu.trailer_launchdate}">
+									<div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;"> <b class="card-title" style="color:#D8D8D8;">${menu.trailer_name}</b>
+										<p class="card-text" style="color:#D8D8D8;">${menu.trailer_price}원</p> <a href="trailer_detail.go?trailer_id=${menu.trailer_id}" class="btn btn-primary stretched-link">라이브 예정일시 : 
+							  <script>
+							 	var showdate = $("input[name=showdate]").val();
+							 	showdate = showdate.slice(0,16);
+							 	document.write(showdate);
+							  </script>
+							  </a>
+									</div>
+								</div>
+							</div>
+							<script type="text/javascript">
+								var player = videojs('video${menu.trailer_id}');
+								player.play();
+							</script>
+						</c:forEach>
+					</c:if>
+				</div>
+			</c:when>
+		</c:choose>
 	</div>
-	
-	
-	
-	
-		
-		
-
-	</body>
-	
-	
-
-
-<script type="text/javascript">
-var aws_url = $('#aws_url').val();
-if (IVSPlayer.isPlayerSupported) {
-  const player = IVSPlayer.create();
-  player.attachHTMLVideoElement(document.getElementById('video-player'));
-  player.load(aws_url);
-  player.play();
-}
-  </script>
-  
-
-
- 
-</html> 
+	<script>
+		AWS.config.update({
+					"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
+					"secretAccessKey": "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",
+					"region": "us-east-1"
+				});
+				// AWS.config.loadFromPath('./config.json');
+				AWS.config.region = 'us-east-1'; // 리전
+	</script>
+<%@include file="tail.jsp" %>

@@ -56,7 +56,7 @@
 				<div class="input-group">
 					<input type="hidden" name="trailer_id" value="${Trailer_dto.trailer_id}" />
 					<input type="hidden" name="session" value="${sessionScope.user_id}" />
-					<input type="text" class="form-control text-white" id="comment_content" name="comment_content" placeholder="댓글" style="border-radius:1rem;"> <span class="input-group-btn">
+					<input type="text" class="form-control " id="comment_content" name="comment_content" placeholder="댓글" style="color:black; border-radius:1rem;"> <span class="input-group-btn">
 							<button class="btn btn-default text-white p-0 m-2" type="button"
 								onclick="commentInsert()">Enter</button>
 						</span>

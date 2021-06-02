@@ -55,19 +55,19 @@ public class Product_DBBean{
 	
 	
 	
-	public List<Product_DataBean> findTripByKeyword(String keyword) {
-		return session.selectList("db.findTripByKeyword", keyword);
+	public List<Product_DataBean> findProductByKeyword(String keyword) {
+		return session.selectList("db.findProductByKeyword", keyword);
 	}
 	
 	
 	
-	public List<Product_DataBean> findTripByUser(String keyword) {
-		return session.selectList("db.findTripByUser", keyword);
+	public List<Product_DataBean> findProductByUser(String keyword) {
+		return session.selectList("db.findProductByUser", keyword);
 	}
 	
 	
-	public List<Product_DataBean> findTripTitle(String keyword) {
-		return session.selectList("db.findTripTitle", keyword);
+	public List<Product_DataBean> findProductTitle(String keyword) {
+		return session.selectList("db.findProductTitle", keyword);
 	}
 	
 	
