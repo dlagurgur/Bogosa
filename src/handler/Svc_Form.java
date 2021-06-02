@@ -378,22 +378,33 @@ public class Svc_Form{
 			
 			//set List
 			List<Product_DataBean> foundList;
+			List<Trailer_DataBean> foundTrailerList;
 			
-			//find trips for each type
+			//find Products for each type
 			if(selectedType.equals("name")) {
-				foundList=Product_Dao.findTripByUser(keyword);
+				foundList=Product_Dao.findProductByUser(keyword);
+				foundTrailerList=Trailer_Dao.findTrailerByUser(keyword);
 			}else if(selectedType.equals("title")) {
-				foundList=Product_Dao.findTripTitle(keyword);
+				foundList=Product_Dao.findProductTitle(keyword);
+				foundTrailerList=Trailer_Dao.findTrailerTitle(keyword);
 			}else {
-				foundList=Product_Dao.findTripByKeyword(keyword);
+				foundList=Product_Dao.findProductByKeyword(keyword);
+				foundTrailerList=Trailer_Dao.findTrailerByKeyword(keyword);
 			}
 			
 			int count=0;
+			int trailerCount=0;
 			if(foundList.size()>0) {
 				count=foundList.size();
 			}
+			if(foundTrailerList.size()>0) {
+				trailerCount=foundTrailerList.size();
+			}
 			request.setAttribute("count", count);
+			request.setAttribute("trailerCount", trailerCount);
 			request.setAttribute("foundList", foundList);
+			request.setAttribute("foundTrailerList", foundTrailerList);
+			request.setAttribute("keyword", keyword);
 			return new ModelAndView("svc/foundList");
 		}
 		

@@ -393,9 +393,17 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div class="container-fluid" style="
           background-color: #47474c6e;">
-              <a class="navbar-brand fs-2 mr-5 ml-5 text-center" href="product_main.go?menu_category=0"><img
-                  src="${project}img/logo2.png" width="120px" height="60px"
-                  class="d-inline-block align-top">&nbsp;&nbsp;</a>
+          
+          <input type="checkbox" id="menuicon">
+                  <label for="menuicon" style="margin-left: 15px;">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </label>
+                  
+              <a class="navbar-brand fs-2 mx-4 text-center" href="product_main.go?menu_category=0"><img
+               src="${project}img/logo2.png" width="120px" height="60px"
+              class="d-inline-block align-top"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -408,14 +416,7 @@
                   <li class="nav-item mr-1">
                       <a class="nav-item text-white fw-bold" href="trailer_main.go">라이브 예정</a>
                   </li>
-                  <li class="nav-item mr-1" style="margin-left:30px;">
-                      <input type="checkbox" name="" id="menuicon">
-                      <label for="menuicon">
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                      </label>
-                  </li> 
+                  
                    
               </ul>
               
@@ -449,6 +450,10 @@
                   </div>
                   <!-- 사이드바 메뉴목록1 -->
                   <ul class="list-group list-group-flush">
+                 	  <li class="list-group-item text-white">
+                          <a class="text-white p-3" href="product_main.go?menu_category=0">전체 상품</a>
+                      </li>
+                  
                       <li class="list-group-item text-white">
                           <a class="text-white p-3" href="product_main.go?menu_category=1">가전디지털</a>
                       </li>
@@ -563,6 +568,9 @@
                 </div>
                 <!-- 사이드바 메뉴목록1 -->
                 <ul class="list-group list-group-flush">
+                	<li class="list-group-item text-white">
+                        <a class="text-white p-3" href="product_main.go?menu_category=0">전체 상품</a>
+                    </li>
                     <li class="list-group-item text-white">
                         <a class="text-white p-3" href="product_main.go?menu_category=1">가전디지털</a>
                     </li>

@@ -56,4 +56,19 @@ public class Trailer_DBBean{
 		return session.selectOne("db.detailTrailer", trailer_id);
 	}
 	
+	public List<Trailer_DataBean> findTrailerByKeyword(String keyword) {
+		return session.selectList("db.findTrailerByKeyword", keyword);
+	}
+	
+	
+	
+	public List<Trailer_DataBean> findTrailerByUser(String keyword) {
+		return session.selectList("db.findTrailerByUser", keyword);
+	}
+	
+	
+	public List<Trailer_DataBean> findTrailerTitle(String keyword) {
+		return session.selectList("db.findTrailerTitle", keyword);
+	}
+	
 }
