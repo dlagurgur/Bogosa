@@ -219,147 +219,73 @@ h3 {
 </head>
 
 <body class="align" style="padding-top: 20px;margin-right: 160px; color:white;">
-
-  
-  <div class="site__container">
-
-    <div class="grid__container">
-    <h1 style="
-    padding-left: 160px;
-    padding-bottom: 20px;
-">Sign Up</h1>
-	<form class="form form--login" name="joinform" method="post" role="form" action="svc_join_pro.go" onsubmit="return inputcheck()" style="
-    width: 440px;">
-      
-
-        <div class="form__field">
-          <label class="fontawesome-user" for="login__username"><span class="hidden">UserID</span></label>
-          
-          <input style="color:white;" type="text" name="user_id" maxlength="20" class="form__input" id="id_val" placeholder="UserID" maxlength="20" required autofocus onkeyup="IdCheck()">
-						
-					
-        </div>
-			<h4  id="IdCheckMessagegg"></h4>
-        
-        
-        
-        <div class="form__field">
-          <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
-          
-          	<input style="color:white;" type="password" class="form__input" id="userPassword1" name="user_pw" maxlength="20" placeholder="Password" maxlength="30" required
-						onkeyup="passwordCheckFunction()">
- 
-        </div>
-        
-        <div class="form__field">
-          <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
-          <input style="color:white;" type="password" class="form__input" id="userPassword2"
-						placeholder="RePassowrd" name="repasswd" maxlength="20" required 
-							onkeyup="passwordCheckFunction()">
-        </div>
-        <h4 style="color: red;" id="passwordCheckMessage"></h4>
-        
-        
-        
-        
-        <div class="form__field">
-          <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          <input style="color:white; "type="text" class="form__input" name="user_name" id="user_name" placeholder="Name" required>
-        </div>
-        
-        <br>
-
-					<div class="col-sm-10">
-					<label class="form-check-label" for="gridRadios1" style="color:white;padding-right: 78px; padding-left:78px;"> 기업</label>&nbsp;&nbsp;	
-						<input class="form__input" type="radio" name="user_corp"
-								id="gridRadios1" value="1" checked > 
-								
-								&nbsp;&nbsp;&nbsp;
-						<label class="form-check-label" for="gridRadios2" style="color:white;padding-right: 78px; padding-left:78px;">일반 </label>&nbsp;&nbsp;
-							<input class="form__input" type="radio" name="user_corp"
-								id="gridRadios2" value="2"> 
-						
-					</div>
-				
-			<br>
-			<br>
-			
-        <div class="form__field">
-        <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          <input style="color:white;" name="user_addr" id="user_add" type="text" class="form__input" placeholder="Address" required>
-          	 
-       
-         &nbsp;&nbsp;&nbsp; <button class="form__input" type="button" onclick="sample4_execDaumPostcode()">주소찾기</button>
-    
-        			
-        </div>
-         
-        
-        <div class="form__field">
-          <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          <input style="color:white;" id="cus_address2" name="user_addr2" type="text" class="form__input" placeholder="Detailed Address" required>
-        </div>
-        
-        
-        
-        
-        
-        <div class="form__field">
-          <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          <input style="color:white;" id="user_email"  name="user_email" type="text" class="form__input" placeholder="Email" required>
-        </div>
-        
-      					<div class="form__field">
- 								<button type="button" onclick="emailAuthentic()" value="이메일인증">이메일인증</button>
-								<input type="hidden" id="ccccc" name="confirm" value="0">
-							</div>
-						
-        
-        
-        <div class="form__field">
-								<input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel1" id="cus_tel1" 
-								maxlength="3" placeholder="Phone" required>
-								-
-								<input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel2" id="cus_tel2" maxlength="4" placeholder="Phone" required>
-								-
-								<input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel3" id="cus_tel3" maxlength="4" placeholder="Phone" required>						
-			</div>
-			
-			
-			
-					<div class="form__field">
- 								<button type="button" class="btn btn-md btn-secondary" onclick="AWScheck()">방송 채널 생성</button>
-								<input type="hidden" id="a" name="a" >
-								<input type="hidden" id="b" name="b" >
-								<input type="hidden" id="c" name="c" >
-								<input type="hidden" id="user_charn" name="user_charn" >
-		</div>		
-			
-			
-			<div class="form__field">
-		
-		
-		
-			
-			
-	
-		
-     <input type="submit" value="회원 가입">&nbsp;	&nbsp;			
-       <button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='login.go'">취소</button>
-
-</div>
-
-
-
-      </form>
-    </div>
-
-  </div>
-
-
+   <div class="site__container">
+      <div class="grid__container">
+         <h1 style="padding-left: 160px;padding-bottom: 20px;">Sign Up</h1>
+         <form class="form form--login" name="joinform" method="post" role="form" action="svc_join_pro.go" onsubmit="return inputcheck()" style="width: 440px;">
+            <div class="form__field">
+               <label class="fontawesome-user" for="login__username"><span class="hidden">UserID</span></label>
+               <input style="color:white;" type="text" name="user_id" maxlength="20" class="form__input" id="id_val" placeholder="UserID" maxlength="20" required autofocus onkeyup="IdCheck()">
+            </div>
+            <h4  id="IdCheckMessagegg"></h4>
+            <div class="form__field">
+               <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
+               <input style="color:white;" type="password" class="form__input" id="userPassword1" name="user_pw" maxlength="20" placeholder="Password" maxlength="30" required onkeyup="passwordCheckFunction()">
+            </div>
+            <div class="form__field">
+               <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
+               <input style="color:white;" type="password" class="form__input" id="userPassword2"placeholder="RePassowrd" name="repasswd" maxlength="20" required onkeyup="passwordCheckFunction()">
+            </div>
+            <h4 style="color: red;" id="passwordCheckMessage"></h4>
+            <div class="form__field">
+               <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
+               <input style="color:white; "type="text" class="form__input" name="user_name" id="user_name" placeholder="Name" required>
+            </div>
+            <br>
+            <div class="col-sm-10">
+               <label class="form-check-label" for="gridRadios1" style="color:white;padding-right: 78px; padding-left:78px;"> 기업</label>&nbsp;&nbsp;	
+               <input class="form__input" type="radio" name="user_corp" id="gridRadios1" value="1" checked > 
+               &nbsp;&nbsp;&nbsp;
+               <label class="form-check-label" for="gridRadios2" style="color:white;padding-right: 78px; padding-left:78px;">일반 </label>&nbsp;&nbsp;
+               <input class="form__input" type="radio" name="user_corp" id="gridRadios2" value="2"> 
+            </div>
+            <br>
+            <br>
+            <div class="form__field">
+               <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
+               <input style="color:white;" name="user_addr" id="user_add" type="text" class="form__input" placeholder="Address" required>
+               &nbsp;&nbsp;&nbsp; <button class="form__input" type="button" onclick="sample4_execDaumPostcode()">주소찾기</button>
+            </div>
+            <div class="form__field">
+               <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
+               <input style="color:white;" id="cus_address2" name="user_addr2" type="text" class="form__input" placeholder="Detailed Address" required>
+            </div>
+            <div class="form__field">
+               <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
+               <input style="color:white;" id="user_email"  name="user_email" type="text" class="form__input" placeholder="Email" required>
+            </div>
+            <div class="form__field">
+               <button type="button" onclick="emailAuthentic()" value="이메일인증">이메일인증</button>
+               <input type="hidden" id="ccccc" name="confirm" value="0">
+            </div>
+            <div class="form__field">
+               <input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel1" id="cus_tel1" maxlength="3" placeholder="Phone" required>-<input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel2" id="cus_tel2" maxlength="4" placeholder="Phone" required>-<input style="color:white;" type="text" style="width:100px;" class="form__input" name="cus_tel3" id="cus_tel3" maxlength="4" placeholder="Phone" required>						
+            </div>
+            <div class="form__field">
+               <button type="button" class="btn btn-md btn-secondary" onclick="AWScheck()">방송 채널 생성</button>
+               <input type="hidden" id="a" name="a" >
+               <input type="hidden" id="b" name="b" >
+               <input type="hidden" id="c" name="c" >
+               <input type="hidden" id="user_charn" name="user_charn" >
+            </div>
+            <div class="form__field">
+               <input type="submit" value="회원 가입">&nbsp;	&nbsp;			
+               <button type="button" class="btn btn-lg btn-secondary btn-block" onclick="location='login.go'">취소</button>
+            </div>
+         </form>
+      </div>
+   </div>
 </body>
-
-</html>
 <script>
 
 
@@ -427,3 +353,4 @@ function sample4_execDaumPostcode() {  //다음 주소 api
     }).open();
 }
 </script>
+</html>

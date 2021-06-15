@@ -20,7 +20,7 @@
 				</ol>
 				<div class="carousel-inner" style="height: 400px; width: 100%;">
 					<div class="carousel-item active">
-						<img class="d-block h-75 newTrex" src="${project}img/4.jpg" alt="First Slide">
+						<img class="d-block h-75 newTrex" src="${project}img/banner.png" alt="First Slide">
 					</div>
 					<div class="carousel-item">
 						<img class="d-block h-75" src="${project}img/2.jpg" alt="Second Slide">
