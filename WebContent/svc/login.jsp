@@ -195,8 +195,10 @@ h3 {
 <c:if test="${sessionScope.user_id eq null}">	  
 <body class="align" style="padding-top: 100px;margin-right: 40px;">
 
-  <div class="site__container">
-
+  <div class="site__container" style="padding-bottom:9rem;">
+	<div class="grid__container">
+	<img alt="" src="${project}img/logo2.png" style="width:370px;'">
+	</div>
     <div class="grid__container">
 	<form class="form form--login" method="post" role="form" action="loginPro.go" name="loginform" onsubmit="return logincheck()" style="
     width: 380px;">

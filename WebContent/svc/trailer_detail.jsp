@@ -7,9 +7,17 @@
 <body onload="commentList()">
 	<div class="container">
 		<div class="row my-4" style="margin:0 auto;">
-			<video id=video class="video-js vjs-big-play-centered" controls>
-				<source src="${Trailer_dto.trailer_aws_url}" type="application/x-mpegURL">
-			</video>
+						 
+			<c:if test="${Trailer_dto.trailer_aws_url eq null}">
+			<div>
+				<img class="rounded mx-auto d-block my-5" src="menu_images/${Trailer_dto.trailer_image}" alt="Menu Img" style="width:950px; height:auto;">
+			</div>	
+			</c:if>
+			<c:if test="${Trailer_dto.trailer_aws_url ne null}">
+				<video id=video class="video-js vjs-big-play-centered" controls>
+					<source src="${Trailer_dto.trailer_aws_url}" type="application/x-mpegURL">
+				</video>
+			</c:if>
 			<h1 class="fs-3 my-3 p-0 text-white" style="width:960px; margin:0 auto;">${Trailer_dto.trailer_name}
 		</h1>
 			<input type=hidden name="showdate" value="${Trailer_dto.trailer_launchdate}">

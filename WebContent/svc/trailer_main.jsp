@@ -15,15 +15,15 @@
 						</c:if>
 						<!--  -->
 						<c:if test="${menu.trailer_aws_url ne null}">
-							<video id=video${menu.trailer_id} class="video-js vjs-big-play-centered" style="width: 100%;" autoplay muted="muted">
+							<video id=video${menu.trailer_id} class="video-js vjs-big-play-centered" style="width: 100%;" loop autoplay muted="muted">
 								<source src="${menu.trailer_aws_url}" type="application/x-mpegURL">
 							</video>
 						</c:if>
-						<input type=hidden name="showdate" value="${menu.trailer_launchdate}">
+						<input type=hidden name="showdate${menu.trailer_id}" value="${menu.trailer_launchdate}">
 						<div class="card-body text-center font-weight-bold flex-fill" style="background-color:#151515;"> <b class="card-title" style="color:#D8D8D8;">${menu.trailer_name}</b>
 							<p class="card-text" style="color:#D8D8D8;">${menu.trailer_price}원</p> <a href="trailer_detail.go?trailer_id=${menu.trailer_id}" class="btn btn-primary stretched-link">라이브 예정일시 : 
 						  <script>
-						 	var showdate = $("input[name=showdate]").val();
+						 	var showdate = $("input[name=showdate${menu.trailer_id}]").val();
 						 	showdate = showdate.slice(0,16);
 						 	document.write(showdate);
 						  </script>
