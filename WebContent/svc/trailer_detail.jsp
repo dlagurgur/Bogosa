@@ -50,7 +50,7 @@
 				</div>				
 				<div class="form_field">
 					<label for="nickname" class="col-sm-3 col-form-label text-center fs-5 p-2 mb-1" style="color:white; background-color: #7550e6; width:140px; border-radius:2rem;">라이브 소개</label>
-					<textarea class="form-control mb-3 text-white border-0 mt-2" name="trailer_detail" id="trailer_detail" rows="10" cols="30" style="background-color: #7c8288; border-radius:1rem;" readonly>${Trailer_dto.trailer_detail}</textarea>
+					<textarea class="form-control mb-3 text-white border-0 mt-2" name="trailer_detail" id="trailer_detail" rows="10" cols="30" style="background-color: #7c8288; border-radius:1rem; resize:none;" readonly>${Trailer_dto.trailer_detail}</textarea>
 				</div>
 				
 				<input type="hidden" name="menu_id" value="${Trailer_dto.trailer_id}">
