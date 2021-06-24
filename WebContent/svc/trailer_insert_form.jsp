@@ -51,8 +51,8 @@
  
 	 AWS.config.region = 'us-east-1'; // 1. Enter your region
 	 AWS.config.update({
-	 	"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
-	 	"secretAccessKey": "9LogjlXLsizoYkPCOBUnc/phg3Si6SoVXPy9KPIN",
+	 	"accessKeyId": "",
+	 	"secretAccessKey": "",
 	 	"region": "us-east-1"
 	 });
 	 var bucketName = 'cdn-video-source71e471f1-1w5ehaaqw3boh'; // Enter your bucket name

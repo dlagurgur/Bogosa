@@ -105,8 +105,8 @@ function AWScheck(){
 		
 	
 	AWS.config.update({
-		"accessKeyId": "AKIAUUHFXRLVBFMMWAY3",
-		  "secretAccessKey": "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",
+		"accessKeyId": "",
+		  "secretAccessKey": "",
 		  "region": "us-east-1"
 	});
 
