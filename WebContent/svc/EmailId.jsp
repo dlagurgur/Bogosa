@@ -215,36 +215,24 @@ button {
 
 <body class="align">
 <div class="site__container" style="
-    padding-right: 190px;
-">
-
-    <div class="grid__container">
+    padding-right: 190px;">
+	<h3 class="text-white text-center fs-5" style="margin-left: 145px;">Find ID</h3>
+	<div class="grid__container">
 		<form class="form form--login" role="form" method="post" name="inputform" onsubmit="" style="
-    width: 500px;
-">
-			
-				
-				
-			
-			   <div class="form__field">
-        <label class="fontawesome-user" for="login__password"><span class="hidden">Password</span></label>
-          	<input type="text" name="email2" class="form__input" id="email2" placeholder="Enter email" style="
-    width: 332px;
-    height: 52px;
-"required>
+    width: 500px;">
+			<div class="form__field">
+				<label class="fontawesome-user" for="login__password">
+					<span class="hidden">Password</span>
+				</label>
+				<input type="text" name="email2" class="form__input" id="email2" placeholder="Enter email" style="width: 332px;height: 52px;"required>
           	 
        
-         &nbsp;&nbsp;&nbsp;<button type="button"
-						onclick="EmailIdCheck(inputform.email2.value)" style="
-    width: 132px;
-">${btn_confirm_smtp}</button>
-    
-        			
-        </div>
-		
-		</form>
+         &nbsp;&nbsp;&nbsp;
+					<button type="button"onclick="EmailIdCheck(inputform.email2.value)" style="width: 132px;">${btn_confirm_smtp}</button>
+				</div>
+			</form>
 		</div>
-		</div>
+	</div>
 <!-- container -->
 </body>
 </html>

@@ -21,6 +21,7 @@ import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import lombok.*;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,6 +47,9 @@ import db.UserDataBean;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import bean.Sender;
+import bean.SenderDto;
 
 @Controller
 public class Svc_pro{
@@ -140,57 +144,63 @@ public class Svc_pro{
 	@RequestMapping("/emailCheck")
 	public ModelAndView EmailCheckProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String FROM = "tlawogur328@naver.com";   // This has been verified on the Amazon SES setup
+		String user_email=request.getParameter("email");
 	    String authNum = Svc_pro.authNum(); // 인증번호 위한 난수 발생부분
 	    String BODY = "Number [" + authNum + "]";
 	    String SUBJECT = "이메일 인증";
-	    String SMTP_USERNAME = "AKIAUUHFXRLVE2UQTBHA";
-	    String SMTP_PASSWORD = "BKpuDxMBRAZcEKT7PqEmy+o/4tiay8xv/E+VRG9jrmv2"; 
-	    String HOST = "email-smtp.us-east-1.amazonaws.com";    
-		String user_email=request.getParameter("email");
-		String fromName = "Admin"; // 보내는 이름 설정
-	    int PORT = 25;
+		/*
+		 * String SMTP_USERNAME = "AKIAUUHFXRLVE2UQTBHA"; String SMTP_PASSWORD =
+		 * "BKpuDxMBRAZcEKT7PqEmy+o/4tiay8xv/E+VRG9jrmv2"; String HOST =
+		 * "email-smtp.us-east-1.amazonaws.com"; String fromName = "Admin"; // 보내는 이름 설정
+		 * int PORT = 25;
+		 */
 	    System.out.println(authNum);
 	    int result = userDao.EmailCheck(user_email);
 	    request.setAttribute("authNum", authNum);
 		request.setAttribute("user_email", user_email);
 		request.setAttribute("result", result);
+		
+		Sender sender = new Sender();
+		
+		SenderDto sender_dto = new SenderDto();
+		sender_dto.setFrom(FROM);
+		sender_dto.setTo(user_email);
+		sender_dto.setSubject(SUBJECT);
+		sender_dto.setContent(BODY);
+		
+		sender.send(sender_dto);
+		
+		
 	    
-	    
-		Properties props = System.getProperties();
-    	props.put("mail.transport.protocol", "smtp");
-    	props.put("mail.smtp.port", PORT); 
-    	props.put("mail.smtp.starttls.enable", "true");
-    	props.put("mail.smtp.auth", "true");
-	        
-	        Session session = Session.getDefaultInstance(props);
-	        MimeMessage msg = new MimeMessage(session);
-	       
-	        
-	        msg.setFrom(new InternetAddress(FROM,MimeUtility.encodeText(fromName, "utf-8", "B")));
-	        msg.setRecipient(Message.RecipientType.TO, new InternetAddress(user_email));
-	        msg.setSubject(SUBJECT);
-	        msg.setContent(BODY,"text/html; charset=utf-8");
-	       
-	        
-	        Transport transport = session.getTransport();
-
-	        try
-	        {
-	          
-
-	            transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
-	            transport.sendMessage(msg, msg.getAllRecipients());
-	            System.out.println("Email sent!");
-	            
-	        }
-	        catch (Exception ex) {
-	            System.out.println("The email was not sent.");
-	            System.out.println("Error message: " + ex.getMessage());
-	        }
-	        finally
-	        {
-	            transport.close();          
-	        }
+		/*
+		 * Properties props = System.getProperties();
+		 * props.put("mail.transport.protocol", "smtp"); props.put("mail.smtp.port",
+		 * PORT); props.put("mail.smtp.starttls.enable", "true");
+		 * props.put("mail.smtp.auth", "true");
+		 * 
+		 * Session session = Session.getDefaultInstance(props); MimeMessage msg = new
+		 * MimeMessage(session);
+		 * 
+		 * 
+		 * msg.setFrom(new InternetAddress(FROM,MimeUtility.encodeText(fromName,
+		 * "utf-8", "B"))); msg.setRecipient(Message.RecipientType.TO, new
+		 * InternetAddress(user_email)); msg.setSubject(SUBJECT);
+		 * msg.setContent(BODY,"text/html; charset=utf-8");
+		 * 
+		 * 
+		 * Transport transport = session.getTransport();
+		 * 
+		 * try {
+		 * 
+		 * 
+		 * transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+		 * transport.sendMessage(msg, msg.getAllRecipients());
+		 * System.out.println("Email sent!");
+		 * 
+		 * } catch (Exception ex) { System.out.println("The email was not sent.");
+		 * System.out.println("Error message: " + ex.getMessage()); } finally {
+		 * transport.close(); }
+		 */
 		return new ModelAndView("svc/emailCheck");
 	}
 	

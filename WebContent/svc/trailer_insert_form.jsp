@@ -24,7 +24,6 @@
 		<label for="trailer_price" class="col-sm-3 col-form-label text-center" style="color:white;background-color: #7f5cad;">라이브 예정 일정</label>
 		<input class="form__input text-center" type="datetime-local" name="trailer_launchdate" id="trailer_launchdate" maxlength="20" style="color:white;background-color: #cfc4d661;">
 	</div>
-	<div id="results"></div>
 	<div class="form_field">
 		<label for="trailer_detail" class="col-sm-3 col-form-label text-center fs-5 p-2 mb-1" style="color:white; background-color: #7f5cad; width:140px; border-radius:2rem;">라이브 소개</label>
 		<textarea class="form-control mb-3" name="trailer_detail" id="trailer_detail" rows="10" cols="30" style="background-color: #cfc4d6;"></textarea>
@@ -39,6 +38,8 @@
 	</div>
 	<input type="hidden" name="session" id="session" value="${user_id}" />
 	<input type="hidden" name="trailer_id" value="${trailer_id}" />
+	<div id="results" style="text-align:center;">
+	</div>
 	<div class="form__field">
 		<button class="round-button" type="button" id="upload-button" style="margin-left: 32%;width: 250px;height: 50px;background-color: #7550e6;border-radius: 2rem;">라이브 예고 등록</button>
 	</div>
@@ -50,7 +51,9 @@
  
 	 AWS.config.region = 'us-east-1'; // 1. Enter your region
 	 AWS.config.update({
-	 	
+	 	"accessKeyId": "",
+	 	"secretAccessKey": "",
+	 	"region": "us-east-1"
 	 });
 	 var bucketName = ''; // Enter your bucket name
 	 var bucket = new AWS.S3({
@@ -65,7 +68,8 @@
 	 button.addEventListener("click", function() {
 	 	var file = fileChooser.files[0];
 	 	if(file) {
-	 		results.innerHTML = '';
+	 		button.style.display='none';
+	 		results.innerHTML = '<img src="${project}img/ezgif.com-gif-maker.gif" style="width:200px;" ><br><h4 class="text-white fs-5">Uploading(약 30초 소요)</h4>';
 	 		var objKey = 'assets01/' + session + file.name;
 	 		var params = {
 	 			Key: objKey,
@@ -110,12 +114,13 @@
 	 							} else {
 	 								alert("파일 업로드 중 문제가 발생했습니다. 다시 시도해 주세요.");
 	 								clearInterval(timer);
+	 								location.reload();
 	 							}
 	 						} else {
 	 							console.log("data is not detected")
 	 						}
 	 					})
-	 				}, 20000);
+	 				}, 30000);
 	 				timer;
 	 			}
 	 		});

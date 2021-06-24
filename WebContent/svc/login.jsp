@@ -194,45 +194,34 @@ h3 {
 
 <c:if test="${sessionScope.user_id eq null}">	  
 <body class="align" style="padding-top: 100px;margin-right: 40px;">
-
-  <div class="site__container">
-
-    <div class="grid__container">
-	<form class="form form--login" method="post" role="form" action="loginPro.go" name="loginform" onsubmit="return logincheck()" style="
-    width: 380px;">
-      
-
-        <div class="form__field">
-          <label class="fontawesome-user" for="login__username"><span class="hidden">Username</span></label>
-          <input id="inputId" name="user_id" type="text" class="form__input" placeholder="Username" required>
-        </div>
-
-        <div class="form__field">
-          <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
-          <input id="inputPassword" name="user_pw" type="password" class="form__input" placeholder="Password" required>
-        </div>
-
-        <div class="form__field">
-          <input type="submit" value="Log In">
-        </div>
-
-      </form>
-
-      <p class="text--center" style="
-    padding-left: 60px;
-    padding-right: 0px;
-">Not a member? <a href="join.go">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
-       <p class="text--center" style="
-    padding-left: 60px;
-    padding-right: 0px;
-"><a onclick="window.open('EmailId.go','아이디 찾기','width=800,height=350,location=no,status=no,scrollbars=no');">Find ID</a> <span class="fontawesome-arrow-right"></span>
-		&nbsp;&nbsp;  <a onclick="window.open('EmailPasswd.go','비밀번호 찾기','width=400,height=400,location=no,status=no,scrollbars=no');">Find Password</a> <span class="fontawesome-arrow-right"></span></p>
-
-    </div>
-
-  </div>
-
-
+   <div class="site__container" style="padding-bottom:9rem;">
+      <div class="grid__container">
+         <a href="product_main.go?menu_category=0">
+        	 <img alt="" src="${project}img/logo2.png" style="width:370px;'">
+         </a>
+      </div>
+      <div class="grid__container">
+         <form class="form form--login" method="post" role="form" action="loginPro.go" name="loginform" onsubmit="return logincheck()" style="
+            width: 380px;">
+            <div class="form__field">
+               <label class="fontawesome-user" for="login__username"><span class="hidden">Username</span></label>
+               <input id="inputId" name="user_id" type="text" class="form__input" placeholder="Username" required>
+            </div>
+            <div class="form__field">
+               <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
+               <input id="inputPassword" name="user_pw" type="password" class="form__input" placeholder="Password" required>
+            </div>
+            <div class="form__field">
+               <input type="submit" value="Log In">
+            </div>
+         </form>
+         <p class="text--center" style="padding-left: 60px; padding-right: 0px;">Not a member? <a href="join.go">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
+         <p class="text--center" style="padding-left: 60px;padding-right: 0px;">
+            <a onclick="window.open('EmailId.go','아이디 찾기','width=800,height=350,location=no,status=no,scrollbars=no');">Find ID</a> <span class="fontawesome-arrow-right"></span>&nbsp;&nbsp;  
+            <a onclick="window.open('EmailPasswd.go','비밀번호 찾기','width=800,height=350,location=no,status=no,scrollbars=no');">Find Password</a> <span class="fontawesome-arrow-right"></span>
+         </p>
+      </div>
+   </div>
 </body>
 </c:if>
 <c:if test="${sessionScope.user_id ne null}">

@@ -20,7 +20,7 @@
 				</ol>
 				<div class="carousel-inner" style="height: 400px; width: 100%;">
 					<div class="carousel-item active">
-						<img class="d-block h-75 newTrex" src="${project}img/4.jpg" alt="First Slide">
+						<img class="d-block h-75 newTrex" src="${project}img/banner.png" alt="First Slide">
 					</div>
 					<div class="carousel-item">
 						<img class="d-block h-75" src="${project}img/2.jpg" alt="Second Slide">
@@ -56,7 +56,7 @@
 						<div class="card bg-black my-4" style="background-color: #151515; width: 362px;">
 							<input type="hidden" name="aws_url" id="aws_url" value="${menu.aws_url}" />
 							<video autoplay id="video-player${menu.product_id}" style="width: 100%; height:200px;" muted="muted"></video>
-							<img id="ready-image${menu.product_id}" src="${project}img/19-1.jpg" width="360px" height="200px">
+							<img id="ready-image${menu.product_id}" src="${project}img/19-1.jpg" width="100%" height="auto">
 							<div class="card-body text-center font-weight-bold flex-fill p-1" style="background-color:#151515;">
 								<a href="product_detail.go?product_id=${menu.product_id}" class="btn btn-danger stretched-link p-0"> ON AIR </a>
 								<input class="text-center m-1" type="text" id="aa${menu.product_id}" name="aa${menu.product_id}" readonly style="color:white;background-color: #ffffff00; width:80px"><hr class="m-1">

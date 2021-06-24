@@ -97,7 +97,8 @@
 			<input type="hidden" id="menu_price" name="menu_price" value="${Produt_dto.product_price}">
 			<div class="form__field" style="color: white; margin-top: 30px; display: grid;">
 				<label for="nickname" class="col-sm-3 col-form-label p-0 my-3 fs-4" style="color:white;background-color: #6495ed00; text-align: inherit;">상품설명</label>
-				<input style="color:white; height: fit-content;" class="form__input" type="text" value="${Produt_dto.product_detail}" readonly>
+				<textarea class="form-control mb-3 text-white border-0 mt-2" name="product_detail" id="product_detail" rows="10" cols="30" style="background-color: #7c8288; border-radius:1rem; resize:none;" readonly>${Produt_dto.product_detail}</textarea>
+				
 			</div>
 			<div class="form_field mt-5">
 				<label for="nickname" class="col-sm-3 col-form-label " style="color:white;margin: auto;width: 70px;margin-left: 34%;">수량</label>

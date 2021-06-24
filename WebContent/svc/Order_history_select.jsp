@@ -85,7 +85,7 @@
 											
 										</div>
 										<div class="form__field">
-												<button class="round-button" style="width: 250px;margin:0 auto;height: 50px;border-radius: 3rem;" type="submit" >상품 등록</button>
+												<button class="round-button" style="width: 250px;margin:0 auto;height: 50px;border-radius: 3rem;" type="submit" >리뷰 등록</button>
 											</div>
 									</form>
 									<div class="commentList p-1 my-1" style="width: 960;margin: auto;margin-top: 50;"></div>

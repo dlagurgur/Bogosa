@@ -57,8 +57,8 @@
 		
 		
 		<div class="form__field" style=" width: 550px; height: fit-content; margin: 0 auto; ">
-			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='update.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">${btn_modify}</button>
-			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='delete.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">${btn_user_delete}</button>
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='update.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">회원정보 수정</button>
+			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='delete.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">회원 탈퇴</button>
 		</div>
 		<div class="form__field" style=" width: 550px; height: fit-content; margin: 0 auto; ">
 			<button type="button" class="btn btn-sm btn-secondary btn-block fs-6 p-3 mx-1 my-2" onclick="location='Order_confirmation.go'" style="height: 60px;margin-top: 8px;border-radius: 1rem;">판매기록</button>

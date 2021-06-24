@@ -105,7 +105,9 @@ function AWScheck(){
 		
 	
 	AWS.config.update({
-
+		"accessKeyId": "",
+		  "secretAccessKey": "",
+		  "region": "us-east-1"
 	});
 
 		// AWS.config.loadFromPath('./config.json');

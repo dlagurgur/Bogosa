@@ -7,9 +7,17 @@
 <body onload="commentList()">
 	<div class="container">
 		<div class="row my-4" style="margin:0 auto;">
-			<video id=video class="video-js vjs-big-play-centered" controls>
-				<source src="${Trailer_dto.trailer_aws_url}" type="application/x-mpegURL">
-			</video>
+						 
+			<c:if test="${Trailer_dto.trailer_aws_url eq null}">
+			<div>
+				<img class="rounded mx-auto d-block my-5" src="menu_images/${Trailer_dto.trailer_image}" alt="Menu Img" style="width:950px; height:auto;">
+			</div>	
+			</c:if>
+			<c:if test="${Trailer_dto.trailer_aws_url ne null}">
+				<video id=video class="video-js vjs-big-play-centered" controls>
+					<source src="${Trailer_dto.trailer_aws_url}" type="application/x-mpegURL">
+				</video>
+			</c:if>
 			<h1 class="fs-3 my-3 p-0 text-white" style="width:960px; margin:0 auto;">${Trailer_dto.trailer_name}
 		</h1>
 			<input type=hidden name="showdate" value="${Trailer_dto.trailer_launchdate}">
@@ -42,7 +50,7 @@
 				</div>				
 				<div class="form_field">
 					<label for="nickname" class="col-sm-3 col-form-label text-center fs-5 p-2 mb-1" style="color:white; background-color: #7550e6; width:140px; border-radius:2rem;">라이브 소개</label>
-					<textarea class="form-control mb-3 text-white border-0 mt-2" name="trailer_detail" id="trailer_detail" rows="10" cols="30" style="background-color: #7c8288; border-radius:1rem;" readonly>${Trailer_dto.trailer_detail}</textarea>
+					<textarea class="form-control mb-3 text-white border-0 mt-2" name="trailer_detail" id="trailer_detail" rows="10" cols="30" style="background-color: #7c8288; border-radius:1rem; resize:none;" readonly>${Trailer_dto.trailer_detail}</textarea>
 				</div>
 				
 				<input type="hidden" name="menu_id" value="${Trailer_dto.trailer_id}">
